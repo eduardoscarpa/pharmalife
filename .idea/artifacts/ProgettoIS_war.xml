@@ -1,14 +1,14 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="ProgettoTSW:war">
+  <artifact type="war" name="ProgettoIS:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <properties id="maven-jee-properties">
       <options>
-        <module>ProgettoTSW</module>
+        <module>ProgettoIS</module>
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="ProgettoTSW-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="ProgettoTSW:war exploded" />
+    <root id="archive" name="ProgettoIS-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ProgettoIS:war exploded" />
     </root>
   </artifact>
 </component>
