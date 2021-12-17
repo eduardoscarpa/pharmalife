@@ -1,0 +1,203 @@
+
+.padre-footer{
+    background-color: white;
+    display: flex;
+    width: 100%;
+   /* height: 100%;*/
+    justify-content: center;
+    flex-direction: row;
+}
+
+.flex-scritta{
+    width: 20%;
+    flex-direction: column;
+    background-color: #009fe3;
+}
+
+.logoFooter{
+    display: flex;
+    width: 28%;
+    background-color: white;
+    flex-direction: column;
+}
+
+.immagineLogo {
+    margin-right: 30px;
+    margin-left: 10px;
+}
+
+.dropdown-content-footer{
+    display: flex;
+    width: 100%;
+    background-color: white;
+    color: black;
+    flex-direction: column;
+}
+
+.menuScorrimento{
+    display: flex;
+    padding: 10px;
+    text-decoration: none;
+    width: 23.33%;
+    flex-direction: column;
+    background-color: white;
+    /*border-left: lightgray 1px solid;*/
+    align-self: center;
+}
+
+
+.menuScorrimento a {
+    display: flex;
+    color: gray;
+    padding: 10px;
+    text-decoration: none;
+    width: 100%;
+    flex-direction: column;
+}
+.menuScorrimento > a{
+    cursor: text;
+    pointer-events: none;
+}
+.menuScorrimento i{
+   visibility: hidden;
+}
+
+
+.primaScrittaFooter {
+    padding-left: 8px;
+    text-align: left;
+}
+.secondaScrittaFooter {
+    text-align:left ;
+    margin-left: 5px;
+}
+.primaScrittaFooter h1 {
+    font-size: 15pt;
+    color: #009fe3;
+}
+.primaScrittaFooter p {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    font-style: italic;
+   color: blue;
+
+}
+.secondaScrittaFooter h1 {
+    font-weight: bold;
+    padding-bottom: 3px;
+    color: dimgrey;
+    font-size: 13pt;
+}
+.secondaScrittaFooter p {
+    color: grey;
+    font-size: 12pt;
+
+}
+.primaScrittaFooter p {
+    color: black;
+}
+
+
+.NostriContatti{
+    color: #009fe3;
+    padding: 10px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+
+.pr-footer {
+   /* border-left: rgb(230, 227, 227) 1px solid;*/
+    margin-top: 35px;
+    display: flex;
+    width: 23.33%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Footer-icone {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    width: 100%;
+    color: black;
+    margin-bottom: 10px;
+    align-items: center;
+
+    float: left;
+    /*margin-left: 5px;*/
+}
+.Footer-icone p{
+  margin-left: 10px;
+}
+
+.icone-Footer{
+   /* display: flex;*/
+    float: left;
+    width: 10%;
+}
+
+
+footer{
+
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.copyright-card{
+    display: flex;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+}
+.copyright-footer{
+    flex-basis: 50%;
+    background-color: limegreen;
+    padding: 10px;
+    color: white;
+    font-size: 14px;
+
+}
+@media screen  and (max-width: 550px) {
+    .padre-footer{
+
+        flex-direction: column;
+        margin-top: 200px;
+    }
+
+    .logoFooter{
+        width: 100%;
+       align-items: center;
+    }
+    .secondaScrittaFooter h1 {
+      text-align: center;
+    }
+    .menuScorrimento{
+        width: 100%;
+    }
+    .menuScorrimento> a{
+        cursor: pointer;
+        pointer-events: auto;
+    }
+    .menuScorrimento i{
+        visibility: visible;
+    }
+
+    .dropdown-content-footer{
+        display: none;
+    }
+    .menuScorrimento{
+        width: 100%;
+    }
+
+
+    .pr-footer {
+        width: 100%;
+        background-color: rgb(230, 227, 227) ;
+    }
+
+}

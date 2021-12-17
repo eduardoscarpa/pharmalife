@@ -1,0 +1,115 @@
+
+table{
+
+    border-collapse: collapse;
+    width:100%;
+    margin: 50px 0 50px;
+    border-spacing: 70px;
+
+    overflow: auto;
+}
+
+th{
+    background-color: white;
+    border-bottom: 2px solid black;
+}
+
+
+th, td {
+    width: 100px;
+    text-align: left;
+    padding: 10px;
+    color:black;
+}
+tr{
+    border-bottom:2px solid black;
+}
+
+tr:hover{
+    border-bottom: none;
+    margin-bottom: 40px;
+    box-shadow: 5px 5px 5px gray;
+    z-index: 1;
+}
+td a{
+    text-decoration: none;
+}
+
+
+tr:nth-child(even) {background-color: white}
+tr:nth-child(odd) {background-color:white; }
+
+
+
+h1{
+    text-align:center ;
+    color: #009fe3;
+    margin-left: 5px;
+}
+
+
+
+.center-pagination{
+    display: flex;
+
+    text-align: center;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+.pagination{
+    display: flex;
+
+}
+.center-pagination a{
+    color: black;
+    text-decoration: none;
+    padding : 5px 15px;
+    transition: background-color .4s;
+    height: 70%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    margin: 0px 4px;
+
+}
+.center-pagination a:hover{
+    background-color: lawngreen;
+
+}
+
+.myButtonTorna{
+    box-shadow: -1px 6px 28px 3px #3dc21b;
+    background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+    background-color:#44c767;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:16px;
+    padding: 16px 31px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-decoration:none;
+    text-shadow:0px 0px 0px #2f6627;
+}
+.myButtonTorna:hover {
+    background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+    background-color:#5cbf2a;
+}
+.myButtonTorna:active {
+    position:relative;
+    top:1px;
+}
+
+@media screen  and (max-width: 550px) {
+
+
+    table{
+        width: 100%;
+
+    }
+
+}

@@ -1,0 +1,18 @@
+.FAQ{
+    width: 60%;
+    color: gray;
+    text-align:left;
+    margin: auto;
+    font-size: 11px;
+}
+
+h1{
+    font-size: 17px;
+    color: #009fe3;
+}
+
+.titoloFAQ{
+    font-size: 40px;
+    color: #009fe3;
+    text-align: center;
+}
