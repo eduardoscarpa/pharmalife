@@ -15,7 +15,7 @@
     </p>
         <div class="logo">
             <form action="ServletSchedaProdottoSearch" id="formId" method="get" name="formInputSearch"  >
-                <label class="field" for="input" >
+                <label class="field" for="ricercaId" >
                     <input  list="prod" type="text" id="ricercaId" name="search" placeholder="Cerca..."  onkeyup="ricerca()" autocomplete="off">
                     <datalist id="prod">
 
