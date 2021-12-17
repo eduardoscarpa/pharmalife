@@ -20,6 +20,7 @@
 </head>
 <body>
 <h1>Prova github</h1>
+<h2>Prova 2</h2>
 <div class="container-index">
     <jsp:include page="WEB-INF/pagine/default/header.jsp"/>
     <jsp:include page="WEB-INF/pagine/contenuti.jsp"/>
