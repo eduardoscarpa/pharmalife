@@ -19,7 +19,6 @@
     </style>
 </head>
 <body>
-<h1>Prova test</h1>
 <div class="container-index">
     <jsp:include page="WEB-INF/pagine/default/header.jsp"/>
     <jsp:include page="WEB-INF/pagine/contenuti.jsp"/>
