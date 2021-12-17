@@ -1,0 +1,140 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.opzione{
+    margin: 0px 0 20px;
+    width: 100%;
+    height: 100%;
+    /* background-color: orange;*/
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.opzione .scelte{
+
+
+    flex-basis: 20%;
+    height: 100%;
+    margin: 0px;
+    background-image: linear-gradient(to bottom, limegreen,limegreen,limegreen,white);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: flex-start;
+    /*border-right: 1px solid lightgray;*/
+
+
+}
+/*.scelte  ul{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+
+
+    justify-content: flex-start;
+    background-color: white;
+}*/
+.scelte ul li{
+    display: flex;
+    color: wheat;
+    list-style: none;
+    width: 110%;
+    background-color: inherit;
+    margin: 2px 0;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+}
+.scelte li a{
+    text-decoration: none;
+    padding: 14px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+
+}
+.sceltel i a:hover{
+    color: limegreen;
+}
+.scelte li  i{
+    padding: 14px;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.tabella{
+    flex-basis: 80%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+
+}
+.tabella table{
+    display: flex;
+    width: 80%;
+    background-color: white;
+
+    /*  margin: 20px auto 40px;*/
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+table{
+    border: none;
+    border-collapse: collapse;
+    overflow: auto;
+    border-radius: 15px;
+}
+
+
+th,td{
+    padding: 10px;
+}
+th{
+    background-color: limegreen;
+    color: white;
+    height: 50px;
+}
+td{
+    width:160px;
+    text-align: center;
+}
+td a{
+    text-decoration: none;
+    cursor: pointer;
+}
+tr:nth-child(even) {background-color: #e0f1ff/*#f2f2f2*/;}
+
+@media screen and (max-width:550px) {
+    .opzione{
+        margin-bottom: 500px;
+
+    }
+    .opzione .scelte{
+        flex-basis: 100%;
+        height: 50%;
+        background-image: none;
+        background-color: limegreen;
+        border-right: none;
+    }
+    .scelte ul{
+        flex-basis: 100%;
+    }
+    .scelte ul  li{
+        width: 100%;
+        border-bottom: none;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .scelte i {
+        margin-right: 20px;
+    }
+}

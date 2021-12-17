@@ -1,0 +1,224 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: 90%;
+    height: 100%;
+    background-color: white;
+    margin: 80px auto 30px;
+}
+.immagine{
+    display: flex;
+    flex-basis: 50%;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.immagine img{
+    width: 60%;
+    cursor: zoom-in;
+}
+.immagine img:hover{
+    transform: scale(1.3);
+    transition-duration: 2s;
+
+
+}
+.infoProdotto{
+    display: flex;
+    flex-basis: 50%;/*setta la dimensione in base alla direzione se è row o colum*/
+    flex-direction: column;
+    background-color: inherit;
+    justify-content: center;
+    padding: 10px;
+}
+.infoProdotto h2{
+    text-align: center;
+    font-size: 30px;
+}
+.infoProdotto .bottoni{
+    margin-top: 75px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* flex-basis: 90%;*/
+    align-items: center;
+    justify-content: center;
+    height: 8%;
+    background-color: white;
+    /* border:2px solid lightgray;*/
+    padding: 0px;
+}
+.bottoni .quantita{
+    display: flex;
+
+    background-color: white;
+    flex-basis: 20%;
+    height: 30px;
+    border: 2px solid limegreen;
+    border-radius: 5px;
+
+}
+.quantita input{
+    outline: none;
+    border:none;
+    width: 50%;
+    text-align: center;
+
+}
+.quantita button{
+    width: 25%;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: white;
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.aggiungiAlCarrello{
+    width: 35%;
+    height:100%;
+    margin-left: 10px;
+    background-color:limegreen;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition:  .6s;
+}
+.aggiungiAlCarrello:hover{
+    background-color: white;
+    color: limegreen;
+    border: 1px solid lightgrey;
+}
+.bottoni a{
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 10px;
+    height: 100%;
+    width: 8%;
+    background-color: white;
+    cursor: pointer;
+
+}
+.bottoni a:hover{
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+a i{
+    text-align: center;
+    color: limegreen;
+    transition:  .5s;
+}
+a i:hover{
+    color: red;
+
+}
+
+.infoProdotto .descrizione{
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    align-items: center;
+    margin-top: 55px;
+    flex-basis: 90%;
+    background-color: inherit;
+    height: 40%;
+}
+.descrizione .note{
+    width: 70%;
+    font-size: 20px;
+    background-color: inherit;
+}
+.note fieldset{
+    padding: 15px;
+    border-radius: 10px;
+}
+legend{
+    text-align: center;
+    padding: 9px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.descrizione .card{
+    margin-top: 20px;
+    width: 70%;
+
+}
+.card i{
+    font-size: 30px;
+}
+
+
+
+.myButtonTorna{
+    box-shadow: -1px 6px 28px 3px #3dc21b;
+    background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+    background-color:#44c767;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:16px;
+    padding: 16px 31px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-decoration:none;
+    text-shadow:0px 0px 0px #2f6627;
+}
+.myButtonTorna:hover {
+    background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+    background-color:#5cbf2a;
+}
+.myButtonTorna:active {
+    position:relative;
+    top:1px;
+}
+@media screen and (max-width:550px) {
+
+    .container{
+        flex-direction: column;
+        width: 100%;
+        height: 120%;
+        margin-bottom: 250px;
+
+
+    }
+    .infoProdotto{
+        flex-basis: 40%;
+       /* margin-top: 50px;*/
+
+    }
+    .bottoni{
+        flex-basis: 100%;
+        height: 100%;
+        background-color: greenyellow;
+    }
+    .aggiungiAlCarrello{
+        height: 30%;
+        font-size: 13px;
+        padding: 5px;
+    }
+    .descrizione{
+        background-color: indianred;
+        margin-top: 10px;
+    }
+}

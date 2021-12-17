@@ -1,0 +1,26 @@
+
+
+
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url(/font/Montserrat-Regular.ttf);
+    src: local('Montserrat-Regular'), url(/font/Montserrat-Regular.ttf) format('truetype');
+}
+
+.imm-mano {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.scritta-mano {
+    color: grey;
+    text-align: center;
+}
+
+.bottone-ass {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}

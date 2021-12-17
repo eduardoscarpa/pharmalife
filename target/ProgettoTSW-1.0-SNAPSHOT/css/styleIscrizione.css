@@ -1,0 +1,160 @@
+
+div h1{
+    color: #009fe3;
+}
+
+p{
+    color: gray;
+}
+
+/*body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+*/
+
+
+.container-iscriviti {
+    display: flex;
+    width: 100%;
+
+    flex-direction: column;
+    align-items: center;
+   /* padding: 16px;*/
+    background-color: white;
+}
+.container-iscriviti .register{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    flex-basis: 40%;
+    margin: 6px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 5px;
+}
+
+.error{
+    display: none;
+
+}
+.register input{
+    margin-top: 5px;
+    width: 60%;
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    transition: width 0.4s ease-in-out;
+    background-color: white;
+    outline: none;
+
+}
+.register input:focus{
+    color: black;
+}
+.lampeggioBordo{
+    animation: blink 1s;
+    box-shadow: 0 0 5px 1px red;
+    animation-iteration-count: infinite;
+}
+@keyframes blink {
+
+    50%{border: 1px solid red;  box-shadow: 0 0 5px 1px red;}
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+
+}
+
+
+.registerbtn {
+    background-color: limegreen;
+    color: white;
+    padding: 16px 20px;
+    /*margin-left: 750px;*/
+    margin: 8px 0;
+    border: 10px;
+    cursor: pointer;
+    width: 20%;
+    opacity: 0.9;
+    transition: width 0.6s ease-in-out;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+    width: 100%;
+}
+
+
+a {
+    color: dodgerblue;
+}
+
+
+.signin {
+    background-color: white;
+    text-align: center;
+}
+
+
+
+
+@media screen  and (max-width: 550px) {
+
+
+   /* input[type=text], input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+
+    }*/
+
+   /* input[type=text]:focus, input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+
+    }*/
+    .container-iscriviti .register{
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .register input{
+        width: 70%;
+    }
+
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+
+    .registerbtn {
+        background-color: limegreen;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 70%;
+        opacity: 0.9;
+    }
+
+    .registerbtn:hover {
+        opacity: 1;
+    }
+
+    a {
+        color: dodgerblue;
+    }
+
+    .signin {
+        background-color: white;
+        text-align: center;
+    }
+}

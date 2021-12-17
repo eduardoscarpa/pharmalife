@@ -1,0 +1,155 @@
+h1.myAccount{
+    text-align: center;
+    color: #009fe3;
+}
+
+
+.flex-container {
+    align-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    /*font-size: 30px;*/
+  /*  text-align: center;*/
+    flex-wrap: wrap;
+    background-color: white;
+    justify-content: flex-start;
+}
+
+.flex-item {
+    background-color: white;
+    margin: 50px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 50px;
+    box-shadow: 2px 2px lightgray;
+    color: limegreen;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    flex-basis: 25%;
+  /*  text-align: center;*/
+
+}
+
+.flex-item a{
+   /* display: flex;*/
+
+
+}
+div a i{
+    color: limegreen;
+    font-size: 40px;
+  /*  align-items: center;
+    margin-left: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-right: auto;*/
+}
+
+i{
+    align-items: center;
+}
+
+.flex-item  p{
+    color: gray;
+    font-family: "Arial";
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+}
+
+.flex-item a i:hover{
+    color: #009fe3;
+    transition: 0.5s;
+
+}
+.flex-item:hover > a{
+    color: blue;
+    transition: 0.5s;
+}
+
+.flex-item:hover > p{
+    color: black;
+    transition: 0.5s;
+}
+
+@media screen  and (max-width: 550px){
+
+
+
+
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        font-size: 30px;
+
+
+
+    }
+
+    .flex-item {
+        background-color: white;
+        /*flex: 50%;*/
+
+        border: 1px solid lightgray;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 2px 2px lightgray;
+        color: limegreen;
+        width: 80%;
+    }
+
+    .flex-item a{
+       display: block;
+
+    }
+    div a i{
+        color: limegreen;
+        font-size: 30px;
+        align-items: center;
+        margin-left: auto;
+        margin-bottom: auto;
+        margin-top: auto;
+        margin-right: auto;
+    }
+
+    i{
+        align-items: center;
+    }
+
+    .flex-item p{
+        color: gray;
+        font-family: "Arial";
+        font-weight: bold;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    div a i:hover{
+        color: #009fe3;
+        transition: 0.5s;
+
+    }
+    div:hover > a{
+        color: blue;
+        transition: 0.5s;
+    }
+
+    div:hover > p{
+        color: black;
+        transition: 0.5s;
+    }
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .flex-container {
+        align-content: space-around;
+        justify-content: space-around;
+    }
+    .flex-item {
+        flex-basis: 35%;
+    }
+}

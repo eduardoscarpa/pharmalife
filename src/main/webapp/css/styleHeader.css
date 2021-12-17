@@ -1,0 +1,261 @@
+*{
+    font-family: Montserrat-Regular;
+}
+
+.container-index{
+    display: flex;
+    flex-flow: column wrap;
+}
+.top-header{
+    flex-basis: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 5px;
+}
+.info, .logo{
+    flex-basis: 100%;
+}
+.info{
+    text-align: center;
+
+}
+.logo{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.contenitore-icone {
+    /* margin-top: 8px;*/
+    display: inline-flex;
+    align-items: center;
+}
+.contenitore-icone .icone{
+    margin: 5px;
+}
+.field{
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    margin-left: 50px;
+}
+.field input{
+    border-radius: 19px;
+    background-color: whitesmoke;
+    border-color: transparent;
+    color: grey;
+    padding: 8px;
+    outline: none; /* elimina il bordo quando clicchi */
+   /* box-shadow: 1px 2px lightgrey;*/
+    width: 100%;
+}
+.field button{
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transform: translateX(-140%);
+    z-index: 1;
+}
+
+.linkMenu{
+    display: none;
+}
+
+/*.logo .immagineLogo{
+    width: 50%;
+   /* height: 80%;
+    margin:auto;
+    background-color: white;
+}
+.immagineLogo img{
+    display: block;
+    margin: auto;
+    background-color: white;
+
+}*/
+
+
+.field input[type="text"]:focus{
+
+    color: black;
+    border-color: transparent;
+    background-color: 2px 2px  lightgray;
+    outline: none;
+}
+
+nav{
+    overflow: hidden;
+    background-color: limegreen;
+
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+nav a{
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.dropdown{
+    float: left;
+    overflow: hidden;
+    display: block;
+}
+.dropdown button{
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: limegreen;
+
+    color: white;
+    padding: 14px 16px;
+    margin: 0;
+}
+nav a:hover , .dropdown:hover .dropbtn{
+    background-color: lightgreen;
+}
+.dropdown-content{
+   /* display: none;*/
+    visibility: hidden;
+    position: absolute;
+    background-color: whitesmoke;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    left: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 220px;
+    transition: top .3s;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.dropdown:hover .dropdown-content{
+
+    visibility: visible;
+    top: 265px;
+}
+.colum{
+    float: left;
+    width: 50%;
+    padding: 10px;
+    background-color: whitesmoke;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+
+}
+.colum a{
+    float: none;
+    color: black;
+    padding: 16px;
+    display: block;
+    text-align: center;
+
+}
+.uno a{
+    border-right: 1px solid lightgrey;
+}
+.colum a:hover{
+    background-color: inherit;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/*Rimuove il trinagolo del datalist*/
+input::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+/*
+datalist option{
+    background-color: limegreen;
+    color: white;
+    padding: 5px;
+}*/
+@media screen and (max-width: 550px) {
+
+    .top-header{
+      /*  flex-flow: column wrap;*/
+       /* flex-direction: column;*/
+
+    }
+    .logo{
+        flex-flow: column wrap;
+        background-color: white;
+        align-items: center;
+        background-color: white;
+    }
+    .logo :nth-child(1){
+        order: 2;
+    }
+
+    .contenitore-icone {
+        display: block;
+        margin-top: 10px;
+        background-color: white;
+
+        width: 100%;
+    }
+    .contenitore-icone .icone{
+        float: right;
+        font-size: 20px;
+    }
+    .field{
+        margin-left: 0px;
+        width: 100%;
+    }
+    .field button{
+       transform: translateX(670%);
+    }
+   .contenitore-icone .linkMenu{
+        display: block;
+       float: left;
+         margin-left: 2px;
+       color: black;
+    }
+    nav{
+      display: none;
+      flex-direction: column;
+
+    }
+    nav .home{
+        background-color: white;
+        color: black;
+    }
+    nav a{
+        flex-basis: 100%;
+    }
+    .dropdown{
+        display: flex;
+        flex-direction: column;
+    }
+    .dropdown .dropbtn{
+        flex-basis: 100%;
+    }
+    .dropdown-content{
+        display: none;
+        position: relative;
+        margin: 0;
+        width: 100%;
+        top: 2px;
+    }
+    .dropdown:hover .dropdown-content{
+        display: block;
+        top: 2px;
+    }
+    .colum{
+        width: 100%;
+        background-color: inherit;
+        padding: 0px;
+    }
+    .colum a{
+        margin: 0;
+        width: 100%;
+        background-color: inherit;
+    }
+}
+

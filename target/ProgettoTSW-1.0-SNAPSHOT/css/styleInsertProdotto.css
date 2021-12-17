@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1.insert{
+    text-align: center;
+    padding: 10px;
+    color: #009fe3;
+}
+form.insert{
+    margin: 50px auto 50px;
+    width: 40%;
+
+   display: flex;
+    flex-direction: column;
+   align-items: center;
+
+}
+form.insert fieldset{
+    background-color: white;
+    display: flex;
+    width: 100%;
+    border: 1px solid lightgray;
+
+    border-radius: 15px;
+    flex-direction: column;
+}
+form.insert legend{
+
+    text-align: center;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color: limegreen;
+    color: white;
+
+    padding: 10px;
+}
+form.insert fieldset .campo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    padding: 8px;
+    background-color: white;
+}
+.campo input,textarea{
+    width: 50%;
+    outline: none;
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+input[type="submit"]{
+    width: 20%;
+    background-color: limegreen;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.myButtonTorna{
+    box-shadow: -1px 6px 28px 3px #3dc21b;
+    background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+    background-color:#44c767;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:16px;
+    padding: 16px 31px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-decoration:none;
+    text-shadow:0px 0px 0px #2f6627;
+}
+.myButtonTorna:hover {
+    background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+    background-color:#5cbf2a;
+}
+.myButtonTorna:active {
+    position:relative;
+    top:1px;
+}
+
+@media screen and (max-width:550px) {
+
+    form.insert{
+        width: 90%;
+    }
+    form.insert fieldset{
+        width: 80%;
+    }
+    .campo input,textarea{
+        width: 70%;
+    }
+
+}

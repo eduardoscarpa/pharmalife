@@ -1,0 +1,86 @@
+.flexpadre{
+    display: flex;
+    width: 90%;
+    height: 100%;
+    margin-bottom: 300px;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.flex-blocco{
+    display: flex;
+    flex-basis: 30%;
+   /* height: 40%;*/
+    background-color: white;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+
+
+.flexpadre a{
+    text-decoration: none;
+    color:#009fe3;
+    font-size: 20px;
+}
+
+h1.pref{
+    padding: 10px;
+    color: #009fe3;
+}
+
+.image > img{
+    width: 200px;
+    height: 200px;
+
+}
+
+.icona-delete{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.icona-delete a i{
+    color: dimgray;
+    margin: 8px 8px;
+}
+/*.flex-padre2{
+    display: flex;
+    width: 90%;
+    background-color: white;
+    flex-direction: row;
+    margin: auto;
+    justify-content: center;
+
+}*/
+
+
+@media screen  and (max-width: 550px) {
+  /*  .flex-padre{
+        flex-direction: column;
+    }*/
+    .flex-padre{
+        margin-bottom: 700px;
+    }
+
+    .flex-blocco{
+        flex-basis: 90%;
+
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .flexpadre{
+        width: 97%;
+        height: 50%;
+        margin-top: 5px;
+    }
+}

@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.tabellaOrd {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+.scrittaOrdini {
+    padding: 10px;
+    color: #009fe3;
+}

@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container-statistiche{
+
+    display: flex;
+    width: 80%;
+    /*  height: 100%;*/
+    height: 100vh;
+    margin: 50px auto 50px;
+
+    background-image: url("../immagini/WallpaperDog-20378251.jpg");
+    background-repeat: no-repeat;
+    flex-flow: row wrap;
+    justify-content: center;
+
+}
+.container-statistiche .box{
+    flex-basis: 35%;
+    display: flex;
+    margin: 50px;
+    /*background-color: rgba(225, 225, 225, 0.8);*/
+    background-color:white;
+    opacity: 0.8;
+    flex-direction: column;
+    padding: 0;
+}
+.box .num{
+    flex-basis: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: black;
+    font-size: 40px;
+
+}
+.box .tipo{
+    flex-basis: 20%;
+    background-color: limegreen;
+
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@media screen and (max-width:550px) {
+    .container-statistiche{
+        width: 95%;
+    }
+    .container-statistiche .box{
+        flex-basis: 80%;
+    }
+}
