@@ -1,4 +1,4 @@
-package controller;
+package controller.admin;
 
 import model.categoria.Categoria;
 import model.categoria.CategoriaDAO;

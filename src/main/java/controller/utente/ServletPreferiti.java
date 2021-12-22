@@ -1,6 +1,7 @@
-package controller;
+package controller.utente;
 
 import model.prodotto.Prodotto;
+import model.prodotto.ProdottoDAO;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
 
@@ -13,29 +14,31 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "ServletRimuoviPreferito", value = "/ServletRimuoviPreferito")
-public class ServletRimuoviPreferito extends HttpServlet {
+@WebServlet(name = "ServletPreferiti", value = "/ServletPreferiti")
+public class ServletPreferiti extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
-
+        ProdottoDAO prodottoDAO=new ProdottoDAO();
+        Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
+        String risposta="";
         if(session != null) {
             UtenteDAO service = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
 
             if (utente != null) {
-                Prodotto p=new Prodotto();
-                p.setCodiceProdotto(codiceProdotto);
-                service.deletePreferito(utente,p);
+                service.insertPreferito(utente, prodotto);
+                risposta="Prodotto Aggiunto ai Preferiti";
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-            dispatcher.forward(request,response);
+
+            response.getWriter().write(risposta);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        doGet(request, response);
     }
+
 }

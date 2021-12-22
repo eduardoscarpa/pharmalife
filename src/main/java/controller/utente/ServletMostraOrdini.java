@@ -1,4 +1,4 @@
-package controller;
+package controller.utente;
 
 import model.ordine.Ordine;
 import model.ordine.OrdineDAO;

@@ -1,4 +1,4 @@
-package controller;
+package controller.utente;
 
 import model.prodotto.Prodotto;
 import model.utente.Utente;

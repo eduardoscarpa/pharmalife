@@ -1,4 +1,4 @@
-package controller;
+package controller.utente;
 
 import model.utente.Utente;
 import model.utente.UtenteDAO;

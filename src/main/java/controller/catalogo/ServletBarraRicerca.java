@@ -1,4 +1,4 @@
-package controller;
+package controller.catalogo;
 
 import com.google.gson.Gson;
 import model.prodotto.Prodotto;

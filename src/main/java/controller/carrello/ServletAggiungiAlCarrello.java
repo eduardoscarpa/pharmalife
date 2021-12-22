@@ -1,4 +1,4 @@
-package controller;
+package controller.carrello;
 
 import model.carrello.Carrello;
 import model.prodotto.Prodotto;

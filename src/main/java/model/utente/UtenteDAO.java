@@ -41,6 +41,7 @@ public class UtenteDAO implements UtenteDAOMethod {
         return null;
     }
 
+
     @Override
     public Utente cercaUtentebyEmail(String email,String password) {
         try(Connection connection= ConPool.getConnection()){
@@ -229,30 +230,7 @@ public class UtenteDAO implements UtenteDAOMethod {
         }
     }
 
-  /*  @Override
-    public void updateUtente(Utente u, String codiceFiscale) {
-        try (Connection connection = ConPool.getConnection()) {
-            PreparedStatement ps;
-            ps = connection.prepareStatement("update Utente set nome = ?, cognome = ?, email = ?, password = ?, via = ?," +
-                    "numeroCivico = ?, cap = ?, telefono = ?, isAdmin = ? " +
-                    "where codiceFiscale = ?", Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, u.getNome());
-            ps.setString(2, u.getCognome());
-            ps.setString(3, u.getEmail());
-            ps.setString(4, u.getPassword());
-            ps.setString(5, u.getVia());
-            ps.setInt(6, u.getNumeroCivico());
-            ps.setString(7, u.getCap());
-            ps.setString(8, u.getTelefono());
-            ps.setBoolean(9, u.isAdmin());
-            ps.setString(10, u.getCodiceFiscale());
-            if(ps.executeUpdate() != 1) {
-                throw new RuntimeException("update error");
-            }
-        } catch (SQLException sqlException) {
-            throw new RuntimeException(sqlException);
-        }
-    }*/
+
 
     @Override
     public boolean updateUtente(Utente utente){
@@ -329,7 +307,6 @@ public class UtenteDAO implements UtenteDAOMethod {
     public ArrayList<Utente> cercaUtenti(int start, int end) {
         ArrayList<Utente> lista =new ArrayList<>();
         try(Connection connection=ConPool.getConnection()){
-
             PreparedStatement ps=connection.prepareStatement("select * from Utente order by codiceProdotto" +
                     "limit ? offset ?");
             ps.setInt(1,start);

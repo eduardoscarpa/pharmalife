@@ -5,6 +5,9 @@ import model.prodotto.Prodotto;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class Categoria {
 
     private int idCategoria;
@@ -15,6 +18,13 @@ public class Categoria {
     public Categoria() {
     }
 
+    /**
+     *
+     * @param idCategoria
+     * @param nomeCategoria
+     * @param root
+     * @param prodotti
+     */
     public Categoria(int idCategoria, String nomeCategoria, int root, ArrayList<Prodotto> prodotti) {
         this.idCategoria = idCategoria;
         this.nomeCategoria = nomeCategoria;
@@ -22,6 +32,10 @@ public class Categoria {
         this.prodotti = prodotti;
     }
 
+    /**
+     *
+     * @return id categoria del prodotto
+     */
     public int getIdCategoria() {
         return idCategoria;
     }

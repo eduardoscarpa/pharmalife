@@ -15,7 +15,7 @@
 <head>
     <jsp:include page="/WEB-INF/pagine/default/head.jsp">
         <jsp:param name="title" value="Lista prodotti"/>
-        <jsp:param name="style" value="styleHeader,styleFooter,styleListaProdotti"/>
+        <jsp:param name="style" value="styleHeader,styleFooter,styleCatalogo"/>
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
@@ -25,6 +25,66 @@
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
+
+<div class="container_catalogo">
+    <aside class="filter_container">
+        <form action="" method="">
+            <div class="filtraggio">
+                <label for="nome">Nome</label>
+                <input id="nome" type="text">
+            </div>
+            <div class="filtraggio">
+                <label for="categoria">Categoria</label>
+                <input id="categoria" type="text">
+            </div>
+            <div class="filtraggio">
+                <label for="marchio">Marchio</label>
+                <input type="text">
+            </div>
+            <div class="filtraggioPrezzo">
+                <label for="prezzoMin">Min </label>
+                <input type="text" placeholder="Da">
+            </div>
+            <div class="filtraggioPrezzo">
+                <label for="prezzoMax">Max </label>
+                <input type="text" placeholder="A">
+            </div>
+            <input class="submit" type="submit" value="CERCA">
+        </form>
+    </aside>
+    <div class="list_catalogo">
+        <%for(Prodotto p : prodotti) {%>
+        <article>
+            <div class="price"><%=p.getPrezzo()%>€</div>
+            <figure>
+                <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>" alt="Oki" height="160" width="160">
+                <figcaption>
+                    <a href=""><%=p.getNome()%> </a>
+                </figcaption>
+            </figure>
+            <div class="disp">Disponibile</div>
+            <button>Aggiungi Al Carrello   <i class="fas fa-cart-plus"></i></button>
+        </article>
+        <%}%>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%--
 
 <div id="container-prodotti">
     <aside>
@@ -108,7 +168,7 @@
             </div>
         </div>
     </main>
-</div>
+</div>--%>
 <jsp:include page="default/footer.jsp"/>
 <script>
 

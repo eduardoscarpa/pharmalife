@@ -86,6 +86,11 @@ public class Utente {
     public void setPassword(String password){
         this.password=password;
     }
+
+    /**
+     *
+     * @param password
+     */
     public void criptPassword(String password) {
 
       try {

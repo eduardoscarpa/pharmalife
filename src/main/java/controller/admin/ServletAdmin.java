@@ -1,4 +1,4 @@
-package controller;
+package controller.admin;
 
 import model.messaggio.Messaggio;
 import model.messaggio.MessaggioDAO;

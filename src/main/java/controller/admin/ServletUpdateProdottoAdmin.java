@@ -1,4 +1,4 @@
-package controller;
+package controller.admin;
 
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;

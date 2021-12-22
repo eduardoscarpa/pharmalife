@@ -28,7 +28,6 @@ public class ServletLink extends HttpServlet {
         System.out.println("Sessione " );
         String pagina="";
         switch (richiesta){
-
             case "home": pagina="/index.jsp";
                 break;
             case "login" :
