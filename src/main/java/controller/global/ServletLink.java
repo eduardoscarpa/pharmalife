@@ -1,13 +1,11 @@
-package controller;
+package controller.global;
 
 import model.utente.Utente;
-import model.utente.UtenteDAO;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.ArrayList;
 
 @WebServlet(name = "ServletLink", value = "/ServletLink")
 public class ServletLink extends HttpServlet {
