@@ -23,8 +23,6 @@ public class ServletBarraRicerca extends HttpServlet {
         ArrayList<Prodotto> prodotti=prodottoDAO.prodotttoSearch(valore);
         Gson gson= new Gson();
         String prodottiJson=gson.toJson(prodotti);
-
-
         response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("application/json");
 
