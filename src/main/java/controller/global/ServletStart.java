@@ -1,4 +1,4 @@
-package controller.utente;
+package controller.global;
 
 import model.categoria.Categoria;
 import model.categoria.CategoriaDAO;
