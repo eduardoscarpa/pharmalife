@@ -17,6 +17,30 @@ import java.io.IOException;
 public class ServletRimuoviPreferito extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       /* HttpSession session = request.getSession();
+        int codiceProdotto=Integer.parseInt(request.getParameter("value"));
+
+        if(session != null) {
+            UtenteDAO service = new UtenteDAO();
+            Utente utente = (Utente) session.getAttribute("utente");
+
+            if (utente != null) {
+                Prodotto p=new Prodotto();
+                p.setCodiceProdotto(codiceProdotto);
+                service.deletePreferito(utente,p);
+            }
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request,response);
+        }*/
+        rimuoviProdottoDaiPreferiti(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+    private  void rimuoviProdottoDaiPreferiti(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
 
@@ -32,10 +56,5 @@ public class ServletRimuoviPreferito extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
             dispatcher.forward(request,response);
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
     }
 }

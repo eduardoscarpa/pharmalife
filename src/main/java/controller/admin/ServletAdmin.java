@@ -35,20 +35,22 @@ public class ServletAdmin extends HttpServlet {
                     pagina="WEB-INF/pagine/admin/insertProdotto.jsp";
                 break;
                 case "messaggi":
-                    MessaggioDAO messaggioDAO= new MessaggioDAO();
+                   /* MessaggioDAO messaggioDAO= new MessaggioDAO();
                     ArrayList<Messaggio> messaggi= messaggioDAO.doRetraiveByAllMessaggi();
-                    request.setAttribute("messaggi",messaggi);
+                    request.setAttribute("messaggi",messaggi);*/
+                    visualizzaMessaggi(request,response);
                     pagina="WEB-INF/pagine/admin/assistenzaUtenti.jsp";
                 break;
                 case "statistiche":
-                    MessaggioDAO messaggioDAO1= new MessaggioDAO();
+                  /*  MessaggioDAO messaggioDAO1= new MessaggioDAO();
                     ProdottoDAO prodottoDAO1= new ProdottoDAO();
                     UtenteDAO utenteDAO= new UtenteDAO();
                     OrdineDAO ordineDAO= new OrdineDAO();
                     request.setAttribute("messaggi",Integer.parseInt(String.valueOf(messaggioDAO1.doRetraiveByAllMessaggi().size())));
                     request.setAttribute("utenti",Integer.parseInt(String.valueOf(utenteDAO.doRetraiveByAllUtenti().size())));
                     request.setAttribute("prodotti",Integer.parseInt(String.valueOf(prodottoDAO1.doRetraiveByAllProdotti().size())));
-                    request.setAttribute("ordini",Integer.parseInt(String.valueOf(ordineDAO.doRetraiveByAllOrdini().size())));
+                    request.setAttribute("ordini",Integer.parseInt(String.valueOf(ordineDAO.doRetraiveByAllOrdini().size())));*/
+                    visualizzaStatistiche(request,response);
                     pagina="WEB-INF/pagine/admin/statistiche.jsp";
                     break;
 
@@ -56,5 +58,21 @@ public class ServletAdmin extends HttpServlet {
             }
             RequestDispatcher dispatcher=request.getRequestDispatcher(pagina);
             dispatcher.forward(request,response);
+    }
+    private  void visualizzaMessaggi(HttpServletRequest request,HttpServletResponse response){
+        MessaggioDAO messaggioDAO= new MessaggioDAO();
+        ArrayList<Messaggio> messaggi= messaggioDAO.doRetraiveByAllMessaggi();
+        request.setAttribute("messaggi",messaggi);
+    }
+
+    private void visualizzaStatistiche(HttpServletRequest request,HttpServletResponse response){
+        MessaggioDAO messaggioDAO1= new MessaggioDAO();
+        ProdottoDAO prodottoDAO1= new ProdottoDAO();
+        UtenteDAO utenteDAO= new UtenteDAO();
+        OrdineDAO ordineDAO= new OrdineDAO();
+        request.setAttribute("messaggi",Integer.parseInt(String.valueOf(messaggioDAO1.doRetraiveByAllMessaggi().size())));
+        request.setAttribute("utenti",Integer.parseInt(String.valueOf(utenteDAO.doRetraiveByAllUtenti().size())));
+        request.setAttribute("prodotti",Integer.parseInt(String.valueOf(prodottoDAO1.doRetraiveByAllProdotti().size())));
+        request.setAttribute("ordini",Integer.parseInt(String.valueOf(ordineDAO.doRetraiveByAllOrdini().size())));
     }
 }

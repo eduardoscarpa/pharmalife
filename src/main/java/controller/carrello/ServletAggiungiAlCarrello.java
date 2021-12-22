@@ -48,15 +48,12 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
                 carrello.addProdotto(prodotto);
                 session.setAttribute("carrello",carrello);
             }else{
-
                 carrello= new Carrello();
                 prodotto.setPrezzoQuantita(totale);
                 carrello.addProdotto(prodotto);
                 session.setAttribute("carrello",carrello);
                 session.setMaxInactiveInterval(60);
             }
-
-
         }
        response.getWriter().write("Prodotto Aggiunto al carrello");
     }
