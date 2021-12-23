@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class ServletBarraRicerca extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        barraRicerca(request, response);
+        ricercaProdotto(request, response);
     }
 
     @Override
@@ -24,7 +24,7 @@ public class ServletBarraRicerca extends HttpServlet {
 
     }
 
-    private void barraRicerca(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void ricercaProdotto(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String valore=request.getParameter("value");
 
         ProdottoDAO prodottoDAO= new ProdottoDAO();
