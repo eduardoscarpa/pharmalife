@@ -21,10 +21,10 @@ public class ServletListaMarchi extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        listaMarchi(request, response);
+        visualizzaListaMarchi(request, response);
     }
 
-    private void listaMarchi(HttpServletRequest request, HttpServletResponse response) {
+    private void visualizzaListaMarchi(HttpServletRequest request, HttpServletResponse response) {
         String opzione="Marchio";
         String nomeMarchio=(request.getParameter("value"));
         String nomejsp=request.getParameter("nomejsp");
