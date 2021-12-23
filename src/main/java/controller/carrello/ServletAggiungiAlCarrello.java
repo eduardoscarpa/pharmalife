@@ -15,9 +15,16 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        aggiuntaAlCarrello(request, response);
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+    private void aggiuntaAlCarrello(HttpServletRequest request, HttpServletResponse response) throws IOException{
         int idProdotto=Integer.parseInt(request.getParameter("prodotto"));
-       // int totale=Integer.parseInt(request.getParameter("totale"));
         int totale=1;
         if(request.getParameter("totale")!=null){
             totale=Integer.parseInt(request.getParameter("totale"));
@@ -42,7 +49,6 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
                 utente.setCarrello(carrello1);
             }
         }else{
-           // Carrello carrello=(Carrello) session.getAttribute("carrello");
             if(carrello!=null) {
                 prodotto.setPrezzoQuantita(totale);
                 carrello.addProdotto(prodotto);
@@ -55,12 +61,6 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
                 session.setMaxInactiveInterval(60);
             }
         }
-       response.getWriter().write("Prodotto Aggiunto al carrello");
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        doGet(request,response);
+        response.getWriter().write("Prodotto Aggiunto al carrello");
     }
 }

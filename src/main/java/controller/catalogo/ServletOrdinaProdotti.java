@@ -17,11 +17,19 @@ import java.util.Collections;
 public class ServletOrdinaProdotti extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ordinaProdotti(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+
+    private void ordinaProdotti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String ordine=request.getParameter("ordine");
         ProdottoDAO prodottoDAO=new ProdottoDAO();
         ArrayList<Prodotto> prodotti=prodottoDAO.doRetraiveByAllProdotti();
         String opzione="ordina";
-
 
         if(ordine.equalsIgnoreCase("crescente"))
             prodotti=prodottoDAO.OrdinaDallaAallaZ(prodotti);
@@ -38,16 +46,9 @@ public class ServletOrdinaProdotti extends HttpServlet {
             Collections.reverse(prodotti);
         }
 
-
-
         request.setAttribute("prodotti",prodotti);
         request.setAttribute("opzione",opzione);
         RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/listaProdotti.jsp");
         dispatcher.forward(request,response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
     }
 }

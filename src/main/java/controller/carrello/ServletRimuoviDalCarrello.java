@@ -14,7 +14,15 @@ import java.io.IOException;
 public class ServletRimuoviDalCarrello extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        rimozioneDalCarrello(request, response);
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+
+    private void rimozioneDalCarrello(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
@@ -33,10 +41,5 @@ public class ServletRimuoviDalCarrello extends HttpServlet {
         }
         RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp");
         dispatcher.forward(request,response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

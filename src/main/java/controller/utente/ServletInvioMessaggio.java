@@ -38,9 +38,6 @@ public class ServletInvioMessaggio extends HttpServlet {
         HttpSession session = request.getSession();
         Utente utente = (Utente) session.getAttribute("utente");
 
-        //String cf = request.getParameter("codiceFiscale");
-
-        //Date data1 = new Date();
         Date data2 = new Date(System.currentTimeMillis());
         Time time1 = new Time(System.currentTimeMillis());
 

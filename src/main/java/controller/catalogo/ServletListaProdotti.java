@@ -16,12 +16,15 @@ public class ServletListaProdotti extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         doPost(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        visualizzaListaProdotti(request, response);
+    }
+
+    private void visualizzaListaProdotti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String opzione="Categoria";
         int idCategoria=Integer.parseInt(request.getParameter("value"));
         String nomejsp=request.getParameter("nomejsp");
@@ -37,7 +40,7 @@ public class ServletListaProdotti extends HttpServlet {
 
 
         HttpSession session=request.getSession();
-       // System.out.println("start " + start + " end " +end);
+        // System.out.println("start " + start + " end " +end);
         request.setAttribute("prodotti",prodotti);
         request.setAttribute("idCategoria",idCategoria);
         request.setAttribute("opzione",opzione);
