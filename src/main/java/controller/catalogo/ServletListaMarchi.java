@@ -16,12 +16,15 @@ public class ServletListaMarchi extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         doPost(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        listaMarchi(request, response);
+    }
+
+    private void listaMarchi(HttpServletRequest request, HttpServletResponse response) {
         String opzione="Marchio";
         String nomeMarchio=(request.getParameter("value"));
         String nomejsp=request.getParameter("nomejsp");
@@ -35,7 +38,7 @@ public class ServletListaMarchi extends HttpServlet {
         }
         ArrayList<Prodotto> prodotti= prodottoDAO.cercaProdottiMarchio(nomeMarchio,start,end);
 
-        HttpSession session=request.getSession();
+        //HttpSession session=request.getSession();
         System.out.println("start " + start + " end " +end);
         request.setAttribute("prodotti",prodotti);
         request.setAttribute("opzione",opzione);

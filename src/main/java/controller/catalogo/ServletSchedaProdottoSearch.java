@@ -12,14 +12,15 @@ import java.io.IOException;
 public class ServletSchedaProdottoSearch extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         doPost(request,response);
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ricercaSchedaProdotto(request, response);
+    }
 
+    private void ricercaSchedaProdotto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String nomePrdodotto=request.getParameter("search");
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         Prodotto prodotto= prodottoDAO.cercaProdottoByNome(nomePrdodotto);

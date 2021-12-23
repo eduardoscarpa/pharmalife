@@ -15,19 +15,17 @@ import java.io.IOException;
 @WebServlet(name = "ServletSchedaProdotto", value = "/ServletSchedaProdotto")
 public class ServletSchedaProdotto extends HttpServlet {
 
-
-
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
        doPost(request,response);
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        schedaProdotto(request, response);
+    }
 
+    private void schedaProdotto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
         System.out.println("codice  " + codiceProdotto);
         ProdottoDAO prodottoDAO= new ProdottoDAO();
