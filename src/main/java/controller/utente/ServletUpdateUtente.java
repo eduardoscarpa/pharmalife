@@ -79,7 +79,7 @@ public class ServletUpdateUtente extends HttpServlet {
         doGet(request,response);
     }
 
-    public  void aggiornaDatiUtente(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+    private  void aggiornaDatiUtente(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         String codiceFiscale=request.getParameter("codiceFiscale");
         String nomeUtente=request.getParameter("nome");
         System.out.println("Nome utente  "+ nomeUtente);

@@ -19,25 +19,19 @@ public class ServletTabellaAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String dati="";
+       // String dati="";
         String lista=request.getParameter("lista");
         switch (lista){
             case "utenti" :
-                UtenteDAO utenteDAO= new UtenteDAO();
-                ArrayList<Utente> utenti=utenteDAO.doRetraiveByAllUtenti();
-                Gson gson= new Gson();
-                 dati=gson.toJson(utenti);
+               visualizzaTabellaUtenti(request,response);
             break;
             case "prodotti":
-                ProdottoDAO prodottoDAO= new ProdottoDAO();
-                ArrayList<Prodotto> prodotti=prodottoDAO.doRetraiveByAllProdotti();
-                Gson gson1= new Gson();
-                dati=gson1.toJson(prodotti);
+               visualizzaTabellaProdotti(request,response);
         }
-        response.setContentType("text/plain;charset=UTF-8");
+        /*response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("application/json");
 
-        response.getWriter().write(dati);
+        response.getWriter().write(dati);*/
 
     }
 
@@ -45,5 +39,28 @@ public class ServletTabellaAdmin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         doGet(request,response);
+    }
+    private void visualizzaTabellaUtenti(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        String dati="";
+        UtenteDAO utenteDAO= new UtenteDAO();
+        ArrayList<Utente> utenti=utenteDAO.doRetraiveByAllUtenti();
+        Gson gson= new Gson();
+        dati=gson.toJson(utenti);
+        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("application/json");
+
+        response.getWriter().write(dati);
+    }
+    private void visualizzaTabellaProdotti(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        String dati="";
+
+        ProdottoDAO prodottoDAO= new ProdottoDAO();
+        ArrayList<Prodotto> prodotti=prodottoDAO.doRetraiveByAllProdotti();
+        Gson gson1= new Gson();
+        dati=gson1.toJson(prodotti);
+        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("application/json");
+
+        response.getWriter().write(dati);
     }
 }

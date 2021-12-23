@@ -20,43 +20,12 @@ public class ServletAccessoUtente extends HttpServlet {
         switch (valore) {
             case "login":
 
-             /*   if (utente == null) {
-
-                    String email = request.getParameter("emailUser");
-                    String password = request.getParameter("password");
-                    UtenteDAO utenteDAO = new UtenteDAO();
-                    utente = (Utente) utenteDAO.cercaUtentebyEmail(email, password);
-
-                    if (utente != null) {
-                        if (session.getAttribute("carrello") != null) {
-                            session.removeAttribute("carrello");
-                        }
-
-                        session.setAttribute("utente", utente);
-                        response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));
-
-                    } else {
-                        request.setAttribute("errore", "Utente non trovato");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pagine/formLogin.jsp");
-                        dispatcher.forward(request, response);
-                    }
-
-                }*/
                 loginUtente(request,response);
 
                 break;
             case "logout":
                 logoutUtente(request,response);
-               /* if(utente!=null){
 
-                    session.removeAttribute("utente");
-                    Carrello carrello=(Carrello) session.getAttribute("carrello");
-                    if(carrello!=null){
-                        session.removeAttribute("carrello");
-                    }
-
-                    response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));
-                }*/
         }
     }
 

@@ -12,9 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "ServletUpdateAdminDUE", value = "/ServletUpdateAdminDUE")
-public class ServletUpdateAdminDUE extends HttpServlet {
+public class ServletUpdateProdotto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      aggiornaProdotto(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+    private void aggiornaProdotto(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         int idProdotto=Integer.parseInt(request.getParameter("idProdotto"));
         String nome=request.getParameter("nome");
         double prezzo=Double.parseDouble(request.getParameter("prezzo"));
@@ -27,10 +36,5 @@ public class ServletUpdateAdminDUE extends HttpServlet {
         prodottoDAO.updateProdotto(prodotto);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("index.jsp");
         requestDispatcher.forward(request,response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
     }
 }

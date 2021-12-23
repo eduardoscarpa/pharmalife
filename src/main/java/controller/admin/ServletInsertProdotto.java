@@ -16,7 +16,23 @@ import java.io.IOException;
 public class ServletInsertProdotto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        aggiungiProdottoAlCatalogo(request,response);
+    }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        doGet(request,response);
+    }
+
+    private void aggiungiProdottoAlCatalogo(HttpServletRequest request,HttpServletResponse response) throws IOException {
         String nomeProdotto=request.getParameter("nome");
         double prezzoProdotto=Double.parseDouble(request.getParameter("prezzo"));
         String marchioProdotto=request.getParameter("marchio");
@@ -24,33 +40,23 @@ public class ServletInsertProdotto extends HttpServlet {
         String categoria=request.getParameter("categoria");
         String descrizione=request.getParameter("descrizione");
         String pathImmagine=request.getParameter("pathImmagine");
-
         Prodotto prodotto =new Prodotto();
         prodotto.setNome(nomeProdotto);
         prodotto.setPrezzo(prezzoProdotto);
         MarchioDAO marchioDAO= new MarchioDAO();
         Marchio marchio= marchioDAO.cercaMarchio(marchioProdotto);
-       // marchio.setNomeMarchio(marchioProdotto);
+        // marchio.setNomeMarchio(marchioProdotto);
         prodotto.setMarchio(marchio);
         prodotto.setQuantita(quantita);
-       // System.out.println(prodotto.getMarchio().getNomeMarchio());
+        // System.out.println(prodotto.getMarchio().getNomeMarchio());
         CategoriaDAO categoriaDAO= new CategoriaDAO();
         Categoria categoria1= categoriaDAO.cercaCategoria(categoria);
-
         prodotto.setCategoria(categoria1);
         prodotto.setDescrrizione(descrizione);
         prodotto.setPathImmagine(pathImmagine);
         ProdottoDAO prodottoDAO=new ProdottoDAO();
         prodottoDAO.insertProdotto(prodotto);
         System.out.println("Insert Completato");
-
         response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        doGet(request,response);
     }
 }
