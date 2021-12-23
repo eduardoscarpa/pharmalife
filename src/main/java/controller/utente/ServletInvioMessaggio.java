@@ -20,7 +20,15 @@ import java.sql.Time;
 public class ServletInvioMessaggio extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        invioMessaggio(request, response);
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+    private void invioMessaggio (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String address = "WEB-INF/pagine/messaggioInviato.jsp";
         String nomeUtente=request.getParameter("firstname");
         String cognome=request.getParameter("lastname");
@@ -81,12 +89,5 @@ public class ServletInvioMessaggio extends HttpServlet {
         //RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/pagine/messaggioInviato.jsp");
         dispatcher.forward(request, response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        doGet(request,response);
-    }
-
 }
 
