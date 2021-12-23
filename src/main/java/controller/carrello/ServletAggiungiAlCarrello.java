@@ -23,7 +23,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
         doGet(request,response);
     }
 
-    private void aggiuntaAlCarrello(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void aggiuntaAlCarrello(HttpServletRequest request, HttpServletResponse response) throws IOException{
         int idProdotto=Integer.parseInt(request.getParameter("prodotto"));
         int totale=1;
         if(request.getParameter("totale")!=null){
