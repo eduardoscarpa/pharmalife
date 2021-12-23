@@ -21,9 +21,9 @@ public class ServletSchedaProdottoSearch extends HttpServlet {
     }
 
     private void ricercaSchedaProdotto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String nomePrdodotto=request.getParameter("search");
+        String nomeProdotto=request.getParameter("search");
         ProdottoDAO prodottoDAO= new ProdottoDAO();
-        Prodotto prodotto= prodottoDAO.cercaProdottoByNome(nomePrdodotto);
+        Prodotto prodotto= prodottoDAO.cercaProdottoByNome(nomeProdotto);
         request.setAttribute("prodotto",prodotto);
         RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/schedaProdotto.jsp");
         dispatcher.forward(request,response);
