@@ -21,10 +21,10 @@ public class ServletListaProdotti extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        listaProdotti(request, response);
+        visualizzaListaProdotti(request, response);
     }
 
-    private void listaProdotti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void visualizzaListaProdotti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String opzione="Categoria";
         int idCategoria=Integer.parseInt(request.getParameter("value"));
         String nomejsp=request.getParameter("nomejsp");

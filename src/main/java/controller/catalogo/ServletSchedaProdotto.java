@@ -4,7 +4,6 @@ import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,10 +21,10 @@ public class ServletSchedaProdotto extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        schedaProdotto(request, response);
+        VisualizzaSchedaProdotto(request, response);
     }
 
-    private void schedaProdotto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void VisualizzaSchedaProdotto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
         System.out.println("codice  " + codiceProdotto);
         ProdottoDAO prodottoDAO= new ProdottoDAO();
