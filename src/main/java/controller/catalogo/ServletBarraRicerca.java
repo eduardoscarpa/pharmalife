@@ -16,7 +16,15 @@ import java.util.ArrayList;
 public class ServletBarraRicerca extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        barraRicerca(request, response);
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    private void barraRicerca(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String valore=request.getParameter("value");
 
         ProdottoDAO prodottoDAO= new ProdottoDAO();
@@ -27,11 +35,5 @@ public class ServletBarraRicerca extends HttpServlet {
         response.setContentType("application/json");
 
         response.getWriter().write(prodottiJson);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
     }
 }
