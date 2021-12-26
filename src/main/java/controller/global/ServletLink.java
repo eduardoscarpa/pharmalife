@@ -23,7 +23,6 @@ public class ServletLink extends HttpServlet {
         String richiesta=request.getParameter("scelta");
         HttpSession session= request.getSession();
         Utente utente=(Utente) session.getAttribute("utente");
-        System.out.println("Sessione " );
         String pagina="";
         switch (richiesta){
             case "home": pagina="/index.jsp";
