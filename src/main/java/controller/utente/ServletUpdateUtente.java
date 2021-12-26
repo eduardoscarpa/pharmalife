@@ -15,61 +15,13 @@ public class ServletUpdateUtente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-      /*  String codiceFiscale=request.getParameter("codiceFiscale");
+        String codiceFiscale=request.getParameter("codiceFiscale");
         String nomeUtente=request.getParameter("nome");
-        System.out.println("Nome utente  "+ nomeUtente);
         String cognomeUtente=request.getParameter("cognome");
         String email=request.getParameter("email");
         String password=request.getParameter("password");
         String nuovaPassword=request.getParameter("newPassword");
-        Utente utente= new Utente();
-        utente.setCodiceFiscale(codiceFiscale);
-        utente.setNome(nomeUtente);
-        utente.setCognome(cognomeUtente);
-        utente.setEmail(email);
-        utente.criptPassword(password);
-        //utente.criptPassword(nuovaPassword);
-
-        UtenteDAO utenteDAO= new UtenteDAO();
-        HttpSession session= request.getSession();
-
-        Utente utente1=utenteDAO.cercaUtente(codiceFiscale);
-
-        Pattern pattern = Pattern.compile("^((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20})$");
-        Matcher matcher = pattern.matcher(nuovaPassword);
-        String up="";
-
-        if (!matcher.matches()) {
-            up="La nuova password non rispetta il formato del pattern: deve contenere almeno una lettera minuscola, una maiuscola e un numero";
-        } else
-        if (utente1 != null) {
-
-            if (utente1.getPassword().equals(utente.getPassword())) {
-                utente.criptPassword(nuovaPassword);
-
-                if (password.equals(nuovaPassword)) {
-                    up = "La nuova password deve essere diversa da quella precedente";
-                    System.out.println("goooooooollllllll");
-                } else {
-
-                    if (utenteDAO.updateUtente(utente)) {
-                        up = "Dati Aggiornati Correttamente";
-                        Utente u = (Utente) utenteDAO.cercaUtente(utente.getCodiceFiscale());
-
-                        if (utente != null) {
-                            session.setAttribute("utente", u);
-                        }
-                    }
-                }
-            } else {
-                up = "La password non corrisponde con quella dell'utente loggato";
-            }
-        }
-
-        request.setAttribute("update",up);
-        RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/InfoUtente.jsp");
-        dispatcher.forward(request,response);*/
-        aggiornaDatiUtente(request,response);
+        aggiornaDatiUtente(codiceFiscale,nomeUtente,cognomeUtente,email,password,nuovaPassword,request,response);
 
     }
 
@@ -79,21 +31,27 @@ public class ServletUpdateUtente extends HttpServlet {
         doGet(request,response);
     }
 
-    private  void aggiornaDatiUtente(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        String codiceFiscale=request.getParameter("codiceFiscale");
-        String nomeUtente=request.getParameter("nome");
-        System.out.println("Nome utente  "+ nomeUtente);
-        String cognomeUtente=request.getParameter("cognome");
-        String email=request.getParameter("email");
-        String password=request.getParameter("password");
-        String nuovaPassword=request.getParameter("newPassword");
+    /**
+     *
+     * @param codiceFiscale
+     * @param nomeUtente
+     * @param cognomeUtente
+     * @param email
+     * @param password
+     * @param nuovaPassword
+     * @param request
+     * @param response
+     * @throws IOException
+     */
+    private  void aggiornaDatiUtente(String codiceFiscale,String nomeUtente,String cognomeUtente,
+    String email,String password,String nuovaPassword,HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
+
         Utente utente= new Utente();
         utente.setCodiceFiscale(codiceFiscale);
         utente.setNome(nomeUtente);
         utente.setCognome(cognomeUtente);
         utente.setEmail(email);
         utente.criptPassword(password);
-        //utente.criptPassword(nuovaPassword);
 
         UtenteDAO utenteDAO= new UtenteDAO();
         HttpSession session= request.getSession();

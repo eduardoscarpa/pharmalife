@@ -12,9 +12,12 @@ import java.io.IOException;
 public class ServletUpdateIndirizzo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String via=request.getParameter("via");
+        int numero=Integer.parseInt(request.getParameter("numero"));
+        String cap=request.getParameter("cap");
+        String codiceFiscale=request.getParameter("codiceFiscale");
 
-
-        aggiornaIndirizzoUtente(request,response);
+        aggiornaIndirizzoUtente(via,numero,cap,codiceFiscale,request,response);
 
     }
 
@@ -23,11 +26,9 @@ public class ServletUpdateIndirizzo extends HttpServlet {
 
         doGet(request,response);
     }
-    private  void aggiornaIndirizzoUtente(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        String via=request.getParameter("via");
-        int numero=Integer.parseInt(request.getParameter("numero"));
-        String cap=request.getParameter("cap");
-        String codiceFiscale=request.getParameter("codiceFiscale");
+    private  void aggiornaIndirizzoUtente(String via,int numero,String cap,String codiceFiscale,
+                                          HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+
         Utente utente= new Utente();
         utente.setVia(via);
         utente.setNumeroCivico(numero);
