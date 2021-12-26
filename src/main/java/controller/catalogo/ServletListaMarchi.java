@@ -24,7 +24,7 @@ public class ServletListaMarchi extends HttpServlet {
         visualizzaListaMarchi(request, response);
     }
 
-    private void visualizzaListaMarchi(HttpServletRequest request, HttpServletResponse response) {
+    private void visualizzaListaMarchi(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String opzione="Marchio";
         String nomeMarchio=(request.getParameter("value"));
         String nomejsp=request.getParameter("nomejsp");

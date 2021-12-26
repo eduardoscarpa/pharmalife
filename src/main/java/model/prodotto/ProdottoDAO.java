@@ -4,7 +4,6 @@ import model.categoria.Categoria;
 import model.categoria.CategoriaDAO;
 import model.marchio.Marchio;
 import model.storage.ConPool;
-import model.utente.Utente;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -94,10 +93,6 @@ public class ProdottoDAO implements ProdottoDAOMethod {
             PreparedStatement ps = connection.prepareStatement
                     ("insert into Prodotto(nome,prezzo,nomeMarchio,quantita,idCategoria,pathImmagine,descrizione) " +
                             "value (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            //ps.setInt(1,p.getCodiceProdotto());
-            // ps.setInt(1,p.getCarrello().getCodiceCarrello());
-            //  ps.setString(1, null);
-
             ps.setString(1, p.getNome());
             ps.setDouble(2, p.getPrezzo());
             ps.setString(3, p.getMarchio().getNomeMarchio());
@@ -117,6 +112,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
         }
+
     }
 
 

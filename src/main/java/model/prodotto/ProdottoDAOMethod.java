@@ -1,8 +1,5 @@
 package model.prodotto;
 
-import model.marchio.Marchio;
-import model.utente.Utente;
-
 import java.util.ArrayList;
 
 public interface ProdottoDAOMethod {

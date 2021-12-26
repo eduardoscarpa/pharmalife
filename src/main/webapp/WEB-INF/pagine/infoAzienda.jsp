@@ -13,16 +13,16 @@
         <jsp:param name="style" value="styleHeader,styleFooter,styleInfoAzienda"/>
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
-    <script src="js/header.js" type="text/javascript" defer></script>
+    <script src="../../js/header.js" type="text/javascript" defer></script>
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
 <div class="imm-padre">
-    <img class="immPrin" src="./immagini/54279240_346166276241069_8652447767978835968_n.jpg" alt="immaginePrin">
+    <img class="immPrin" src="../../immagini/54279240_346166276241069_8652447767978835968_n.jpg" alt="immaginePrin">
 </div>
 
 <div class="imm-secP">
-    <img class="immSec" src="./immagini/INTERNI.webp" alt="immagineSec">
+    <img class="immSec" src="../../immagini/INTERNI.webp" alt="immagineSec">
     <div class="imm-secP-testo">
         <hr>
         <h1>La nostra azienda</h1><br>
@@ -32,7 +32,7 @@
 </div>
 
 <div class="imm-secP">
-    <img class="immSec" src="./immagini/sito-produttivo-pharmalife-research.webp" alt="immagineSec">
+    <img class="immSec" src="../../immagini/sito-produttivo-pharmalife-research.webp" alt="immagineSec">
     <div class="imm-secP-testo">
         <hr>
         <h1>Sito produttivo</h1><br>
@@ -44,7 +44,7 @@
 
 <div class="padre-mondo">
     <p>Una porta aperta sul mondo</p>
-    <img class="immMondo" src="./immagini/Mappa-del-mondo-3-scaled.webp" alt="immagineSec">
+    <img class="immMondo" src="../../immagini/Mappa-del-mondo-3-scaled.webp" alt="immagineSec">
 </div>
 
 <div class="padre-curriculum">

@@ -16,23 +16,7 @@ import java.io.IOException;
 public class ServletInsertProdotto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        aggiungiProdottoAlCatalogo(request,response);
-    }
 
-    /**
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        doGet(request,response);
-    }
-
-    private void aggiungiProdottoAlCatalogo(HttpServletRequest request,HttpServletResponse response) throws IOException {
         String nomeProdotto=request.getParameter("nome");
         double prezzoProdotto=Double.parseDouble(request.getParameter("prezzo"));
         String marchioProdotto=request.getParameter("marchio");
@@ -40,6 +24,29 @@ public class ServletInsertProdotto extends HttpServlet {
         String categoria=request.getParameter("categoria");
         String descrizione=request.getParameter("descrizione");
         String pathImmagine=request.getParameter("pathImmagine");
+        aggiungiProdottoAlCatalogo(nomeProdotto,prezzoProdotto,marchioProdotto,quantita,categoria,descrizione,pathImmagine);
+        response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));
+    }
+
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+
+    /**
+     *
+     * @param nomeProdotto indica il nome del prodotto
+     * @param prezzoProdotto indica il prezzo del prodotto
+     * @param marchioProdotto indica il marchio del prodotto
+     * @param quantita indica la quantità disponibile per quel prodotto
+     * @param categoria indica la categoria del prodotto
+     * @param descrizione fornisce ulteriori info aggiuntive sul prodotto
+     * @param pathImmagine indica la directory all'interno del progetto dove è posizionata l'immagine del prodotto
+     */
+    private void aggiungiProdottoAlCatalogo(String nomeProdotto,double prezzoProdotto,String marchioProdotto,int quantita,String categoria,
+    String descrizione, String pathImmagine){
         Prodotto prodotto =new Prodotto();
         prodotto.setNome(nomeProdotto);
         prodotto.setPrezzo(prezzoProdotto);
@@ -56,7 +63,5 @@ public class ServletInsertProdotto extends HttpServlet {
         prodotto.setPathImmagine(pathImmagine);
         ProdottoDAO prodottoDAO=new ProdottoDAO();
         prodottoDAO.insertProdotto(prodotto);
-        System.out.println("Insert Completato");
-        response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));
     }
 }

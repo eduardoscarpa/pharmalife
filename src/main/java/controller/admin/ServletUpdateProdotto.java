@@ -15,7 +15,15 @@ import java.io.IOException;
 public class ServletUpdateProdotto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      aggiornaProdotto(request,response);
+      //aggiornaProdotto(request,response);
+        int idProdotto=Integer.parseInt(request.getParameter("idProdotto"));
+        String nome=request.getParameter("nome");
+        double prezzo=Double.parseDouble(request.getParameter("prezzo"));
+
+        aggiornaProdotto(idProdotto,nome,prezzo);
+
+        RequestDispatcher requestDispatcher= request.getRequestDispatcher("index.jsp");
+        requestDispatcher.forward(request,response);
     }
 
     @Override
@@ -23,18 +31,19 @@ public class ServletUpdateProdotto extends HttpServlet {
         doGet(request,response);
     }
 
-    private void aggiornaProdotto(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        int idProdotto=Integer.parseInt(request.getParameter("idProdotto"));
-        String nome=request.getParameter("nome");
-        double prezzo=Double.parseDouble(request.getParameter("prezzo"));
-        System.out.println(idProdotto);
+    /**
+     *
+     * @param idProdotto identificativo del prodotto
+     * @param nome  nome da aggiornare  del prodotto
+     * @param prezzo  nuovo prezzo del prodotto
+     */
+    private void aggiornaProdotto(int idProdotto,String nome,double prezzo) throws  IOException {
         Prodotto prodotto = new Prodotto();
         prodotto.setCodiceProdotto(idProdotto);
         prodotto.setNome(nome);
         prodotto.setPrezzo(prezzo);
         ProdottoDAO prodottoDAO=new ProdottoDAO();
         prodottoDAO.updateProdotto(prodotto);
-        RequestDispatcher requestDispatcher= request.getRequestDispatcher("index.jsp");
-        requestDispatcher.forward(request,response);
+
     }
 }

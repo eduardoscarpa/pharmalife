@@ -53,7 +53,6 @@
                         <%=categorie.get(i).getNomeCategoria()%>
                     </a>
                     <% } %>
-
                 </div>
               <div class="colum due">
                   <% for(int i=(categorie.size()/2)+1;i<categorie.size();i++){    %>
@@ -86,7 +85,8 @@
             </div>
         </div>
     </div>
-    <a href="ServletLink?scelta=infoAzienda">Chi siamo</a>
+    <a href="<%=request.getContextPath()%>/WEB-INF/pagine/infoAzienda.jsp" >Chi siamo</a>
+  <%--  <a href="ServletLink?scelta=infoAzienda">Chi siamo</a>--%>
     <a href="ServletAssistenza">Contatti</a>
     <%if(utente!=null) {  %>
     <a href="ServletLink?scelta=assistenza">Ti Aiutiamo Noi</a>
