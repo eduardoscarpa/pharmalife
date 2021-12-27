@@ -22,14 +22,16 @@ public class ServletFilter extends HttpServlet {
         String marchio=request.getParameter("marchio");
         double min=Double.parseDouble(request.getParameter("min"));
         double max=Double.parseDouble(request.getParameter("max"));
-        filtraProdotti(nome, categoria, marchio, min, max, request,response);
+        filtraProdotti(nome, categoria, marchio, min, max, request);
+        RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/listaProdotti.jsp");
+        dispatcher.forward(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
-    private void filtraProdotti(String nome, String categoria, String marchio, double min, double max, HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+    private void filtraProdotti(String nome, String categoria, String marchio, double min, double max, HttpServletRequest request) throws ServletException, IOException {
         String opzione="filtro";
         ProdottoDAO prodottoDAO=new ProdottoDAO();
         ArrayList<Prodotto> prodotti=prodottoDAO.doRetraiveByAllProdotti();
@@ -51,7 +53,5 @@ public class ServletFilter extends HttpServlet {
 
         request.setAttribute("prodotti",prodotti);
         request.setAttribute("opzione",opzione);
-        RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/listaProdotti.jsp");
-        dispatcher.forward(request,response);
     }
 }
