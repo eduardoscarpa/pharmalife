@@ -11,6 +11,11 @@ import java.util.Collections;
 
 public class ProdottoDAO implements ProdottoDAOMethod {
 
+    /**
+     * Questo metodo ricerca un determinato prodotto in base al suo codice identificativo
+     * @param codiceProdotto identificativo del prodotto
+     * @return un oggetto di tipo Prodotto
+     */
     public Prodotto cercaProdotto(int codiceProdotto) {
         try (Connection connection = ConPool.getConnection()) {
             PreparedStatement preparedStatement;
@@ -42,6 +47,11 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         return null;
     }
 
+    /**
+     * Questo metodo un prodotto in base al nome
+     * @param nomeprodotto
+     * @return un oggetto di tipo Prodotto
+     */
     @Override
     public Prodotto cercaProdottoByNome(String nomeprodotto) {
         try(Connection connection=ConPool.getConnection()){
@@ -51,7 +61,6 @@ public class ProdottoDAO implements ProdottoDAOMethod {
             if(resultSet.next()){
                 Prodotto prodotto= new Prodotto();
                 prodotto.setCodiceProdotto(resultSet.getInt("codiceProdotto"));
-
                 prodotto.setNome(resultSet.getString("nome"));
                 prodotto.setPrezzo(resultSet.getInt("prezzo"));
                 Marchio m = new Marchio();
@@ -74,6 +83,10 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         return null;
     }
 
+    /**
+     * Questo metodo elimina un prodotto dal catalogo
+     * @param codiceProdotto del prodotto da eliminare
+     */
     @Override
     public void deleteProdotto(int codiceProdotto) {
         try (Connection connection = ConPool.getConnection()) {
@@ -86,20 +99,23 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         }
     }
 
-    //(nome,prezzo,nomeMarchio,quantita,idCategoria,pathImmagine,descrizione)
+    /**
+     * Questo metodo aggiunge un prodotto al catalogo
+     * @param prodotto oggetto di tipo prodotto da aggiungere al catalogo
+     */
     @Override
-    public void insertProdotto(Prodotto p) {
+    public void insertProdotto(Prodotto prodotto) {
         try (Connection connection = ConPool.getConnection()) {
             PreparedStatement ps = connection.prepareStatement
                     ("insert into Prodotto(nome,prezzo,nomeMarchio,quantita,idCategoria,pathImmagine,descrizione) " +
                             "value (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, p.getNome());
-            ps.setDouble(2, p.getPrezzo());
-            ps.setString(3, p.getMarchio().getNomeMarchio());
-            ps.setInt(4, p.getQuantita());
-            ps.setInt(5, p.getCategoria().getIdCategoria());
-            ps.setString(6, p.getPathImmagine());
-            ps.setString(7, p.getDescrrizione());
+            ps.setString(1, prodotto.getNome());
+            ps.setDouble(2, prodotto.getPrezzo());
+            ps.setString(3, prodotto.getMarchio().getNomeMarchio());
+            ps.setInt(4, prodotto.getQuantita());
+            ps.setInt(5, prodotto.getCategoria().getIdCategoria());
+            ps.setString(6, prodotto.getPathImmagine());
+            ps.setString(7, prodotto.getDescrrizione());
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
@@ -107,7 +123,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
             ResultSet rs = ps.getGeneratedKeys();
             rs.next();
             int id = rs.getInt(1);
-            p.setCodiceProdotto(id);
+            prodotto.setCodiceProdotto(id);
             //ps.execute();
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
@@ -138,6 +154,10 @@ public class ProdottoDAO implements ProdottoDAOMethod {
             throw new RuntimeException(sqlException);
         }
     }*/
+
+    /**
+     * Questo metodo aggiorna  il nome  e il prezzo di un prodotto
+     */
     public void updateProdotto(Prodotto p) {
         try (Connection connection = ConPool.getConnection()) {
             PreparedStatement ps;
@@ -173,6 +193,10 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         }
     }*/
 
+    /**
+     * Questo metodo restituisce la lista di tutti i prodotti presenti nel catalogo
+     * @return ArrayList di oggetti di tipo Prodotto
+     */
     @Override
     public ArrayList<Prodotto> doRetraiveByAllProdotti() {
         try (Connection connection = ConPool.getConnection()) {
@@ -206,6 +230,11 @@ public class ProdottoDAO implements ProdottoDAOMethod {
 
     }
 
+    /**
+     * Questo metodo retituisce la lista di tutti i prodotti con un determinato marchio
+     * @param nomeMarchio del prodotto
+     * @return ArrayList di oggetti di tipo Prodotto
+     */
     @Override
     public ArrayList<Prodotto> doRetraiveByAllProdottiByMarchio(String nomeMarchio) {
         try (Connection connection = ConPool.getConnection()) {
@@ -233,6 +262,11 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         }
     }
 
+    /**
+     *
+     * @param root è la macrocategoria
+     * @return ArrayList di oggtti di tipo Prodottto
+     */
     @Override
     public ArrayList<Prodotto> cercaProdottiRoot(int root) {
         try (Connection connection = ConPool.getConnection()) {
@@ -252,8 +286,6 @@ public class ProdottoDAO implements ProdottoDAOMethod {
             while (rs.next()) {
                 Prodotto p = new Prodotto();
                 p.setCodiceProdotto(rs.getInt("codiceProdotto"));
-
-
                 p.setNome(rs.getString("nome"));
                 p.setPrezzo(rs.getDouble("prezzo"));
                 Marchio m = new Marchio();
@@ -275,7 +307,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
 
     }
 
-    @Override
+   @Override
     public ArrayList<Prodotto> cercaProdotti(int root, int start, int end) {
         try (Connection connection = ConPool.getConnection()) {
             ArrayList<Prodotto> prodotti = new ArrayList<>();
@@ -298,8 +330,6 @@ public class ProdottoDAO implements ProdottoDAOMethod {
             while (rs.next()) {
                 Prodotto p = new Prodotto();
                 p.setCodiceProdotto(rs.getInt("codiceProdotto"));
-
-
                 p.setNome(rs.getString("nome"));
                 p.setPrezzo(rs.getDouble("prezzo"));
                 Marchio m = new Marchio();
@@ -334,8 +364,6 @@ public class ProdottoDAO implements ProdottoDAOMethod {
             while (rs.next()) {
                 Prodotto p = new Prodotto();
                 p.setCodiceProdotto(rs.getInt("codiceProdotto"));
-
-
                 p.setNome(rs.getString("nome"));
                 p.setPrezzo(rs.getDouble("prezzo"));
                 Marchio m = new Marchio();
@@ -364,12 +392,8 @@ public class ProdottoDAO implements ProdottoDAOMethod {
             ArrayList<Prodotto> prodotti= new ArrayList<>();
             ResultSet rs=ps.executeQuery();
             while (rs.next()){
-
-
                 Prodotto p = new Prodotto();
                 p.setCodiceProdotto(rs.getInt("codiceProdotto"));
-
-
                 p.setNome(rs.getString("nome"));
                 p.setPrezzo(rs.getDouble("prezzo"));
                 Marchio m = new Marchio();
@@ -444,7 +468,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         return prodotti2;
     }
 
-    public ArrayList<Prodotto> OrdinaDallaAallaZ(ArrayList<Prodotto> prodotti){
+ /*  public ArrayList<Prodotto> OrdinaDallaAallaZ(ArrayList<Prodotto> prodotti){
         Collections.sort(prodotti,new ComparatorProdottoNome());
         return prodotti;
     }
@@ -452,5 +476,5 @@ public class ProdottoDAO implements ProdottoDAOMethod {
     public ArrayList<Prodotto> OrdinaDalMenoCaroAlPiuCaro(ArrayList<Prodotto> prodotti){
         Collections.sort(prodotti,new ComparatorProdottoPrezzo());
         return prodotti;
-    }
+    }*/
 }

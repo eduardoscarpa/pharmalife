@@ -10,18 +10,15 @@ import java.util.Optional;
 
 public interface UtenteDAOMethod {
 
-    /**
-     *
-     * @param codiceFiscale
-     * @return
-     */
+
+
     public Utente cercaUtente (String codiceFiscale);
     public Utente cercaUtentebyEmail (String email,String password);
     public ArrayList<Prodotto> preferiti(String codiceFiscale);
     public ArrayList<String> doRetraiveByAllCodiciFiscali() throws SQLException;
     public ArrayList<Ordine> ordiniAllUtenti();
     public ArrayList<Messaggio> messaggiAllUtenti();
-    public void deleteUtente (String codiceFiscale);
+   // public void deleteUtente (String codiceFiscale);
     public void insertUtente (Utente u);
     public void insertPreferito(Utente utente,Prodotto prodotto);
     public void deletePreferito(Utente utente,Prodotto prodotto);

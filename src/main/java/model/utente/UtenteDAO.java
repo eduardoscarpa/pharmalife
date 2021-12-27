@@ -185,8 +185,8 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
     /**
-     *
-     * @return
+     *Questo metodo serve  a cercare tutti i messaggi inviati da tutti gli utenti ad un amministratore
+     * @return ArrayList di Messaggi
      */
     @Override
     public ArrayList<Messaggio> messaggiAllUtenti() {
@@ -218,7 +218,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
 
-    @Override
+    /*@Override
     public void deleteUtente(String codiceFiscale) {
         try(Connection connection=ConPool.getConnection()){
             PreparedStatement ps;
@@ -228,23 +228,27 @@ public class UtenteDAO implements UtenteDAOMethod {
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
-    }
+    }*/
 
+    /**
+     * Questo metodo inserisce un nuovo utente nel database ,
+     * @param utente da iscrivire alla piattaforma
+     */
     @Override
-    public void insertUtente(Utente u) {
+    public void insertUtente(Utente utente) {
         try(Connection connection=ConPool.getConnection()){
 
             PreparedStatement ps= connection.prepareStatement("insert into Utente value (?,?,?,?,?,?,?,?,?,?)");
-            ps.setString(1, u.getCodiceFiscale());
-            ps.setString(2, u.getNome());
-            ps.setString(3, u.getCognome());
-            ps.setString(4, u.getEmail());
-            ps.setString(5, u.getPassword());
-            ps.setString(6, u.getVia());
-            ps.setInt(7, u.getNumeroCivico());
-            ps.setString(8, u.getCap());
-            ps.setString(9, u.getTelefono());
-            ps.setBoolean(10, u.isAdmin());
+            ps.setString(1, utente.getCodiceFiscale());
+            ps.setString(2, utente.getNome());
+            ps.setString(3, utente.getCognome());
+            ps.setString(4, utente.getEmail());
+            ps.setString(5, utente.getPassword());
+            ps.setString(6, utente.getVia());
+            ps.setInt(7, utente.getNumeroCivico());
+            ps.setString(8, utente.getCap());
+            ps.setString(9, utente.getTelefono());
+            ps.setBoolean(10, utente.isAdmin());
             ps.execute();
 
         }catch (SQLException sqlException){
@@ -252,6 +256,12 @@ public class UtenteDAO implements UtenteDAOMethod {
         }
     }
 
+
+    /**
+     *
+     * @param utente
+     * @param prodotto
+     */
     @Override
     public void insertPreferito(Utente utente, Prodotto prodotto) {
         try(Connection connection=ConPool.getConnection()){
@@ -280,7 +290,11 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
 
-
+    /**
+     * Questo metodo aggiorna le credenziali di un utente
+     * @param utente è l'utente che richiede di aggiornare le proprie credenziali
+     * @return true se l'aggiornamento delle credenziali va a buon fine , altrimenti false
+     */
     @Override
     public boolean updateUtente(Utente utente){
         try(Connection connection=ConPool.getConnection()){
@@ -302,6 +316,11 @@ public class UtenteDAO implements UtenteDAOMethod {
         }
     }
 
+    /**
+     * Questo metodo aggiorna l'indirizzo di spedizione di un utente
+     * @param utente che richiede di aggiornare il proprio indirizzo di pedizione
+     * @return true se l'aggiornamento dell'indirizzo di spedizione  va a buon fine , altrimenti false
+     */
     @Override
     public boolean updateIndirizzoUtente(Utente utente) {
 
@@ -324,6 +343,10 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
 
+    /**
+     * Questo metodo cerca tutti gli utenti registrati alla piattaforma
+     * @return ArrayList di Utenti
+     */
     @Override
     public ArrayList<Utente> doRetraiveByAllUtenti() {
         ArrayList<Utente> lista = new ArrayList<>();
