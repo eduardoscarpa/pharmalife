@@ -16,7 +16,11 @@ import java.util.ArrayList;
 public class ServletBarraRicerca extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ricercaProdotto(request, response);
+        String valore=request.getParameter("value");
+        String prodottiJson = ricercaProdotto(valore);
+        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("application/json");
+        response.getWriter().write(prodottiJson);
     }
 
     @Override
@@ -24,16 +28,12 @@ public class ServletBarraRicerca extends HttpServlet {
 
     }
 
-    private void ricercaProdotto(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String valore=request.getParameter("value");
+    private String ricercaProdotto(String valore) throws IOException {
 
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         ArrayList<Prodotto> prodotti=prodottoDAO.prodotttoSearch(valore);
         Gson gson= new Gson();
         String prodottiJson=gson.toJson(prodotti);
-        response.setContentType("text/plain;charset=UTF-8");
-        response.setContentType("application/json");
-
-        response.getWriter().write(prodottiJson);
+        return prodottiJson;
     }
 }

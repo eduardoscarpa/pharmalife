@@ -17,19 +17,19 @@ import java.util.ArrayList;
 public class ServletFilter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        filtraProdotti(request,response);
+        String nome=request.getParameter("nome");
+        String categoria=request.getParameter("categoria");
+        String marchio=request.getParameter("marchio");
+        double min=Double.parseDouble(request.getParameter("min"));
+        double max=Double.parseDouble(request.getParameter("max"));
+        filtraProdotti(nome, categoria, marchio, min, max, request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
-    private void filtraProdotti(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        String nome=request.getParameter("nome");
-        String categoria=request.getParameter("categoria");
-        String marchio=request.getParameter("marchio");
-        double min=Double.parseDouble(request.getParameter("min"));
-        double max=Double.parseDouble(request.getParameter("max"));
+    private void filtraProdotti(String nome, String categoria, String marchio, double min, double max, HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         String opzione="filtro";
         ProdottoDAO prodottoDAO=new ProdottoDAO();
         ArrayList<Prodotto> prodotti=prodottoDAO.doRetraiveByAllProdotti();

@@ -21,16 +21,15 @@ public class ServletSchedaProdotto extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        VisualizzaSchedaProdotto(request, response);
+        int codiceProdotto=Integer.parseInt(request.getParameter("value"));
+        VisualizzaSchedaProdotto(codiceProdotto, request);
+        RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/schedaProdotto.jsp");
+        dispatcher.forward(request,response);
     }
 
-    private void VisualizzaSchedaProdotto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int codiceProdotto=Integer.parseInt(request.getParameter("value"));
-        System.out.println("codice  " + codiceProdotto);
+    private void VisualizzaSchedaProdotto(int codiceProdotto, HttpServletRequest request) throws ServletException, IOException {
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
         request.setAttribute("prodotto",prodotto);
-        RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/schedaProdotto.jsp");
-        dispatcher.forward(request,response);
     }
 }

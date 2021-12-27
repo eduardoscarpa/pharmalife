@@ -15,7 +15,8 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        aggiuntaAlCarrello(request, response);
+        int idProdotto=Integer.parseInt(request.getParameter("prodotto"));
+        aggiuntaAlCarrello(idProdotto, request, response);
     }
 
     @Override
@@ -23,8 +24,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
         doGet(request,response);
     }
 
-    private void aggiuntaAlCarrello(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        int idProdotto=Integer.parseInt(request.getParameter("prodotto"));
+    private void aggiuntaAlCarrello(int idProdotto, HttpServletRequest request, HttpServletResponse response) throws IOException{
         int totale=1;
         if(request.getParameter("totale")!=null){
             totale=Integer.parseInt(request.getParameter("totale"));

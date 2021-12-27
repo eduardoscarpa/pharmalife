@@ -14,7 +14,10 @@ import java.io.IOException;
 public class ServletRimuoviDalCarrello extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        rimozioneDalCarrello(request, response);
+        int codiceProdotto=Integer.parseInt(request.getParameter("value"));
+        rimozioneDalCarrello(codiceProdotto, request);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp");
+        dispatcher.forward(request,response);
     }
 
     @Override
@@ -22,8 +25,7 @@ public class ServletRimuoviDalCarrello extends HttpServlet {
         doGet(request, response);
     }
 
-    private void rimozioneDalCarrello(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int codiceProdotto=Integer.parseInt(request.getParameter("value"));
+    private void rimozioneDalCarrello(int codiceProdotto, HttpServletRequest request) throws ServletException, IOException {
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
         HttpSession session= request.getSession();
@@ -39,7 +41,5 @@ public class ServletRimuoviDalCarrello extends HttpServlet {
                 carrello.getProdotti().remove(prodotto);
             }
         }
-        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp");
-        dispatcher.forward(request,response);
     }
 }

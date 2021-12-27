@@ -1,3 +1,4 @@
+/*
 package controller.catalogo;
 
 import model.prodotto.Prodotto;
@@ -29,3 +30,4 @@ public class ServletSchedaProdottoSearch extends HttpServlet {
         dispatcher.forward(request,response);
     }
 }
+ */
