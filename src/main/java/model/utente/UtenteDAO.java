@@ -108,6 +108,25 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
     @Override
+    public ArrayList<String> doRetraiveByAllCodiciFiscali() throws SQLException {
+        ArrayList<String> codiciFiscali = new ArrayList<>();
+        try (Connection connection = ConPool.getConnection()) {
+
+            PreparedStatement ps=connection.prepareStatement("select codiceFiscale  from Utente");
+            ResultSet resultSet= ps.executeQuery();
+            while (resultSet.next()){
+                codiciFiscali.add(resultSet.getString("codiceFiscale"));
+            }
+
+
+
+        }catch (SQLException sqlException){
+            throw new RuntimeException(sqlException);
+        }
+        return codiciFiscali;
+    }
+
+    @Override
     public ArrayList<Ordine> ordiniAllUtenti() {
         ArrayList<Ordine> ordini= new ArrayList<>();
         try(Connection connection=ConPool.getConnection()){

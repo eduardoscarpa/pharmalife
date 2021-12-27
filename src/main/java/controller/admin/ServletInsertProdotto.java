@@ -47,6 +47,7 @@ public class ServletInsertProdotto extends HttpServlet {
      */
     private void aggiungiProdottoAlCatalogo(String nomeProdotto,double prezzoProdotto,String marchioProdotto,int quantita,String categoria,
     String descrizione, String pathImmagine){
+
         Prodotto prodotto =new Prodotto();
         prodotto.setNome(nomeProdotto);
         prodotto.setPrezzo(prezzoProdotto);

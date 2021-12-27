@@ -29,7 +29,6 @@ public class ServletBarraRicerca extends HttpServlet {
     }
 
     private String ricercaProdotto(String valore) throws IOException {
-
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         ArrayList<Prodotto> prodotti=prodottoDAO.prodotttoSearch(valore);
         Gson gson= new Gson();

@@ -38,7 +38,7 @@ public class ServletListaMarchi extends HttpServlet {
         }
         ArrayList<Prodotto> prodotti= prodottoDAO.cercaProdottiMarchio(nomeMarchio,start,end);
 
-        //HttpSession session=request.getSession();
+
         System.out.println("start " + start + " end " +end);
         request.setAttribute("prodotti",prodotti);
         request.setAttribute("opzione",opzione);

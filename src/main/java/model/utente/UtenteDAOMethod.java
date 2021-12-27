@@ -4,6 +4,7 @@ import model.messaggio.Messaggio;
 import model.ordine.Ordine;
 import model.prodotto.Prodotto;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ public interface UtenteDAOMethod {
     public Utente cercaUtente (String codiceFiscale);
     public Utente cercaUtentebyEmail (String email,String password);
     public ArrayList<Prodotto> preferiti(String codiceFiscale);
+    public ArrayList<String> doRetraiveByAllCodiciFiscali() throws SQLException;
     public ArrayList<Ordine> ordiniAllUtenti();
     public ArrayList<Messaggio> messaggiAllUtenti();
     public void deleteUtente (String codiceFiscale);

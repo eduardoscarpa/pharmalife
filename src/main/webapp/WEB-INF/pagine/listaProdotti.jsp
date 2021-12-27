@@ -25,10 +25,10 @@
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
-
+<h2 style="text-align: center"></h2>
 <div class="container_catalogo">
     <aside class="filter_container">
-        <form action="" method="">
+        <form action="ServletFilter" method="get">
             <div class="filtraggio">
                 <label for="nome">Nome</label>
                 <input id="nome" type="text">
@@ -57,13 +57,18 @@
         <article>
             <div class="price"><%=p.getPrezzo()%>€</div>
             <figure>
-                <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>" alt="Oki" height="160" width="160">
+               <%-- <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>" alt="Oki" height="160" width="160">--%>
+                   <a href="ServletSchedaProdotto?value=<%=p.getCodiceProdotto()%>">
+                       <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>" alt="Oki" height="200" width="200">
+                   </a>
                 <figcaption>
                     <a href=""><%=p.getNome()%> </a>
                 </figcaption>
             </figure>
             <div class="disp">Disponibile</div>
-            <button>Aggiungi Al Carrello   <i class="fas fa-cart-plus"></i></button>
+            <input type="hidden" id="quantita" name="tot" value="1">
+            <input type="hidden" id="idProdotto" name="prodotto" value="<%=p.getCodiceProdotto()%>">
+            <button onclick="aggiungiAlCarrello(<%=p.getCodiceProdotto()%>)">Aggiungi Al Carrello   <i class="fas fa-cart-plus"></i></button>
         </article>
         <%}%>
     </div>

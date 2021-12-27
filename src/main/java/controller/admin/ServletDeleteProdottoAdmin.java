@@ -12,8 +12,11 @@ import java.io.IOException;
 public class ServletDeleteProdottoAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int idProdotto=Integer.parseInt(request.getParameter("id"));
+        eliminaProdottoDalCatalogo(idProdotto);
 
-     eliminaProdottoDalCatalogo(request,response);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/admin/areaAmministratore.jsp");
+        dispatcher.forward(request,response);
 
     }
 
@@ -22,11 +25,10 @@ public class ServletDeleteProdottoAdmin extends HttpServlet {
         doGet(request,response);
     }
 
-    private void eliminaProdottoDalCatalogo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int idProdotto=Integer.parseInt(request.getParameter("id"));
+    private void eliminaProdottoDalCatalogo(int idProdotto) throws ServletException, IOException {
+
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         prodottoDAO.deleteProdotto(idProdotto);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/admin/areaAmministratore.jsp");
-        dispatcher.forward(request,response);
+
     }
 }
