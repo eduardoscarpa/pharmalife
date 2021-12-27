@@ -12,6 +12,11 @@ import java.util.ArrayList;
 
 public class UtenteDAO implements UtenteDAOMethod {
 
+    /**
+     * Questo metodo serve a ricercare un utente nel datbase in base al suo codice fiscale
+     * @param codiceFiscale
+     * @return un oggetto di tipo Utente
+     */
     @Override
     public Utente cercaUtente(String codiceFiscale) {
         try(Connection connection= ConPool.getConnection()){
@@ -42,6 +47,13 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
 
+    /**
+     * Questo utente cerca un utente nel database in base all'email e la password,
+     * paramentri necessari per effettuare l'accesso alla piattaforma
+     * @param email di un utente
+     * @param password d un utente
+     * @return un oggetto di tipo Utente
+     */
     @Override
     public Utente cercaUtentebyEmail(String email,String password) {
         try(Connection connection= ConPool.getConnection()){
@@ -72,6 +84,11 @@ public class UtenteDAO implements UtenteDAOMethod {
         return null;
     }
 
+    /**
+     *
+     * @param codiceFiscale
+     * @return
+     */
     @Override
     public ArrayList<Prodotto> preferiti(String codiceFiscale) {
         ArrayList<Prodotto> prodottiPreferiti= new ArrayList<>();
@@ -107,6 +124,11 @@ public class UtenteDAO implements UtenteDAOMethod {
         return prodottiPreferiti;
     }
 
+    /**
+     * Questo metodo cerca tutti i codici fiscali di tutti gli utenti iscritti alla piattaforma
+     * @return un ArrayList di String con tutti i codici fiscali
+     * @throws SQLException
+     */
     @Override
     public ArrayList<String> doRetraiveByAllCodiciFiscali() throws SQLException {
         ArrayList<String> codiciFiscali = new ArrayList<>();
@@ -126,6 +148,10 @@ public class UtenteDAO implements UtenteDAOMethod {
         return codiciFiscali;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public ArrayList<Ordine> ordiniAllUtenti() {
         ArrayList<Ordine> ordini= new ArrayList<>();
@@ -158,6 +184,10 @@ public class UtenteDAO implements UtenteDAOMethod {
         return ordini;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public ArrayList<Messaggio> messaggiAllUtenti() {
         ArrayList<Messaggio> messaggi= new ArrayList<>();
@@ -322,6 +352,7 @@ public class UtenteDAO implements UtenteDAOMethod {
         }
     }
 
+    /** non serve
     @Override
     public ArrayList<Utente> cercaUtenti(int start, int end) {
         ArrayList<Utente> lista =new ArrayList<>();
@@ -350,5 +381,5 @@ public class UtenteDAO implements UtenteDAOMethod {
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
-    }
+    }**/
 }
