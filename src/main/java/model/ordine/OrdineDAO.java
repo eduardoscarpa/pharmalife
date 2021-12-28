@@ -8,7 +8,17 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
+
+
+
 public class OrdineDAO implements OrdineDAOMethod {
+
+
+    /**
+     * Questo metodo retituisce un ordine con un determinato id
+     * @param idOrdine è l'id che identifica l'ordine
+     * @return un oggetto di tipo Ordine
+     */
     public Ordine cercaOrdine(int idOrdine) {
 
         try(Connection connection= ConPool.getConnection()){
@@ -35,7 +45,10 @@ public class OrdineDAO implements OrdineDAOMethod {
     }
 
 
-
+    /**
+     * Questo metodo elimina un ordine con un determinato id
+     * @param idOrdine è l'id che identifica l'ordine
+     */
     @Override
     public void deleteOrdine(int idOrdine)  {
         try (Connection connection = ConPool.getConnection()) {
@@ -47,7 +60,10 @@ public class OrdineDAO implements OrdineDAOMethod {
         }
     }
 
-
+    /**
+     * Questo metodo genera un ordine dal carrello
+     * @param o è un oggetto di tipo ordine
+     */
     public void insertCarrello(Ordine o) {
         try (Connection connection = ConPool.getConnection()) {
 
@@ -72,7 +88,11 @@ public class OrdineDAO implements OrdineDAOMethod {
         }
     }
 
-
+    /**
+     * Questo metodo fa update di un ordine con un determinato id
+     * @param idOrdine è l'id che identifica l'ordine
+     * @param o è un oggetto di tipo ordine
+     */
     public void updateOrdine(Ordine o, int idOrdine) {
         try (Connection connection = ConPool.getConnection()) {
             PreparedStatement ps;
@@ -90,6 +110,11 @@ public class OrdineDAO implements OrdineDAOMethod {
         }
     }
 
+
+    /**
+     * Questo metodo retituisce tutti gli ordini
+     * @return un ArrayList di oggetti di tipo ordine
+     */
     public ArrayList<Ordine> doRetraiveByAllOrdini() {
         try (Connection connection = ConPool.getConnection()) {
             PreparedStatement ps;
@@ -114,6 +139,13 @@ public class OrdineDAO implements OrdineDAOMethod {
         }
     }
 
+
+    /**
+     * Questo metodo cerca degli ordini
+     * @param start è il parametro di partenza per la ricerca
+     * @param end è il parametro di arrivo per la ricerca
+     * @return un oggetto di tipo Ordine
+     */
     public ArrayList<Ordine> cercaOrdini(int start, int end) {
         ArrayList<Ordine> lista =new ArrayList<>();
         try(Connection connection=ConPool.getConnection()){
@@ -138,6 +170,12 @@ public class OrdineDAO implements OrdineDAOMethod {
         }
     }
 
+
+    /**
+     * Questo metodo retituisce tutti gli ordini di un determinato utente
+     * @param utente è un oggetto di tipo utente
+     * @return un ArrayList di oggetti di tipo Ordine
+     */
     @Override
     public ArrayList<Ordine> doRetraiveByAllById(Utente utente) {
         ArrayList<Ordine> ordini = new ArrayList<>();

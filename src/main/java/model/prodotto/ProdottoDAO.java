@@ -306,7 +306,13 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         }
 
     }
-
+    /**
+     * Questo metodo retituisce la lista di prodotti di una determinata categoria
+     * @param root è la macrocategoria,
+     * @param start è il numero di partenza della lista dei prodotti
+     * @param end il numero di arrivo della lista dei prodotti
+     * @return ArrayList di oggetti di tipo Prodotto
+     */
    @Override
     public ArrayList<Prodotto> cercaProdotti(int root, int start, int end) {
         try (Connection connection = ConPool.getConnection()) {
@@ -350,6 +356,13 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         }
     }
 
+    /**
+     * Questo metodo retituisce la lista di prodotti di una determinato marchio
+     * @param nomeMarchio è il nome del marchio
+     * @param start è il numero di partenza della lista dei prodotti
+     * @param end il numero di arrivo della lista dei prodotti
+     * @return ArrayList di oggetti di tipo Prodotto
+     */
 
     public ArrayList<Prodotto> cercaProdottiMarchio(String nomeMarchio, int start, int end) {
         try (Connection connection = ConPool.getConnection()) {
@@ -384,6 +397,12 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         }
     }
 
+    /**
+     * Questo metodo retituisce la lista di prodotti
+     * @param start è il numero di partenza del prodotto da ricercare
+     * @return ArrayList di oggetti di tipo Prodotto
+     */
+
     @Override
     public ArrayList<Prodotto> prodotttoSearch(String start) {
         try(Connection connection=ConPool.getConnection()){
@@ -414,6 +433,15 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         }
 
     }
+
+
+
+    /**
+     * Questo metodo retituisce la lista di prodotti filtrata per nome
+     * @param prodotti è la lista dei prodotti da filtrare,
+     * @param nome è il parametro secondo il quale filtriamo la lista
+     * @return ArrayList di oggetti di tipo Prodotto con lo stesso nome del paramentro "nome"
+     */
     public ArrayList<Prodotto> FiltroNome(ArrayList<Prodotto> prodotti,String nome){
         ArrayList<Prodotto> prodotti2=new ArrayList<>();
         for (Prodotto p :prodotti){
@@ -424,7 +452,12 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         return prodotti2;
     }
 
-
+    /**
+     * Questo metodo retituisce la lista di prodotti filtrata per categoria
+     * @param prodotti è la lista dei prodotti da filtrare
+     * @param nomeCategoria è il parametro secondo il quale filtriamo la lista
+     * @return ArrayList di oggetti di tipo Prodotto con la stessa categoria del paramentro "categoria"
+     */
     public ArrayList<Prodotto> FiltroCategoria(ArrayList<Prodotto> prodotti,String nomeCategoria){
         ArrayList<Prodotto> prodotti2=new ArrayList<>();
         for (Prodotto p :prodotti){
@@ -435,7 +468,12 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         return prodotti2;
     }
 
-
+    /**
+     * Questo metodo retituisce la lista di prodotti filtrata per il costo minimo
+     * @param prodotti è la lista dei prodotti da filtrare,
+     * @param min è il valore minimo di prezzo che la lista di prodotti deve rispettare
+     * @return ArrayList di oggetti di tipo Prodotto con il prezzo minimo pari a min
+     */
     public ArrayList<Prodotto> FiltroMin(ArrayList<Prodotto> prodotti,double min){
         ArrayList<Prodotto> prodotti2=new ArrayList<>();
         for (Prodotto p :prodotti){
@@ -446,7 +484,12 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         return prodotti2;
     }
 
-
+    /**
+     * Questo metodo retituisce la lista di prodotti filtrata per il costo massimo
+     * @param prodotti è la lista dei prodotti da filtrare
+     * @param max è il valore massimo di prezzo che la lista di prodotti deve rispettare
+     * @return ArrayList di oggetti di tipo Prodotto con il prezzo massimo pari a max
+     */
     public ArrayList<Prodotto> FiltroMax(ArrayList<Prodotto> prodotti,double max){
         ArrayList<Prodotto> prodotti2=new ArrayList<>();
         for (Prodotto p :prodotti){
@@ -457,7 +500,12 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         return prodotti2;
     }
 
-
+    /**
+     * Questo metodo retituisce la lista di prodotti filtrata per il nome marchio
+     * @param prodotti è la lista dei prodotti da filtrare,
+     * @param nomeMarchio è il parametro da rispettare per filtrare la lista
+     * @return ArrayList di oggetti di tipo Prodotto con il nome Marchio pari al valore di "nomeMarchio"
+     */
     public ArrayList<Prodotto> FiltroMarchio(ArrayList<Prodotto> prodotti,String nomeMarchio){
         ArrayList<Prodotto> prodotti2=new ArrayList<>();
         for (Prodotto p :prodotti){

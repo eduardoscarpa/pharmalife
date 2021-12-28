@@ -48,7 +48,7 @@ public class UtenteDAO implements UtenteDAOMethod {
 
 
     /**
-     * Questo utente cerca un utente nel database in base all'email e la password,
+     * Questo metodo cerca un utente nel database in base all'email e la password,
      * paramentri necessari per effettuare l'accesso alla piattaforma
      * @param email di un utente
      * @param password d un utente
@@ -85,9 +85,10 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
     /**
-     *
-     * @param codiceFiscale
-     * @return
+     * Questo metodo cerca la lista dei desideri di un utente,
+     * paramentri necessari per effettuare l'accesso alla piattaforma
+     * @param codiceFiscale è il codice fiscale di un utente serve per identificarlo nel database
+     * @return un ArrayList di prodotti
      */
     @Override
     public ArrayList<Prodotto> preferiti(String codiceFiscale) {
@@ -149,8 +150,9 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
     /**
-     *
-     * @return
+     * Questo metodo cerca la lista di tutti gli ordini di un utente,
+     * @return un ArrayList di ordini
+     * * @throws SQLException
      */
     @Override
     public ArrayList<Ordine> ordiniAllUtenti() {
@@ -258,9 +260,8 @@ public class UtenteDAO implements UtenteDAOMethod {
 
 
     /**
-     *
-     * @param utente
-     * @param prodotto
+     * Questo metodo inserisce un prodotto nella lista dei desideri di un utente,
+     * @param utente è un utente, "prodotto" è il prodotto da aggiungere alla lista
      */
     @Override
     public void insertPreferito(Utente utente, Prodotto prodotto) {
@@ -276,6 +277,11 @@ public class UtenteDAO implements UtenteDAOMethod {
         }
     }
 
+    /**
+     * Questo metodo rimuove un prodotto nella lista dei desideri di un utente,
+     * @param utente è un utente,
+     *  @param prodotto è il prodotto da rimuovere alla lista
+     */
     @Override
     public void deletePreferito(Utente utente, Prodotto prodotto) {
         try(Connection connection=ConPool.getConnection()){

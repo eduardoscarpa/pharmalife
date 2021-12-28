@@ -7,6 +7,13 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class CategoriaDAO implements CategoriaDAOMethod {
+
+
+    /**
+     * Questo metodo retituisce una Categoria in base ad un nome
+     * @param nome è un oggetto di tipo stringa
+     * @return un oggetto di tipo Categoria
+     */
     @Override
     public Categoria cercaCategoria(String nome) {
 
@@ -30,6 +37,12 @@ public class CategoriaDAO implements CategoriaDAOMethod {
         return null;
     }
 
+
+    /**
+     * Questo metodo retituisce una Categoria in base ad un id
+     * @param id è un oggetto che serve per identificare la categoria
+     * @return un oggetto di tipo Categoria
+     */
     @Override
     public Categoria cercaCategoriaById(int id) {
         try(Connection connection=ConPool.getConnection()) {
@@ -118,6 +131,12 @@ public class CategoriaDAO implements CategoriaDAOMethod {
         }
     }
 
+
+    /**
+     * Questo metodo retituisce tutte le Categorie
+     * @throws 'sqlException'
+     * @return un ArrayList di tipo Categoria
+     */
     @Override
     public ArrayList<Categoria> doRetraiveByAllCategorieRoot() {
         try(Connection connection=ConPool.getConnection()){
