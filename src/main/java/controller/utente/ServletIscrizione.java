@@ -191,7 +191,7 @@ public class ServletIscrizione extends HttpServlet {
             registraUtente(fn,ln,cf,email,psw,psw_rip,via,numeroCivico,cap,telefono);
         }else {
             request.setAttribute("iscriviti", message);
-            //address="index.jsp";
+
             RequestDispatcher dispatcher = request.getRequestDispatcher(address);
             dispatcher.forward(request, response);
         }
