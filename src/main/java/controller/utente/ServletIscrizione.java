@@ -19,14 +19,23 @@ import java.util.regex.Pattern;
 
 @WebServlet(name = "ServletIscrizione", value = "/ServletIscrizione")
 public class ServletIscrizione extends HttpServlet {
+    private String message;
+    private String address;
+    HttpServletRequest request;
+    HttpServletResponse response;
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Controllo lato server
+    protected void doGet(HttpServletRequest request1, HttpServletResponse response) throws ServletException, IOException {
+       // String cf= request.getParameter("CodiceFiscale");
+        this.request=request1;
+        this.response=response;
+        address="index.jsp";
+        message="";
         try {
-            registraUtente(request,response);
+            saveParameter();
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
+
     }
 
     @Override
@@ -34,9 +43,10 @@ public class ServletIscrizione extends HttpServlet {
         doGet(request,response);
     }
 
-    private void registraUtente(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException {
-        String address="index.jsp";
-        String fn=request.getParameter("nome");
+    private void registraUtente(String fn,String ln,String cf, String email,String psw,String psw_rip,String via,
+                                int numeroCivico,String cap,String telefono) throws ServletException, IOException, SQLException {
+       // String address="index.jsp";
+       /* String fn=request.getParameter("nome");
         String ln=request.getParameter("cognome");
         String cf= request.getParameter("CodiceFiscale");
         String email=request.getParameter("email");
@@ -45,16 +55,16 @@ public class ServletIscrizione extends HttpServlet {
         String via=request.getParameter("via");
         int numeroCivico=Integer.parseInt(request.getParameter("numeroCivico"));
         String cap=request.getParameter("cap");
-        String telefono=request.getParameter("telefono");
-        String message="";
+        String telefono=request.getParameter("telefono");*/
+
         UtenteDAO service=new UtenteDAO();
-        ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
-        if (codiciFiscali.contains(cf)){
+        //ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
+      /*  if (codiciFiscali.contains(cf)){
             address = "WEB-INF/pagine/iscriviti.jsp";
             message="Questo codice fiscale è già presente";
             request.setAttribute("iscriviti", message);
 
-        }else {
+        }else {*/
             Utente utente = new Utente();
 
 
@@ -111,7 +121,6 @@ public class ServletIscrizione extends HttpServlet {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "Il numero civico deve contenere solo numeri (da una a tre cifre)";
             }
-
             Pattern codicePostale = Pattern.compile(("^[0-9]{5}$"));
             matcher = codicePostale.matcher(cap);
             System.out.println(matcher.matches());
@@ -119,7 +128,6 @@ public class ServletIscrizione extends HttpServlet {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "Il cap deve contenere esattamente 5 cifre";
             }
-
             Pattern numTelefono = Pattern.compile(("^[0-9]{10}$"));
             matcher = numTelefono.matcher(telefono);
             System.out.println(matcher.matches());
@@ -151,9 +159,45 @@ public class ServletIscrizione extends HttpServlet {
             } else {
                 request.setAttribute("iscriviti", message);
             }
-        }
+        //}
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
+    }
+
+    private boolean checkUtente(String cf) throws SQLException {
+        UtenteDAO service=new UtenteDAO();
+        ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
+        if (codiciFiscali.contains(cf)){
+            address = "WEB-INF/pagine/iscriviti.jsp";
+            message="Questo codice fiscale è già presente";
+            request.setAttribute("iscriviti", message);
+            return  false;
+        }
+        return true;
+    }
+
+    public  void saveParameter( ) throws SQLException, ServletException, IOException {
+        String fn=request.getParameter("nome");
+        String ln=request.getParameter("cognome");
+        String cf= request.getParameter("CodiceFiscale");
+        String email=request.getParameter("email");
+        String psw=request.getParameter("psw");
+        String psw_rip=request.getParameter("psw-rip");
+        String via=request.getParameter("via");
+        int numeroCivico=Integer.parseInt(request.getParameter("numeroCivico"));
+        String cap=request.getParameter("cap");
+        String telefono=request.getParameter("telefono");
+        if (checkUtente(cf)){
+            registraUtente(fn,ln,cf,email,psw,psw_rip,via,numeroCivico,cap,telefono);
+        }else {
+            request.setAttribute("iscriviti", message);
+            //address="index.jsp";
+            RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+            dispatcher.forward(request, response);
+        }
+
+        System.out.println("Address " +address);
+        System.out.println("Message "+ message);
     }
 
 }

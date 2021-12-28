@@ -14,6 +14,7 @@ public class Marchio {
     public Marchio() {
     }
 
+
     public Marchio(String nomeMarchio, ArrayList<Prodotto> prodotti) {
         this.nomeMarchio = nomeMarchio;
         this.prodotti = prodotti;
