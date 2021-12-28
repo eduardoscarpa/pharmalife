@@ -10,6 +10,12 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class MarchioDAO implements MarchioDAOMethod {
+
+    /**
+     * Questo metodo retituisce un oggetto di tipo Marchio dato il parametro nomeMarchio
+     * @param nomeMarchio è un oggetto di tipo stringa
+     * @return un oggetto di tipo Marchio
+     */
     @Override
     public Marchio cercaMarchio(String nomeMarchio) {
         try(Connection connection= ConPool.getConnection()){
@@ -62,6 +68,11 @@ public class MarchioDAO implements MarchioDAOMethod {
         // Metodo inutile per 'marchio', siccome sono tutti attributi non modificabili
     }
 
+
+    /**
+     * Questo metodo retituisce una lista di tutti i Marchi
+     * @return una lista di tutti i marchi
+     */
     @Override
     public ArrayList<Marchio> doRetraiveByAllMarchi() {
         try (Connection connection = ConPool.getConnection()) {
