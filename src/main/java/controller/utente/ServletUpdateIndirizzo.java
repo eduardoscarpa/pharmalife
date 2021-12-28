@@ -16,7 +16,6 @@ public class ServletUpdateIndirizzo extends HttpServlet {
         int numero=Integer.parseInt(request.getParameter("numero"));
         String cap=request.getParameter("cap");
         String codiceFiscale=request.getParameter("codiceFiscale");
-
         aggiornaIndirizzoUtente(via,numero,cap,codiceFiscale,request,response);
 
     }

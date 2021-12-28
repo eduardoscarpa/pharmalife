@@ -1,9 +1,7 @@
 package controller.utente;
-
 import model.carrello.Carrello;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,29 +43,8 @@ public class ServletIscrizione extends HttpServlet {
 
     private void registraUtente(String fn,String ln,String cf, String email,String psw,String psw_rip,String via,
                                 int numeroCivico,String cap,String telefono) throws ServletException, IOException, SQLException {
-       // String address="index.jsp";
-       /* String fn=request.getParameter("nome");
-        String ln=request.getParameter("cognome");
-        String cf= request.getParameter("CodiceFiscale");
-        String email=request.getParameter("email");
-        String psw=request.getParameter("psw");
-        String psw_rip=request.getParameter("psw-rip");
-        String via=request.getParameter("via");
-        int numeroCivico=Integer.parseInt(request.getParameter("numeroCivico"));
-        String cap=request.getParameter("cap");
-        String telefono=request.getParameter("telefono");*/
-
-        UtenteDAO service=new UtenteDAO();
-        //ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
-      /*  if (codiciFiscali.contains(cf)){
-            address = "WEB-INF/pagine/iscriviti.jsp";
-            message="Questo codice fiscale è già presente";
-            request.setAttribute("iscriviti", message);
-
-        }else {*/
+            UtenteDAO service=new UtenteDAO();
             Utente utente = new Utente();
-
-
             Pattern nome = Pattern.compile("^([a-z A-Z]{3,})$");
             Matcher matcher = nome.matcher(fn);
             System.out.println(matcher.matches());
@@ -75,7 +52,6 @@ public class ServletIscrizione extends HttpServlet {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "Il nome deve essere formato solo da lettere e deve contenere almeno tre caratteri";
             }
-
             Pattern cognome = Pattern.compile("^([a-z A-Z]{3,})$");
             matcher = cognome.matcher(ln);
             System.out.println(matcher.matches());
@@ -164,7 +140,7 @@ public class ServletIscrizione extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private boolean checkUtente(String cf) throws SQLException {
+    private boolean isNotPresentCf(String cf) throws SQLException {
         UtenteDAO service=new UtenteDAO();
         ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
         if (codiciFiscali.contains(cf)){
@@ -176,7 +152,7 @@ public class ServletIscrizione extends HttpServlet {
         return true;
     }
 
-    public  void saveParameter( ) throws SQLException, ServletException, IOException {
+    private  void saveParameter( ) throws SQLException, ServletException, IOException {
         String fn=request.getParameter("nome");
         String ln=request.getParameter("cognome");
         String cf= request.getParameter("CodiceFiscale");
@@ -187,17 +163,13 @@ public class ServletIscrizione extends HttpServlet {
         int numeroCivico=Integer.parseInt(request.getParameter("numeroCivico"));
         String cap=request.getParameter("cap");
         String telefono=request.getParameter("telefono");
-        if (checkUtente(cf)){
+        if (isNotPresentCf(cf)){
             registraUtente(fn,ln,cf,email,psw,psw_rip,via,numeroCivico,cap,telefono);
         }else {
             request.setAttribute("iscriviti", message);
-
             RequestDispatcher dispatcher = request.getRequestDispatcher(address);
             dispatcher.forward(request, response);
         }
-
-        System.out.println("Address " +address);
-        System.out.println("Message "+ message);
     }
 
 }

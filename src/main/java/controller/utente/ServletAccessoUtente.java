@@ -14,8 +14,8 @@ import java.util.Optional;
 public class ServletAccessoUtente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Utente utente = (Utente) session.getAttribute("utente");
+       // HttpSession session = request.getSession();
+       // Utente utente = (Utente) session.getAttribute("utente");
         String valore = request.getParameter("value");
         switch (valore) {
             case "login":
