@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Amministratore
-  Date: 24/07/2021
-  Time: 18:13
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -19,8 +13,6 @@
             justify-content: center;
             height: 100%;
             width: 90%;
-
-
             margin: 20px auto 20px;
         }
     </style>

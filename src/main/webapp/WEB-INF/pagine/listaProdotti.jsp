@@ -65,7 +65,11 @@
                     <a href=""><%=p.getNome()%> </a>
                 </figcaption>
             </figure>
-            <div class="disp">Disponibile</div>
+           <%-- <% if (p.getQuantita()<=0){ %>
+            <div class="disp" style="color:red"> Non Disponibile</div>
+            <% } else { %>
+            <div class="disp" style="color:lime"> Disponibile</div>
+            <% } %>--%>
             <input type="hidden" id="quantita" name="tot" value="1">
             <input type="hidden" id="idProdotto" name="prodotto" value="<%=p.getCodiceProdotto()%>">
             <button onclick="aggiungiAlCarrello(<%=p.getCodiceProdotto()%>)">Aggiungi Al Carrello   <i class="fas fa-cart-plus"></i></button>

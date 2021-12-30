@@ -17,7 +17,11 @@ public class ServletBarraRicerca extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String valore=request.getParameter("value");
-        String prodottiJson = ricercaProdotto(valore);
+        //String prodottiJson = ricercaProdotto(valore);
+        ProdottoDAO prodottoDAO= new ProdottoDAO();
+        ArrayList<Prodotto> prodotti=prodottoDAO.prodotttoSearch(valore);
+        Gson gson= new Gson();
+        String prodottiJson=gson.toJson(prodotti);
         response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("application/json");
         response.getWriter().write(prodottiJson);
@@ -28,11 +32,11 @@ public class ServletBarraRicerca extends HttpServlet {
 
     }
 
-    private String ricercaProdotto(String valore) throws IOException {
+    private void ricercaProdotto(String valore) throws IOException {
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         ArrayList<Prodotto> prodotti=prodottoDAO.prodotttoSearch(valore);
         Gson gson= new Gson();
         String prodottiJson=gson.toJson(prodotti);
-        return prodottiJson;
+       // return prodottiJson;
     }
 }

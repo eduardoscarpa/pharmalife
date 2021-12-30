@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ProgettoIS.iml" filepath="$PROJECT_DIR$/ProgettoIS.iml" />
+      <module fileurl="file://$MAVEN_REPOSITORY$/org/mockito/mockito-core/mockito-core.iml" filepath="$MAVEN_REPOSITORY$/org/mockito/mockito-core/mockito-core.iml" />
     </modules>
   </component>
 </project>
