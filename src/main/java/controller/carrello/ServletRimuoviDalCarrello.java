@@ -41,7 +41,7 @@ public class ServletRimuoviDalCarrello extends HttpServlet {
     }
 
     /**
-     *
+     * Questo metodo serve per rimuovere un prodotto dal carrello
      * @param codiceProdotto del prodotto da eliminare dal carrello
      * @param request
      * @throws ServletException

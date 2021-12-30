@@ -47,9 +47,9 @@ public class ServletUpdateIndirizzo extends HttpServlet {
         utente.setCodiceFiscale(codiceFiscale);
         UtenteDAO utenteDAO= new UtenteDAO();
         if(utenteDAO.updateIndirizzoUtente(utente)){
-            request.setAttribute("updateAddress","Indirizzo aggiornato correttamente");
+            request.setAttribute("updateAddress","Il nuovo indirizzo è stato aggiornato correttamente.");
         }else {
-            request.setAttribute("updateAddress","Errore durante l'aggiornamento");
+            request.setAttribute("updateAddress","Errore durante l'aggiornamento dell'indirizzo.");
         }
         RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/updateIndirizzo.jsp");
         dispatcher.forward(request,response);

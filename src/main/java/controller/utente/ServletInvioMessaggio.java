@@ -88,22 +88,22 @@ public class ServletInvioMessaggio extends HttpServlet {
         if (utenteLoggato != null) {
             if (!utenteLoggato.getNome().equals(utente.getNome())) {
                 address = "WEB-INF/pagine/assistenza.jsp";
-                avviso="Il nome non coincide con quello dell'utente loggato";
+                avviso="Il nome non coincide con quello dell'utente loggato.";
                 return  false;
             }
             if (!utenteLoggato.getCognome().equals(utente.getCognome())) {
                 address = "WEB-INF/pagine/assistenza.jsp";
-                avviso="Il cognome non coincide con quello dell'utente loggato";
+                avviso="Il cognome non coincide con quello dell'utente loggato.";
                 return  false;
             }
             if (!utenteLoggato.getTelefono().equals(utente.getTelefono())) {
                 address = "WEB-INF/pagine/assistenza.jsp";
-                avviso="Il numero di telefono non coincide con quello dell'utente loggato";
+                avviso="Il numero di telefono non coincide con quello dell'utente loggato.";
                 return  false;
             }
             if (!utenteLoggato.getEmail().equals(utente.getEmail())) {
                 address = "WEB-INF/pagine/assistenza.jsp";
-                avviso="L'email non coincide con quella dell'utente loggato";
+                avviso="L'e-mail non coincide con quella dell'utente loggato.";
                 return  false;
             }
         }

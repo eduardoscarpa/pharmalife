@@ -85,58 +85,58 @@ public class ServletIscrizione extends HttpServlet {
             Matcher matcher = nome.matcher(fn);
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Il nome deve essere formato solo da lettere e deve contenere almeno tre caratteri";
+                message = "Il nome deve essere formato solo da lettere e deve contenere almeno tre caratteri.";
             }
             Pattern cognome = Pattern.compile("^([a-z A-Z]{3,})$");
             matcher = cognome.matcher(ln);
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Il cognome deve essere formato solo da lettere e deve contenere almeno tre caratteri";
+                message = "Il cognome deve essere formato solo da lettere e deve contenere almeno tre caratteri.";
             }
 
             Pattern codiceFiscale = Pattern.compile("(^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$)");
             matcher = codiceFiscale.matcher(cf);
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Codice fiscale non valido";
+                message = "Codice fiscale non valido.";
             }
 
             Pattern e_mail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$");
             matcher = e_mail.matcher(email);
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Formato email non valido";
+                message = "Formato email non valido.";
             }
 
             Pattern password = Pattern.compile("(^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20}$)");
             matcher = password.matcher(psw);
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero";
+                message = "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero.";
             }
 
             if (!psw_rip.equals(psw)) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "La password non coincide con quella digitata precedentemente";
+                message = "La password non coincide con quella digitata precedentemente.";
             }
 
             Pattern numCivico = Pattern.compile(("^[0-9]{1,3}$"));
             matcher = numCivico.matcher(Integer.toString(numeroCivico));
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Il numero civico deve contenere solo numeri (da una a tre cifre)";
+                message = "Il numero civico deve contenere solo numeri (da una a tre cifre).";
             }
             Pattern codicePostale = Pattern.compile(("^[0-9]{5}$"));
             matcher = codicePostale.matcher(cap);
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Il cap deve contenere esattamente 5 cifre";
+                message = "Il CAP deve contenere esattamente 5 cifre.";
             }
             Pattern numTelefono = Pattern.compile(("^[0-9]{10}$"));
             matcher = numTelefono.matcher(telefono);
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Il numero di telefono deve contenere esattamente 10 cifre";
+                message = "Il numero di telefono deve contenere esattamente 10 cifre.";
             }
 
             utente.setNome(fn);
@@ -171,7 +171,7 @@ public class ServletIscrizione extends HttpServlet {
         ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
         if (codiciFiscali.contains(codiceFiscale)){
             address = "WEB-INF/pagine/iscriviti.jsp";
-            message="Questo codice fiscale è già presente";
+            message="Questo codice fiscale è già presente nel sistema!";
             return  false;
         }
         return true;

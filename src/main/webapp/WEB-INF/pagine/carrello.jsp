@@ -114,7 +114,7 @@
             </p>
         </div>
         <div class="promo-code">
-            <form action="https://faimed.it/carrello" data-link-action="add-voucher" method="post">
+            <form action="" data-link-action="add-voucher" method="post">
                 <input type="hidden" name="token" value="406a80666b6957b3c5c46ea8e5494f3e">
                 <input type="hidden" name="addDiscount" value="1">
                 <input class="promo-input" type="text" name="discount_name" placeholder="Codice Sconto">

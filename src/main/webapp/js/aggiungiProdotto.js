@@ -7,7 +7,6 @@ $(document).ready(function (){
 $.ajaxSetup({
     "type":"post",
     "success": function (data){
-        //alert("sss" )
         $("h2").text(data);
         $("h2").css("visibility","visible");
         $("h2").css("color","red");
