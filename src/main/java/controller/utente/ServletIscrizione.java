@@ -2,6 +2,8 @@ package controller.utente;
 import model.carrello.Carrello;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,17 +21,29 @@ import java.util.regex.Pattern;
 public class ServletIscrizione extends HttpServlet {
     private String message;
     private String address;
-    HttpServletRequest request;
-    HttpServletResponse response;
+
+    UtenteDAOMethod service;
+
+
+    public ServletIscrizione(UtenteDAOMethod utenteDAO){
+        super();
+        service=utenteDAO;
+    }
+
+    public ServletIscrizione(){
+        super();
+        service= new UtenteDAO();
+    }
+
     @Override
-    protected void doGet(HttpServletRequest request1, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        // String cf= request.getParameter("CodiceFiscale");
-        this.request=request1;
-        this.response=response;
+       // this.request=request1;
+        //this.response=response;
         address="index.jsp";
         message="";
         try {
-            saveParameter();
+            saveParameter(request,response);
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
@@ -42,19 +56,17 @@ public class ServletIscrizione extends HttpServlet {
     }
 
     private void registraUtente(String fn,String ln,String cf, String email,String psw,String psw_rip,String via,
-                                int numeroCivico,String cap,String telefono) throws ServletException, IOException, SQLException {
-            UtenteDAO service=new UtenteDAO();
+                                int numeroCivico,String cap,String telefono,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException {
+            service=new UtenteDAO();
             Utente utente = new Utente();
             Pattern nome = Pattern.compile("^([a-z A-Z]{3,})$");
             Matcher matcher = nome.matcher(fn);
-            System.out.println(matcher.matches());
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "Il nome deve essere formato solo da lettere e deve contenere almeno tre caratteri";
             }
             Pattern cognome = Pattern.compile("^([a-z A-Z]{3,})$");
             matcher = cognome.matcher(ln);
-            System.out.println(matcher.matches());
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "Il cognome deve essere formato solo da lettere e deve contenere almeno tre caratteri";
@@ -62,7 +74,6 @@ public class ServletIscrizione extends HttpServlet {
 
             Pattern codiceFiscale = Pattern.compile("(^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$)");
             matcher = codiceFiscale.matcher(cf);
-            System.out.println(matcher.matches());
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "Codice fiscale non valido";
@@ -70,7 +81,6 @@ public class ServletIscrizione extends HttpServlet {
 
             Pattern e_mail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$");
             matcher = e_mail.matcher(email);
-            System.out.println(matcher.matches());
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "Formato email non valido";
@@ -79,7 +89,6 @@ public class ServletIscrizione extends HttpServlet {
             //Pattern password = Pattern.compile("(^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20}$)");
             Pattern password = Pattern.compile("(^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20}$)");
             matcher = password.matcher(psw);
-            System.out.println(matcher.matches());
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero";
@@ -92,21 +101,18 @@ public class ServletIscrizione extends HttpServlet {
 
             Pattern numCivico = Pattern.compile(("^[0-9]{1,3}$"));
             matcher = numCivico.matcher(Integer.toString(numeroCivico));
-            System.out.println(matcher.matches());
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "Il numero civico deve contenere solo numeri (da una a tre cifre)";
             }
             Pattern codicePostale = Pattern.compile(("^[0-9]{5}$"));
             matcher = codicePostale.matcher(cap);
-            System.out.println(matcher.matches());
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "Il cap deve contenere esattamente 5 cifre";
             }
             Pattern numTelefono = Pattern.compile(("^[0-9]{10}$"));
             matcher = numTelefono.matcher(telefono);
-            System.out.println(matcher.matches());
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "Il numero di telefono deve contenere esattamente 10 cifre";
@@ -141,18 +147,19 @@ public class ServletIscrizione extends HttpServlet {
     }
 
     private boolean isNotPresentCf(String cf) throws SQLException {
-        UtenteDAO service=new UtenteDAO();
+       //
         ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
         if (codiciFiscali.contains(cf)){
             address = "WEB-INF/pagine/iscriviti.jsp";
             message="Questo codice fiscale è già presente";
-            request.setAttribute("iscriviti", message);
+            //request.setAttribute("iscriviti", message);
             return  false;
         }
         return true;
     }
 
-    private  void saveParameter( ) throws SQLException, ServletException, IOException {
+    private  void saveParameter(HttpServletRequest request,HttpServletResponse response ) throws SQLException, ServletException, IOException {
+
         String fn=request.getParameter("nome");
         String ln=request.getParameter("cognome");
         String cf= request.getParameter("CodiceFiscale");
@@ -164,7 +171,7 @@ public class ServletIscrizione extends HttpServlet {
         String cap=request.getParameter("cap");
         String telefono=request.getParameter("telefono");
         if (isNotPresentCf(cf)){
-            registraUtente(fn,ln,cf,email,psw,psw_rip,via,numeroCivico,cap,telefono);
+            registraUtente(fn,ln,cf,email,psw,psw_rip,via,numeroCivico,cap,telefono,request,response);
         }else {
             request.setAttribute("iscriviti", message);
             RequestDispatcher dispatcher = request.getRequestDispatcher(address);

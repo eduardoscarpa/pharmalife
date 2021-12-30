@@ -277,6 +277,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
 
+
     @Override
     public void deletePreferito(Utente utente, Prodotto prodotto) {
         try(Connection connection=ConPool.getConnection()){

@@ -14,8 +14,7 @@ import java.util.Optional;
 public class ServletAccessoUtente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       // HttpSession session = request.getSession();
-       // Utente utente = (Utente) session.getAttribute("utente");
+
         String valore = request.getParameter("value");
         switch (valore) {
             case "login":
@@ -31,6 +30,12 @@ public class ServletAccessoUtente extends HttpServlet {
         doGet(request, response);
     }
 
+    /**
+     * @pre sessione.contains(utente)
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     private void logoutUtente(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         Utente utente = (Utente) session.getAttribute("utente");
@@ -45,6 +50,14 @@ public class ServletAccessoUtente extends HttpServlet {
 
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @post
+     */
     private void loginUtente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Utente utente = (Utente) session.getAttribute("utente");
