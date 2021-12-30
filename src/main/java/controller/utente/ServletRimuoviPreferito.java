@@ -3,6 +3,7 @@ package controller.utente;
 import model.prodotto.Prodotto;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +16,14 @@ import java.io.IOException;
 
 @WebServlet(name = "ServletRimuoviPreferito", value = "/ServletRimuoviPreferito")
 public class ServletRimuoviPreferito extends HttpServlet {
+    private UtenteDAOMethod service;
+
+    public ServletRimuoviPreferito(UtenteDAOMethod service){
+        this.service=service;
+    }
+    public ServletRimuoviPreferito(){
+        service= new UtenteDAO();
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -26,11 +35,19 @@ public class ServletRimuoviPreferito extends HttpServlet {
         doGet(request,response);
     }
 
+    /**
+     * @pre //
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @post service.doRetrieveByAllPreferitiOfUtente.size=@pre.service.doRetrieveByAllPreferitiOfUtente.size-1
+     */
     private  void rimuoviProdottoDaiPreferiti(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
         if(session != null) {
-            UtenteDAO service = new UtenteDAO();
+             service = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
             if (utente != null) {
                 Prodotto p=new Prodotto();

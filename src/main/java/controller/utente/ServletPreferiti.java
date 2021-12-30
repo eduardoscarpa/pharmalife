@@ -27,6 +27,13 @@ public class ServletPreferiti extends HttpServlet {
         doGet(request, response);
     }
 
+    /**
+     * @pre //
+     * @param request
+     * @param response
+     * @throws IOException
+     * @post ervice.doRetrieveByAllPreferitiOfUtente.size=@pre.service.doRetrieveByAllPreferitiOfUtente.size+1
+     */
     private void inserisciProdottoAiPreferiti(HttpServletRequest request,HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));

@@ -14,7 +14,7 @@ public interface UtenteDAOMethod {
 
     public Utente cercaUtente (String codiceFiscale);
     public Utente cercaUtentebyEmail (String email,String password);
-    public ArrayList<Prodotto> preferiti(String codiceFiscale);
+    public ArrayList<Prodotto> doRetrieveByAllPreferitiOfUtente(String codiceFiscale);
     public ArrayList<String> doRetraiveByAllCodiciFiscali() throws SQLException;
     public ArrayList<Ordine> ordiniAllUtenti();
     public ArrayList<Messaggio> messaggiAllUtenti();

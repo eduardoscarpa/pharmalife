@@ -27,10 +27,7 @@ public class ServletTabellaAdmin extends HttpServlet {
             case "prodotti":
                visualizzaTabellaProdotti(request,response);
         }
-        /*response.setContentType("text/plain;charset=UTF-8");
-        response.setContentType("application/json");
 
-        response.getWriter().write(dati);*/
 
     }
 

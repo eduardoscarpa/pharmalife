@@ -3,6 +3,7 @@ package controller.carrello;
 import model.carrello.Carrello;
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
 import model.utente.Utente;
 
 import javax.servlet.*;
@@ -13,6 +14,14 @@ import java.io.IOException;
 @WebServlet(name = "ServletAggiungiAlCarrello", value = "/ServletAggiungiAlCarrello")
 public class ServletAggiungiAlCarrello extends HttpServlet {
 
+    private ProdottoDAOMethod serviceProdotto;
+
+    public ServletAggiungiAlCarrello(ProdottoDAOMethod prodottoDAOMethod){
+        serviceProdotto=prodottoDAOMethod;
+    }
+    public ServletAggiungiAlCarrello(){
+        serviceProdotto=new ProdottoDAO();
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProdotto=Integer.parseInt(request.getParameter("prodotto"));
@@ -24,6 +33,13 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
         doGet(request,response);
     }
 
+    /**
+     *
+     * @param idProdotto del prodotto da aggiungere al carrello
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     private void aggiuntaAlCarrello(int idProdotto, HttpServletRequest request, HttpServletResponse response) throws IOException{
         int totale=1;
         if(request.getParameter("totale")!=null){
@@ -35,8 +51,8 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
         Carrello carrello=(Carrello) session.getAttribute("carrello");
 
         Utente utente=(Utente) session.getAttribute("utente");
-        ProdottoDAO prodottoDAO= new ProdottoDAO();
-        Prodotto prodotto= prodottoDAO.cercaProdotto(idProdotto);
+         serviceProdotto= new ProdottoDAO();
+        Prodotto prodotto= serviceProdotto.cercaProdotto(idProdotto);
         if(utente!=null){
 
             if(utente.getCarrello()!=null){

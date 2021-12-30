@@ -3,6 +3,7 @@ package controller.carrello;
 import model.carrello.Carrello;
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
 import model.utente.Utente;
 
 import javax.servlet.*;
@@ -12,6 +13,20 @@ import java.io.IOException;
 
 @WebServlet(name = "ServletRimuoviDalCarrello", value = "/ServletRimuoviDalCarrello")
 public class ServletRimuoviDalCarrello extends HttpServlet {
+    private ProdottoDAOMethod serviceProdotto;
+    private Prodotto prodotto;
+    private Utente utente;
+
+    public ServletRimuoviDalCarrello(ProdottoDAOMethod prodottoDAOMethod,Prodotto prodotto,Utente utente){
+        serviceProdotto=prodottoDAOMethod;
+        this.prodotto=prodotto;
+        this.utente=utente;
+    }
+    public ServletRimuoviDalCarrello(){
+        serviceProdotto=new ProdottoDAO();
+        utente=new Utente();
+        prodotto=new Prodotto();
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
@@ -25,9 +40,16 @@ public class ServletRimuoviDalCarrello extends HttpServlet {
         doGet(request, response);
     }
 
+    /**
+     *
+     * @param codiceProdotto del prodotto da eliminare dal carrello
+     * @param request
+     * @throws ServletException
+     * @throws IOException
+     */
     private void rimozioneDalCarrello(int codiceProdotto, HttpServletRequest request) throws ServletException, IOException {
-        ProdottoDAO prodottoDAO= new ProdottoDAO();
-        Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
+        serviceProdotto= new ProdottoDAO();
+        prodotto=serviceProdotto.cercaProdotto(codiceProdotto);
         HttpSession session= request.getSession();
         Utente utente=(Utente) session.getAttribute("utente");
         if(utente!=null){

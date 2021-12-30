@@ -2,6 +2,7 @@ package controller.utente;
 
 import model.utente.Utente;
 import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -11,6 +12,11 @@ import java.io.IOException;
 @WebServlet(name = "ServletUpdateIndirizzo", value = "/ServletUpdateIndirizzo")
 public class ServletUpdateIndirizzo extends HttpServlet {
 
+    private UtenteDAOMethod serviceUtente;
+
+    public ServletUpdateIndirizzo(UtenteDAOMethod utenteDAOMethod){
+        serviceUtente=utenteDAOMethod;
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +33,7 @@ public class ServletUpdateIndirizzo extends HttpServlet {
     }
 
     /**
-     *
+     * @pre //
      * @param via
      * @param numero
      * @param cap
@@ -36,7 +42,7 @@ public class ServletUpdateIndirizzo extends HttpServlet {
      * @param response
      * @throws ServletException
      * @throws IOException
-     * @post
+     * @post //
      */
     private  void aggiornaIndirizzoUtente(String via,int numero,String cap,String codiceFiscale,
                                           HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
@@ -45,8 +51,8 @@ public class ServletUpdateIndirizzo extends HttpServlet {
         utente.setNumeroCivico(numero);
         utente.setCap(cap);
         utente.setCodiceFiscale(codiceFiscale);
-        UtenteDAO utenteDAO= new UtenteDAO();
-        if(utenteDAO.updateIndirizzoUtente(utente)){
+         serviceUtente= new UtenteDAO();
+        if(serviceUtente.updateIndirizzoUtente(utente)){
             request.setAttribute("updateAddress","Indirizzo aggiornato correttamente");
         }else {
             request.setAttribute("updateAddress","Errore durante l'aggiornamento");

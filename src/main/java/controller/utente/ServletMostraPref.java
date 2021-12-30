@@ -36,7 +36,7 @@ public class ServletMostraPref extends HttpServlet {
             Utente utente = (Utente) session.getAttribute("utente");
             if(utente != null) {
                 ArrayList<Prodotto> prodottiPref = new ArrayList<>();
-                prodottiPref = service.preferiti(utente.getCodiceFiscale());
+                prodottiPref = service.doRetrieveByAllPreferitiOfUtente(utente.getCodiceFiscale());
                 request.setAttribute("prodottiPref", prodottiPref);
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pagine/preferiti.jsp");

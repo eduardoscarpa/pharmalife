@@ -25,6 +25,12 @@ public class ServletDeleteProdottoAdmin extends HttpServlet {
         doGet(request,response);
     }
 
+    /**
+     *
+     * @param idProdotto del prodotto da eliminare
+     * @throws ServletException
+     * @throws IOException
+     */
     private void eliminaProdottoDalCatalogo(int idProdotto) throws ServletException, IOException {
 
         ProdottoDAO prodottoDAO= new ProdottoDAO();

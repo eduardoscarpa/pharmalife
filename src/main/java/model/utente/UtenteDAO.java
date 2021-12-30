@@ -90,7 +90,7 @@ public class UtenteDAO implements UtenteDAOMethod {
      * @return
      */
     @Override
-    public ArrayList<Prodotto> preferiti(String codiceFiscale) {
+    public ArrayList<Prodotto> doRetrieveByAllPreferitiOfUtente(String codiceFiscale) {
         ArrayList<Prodotto> prodottiPreferiti= new ArrayList<>();
         try(Connection connection=ConPool.getConnection()){
 

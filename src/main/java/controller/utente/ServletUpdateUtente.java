@@ -2,6 +2,7 @@ package controller.utente;
 
 import model.utente.Utente;
 import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -12,6 +13,14 @@ import java.util.regex.Pattern;
 
 @WebServlet(name = "ServletUpdateUtente", value = "/ServletUpdateUtente")
 public class ServletUpdateUtente extends HttpServlet {
+    private UtenteDAOMethod serviceUtente;
+
+    public  ServletUpdateUtente(UtenteDAOMethod utenteDAOMethod){
+        serviceUtente=utenteDAOMethod;
+    }
+    private ServletUpdateUtente(){
+        serviceUtente=new UtenteDAO();
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -32,7 +41,7 @@ public class ServletUpdateUtente extends HttpServlet {
     }
 
     /**
-     *
+     * @pre //
      * @param codiceFiscale
      * @param nomeUtente
      * @param cognomeUtente
@@ -42,6 +51,7 @@ public class ServletUpdateUtente extends HttpServlet {
      * @param request
      * @param response
      * @throws IOException
+     * @post //
      */
     private  void aggiornaDatiUtente(String codiceFiscale,String nomeUtente,String cognomeUtente,
     String email,String password,String nuovaPassword,HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
@@ -52,33 +62,24 @@ public class ServletUpdateUtente extends HttpServlet {
         utente.setCognome(cognomeUtente);
         utente.setEmail(email);
         utente.criptPassword(password);
-
-        UtenteDAO utenteDAO= new UtenteDAO();
+        serviceUtente= new UtenteDAO();
         HttpSession session= request.getSession();
-
-        Utente utente1=utenteDAO.cercaUtente(codiceFiscale);
-
+        Utente utente1=serviceUtente.cercaUtente(codiceFiscale);
         Pattern pattern = Pattern.compile("^((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20})$");
         Matcher matcher = pattern.matcher(nuovaPassword);
         String up="";
-
         if (!matcher.matches()) {
             up="La nuova password non rispetta il formato del pattern: deve contenere almeno una lettera minuscola, una maiuscola e un numero";
         } else
         if (utente1 != null) {
-
             if (utente1.getPassword().equals(utente.getPassword())) {
                 utente.criptPassword(nuovaPassword);
-
                 if (password.equals(nuovaPassword)) {
                     up = "La nuova password deve essere diversa da quella precedente";
-                    System.out.println("goooooooollllllll");
                 } else {
-
-                    if (utenteDAO.updateUtente(utente)) {
+                    if (serviceUtente.updateUtente(utente)) {
                         up = "Dati Aggiornati Correttamente";
-                        Utente u = (Utente) utenteDAO.cercaUtente(utente.getCodiceFiscale());
-
+                        Utente u = (Utente) serviceUtente.cercaUtente(utente.getCodiceFiscale());
                         if (utente != null) {
                             session.setAttribute("utente", u);
                         }
@@ -88,7 +89,6 @@ public class ServletUpdateUtente extends HttpServlet {
                 up = "La password non corrisponde con quella dell'utente loggato";
             }
         }
-
         request.setAttribute("update",up);
         RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/InfoUtente.jsp");
         dispatcher.forward(request,response);
