@@ -5,7 +5,6 @@ import model.prodotto.ProdottoDAO;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +45,7 @@ public class ServletPreferiti extends HttpServlet {
 
             if (utente != null) {
                 service.insertPreferito(utente, prodotto);
-                risposta="Prodotto Aggiunto ai Preferiti";
+                risposta="Prodotto aggiunto ai tuoi preferiti!";
             }
 
             response.getWriter().write(risposta);

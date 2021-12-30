@@ -34,7 +34,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
     }
 
     /**
-     *
+     * Questo metodo serve per aggiungere un prodotto al carrello
      * @param idProdotto del prodotto da aggiungere al carrello
      * @param request
      * @param response
@@ -46,12 +46,11 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
             totale=Integer.parseInt(request.getParameter("totale"));
         }
         int prezzoTotale=0;
-        System.out.println("Id prodotto " + idProdotto );
         HttpSession session=request.getSession();
         Carrello carrello=(Carrello) session.getAttribute("carrello");
 
         Utente utente=(Utente) session.getAttribute("utente");
-         serviceProdotto= new ProdottoDAO();
+        serviceProdotto= new ProdottoDAO();
         Prodotto prodotto= serviceProdotto.cercaProdotto(idProdotto);
         if(utente!=null){
 
@@ -77,6 +76,6 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
                 session.setMaxInactiveInterval(60);
             }
         }
-        response.getWriter().write("Prodotto Aggiunto al carrello");
+        response.getWriter().write("Prodotto aggiunto al carrello!");
     }
 }

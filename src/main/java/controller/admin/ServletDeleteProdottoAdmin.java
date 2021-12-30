@@ -1,11 +1,13 @@
 package controller.admin;
 
-import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "ServletDeleteProdottoAdmin", value = "/ServletDeleteProdottoAdmin")
@@ -26,7 +28,7 @@ public class ServletDeleteProdottoAdmin extends HttpServlet {
     }
 
     /**
-     *
+     * Questo metodo permette ad un Amministratore di eliminare un prodotto dal catalogo
      * @param idProdotto del prodotto da eliminare
      * @throws ServletException
      * @throws IOException

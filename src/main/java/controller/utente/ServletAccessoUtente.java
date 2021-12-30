@@ -81,7 +81,7 @@ public class ServletAccessoUtente extends HttpServlet {
                 session.setAttribute("utente", utente);
                 response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));
             } else {
-                request.setAttribute("errore", "Utente non trovato");
+                request.setAttribute("errore", "Utente non trovato!");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pagine/formLogin.jsp");
                 dispatcher.forward(request, response);
             }
