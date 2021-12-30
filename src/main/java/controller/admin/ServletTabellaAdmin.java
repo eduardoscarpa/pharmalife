@@ -10,7 +10,6 @@ import model.utente.UtenteDAO;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -43,7 +42,7 @@ public class ServletTabellaAdmin extends HttpServlet {
     private void visualizzaTabellaUtenti(HttpServletRequest request,HttpServletResponse response) throws IOException {
         String dati="";
         UtenteDAO utenteDAO= new UtenteDAO();
-        ArrayList<Utente> utenti=utenteDAO.doRetraiveByAllUtenti();
+        ArrayList<Utente> utenti=utenteDAO.doRetrieveByAllUtenti();
         Gson gson= new Gson();
         dati=gson.toJson(utenti);
         response.setContentType("text/plain;charset=UTF-8");

@@ -12,6 +12,6 @@ public interface MessaggioDAOMethod {
    // public void deleteMessaggio(int codiceMessaggio);
     public void insertMessaggio(Messaggio  m);
    // public void updateMessaggio(Messaggio m, int codiceMessaggio);
-    public ArrayList<Messaggio> doRetraiveByAllMessaggi();
+    public ArrayList<Messaggio> doRetrieveByAllMessaggi();
     //public ArrayList<Messaggio> cercaMessaggi(int start, int end);
 }

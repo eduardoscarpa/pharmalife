@@ -55,6 +55,26 @@ public class ServletIscrizione extends HttpServlet {
         doGet(request,response);
     }
 
+    /**
+     * @pre isNotPresentCf(codiceFiscale)
+     * @param fn
+     * @param ln
+     * @param cf
+     * @param email
+     * @param psw
+     * @param psw_rip
+     * @param via
+     * @param numeroCivico
+     * @param cap
+     * @param telefono
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws SQLException
+     * @post not isNotPresentCf(codiceFiscale)
+     * @post  doRetrieveByAllUtenti=@pre doRetrieveByAllUtenti+1
+     */
     private void registraUtente(String fn,String ln,String cf, String email,String psw,String psw_rip,String via,
                                 int numeroCivico,String cap,String telefono,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException {
             service=new UtenteDAO();
@@ -146,10 +166,10 @@ public class ServletIscrizione extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private boolean isNotPresentCf(String cf) throws SQLException {
-       //
+    private boolean isNotPresentCf(String codiceFiscale) throws SQLException {
+
         ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
-        if (codiciFiscali.contains(cf)){
+        if (codiciFiscali.contains(codiceFiscale)){
             address = "WEB-INF/pagine/iscriviti.jsp";
             message="Questo codice fiscale è già presente";
             //request.setAttribute("iscriviti", message);

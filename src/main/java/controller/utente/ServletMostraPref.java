@@ -31,20 +31,16 @@ public class ServletMostraPref extends HttpServlet {
 
     private void visualizzaPreferiti(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-
         if (session != null) {
             UtenteDAO service = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
-
             if(utente != null) {
                 ArrayList<Prodotto> prodottiPref = new ArrayList<>();
                 prodottiPref = service.preferiti(utente.getCodiceFiscale());
                 request.setAttribute("prodottiPref", prodottiPref);
             }
-
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pagine/preferiti.jsp");
             dispatcher.forward(request, response);
-
         }
     }
 }

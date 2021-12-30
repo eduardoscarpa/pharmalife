@@ -25,6 +25,6 @@ public interface UtenteDAOMethod {
    // public void updateUtente (Utente u, String codiceFiscale);
     public boolean updateUtente(Utente utente);
     public boolean updateIndirizzoUtente(Utente utente);
-    public ArrayList<Utente> doRetraiveByAllUtenti();
+    public ArrayList<Utente> doRetrieveByAllUtenti();
    // public ArrayList<Utente> cercaUtenti(int start, int end);
 }

@@ -31,10 +31,12 @@ public class ServletAccessoUtente extends HttpServlet {
     }
 
     /**
+     *
      * @pre sessione.contains(utente)
      * @param request
      * @param response
      * @throws IOException
+     * @post !session.contains(utente)
      */
     private void logoutUtente(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
@@ -56,7 +58,7 @@ public class ServletAccessoUtente extends HttpServlet {
      * @param response
      * @throws ServletException
      * @throws IOException
-     * @post
+     * @post session.contains(utente)
      */
     private void loginUtente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();

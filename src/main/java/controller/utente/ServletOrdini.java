@@ -22,18 +22,15 @@ import java.sql.Date;
 public class ServletOrdini extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         doPost(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         HttpSession session= request.getSession();
         Utente utente=(Utente) session.getAttribute("utente");
         if(utente!=null){
             if(utente.getCarrello()!=null){
-
                 utente.getCarrello().prodottiToString();
                 Ordine ordine= new Ordine();
                 ordine.setCarrello(utente.getCarrello());
@@ -45,8 +42,6 @@ public class ServletOrdini extends HttpServlet {
                 OrdineDAO ordineDAO= new OrdineDAO();
                 ordineDAO.insertCarrello(ordine);
                 utente.setCarrello(null);
-
-
             }
             RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp");
             dispatcher.forward(request,response);

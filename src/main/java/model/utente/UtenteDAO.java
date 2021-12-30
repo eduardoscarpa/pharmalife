@@ -350,7 +350,7 @@ public class UtenteDAO implements UtenteDAOMethod {
      * @return ArrayList di Utenti
      */
     @Override
-    public ArrayList<Utente> doRetraiveByAllUtenti() {
+    public ArrayList<Utente> doRetrieveByAllUtenti() {
         ArrayList<Utente> lista = new ArrayList<>();
         try (Connection connection = ConPool.getConnection()) {
             PreparedStatement ps;

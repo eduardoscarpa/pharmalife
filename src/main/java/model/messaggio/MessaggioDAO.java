@@ -41,8 +41,7 @@ public class MessaggioDAO implements MessaggioDAOMethod {
      * Questo metodo restituisce la litsa di tutti i messaggi inviati da tutti gli utenti
      * @return ArrayList di oggetti di tipo Messaggio
      */
-    @Override
-    public ArrayList<Messaggio> doRetraiveByAllMessaggi() {
+    public ArrayList<Messaggio> doRetrieveByAllMessaggi() {
         try (Connection connection = ConPool.getConnection()) {
             PreparedStatement ps;
             ps = connection.prepareStatement("select * from Messaggio");

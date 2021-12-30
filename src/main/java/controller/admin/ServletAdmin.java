@@ -3,9 +3,7 @@ package controller.admin;
 import model.messaggio.Messaggio;
 import model.messaggio.MessaggioDAO;
 import model.ordine.OrdineDAO;
-import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
-import model.utente.Utente;
 import model.utente.UtenteDAO;
 
 import javax.servlet.RequestDispatcher;
@@ -47,7 +45,7 @@ public class ServletAdmin extends HttpServlet {
     }
     private  void visualizzaMessaggi(HttpServletRequest request,HttpServletResponse response){
         MessaggioDAO messaggioDAO= new MessaggioDAO();
-        ArrayList<Messaggio> messaggi= messaggioDAO.doRetraiveByAllMessaggi();
+        ArrayList<Messaggio> messaggi= messaggioDAO.doRetrieveByAllMessaggi();
         request.setAttribute("messaggi",messaggi);
     }
 
@@ -56,8 +54,8 @@ public class ServletAdmin extends HttpServlet {
         ProdottoDAO prodottoDAO1= new ProdottoDAO();
         UtenteDAO utenteDAO= new UtenteDAO();
         OrdineDAO ordineDAO= new OrdineDAO();
-        request.setAttribute("messaggi",Integer.parseInt(String.valueOf(messaggioDAO1.doRetraiveByAllMessaggi().size())));
-        request.setAttribute("utenti",Integer.parseInt(String.valueOf(utenteDAO.doRetraiveByAllUtenti().size())));
+        request.setAttribute("messaggi",Integer.parseInt(String.valueOf(messaggioDAO1.doRetrieveByAllMessaggi().size())));
+        request.setAttribute("utenti",Integer.parseInt(String.valueOf(utenteDAO.doRetrieveByAllUtenti().size())));
         request.setAttribute("prodotti",Integer.parseInt(String.valueOf(prodottoDAO1.doRetraiveByAllProdotti().size())));
         request.setAttribute("ordini",Integer.parseInt(String.valueOf(ordineDAO.doRetraiveByAllOrdini().size())));
     }
