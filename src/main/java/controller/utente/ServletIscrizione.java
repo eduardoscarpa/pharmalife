@@ -56,24 +56,26 @@ public class ServletIscrizione extends HttpServlet {
     }
 
     /**
+     * Questo metodo permette ad Utente di registrarsi al sistema, per poter effettuare questa operazione
+     * il codiceFiscale non deve essere già esistente nel database
      * @pre isNotPresentCf(codiceFiscale)
-     * @param fn
-     * @param ln
-     * @param cf
-     * @param email
-     * @param psw
-     * @param psw_rip
-     * @param via
-     * @param numeroCivico
-     * @param cap
-     * @param telefono
+     * @param fn nome
+     * @param ln cognome
+     * @param cf codice fiscale
+     * @param email e-mail
+     * @param psw password
+     * @param psw_rip ripetizione password
+     * @param via via
+     * @param numeroCivico numero civico
+     * @param cap CAP
+     * @param telefono numero di cellulare
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
      * @throws SQLException
      * @post not isNotPresentCf(codiceFiscale)
-     * @post  doRetrieveByAllUtenti=@pre doRetrieveByAllUtenti+1
+     * @post doRetrieveByAllUtenti = @pre doRetrieveByAllUtenti+1
      */
     private void registraUtente(String fn,String ln,String cf, String email,String psw,String psw_rip,String via,
                                 int numeroCivico,String cap,String telefono,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException {
@@ -106,7 +108,6 @@ public class ServletIscrizione extends HttpServlet {
                 message = "Formato email non valido";
             }
 
-            //Pattern password = Pattern.compile("(^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20}$)");
             Pattern password = Pattern.compile("(^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20}$)");
             matcher = password.matcher(psw);
             if (!matcher.matches()) {
@@ -161,7 +162,6 @@ public class ServletIscrizione extends HttpServlet {
             } else {
                 request.setAttribute("iscriviti", message);
             }
-        //}
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
     }
@@ -172,7 +172,6 @@ public class ServletIscrizione extends HttpServlet {
         if (codiciFiscali.contains(codiceFiscale)){
             address = "WEB-INF/pagine/iscriviti.jsp";
             message="Questo codice fiscale è già presente";
-            //request.setAttribute("iscriviti", message);
             return  false;
         }
         return true;

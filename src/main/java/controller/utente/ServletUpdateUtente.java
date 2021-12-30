@@ -32,7 +32,7 @@ public class ServletUpdateUtente extends HttpServlet {
     }
 
     /**
-     *
+     * Questo metodo serve per aggiornare/modificare i dati personali di Utente loggato, tra questi anche la password
      * @param codiceFiscale
      * @param nomeUtente
      * @param cognomeUtente
@@ -42,6 +42,7 @@ public class ServletUpdateUtente extends HttpServlet {
      * @param request
      * @param response
      * @throws IOException
+     * @post //
      */
     private  void aggiornaDatiUtente(String codiceFiscale,String nomeUtente,String cognomeUtente,
     String email,String password,String nuovaPassword,HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {

@@ -4,11 +4,14 @@ import model.carrello.Carrello;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Optional;
 
 @WebServlet(name = "ServletAccessoUtente", value = "/ServletAccessoUtente")
 public class ServletAccessoUtente extends HttpServlet {
@@ -31,7 +34,9 @@ public class ServletAccessoUtente extends HttpServlet {
     }
 
     /**
-     *
+     * Questo metodo serve per effettuare il logout di un Utente, per poter effettuare questa operazione è
+     * necessario che ci sia un Utente loggato in sessione, al termine dell'esecuzione del metodo non sarà
+     * più presente nella sessione
      * @pre sessione.contains(utente)
      * @param request
      * @param response
@@ -53,7 +58,8 @@ public class ServletAccessoUtente extends HttpServlet {
     }
 
     /**
-     *
+     * Questo metodo serve per effettuare il login di un Utente, al termine dell'esecuzione del metodo l'Utente
+     * sarà presente in sessione
      * @param request
      * @param response
      * @throws ServletException

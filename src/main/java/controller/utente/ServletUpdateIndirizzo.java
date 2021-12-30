@@ -27,7 +27,7 @@ public class ServletUpdateIndirizzo extends HttpServlet {
     }
 
     /**
-     *
+     * Questo metodo serve per aggiornare/modificare l'indirizzo di spedizione di Utente loggato
      * @param via
      * @param numero
      * @param cap
@@ -36,7 +36,7 @@ public class ServletUpdateIndirizzo extends HttpServlet {
      * @param response
      * @throws ServletException
      * @throws IOException
-     * @post
+     * @post //
      */
     private  void aggiornaIndirizzoUtente(String via,int numero,String cap,String codiceFiscale,
                                           HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
