@@ -11,7 +11,7 @@ public class MessaggioDAO implements MessaggioDAOMethod {
 
 
     /**
-     *Questo metodo permette ad un utente di inviare i messaggi all'amministratore
+     * Questo metodo permette ad un utente di inviare i messaggi all'amministratore
      * @param messaggio oggetto da inserire nel dastabase
      */
     public void insertMessaggio(Messaggio messaggio) {

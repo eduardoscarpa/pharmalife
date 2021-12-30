@@ -4,7 +4,6 @@ import model.messaggio.Messaggio;
 import model.messaggio.MessaggioDAO;
 import model.messaggio.MessaggioDAOMethod;
 import model.utente.Utente;
-import model.utente.UtenteDAO;
 import model.utente.UtenteDAOMethod;
 
 import javax.servlet.RequestDispatcher;
@@ -45,10 +44,8 @@ public class ServletInvioMessaggio extends HttpServlet {
         HttpSession session = request.getSession();
         Utente utenteLoggato = (Utente) session.getAttribute("utente");
 
-
         Date data2 = new Date(System.currentTimeMillis());
         Time time1 = new Time(System.currentTimeMillis());
-
 
         Messaggio message = new Messaggio();
         Utente utente=new Utente();
@@ -60,7 +57,7 @@ public class ServletInvioMessaggio extends HttpServlet {
         message.setTesto(messaggio);
         message.setData(data2);
         message.setOra(time1);
-        if (checkUtente(utenteLoggato,utente )){
+        if (checkUtente(utenteLoggato,utente)){
             invioMessaggio(utenteLoggato,message);
         }
         request.setAttribute("assistenza",avviso);
@@ -80,7 +77,7 @@ public class ServletInvioMessaggio extends HttpServlet {
      * @param message
      * @throws ServletException
      * @throws IOException
-     * @post serviceMessaggio= @pre.serviceMessaggio.doRetrieveByAllMessaggi()+1
+     * @post serviceMessaggio.size = @pre.serviceMessaggio.size.doRetrieveByAllMessaggi()+1.size
      */
     private void invioMessaggio (Utente utenteLoggato, Messaggio message) throws ServletException, IOException {
         message.setUtente(utenteLoggato);
