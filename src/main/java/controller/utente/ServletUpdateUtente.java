@@ -73,7 +73,6 @@ public class ServletUpdateUtente extends HttpServlet {
 
                 if (password.equals(nuovaPassword)) {
                     up = "La nuova password deve essere diversa da quella precedente";
-                    System.out.println("goooooooollllllll");
                 } else {
 
                     if (utenteDAO.updateUtente(utente)) {
