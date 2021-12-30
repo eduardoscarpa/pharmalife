@@ -27,6 +27,7 @@
 <jsp:include page="default/header.jsp"/>
 <h2 style="text-align: center"></h2>
 <div class="container_catalogo">
+
     <aside class="filter_container">
         <form action="ServletFilter" method="get">
             <div class="filtraggio">
@@ -55,23 +56,40 @@
     <div class="list_catalogo">
         <%for(Prodotto p : prodotti) {%>
         <article>
+
             <div class="price"><%=p.getPrezzo()%>€</div>
+
             <figure>
-               <%-- <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>" alt="Oki" height="160" width="160">--%>
+
                    <a href="ServletSchedaProdotto?value=<%=p.getCodiceProdotto()%>">
-                       <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>" alt="Oki" height="200" width="200">
+                       <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>" height="200" width="200">
                    </a>
-                <figcaption>
-                    <a href=""><%=p.getNome()%> </a>
+                <figcaption class="nomeProdotto">
+                    <%=p.getNome()%>
                 </figcaption>
             </figure>
-            <div class="disp">Disponibile</div>
+
+            <% if (p.getQuantita()<=0){ %>
+            <div class="disp" style="color:red">Terminato</div>
+            <% } else { %>
+            <div class="disp" style="color:lime">Disponibile</div>
+            <% } %>
+
             <input type="hidden" id="quantita" name="tot" value="1">
             <input type="hidden" id="idProdotto" name="prodotto" value="<%=p.getCodiceProdotto()%>">
-            <button onclick="aggiungiAlCarrello(<%=p.getCodiceProdotto()%>)">Aggiungi Al Carrello   <i class="fas fa-cart-plus"></i></button>
+
+            <% if (p.getQuantita()<=0){ %>
+            <button>Prodotto terminato   <i class="fas fa-exclamation-triangle"></i></button>
+            <% } else { %>
+            <button onclick="aggiungiAlCarrello(<%=p.getCodiceProdotto()%>)">Aggiungi al carrello   <i class="fas fa-cart-plus"></i></button>
+            <% } %>
+
         </article>
+
         <%}%>
+
     </div>
+
 </div>
 
 

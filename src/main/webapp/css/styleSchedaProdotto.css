@@ -88,6 +88,24 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+.aggiungiAlCarrelloTerminato{
+    width: 35%;
+    height:100%;
+    margin-left: 10px;
+    background-color: darkred;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition:  .6s;
+}
+.aggiungiAlCarrelloTerminato:hover{
+    background-color: white;
+    color: darkred;
+    border: 1px solid lightgrey;
+}
+
 .aggiungiAlCarrello{
     width: 35%;
     height:100%;

@@ -35,14 +35,22 @@
         <h2></h2>
 
         <div class="bottoni">
+            <% if (prodotto.getQuantita()<=0){ %>
+            <% } else { %>
             <div class="quantita">
                 <button name="incrementa" onclick="incrementa()"><i class="fas fa-plus"></i></button>
                 <input id="quantita" name="totale" type="number" min="1" max="30" value="1">
                 <button name="decremento" onclick="decrementa()"><i class="fas fa-minus"></i></button>
             </div>
-            <button onclick="aggiungiAlCarrello(<%=prodotto.getCodiceProdotto()%>)" class="aggiungiAlCarrello">Aggiungi Al Carrello</button>
+            <% } %>
+
+            <% if (prodotto.getQuantita()<=0){ %>
+            <button class="aggiungiAlCarrelloTerminato">Prodotto terminato</button>
+            <% } else { %>
+            <button onclick="aggiungiAlCarrello(<%=prodotto.getCodiceProdotto()%>)" class="aggiungiAlCarrello">Aggiungi al carrello</button>
+            <% } %>
+
             <%if(utente!=null) {  %>
-       <!--   <%--  <a href="ServletPreferiti?value=<%=prodotto.getCodiceProdotto()%>"> <i class="fas fa-heart" title="Aggiungi ai preferiti"></i></a> --%> -->
             <a onclick="aggiungiAiPreferiti(<%=prodotto.getCodiceProdotto()%>)"> <i class="fas fa-heart" title="Aggiungi ai preferiti"></i></a>
             <% }  %>
         </div>
