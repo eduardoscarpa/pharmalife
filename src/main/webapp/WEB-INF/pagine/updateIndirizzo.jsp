@@ -33,11 +33,11 @@
         <legend>Modifica Indirizzo</legend>
         <form action="ServletUpdateIndirizzo" method="post" onclick="">
             <div class="blocco">
-                <label for="via">Via</label>
+                <label for="via">VIA</label>
                 <input type="text" name="via" id="via">
             </div>
             <div class="blocco">
-                <label for="numero">Numero Civico</label>
+                <label for="numero">NUMERO CIVICO</label>
                 <input type="text" name="numero" id="numero">
             </div>
             <div class="blocco">
