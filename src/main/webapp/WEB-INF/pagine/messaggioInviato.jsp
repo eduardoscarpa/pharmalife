@@ -31,14 +31,22 @@
 <div class="bottone-ass">
 
     <form method="get" action="ServletLink">
-        <input type="button" value="Torna alla homepage" onclick="location.href='/ProgettoTSW-1.0-SNAPSHOT/index.jsp'" style="
+     <!--   <input type="button" value="Torna alla homepage" onclick="location.href='/ProgettoTSW-1.0-SNAPSHOT/index.jsp'" style="
     background-color: #096900;
     width: 18em;
     padding: .5em;
     color: #ffffff;
     border: solid thin limegreen;
     background-image: -webkit-gradient(linear, left top, left bottom,
-    from(#e9ede8), to(#096900),color-stop(0.4, limegreen));">
+    from(#e9ede8), to(#096900),color-stop(0.4, limegreen));">-->
+        <input type="button" value="Torna alla homepage" onclick="location.href='<%=request.getContextPath()%>/index.jsp'" style="
+        background-color: #096900;
+        width: 18em;
+        padding: .5em;
+        color: #ffffff;
+        border: solid thin limegreen;
+        background-image: -webkit-gradient(linear, left top, left bottom,
+        from(#e9ede8), to(#096900),color-stop(0.4, limegreen));">
     </form>
 
 </div>

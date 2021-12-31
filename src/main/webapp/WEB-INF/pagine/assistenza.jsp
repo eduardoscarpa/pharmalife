@@ -58,7 +58,7 @@
             </div>
             <div>
                 <label for="subject"></label>
-                <textarea id="subject" name="messaggio" placeholder="Il Tuo Messaggio" style="height:200px"></textarea>
+                <textarea id="subject" name="messaggio" placeholder="Il Tuo Messaggio" style="height:200px" required></textarea>
             </div>
             <input type="submit" value="INVIA">
         </form>

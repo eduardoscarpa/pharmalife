@@ -47,7 +47,7 @@ public class ServletRimuoviPreferito extends HttpServlet {
         HttpSession session = request.getSession();
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
         if(session != null) {
-             service = new UtenteDAO();
+            service = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
             if (utente != null) {
                 Prodotto p=new Prodotto();

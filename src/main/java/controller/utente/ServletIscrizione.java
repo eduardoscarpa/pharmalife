@@ -77,17 +77,17 @@ public class ServletIscrizione extends HttpServlet {
      * @post not isNotPresentCf(codiceFiscale)
      * @post doRetrieveByAllUtenti = @pre doRetrieveByAllUtenti+1
      */
-    private void registraUtente(String fn,String ln,String cf, String email,String psw,String psw_rip,String via,
+    public void registraUtente(String fn,String ln,String cf, String email,String psw,String psw_rip,String via,
                                 int numeroCivico,String cap,String telefono,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException {
             service=new UtenteDAO();
             Utente utente = new Utente();
-            Pattern nome = Pattern.compile("^([a-z A-Z]{3,})$");
+            Pattern nome = Pattern.compile("^([a-z A-Z]{3,20})$");
             Matcher matcher = nome.matcher(fn);
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "Il nome deve essere formato solo da lettere e deve contenere almeno tre caratteri.";
             }
-            Pattern cognome = Pattern.compile("^([a-z A-Z]{3,})$");
+            Pattern cognome = Pattern.compile("^([a-z A-Z]{3,20})$");
             matcher = cognome.matcher(ln);
             if (!matcher.matches()) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
@@ -166,7 +166,7 @@ public class ServletIscrizione extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private boolean isNotPresentCf(String codiceFiscale) throws SQLException {
+    public boolean isNotPresentCf(String codiceFiscale) throws SQLException {
 
         ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
         if (codiciFiscali.contains(codiceFiscale)){
@@ -177,7 +177,7 @@ public class ServletIscrizione extends HttpServlet {
         return true;
     }
 
-    private  void saveParameter(HttpServletRequest request,HttpServletResponse response ) throws SQLException, ServletException, IOException {
+    public   void saveParameter(HttpServletRequest request,HttpServletResponse response ) throws SQLException, ServletException, IOException {
 
         String fn=request.getParameter("nome");
         String ln=request.getParameter("cognome");

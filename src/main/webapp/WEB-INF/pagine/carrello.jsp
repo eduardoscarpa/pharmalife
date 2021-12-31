@@ -132,7 +132,9 @@
             <div class="text-centered">
                 <% if (utente != null) { %>
                 <form action="ServletOrdini" method="post">
-                    <input type="submit" href="ServletOrdini" class="button-outline" value="Vai alla cassa"></input>
+                    <input type="submit" href="ServletOrdini" class="button-outline" value="Vai alla cassa"
+                           ></input>
+
                 </form>
                 <% } else if (utente==null) { %>
                 <h3>ACCEDI PER ACQUISTARE </h3>
@@ -145,6 +147,8 @@
 <% }else { %>
 <h2>Non ci sono prodotti nel carrello</h2>
 <%  }  %>
+
+
 <jsp:include page="default/footer.jsp"/>
 </body>
 </html>

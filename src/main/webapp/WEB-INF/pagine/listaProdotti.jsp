@@ -32,23 +32,23 @@
         <form action="ServletFilter" method="get">
             <div class="filtraggio">
                 <label for="nome">Nome</label>
-                <input id="nome" type="text">
+                <input id="nome"  name="nome" type="text">
             </div>
             <div class="filtraggio">
                 <label for="categoria">Categoria</label>
-                <input id="categoria" type="text">
+                <input id="categoria" name="categoria" type="text">
             </div>
             <div class="filtraggio">
                 <label for="marchio">Marchio</label>
-                <input type="text">
+                <input type="text" id="marchio" name="marchio">
             </div>
             <div class="filtraggioPrezzo">
                 <label for="prezzoMin">Min </label>
-                <input type="text" placeholder="Da">
+                <input type="text" id="min" name="min" placeholder="Da">
             </div>
             <div class="filtraggioPrezzo">
                 <label for="prezzoMax">Max </label>
-                <input type="text" placeholder="A">
+                <input type="text" id="max" name="max" placeholder="A">
             </div>
             <input class="submit" type="submit" value="CERCA">
         </form>
@@ -56,11 +56,8 @@
     <div class="list_catalogo">
         <%for(Prodotto p : prodotti) {%>
         <article>
-
             <div class="price"><%=p.getPrezzo()%>€</div>
-
             <figure>
-
                    <a href="ServletSchedaProdotto?value=<%=p.getCodiceProdotto()%>">
                        <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>" height="200" width="200">
                    </a>
