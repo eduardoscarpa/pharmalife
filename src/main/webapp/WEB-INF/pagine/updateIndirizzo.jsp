@@ -22,7 +22,6 @@
         }
     </style>
     <script src="js/header.js" type="text/javascript" defer></script>
-    <script src="js/scriptUpdateIndirizzo.js" type="text/javascript" defer></script>
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
@@ -32,18 +31,18 @@
 <div class="container-form">
     <fieldset>
         <legend>Modifica Indirizzo</legend>
-        <form action="ServletUpdateIndirizzo" method="post" onsubmit="validateAddress()">
+        <form action="ServletUpdateIndirizzo" method="post" onclick="">
             <div class="blocco">
-                <label for="via">Via</label>
+                <label for="via">VIA</label>
                 <input type="text" name="via" id="via">
             </div>
             <div class="blocco">
-                <label for="numero">Numero Civico</label>
-                <input type="text" name="numero" id="IdnumeroCivico">
+                <label for="numero">NUMERO CIVICO</label>
+                <input type="text" name="numero" id="numero">
             </div>
             <div class="blocco">
                 <label for="cap">CAP</label>
-                <input type="text" name="cap" id="Idcap">
+                <input type="text" name="cap" id="cap">
             </div>
             <input type="hidden" name="codiceFiscale" value="<%=utente.getCodiceFiscale()%>">
             <input type="submit" value="MODIFICA">

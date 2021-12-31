@@ -41,15 +41,15 @@
 
             <div class="input-info">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome"  name="nome" value="<%=utente.getNome()%>" required>
+                <input type="text" id="nome"  name="nome" value="<%=utente.getNome()%>" readonly>
             </div>
             <div class="input-info">
                 <label for="cognome">Cognome</label>
-                <input type="text" id="cognome"  name="cognome" value="<%=utente.getCognome()%>" required >
+                <input type="text" id="cognome"  name="cognome" value="<%=utente.getCognome()%>" readonly>
             </div>
             <div class="input-info">
                 <label for="email">Email</label>
-                <input type="text" id="email"  name="email" value="<%=utente.getEmail()%>" required >
+                <input type="text" id="email"  name="email" value="<%=utente.getEmail()%>" readonly>
             </div>
             <div class="input-info">
                 <label for="password">Password</label>

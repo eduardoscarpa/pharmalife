@@ -19,7 +19,7 @@
 <body>
 <jsp:include page="default/header.jsp"/>
 <%if(utente!=null){  %>
-<h1 class="myAccount">Benvenuto <%=utente.getNome()%></h1>
+<h1 class="myAccount">Benvenuto in pHarmaLife, <%=utente.getNome()%></h1>
 <div class="flex-container">
     <div class="flex-item">
         <a href="ServletLink?scelta=info"><i class="fas fa-user-circle" style="background-color: white" ></i></a><br>
@@ -52,7 +52,7 @@
     </div>
 
     <div class="flex-item">
-        <a href=""> <i class="fas fa-heart" ></i></a>
+        <a href="ServletMostraPref"> <i class="fas fa-heart" ></i></a>
         <p>LISTA DEI DESIDERI</p>
     </div>
 
