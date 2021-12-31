@@ -22,6 +22,8 @@
         }
     </style>
     <script src="js/header.js" type="text/javascript" defer></script>
+    <script src="js/scriptUpdateIndirizzo.js" type="text/javascript" defer></script>
+
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
@@ -38,11 +40,11 @@
             </div>
             <div class="blocco">
                 <label for="numero">NUMERO CIVICO</label>
-                <input type="text" name="numero" id="numero">
+                <input type="text" name="numero" id="IdnumeroCivico">
             </div>
             <div class="blocco">
                 <label for="cap">CAP</label>
-                <input type="text" name="cap" id="cap">
+                <input type="text" name="cap" id="Idcap">
             </div>
             <input type="hidden" name="codiceFiscale" value="<%=utente.getCodiceFiscale()%>">
             <input type="submit" value="MODIFICA">
