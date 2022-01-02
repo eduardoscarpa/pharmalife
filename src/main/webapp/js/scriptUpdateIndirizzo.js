@@ -2,6 +2,7 @@ var patternCivico = new RegExp("^[0-9]{1,3}$");
 var patternCap = new RegExp("^[0-9]{5}$");
 let numeroCivico = $("#IdnumeroCivico");
 let cap = $("#Idcap");
+
 function validateAddress() {
     if (!patternCivico.test(numeroCivico.val())) {
         numeroCivico.addClass("lampeggioBordo");

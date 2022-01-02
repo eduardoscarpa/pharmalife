@@ -18,7 +18,7 @@
     <style>
         h2{
             text-align: center;
-            color: deepskyblue;
+            color: #00bfff;
         }
     </style>
     <script src="js/header.js" type="text/javascript" defer></script>
