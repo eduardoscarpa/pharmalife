@@ -198,7 +198,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      * @return ArrayList di oggetti di tipo Prodotto
      */
     @Override
-    public ArrayList<Prodotto> doRetraiveByAllProdotti() {
+    public ArrayList<Prodotto> doRetreiveByAllProdotti() {
         try (Connection connection = ConPool.getConnection()) {
             PreparedStatement ps;
             ps = connection.prepareStatement("select * from Prodotto");
@@ -404,7 +404,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      */
 
     @Override
-    public ArrayList<Prodotto> prodotttoSearch(String start) {
+    public ArrayList<Prodotto> prodottoSearch(String start) {
         try(Connection connection=ConPool.getConnection()){
             PreparedStatement ps=connection.prepareStatement("select  * from Prodotto where nome like ?");
             ps.setString(1, start + "%");

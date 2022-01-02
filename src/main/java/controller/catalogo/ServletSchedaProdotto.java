@@ -27,6 +27,16 @@ public class ServletSchedaProdotto extends HttpServlet {
         dispatcher.forward(request,response);
     }
 
+    /**
+     * Questo metodo permette di visualizzare la scheda di un prodotto con descrizione e prezzo
+     * @pre
+     * @param codiceProdotto
+     * @param request
+     * @throws ServletException
+     * @throws IOException
+     * @post
+     */
+
     private void VisualizzaSchedaProdotto(int codiceProdotto, HttpServletRequest request) throws ServletException, IOException {
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);

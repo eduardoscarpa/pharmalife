@@ -31,10 +31,25 @@ public class ServletFilter extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
+
+    /**
+     * Questo metodo serve per filtrare i prodotti in base a varie caratteristiche
+     * @pre
+     * @param nome
+     * @param categoria
+     * @param marchio
+     * @param min
+     * @param max
+     * @param request
+     * @throws ServletException
+     * @throws IOException
+     * @post
+     */
+
     private void filtraProdotti(String nome, String categoria, String marchio, double min, double max, HttpServletRequest request) throws ServletException, IOException {
         String opzione="filtro";
         ProdottoDAO prodottoDAO=new ProdottoDAO();
-        ArrayList<Prodotto> prodotti=prodottoDAO.doRetraiveByAllProdotti();
+        ArrayList<Prodotto> prodotti=prodottoDAO.doRetreiveByAllProdotti();
 
         if(nome!=null)
             prodotti=prodottoDAO.FiltroNome(prodotti,nome);

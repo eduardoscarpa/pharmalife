@@ -51,7 +51,7 @@ public class ServletTabellaAdmin extends HttpServlet {
         String dati="";
 
         ProdottoDAO prodottoDAO= new ProdottoDAO();
-        ArrayList<Prodotto> prodotti=prodottoDAO.doRetraiveByAllProdotti();
+        ArrayList<Prodotto> prodotti=prodottoDAO.doRetreiveByAllProdotti();
         Gson gson1= new Gson();
         dati=gson1.toJson(prodotti);
         response.setContentType("text/plain;charset=UTF-8");

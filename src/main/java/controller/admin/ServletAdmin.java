@@ -56,7 +56,7 @@ public class ServletAdmin extends HttpServlet {
         OrdineDAO ordineDAO= new OrdineDAO();
         request.setAttribute("messaggi",Integer.parseInt(String.valueOf(messaggioDAO1.doRetrieveByAllMessaggi().size())));
         request.setAttribute("utenti",Integer.parseInt(String.valueOf(utenteDAO.doRetrieveByAllUtenti().size())));
-        request.setAttribute("prodotti",Integer.parseInt(String.valueOf(prodottoDAO1.doRetraiveByAllProdotti().size())));
+        request.setAttribute("prodotti",Integer.parseInt(String.valueOf(prodottoDAO1.doRetreiveByAllProdotti().size())));
         request.setAttribute("ordini",Integer.parseInt(String.valueOf(ordineDAO.doRetraiveByAllOrdini().size())));
     }
 }

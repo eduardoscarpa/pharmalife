@@ -24,6 +24,16 @@ public class ServletListaProdotti extends HttpServlet {
         visualizzaListaProdotti(request, response);
     }
 
+    /**
+     * Questo metodo permette di visualizzare la lista di tutti i prodotti presenti nel catalogo
+     * @pre
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @post
+     */
+
     private void visualizzaListaProdotti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String opzione="Categoria";
         int idCategoria=Integer.parseInt(request.getParameter("value"));

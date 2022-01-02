@@ -35,10 +35,12 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
 
     /**
      * Questo metodo serve per aggiungere un prodotto al carrello
+     * @pre //
      * @param idProdotto del prodotto da aggiungere al carrello
      * @param request
      * @param response
      * @throws IOException
+     * @post
      */
     private void aggiuntaAlCarrello(int idProdotto, HttpServletRequest request, HttpServletResponse response) throws IOException{
         int totale=1;

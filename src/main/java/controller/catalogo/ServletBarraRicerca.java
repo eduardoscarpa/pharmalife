@@ -3,6 +3,7 @@ package controller.catalogo;
 import com.google.gson.Gson;
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,17 +15,19 @@ import java.util.ArrayList;
 
 @WebServlet(name = "ServletBarraRicerca", value = "/ServletBarraRicerca")
 public class ServletBarraRicerca extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String valore=request.getParameter("value");
         //String prodottiJson = ricercaProdotto(valore);
         ProdottoDAO prodottoDAO= new ProdottoDAO();
-        ArrayList<Prodotto> prodotti=prodottoDAO.prodotttoSearch(valore);
+        ArrayList<Prodotto> prodotti=prodottoDAO.prodottoSearch(valore);
         Gson gson= new Gson();
         String prodottiJson=gson.toJson(prodotti);
         response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("application/json");
         response.getWriter().write(prodottiJson);
+        ricercaProdotto(valore);
     }
 
     @Override
@@ -32,11 +35,19 @@ public class ServletBarraRicerca extends HttpServlet {
 
     }
 
+    /**
+     * Questo meteodo serve per ricercare un prodotto nel catalogo mediante barra di ricerca
+     * @pre //
+     * @param valore
+     * @throws IOException
+     * @post //
+     */
+
     private void ricercaProdotto(String valore) throws IOException {
-        ProdottoDAO prodottoDAO= new ProdottoDAO();
-        ArrayList<Prodotto> prodotti=prodottoDAO.prodotttoSearch(valore);
-        Gson gson= new Gson();
-        String prodottiJson=gson.toJson(prodotti);
-       // return prodottiJson;
+            ProdottoDAO prodottoDAO = new ProdottoDAO();
+            ArrayList<Prodotto> prodotti = prodottoDAO.prodottoSearch(valore);
+            Gson gson = new Gson();
+            String prodottiJson = gson.toJson(prodotti);
+            // return prodottiJson;
     }
 }
