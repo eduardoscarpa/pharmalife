@@ -1,9 +1,10 @@
 var patternCivico = new RegExp("^[0-9]{1,3}$");
 var patternCap = new RegExp("^[0-9]{5}$");
-let numeroCivico = $("#IdnumeroCivico");
-let cap = $("#Idcap");
+
 
 function validateAddress() {
+    let numeroCivico = $("#IdnumeroCivico");
+    let cap = $("#Idcap");
     if (!patternCivico.test(numeroCivico.val())) {
         numeroCivico.addClass("lampeggioBordo");
         alert("Il numero civico deve contenere solo numeri (da una a tre cifre)");
