@@ -2,10 +2,13 @@ package controller.admin;
 
 import model.categoria.Categoria;
 import model.categoria.CategoriaDAO;
+import model.categoria.CategoriaDAOMethod;
 import model.marchio.Marchio;
 import model.marchio.MarchioDAO;
+import model.marchio.MarchioDAOMethod;
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -14,6 +17,19 @@ import java.io.IOException;
 
 @WebServlet(name = "ServletInsertProdotto", value = "/ServletInsertProdotto")
 public class ServletInsertProdotto extends HttpServlet {
+    private MarchioDAOMethod marchioDAO;
+    private CategoriaDAOMethod categoriaDAO;
+    private ProdottoDAOMethod prodottoDAO;
+
+    public ServletInsertProdotto(MarchioDAO marchioDAO, CategoriaDAO categoriaDAO, ProdottoDAO prodottoDAO) {
+        this.marchioDAO = marchioDAO;
+        this.categoriaDAO = categoriaDAO;
+        this.prodottoDAO = prodottoDAO;
+    }
+
+    public ServletInsertProdotto() {
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -51,18 +67,18 @@ public class ServletInsertProdotto extends HttpServlet {
         Prodotto prodotto =new Prodotto();
         prodotto.setNome(nomeProdotto);
         prodotto.setPrezzo(prezzoProdotto);
-        MarchioDAO marchioDAO= new MarchioDAO();
+        marchioDAO= new MarchioDAO();
         Marchio marchio= marchioDAO.cercaMarchio(marchioProdotto);
         // marchio.setNomeMarchio(marchioProdotto);
         prodotto.setMarchio(marchio);
         prodotto.setQuantita(quantita);
         // System.out.println(prodotto.getMarchio().getNomeMarchio());
-        CategoriaDAO categoriaDAO= new CategoriaDAO();
+        categoriaDAO= new CategoriaDAO();
         Categoria categoria1= categoriaDAO.cercaCategoria(categoria);
         prodotto.setCategoria(categoria1);
         prodotto.setDescrrizione(descrizione);
         prodotto.setPathImmagine(pathImmagine);
-        ProdottoDAO prodottoDAO=new ProdottoDAO();
+        prodottoDAO=new ProdottoDAO();
         prodottoDAO.insertProdotto(prodotto);
     }
 }

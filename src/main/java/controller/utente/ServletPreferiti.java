@@ -2,8 +2,10 @@ package controller.utente;
 
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,17 @@ import java.io.IOException;
 
 @WebServlet(name = "ServletPreferiti", value = "/ServletPreferiti")
 public class ServletPreferiti extends HttpServlet {
+    private ProdottoDAOMethod prodottoDAO;
+    private UtenteDAOMethod utenteDAO;
+
+    public ServletPreferiti(){
+        prodottoDAO= new ProdottoDAO();
+        utenteDAO= new UtenteDAO();
+    }
+    public ServletPreferiti(ProdottoDAO prodottoDAO,UtenteDAO utenteDAO){
+        this.prodottoDAO=prodottoDAO;
+        this.utenteDAO=utenteDAO;
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -36,15 +49,15 @@ public class ServletPreferiti extends HttpServlet {
     private void inserisciProdottoAiPreferiti(HttpServletRequest request,HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
-        ProdottoDAO prodottoDAO=new ProdottoDAO();
+         prodottoDAO=new ProdottoDAO();
         Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
         String risposta="";
         if(session != null) {
-            UtenteDAO service = new UtenteDAO();
+             utenteDAO = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
 
             if (utente != null) {
-                service.insertPreferito(utente, prodotto);
+                utenteDAO.insertPreferito(utente, prodotto);
                 risposta="Prodotto aggiunto ai tuoi preferiti!";
             }
 

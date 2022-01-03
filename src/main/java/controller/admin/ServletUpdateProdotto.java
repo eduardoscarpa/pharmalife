@@ -16,6 +16,13 @@ import java.io.IOException;
 public class ServletUpdateProdotto extends HttpServlet {
     private ProdottoDAOMethod prodottoDAO;
 
+    public ServletUpdateProdotto(){
+        prodottoDAO= new ProdottoDAO();
+    }
+
+    public ServletUpdateProdotto(ProdottoDAO prodottoDAO){
+        this.prodottoDAO=prodottoDAO;
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,7 +53,7 @@ public class ServletUpdateProdotto extends HttpServlet {
         prodotto.setCodiceProdotto(idProdotto);
         prodotto.setNome(nome);
         prodotto.setPrezzo(prezzo);
-        ProdottoDAO prodottoDAO=new ProdottoDAO();
+        prodottoDAO=new ProdottoDAO();
         prodottoDAO.updateProdotto(prodotto);
 
     }

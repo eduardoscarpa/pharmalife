@@ -4,8 +4,10 @@ package controller.admin;
 import com.google.gson.Gson;
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -15,6 +17,17 @@ import java.util.ArrayList;
 
 @WebServlet(name = "ServletTabellaAdmin", value = "/ServletTabellaAdmin")
 public class ServletTabellaAdmin extends HttpServlet {
+    private UtenteDAOMethod utenteDAO;
+    private ProdottoDAOMethod prodottoDAO;
+
+    public ServletTabellaAdmin(UtenteDAO utenteDAO, ProdottoDAO prodottoDAO) {
+        this.utenteDAO = utenteDAO;
+        this.prodottoDAO = prodottoDAO;
+    }
+
+    public ServletTabellaAdmin() {
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -38,7 +51,7 @@ public class ServletTabellaAdmin extends HttpServlet {
     }
     private void visualizzaTabellaUtenti(HttpServletRequest request,HttpServletResponse response) throws IOException {
         String dati="";
-        UtenteDAO utenteDAO= new UtenteDAO();
+        utenteDAO= new UtenteDAO();
         ArrayList<Utente> utenti=utenteDAO.doRetrieveByAllUtenti();
         Gson gson= new Gson();
         dati=gson.toJson(utenti);
@@ -50,8 +63,8 @@ public class ServletTabellaAdmin extends HttpServlet {
     private void visualizzaTabellaProdotti(HttpServletRequest request,HttpServletResponse response) throws IOException {
         String dati="";
 
-        ProdottoDAO prodottoDAO= new ProdottoDAO();
-        ArrayList<Prodotto> prodotti=prodottoDAO.doRetreiveByAllProdotti();
+        prodottoDAO= new ProdottoDAO();
+        ArrayList<Prodotto> prodotti=prodottoDAO.doRetraiveByAllProdotti();
         Gson gson1= new Gson();
         dati=gson1.toJson(prodotti);
         response.setContentType("text/plain;charset=UTF-8");
