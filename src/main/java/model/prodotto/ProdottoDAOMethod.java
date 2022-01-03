@@ -21,4 +21,6 @@ public interface ProdottoDAOMethod {
     ArrayList<Prodotto> FiltroMarchio(ArrayList<Prodotto> prodotti, String marchio);
     ArrayList<Prodotto> FiltroMax(ArrayList<Prodotto> prodotti, double max);
     ArrayList<Prodotto> FiltroMin(ArrayList<Prodotto> prodotti, double min);
+
+    ArrayList<Prodotto> doRetraiveByAllProdotti();
 }

@@ -484,6 +484,38 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         return prodotti2;
     }
 
+    @Override
+    public ArrayList<Prodotto> doRetraiveByAllProdotti() {
+        try (Connection connection = ConPool.getConnection()) {
+            PreparedStatement ps;
+            ps = connection.prepareStatement("select * from Prodotto");
+            ResultSet rs = ps.executeQuery();
+            ArrayList<Prodotto> lista = new ArrayList<>();
+            while (rs.next()) {
+                Prodotto prodotto = new Prodotto();
+                prodotto.setCodiceProdotto(rs.getInt("codiceProdotto"));
+                prodotto.setNome(rs.getString("nome"));
+                prodotto.setPrezzo(rs.getDouble("prezzo"));
+                Marchio m= new Marchio();
+                m.setNomeMarchio(rs.getString("nomeMarchio"));
+                prodotto.setMarchio(m);
+                prodotto.setQuantita(rs.getInt("quantita"));
+                CategoriaDAO categoriaDAO= new CategoriaDAO();
+                Categoria categoria=categoriaDAO.cercaCategoriaById(rs.getInt("idCategoria"));
+                //  categoria.setIdCategoria(rs.getInt("idCategoria"));
+                prodotto.setCategoria(categoria);
+                prodotto.setPathImmagine(rs.getString("pathImmagine"));
+                prodotto.setDescrrizione(rs.getString("descrizione"));
+                lista.add(prodotto);
+
+            }
+            connection.close();
+            return lista;
+        } catch (SQLException sqlException) {
+            throw new RuntimeException(sqlException);
+        }
+    }
+
     /**
      * Questo metodo retituisce la lista di prodotti filtrata per il costo massimo
      * @param prodotti è la lista dei prodotti da filtrare

@@ -41,6 +41,7 @@ public class ServletDeleteProdottoAdmin extends HttpServlet {
      * @param idProdotto del prodotto da eliminare
      * @throws ServletException
      * @throws IOException
+     * @post @post prodottoDAO.doRetrieveByAllProdotti.size=@pre prodottoDAO.doRetrieveByAllProdotti.size-1
      */
     private void eliminaProdottoDalCatalogo(int idProdotto) throws ServletException, IOException {
 

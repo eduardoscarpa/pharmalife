@@ -60,7 +60,8 @@ public class ServletInsertProdotto extends HttpServlet {
      * @param categoria indica la categoria del prodotto
      * @param descrizione fornisce ulteriori info aggiuntive sul prodotto
      * @param pathImmagine indica la directory all'interno del progetto dove è posizionata l'immagine del prodotto
-     */
+     * @post prodottoDAO.doRetrieveByAllProdotti.size=@pre prodottoDAO.doRetrieveByAllProdotti.size+1
+     * */
     private void aggiungiProdottoAlCatalogo(String nomeProdotto,double prezzoProdotto,String marchioProdotto,int quantita,String categoria,
     String descrizione, String pathImmagine){
 

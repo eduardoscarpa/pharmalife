@@ -77,14 +77,20 @@ public class ServletInvioMessaggio extends HttpServlet {
      * @param message
      * @throws ServletException
      * @throws IOException
-     * @post serviceMessaggio.size = @pre.serviceMessaggio.size.doRetrieveByAllMessaggi()+1.size
+     * @post serviceMessaggio.doRetrieveByAllMessaggi.size = @pre.serviceMessaggio.size.doRetrieveByAllMessaggi()+1.size
      */
-    private void invioMessaggio (Utente utenteLoggato, Messaggio message) throws ServletException, IOException {
+    public void invioMessaggio (Utente utenteLoggato, Messaggio message) throws ServletException, IOException {
         message.setUtente(utenteLoggato);
         serviceMessaggio.insertMessaggio(message);
     }
 
-    private  boolean checkUtente(Utente utenteLoggato,Utente utente){
+    /**
+     *
+     * @param utenteLoggato che si trova in sessione
+     * @param utente
+     * @return
+     */
+    public boolean checkUtente(Utente utenteLoggato,Utente utente){
         if (utenteLoggato != null) {
             if (!utenteLoggato.getNome().equals(utente.getNome())) {
                 address = "WEB-INF/pagine/assistenza.jsp";

@@ -49,7 +49,16 @@ public class ServletTabellaAdmin extends HttpServlet {
 
         doGet(request,response);
     }
-    private void visualizzaTabellaUtenti(HttpServletRequest request,HttpServletResponse response) throws IOException {
+
+    /**
+     * Questo metodo permette all'amministratore di visualizzare una tabella contenete
+     * la lista di tutti gli utenti presenti iscritti alla piattaforma
+     *
+     * @param request
+     * @param response
+     * @throws IOException
+     */
+    public void visualizzaTabellaUtenti(HttpServletRequest request,HttpServletResponse response) throws IOException {
         String dati="";
         utenteDAO= new UtenteDAO();
         ArrayList<Utente> utenti=utenteDAO.doRetrieveByAllUtenti();
@@ -60,6 +69,14 @@ public class ServletTabellaAdmin extends HttpServlet {
 
         response.getWriter().write(dati);
     }
+
+    /**
+     * Questo metodo permette all'amministratore di visualizzare una tabella contenete la lista di tutti i prodotti presenti nel catalogo
+     *
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     private void visualizzaTabellaProdotti(HttpServletRequest request,HttpServletResponse response) throws IOException {
         String dati="";
 

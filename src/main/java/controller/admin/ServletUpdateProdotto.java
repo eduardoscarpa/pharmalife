@@ -15,9 +15,11 @@ import java.io.IOException;
 @WebServlet(name = "ServletUpdateAdminDUE", value = "/ServletUpdateAdminDUE")
 public class ServletUpdateProdotto extends HttpServlet {
     private ProdottoDAOMethod prodottoDAO;
+    private Prodotto prodotto;
 
     public ServletUpdateProdotto(){
         prodottoDAO= new ProdottoDAO();
+
     }
 
     public ServletUpdateProdotto(ProdottoDAO prodottoDAO){
@@ -25,7 +27,7 @@ public class ServletUpdateProdotto extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       //aggiornaProdotto(request,response);
         int idProdotto=Integer.parseInt(request.getParameter("idProdotto"));
         String nome=request.getParameter("nome");
@@ -48,7 +50,7 @@ public class ServletUpdateProdotto extends HttpServlet {
      * @param nome  nome da aggiornare  del prodotto
      * @param prezzo  nuovo prezzo del prodotto
      */
-    private void aggiornaProdotto(int idProdotto,String nome,double prezzo) throws  IOException {
+    public void aggiornaProdotto(int idProdotto,String nome,double prezzo) throws  IOException {
         Prodotto prodotto = new Prodotto();
         prodotto.setCodiceProdotto(idProdotto);
         prodotto.setNome(nome);
