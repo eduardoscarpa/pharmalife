@@ -3,6 +3,7 @@ package controller.utente;
 import model.prodotto.Prodotto;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +17,15 @@ import java.util.ArrayList;
 
 @WebServlet(name = "ServletMostraPref", value = "/ServletMostraPref")
 public class ServletMostraPref extends HttpServlet {
+
+    private UtenteDAOMethod utenteDAO;
+
+    public ServletMostraPref(){
+        utenteDAO= new UtenteDAO();
+    }
+    public ServletMostraPref(UtenteDAO utenteDAO){
+        this.utenteDAO=utenteDAO;
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -32,11 +42,11 @@ public class ServletMostraPref extends HttpServlet {
     private void visualizzaPreferiti(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         if (session != null) {
-            UtenteDAO service = new UtenteDAO();
+             utenteDAO = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
             if(utente != null) {
                 ArrayList<Prodotto> prodottiPref = new ArrayList<>();
-                prodottiPref = service.doRetrieveByAllPreferitiOfUtente(utente.getCodiceFiscale());
+                prodottiPref = utenteDAO.doRetrieveByAllPreferitiOfUtente(utente.getCodiceFiscale());
                 request.setAttribute("prodottiPref", prodottiPref);
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pagine/preferiti.jsp");

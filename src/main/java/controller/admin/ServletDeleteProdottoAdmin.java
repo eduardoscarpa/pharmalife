@@ -1,6 +1,7 @@
 package controller.admin;
 
 import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,14 @@ import java.io.IOException;
 
 @WebServlet(name = "ServletDeleteProdottoAdmin", value = "/ServletDeleteProdottoAdmin")
 public class ServletDeleteProdottoAdmin extends HttpServlet {
+    private ProdottoDAOMethod prodottoDAO;
+
+    public ServletDeleteProdottoAdmin(){
+        prodottoDAO=new ProdottoDAO();
+    }
+    public ServletDeleteProdottoAdmin(ProdottoDAO prodottoDAO){
+        this.prodottoDAO=prodottoDAO;
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProdotto=Integer.parseInt(request.getParameter("id"));
@@ -35,7 +44,7 @@ public class ServletDeleteProdottoAdmin extends HttpServlet {
      */
     private void eliminaProdottoDalCatalogo(int idProdotto) throws ServletException, IOException {
 
-        ProdottoDAO prodottoDAO= new ProdottoDAO();
+         prodottoDAO= new ProdottoDAO();
         prodottoDAO.deleteProdotto(idProdotto);
 
     }

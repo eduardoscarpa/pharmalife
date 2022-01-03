@@ -3,6 +3,7 @@ package controller.utente;
 import model.carrello.Carrello;
 import model.ordine.Ordine;
 import model.ordine.OrdineDAO;
+import model.ordine.OrdineDAOMethod;
 import model.prodotto.Prodotto;
 import model.utente.Utente;
 
@@ -20,6 +21,14 @@ import java.sql.Date;
 
 @WebServlet(name = "ServletOrdini", value = "/ServletOrdini")
 public class ServletOrdini extends HttpServlet {
+    private OrdineDAOMethod ordineDAO;
+
+    public ServletOrdini(){
+        ordineDAO= new OrdineDAO();
+    }
+    public ServletOrdini(OrdineDAO ordineDAO){
+        this.ordineDAO=ordineDAO;
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
@@ -39,7 +48,7 @@ public class ServletOrdini extends HttpServlet {
                 ordine.setOra(time);
                 ordine.setDataOrdine(date);
                 ordine.setUtente(utente);
-                OrdineDAO ordineDAO= new OrdineDAO();
+                 ordineDAO= new OrdineDAO();
                 ordineDAO.insertCarrello(ordine);
                 utente.setCarrello(null);
             }
