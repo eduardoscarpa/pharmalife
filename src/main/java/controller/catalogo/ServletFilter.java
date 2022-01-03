@@ -46,7 +46,7 @@ public class ServletFilter extends HttpServlet {
 
     /**
      * Questo metodo serve per filtrare i prodotti in base a varie caratteristiche
-     * @pre
+     * @pre //
      * @param nome
      * @param categoria
      * @param marchio
@@ -55,7 +55,7 @@ public class ServletFilter extends HttpServlet {
      * @param request
      * @throws ServletException
      * @throws IOException
-     * @post
+     * @post //
      */
 
     private void filtraProdotti(String nome, String categoria, String marchio, double min, double max, HttpServletRequest request) throws ServletException, IOException {
