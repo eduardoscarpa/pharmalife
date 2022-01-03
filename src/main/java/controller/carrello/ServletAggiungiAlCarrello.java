@@ -14,14 +14,16 @@ import java.io.IOException;
 @WebServlet(name = "ServletAggiungiAlCarrello", value = "/ServletAggiungiAlCarrello")
 public class ServletAggiungiAlCarrello extends HttpServlet {
 
-    private ProdottoDAOMethod serviceProdotto;
+    private ProdottoDAOMethod prodottoDAO;
 
-    public ServletAggiungiAlCarrello(ProdottoDAOMethod prodottoDAOMethod){
-        serviceProdotto=prodottoDAOMethod;
-    }
     public ServletAggiungiAlCarrello(){
-        serviceProdotto=new ProdottoDAO();
+        prodottoDAO=new ProdottoDAO();
     }
+
+    public ServletAggiungiAlCarrello(ProdottoDAO prodottoDAO){
+        this.prodottoDAO=prodottoDAO;
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProdotto=Integer.parseInt(request.getParameter("prodotto"));
@@ -52,8 +54,8 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
         Carrello carrello=(Carrello) session.getAttribute("carrello");
 
         Utente utente=(Utente) session.getAttribute("utente");
-        serviceProdotto= new ProdottoDAO();
-        Prodotto prodotto= serviceProdotto.cercaProdotto(idProdotto);
+        prodottoDAO= new ProdottoDAO();
+        Prodotto prodotto= prodottoDAO.cercaProdotto(idProdotto);
         if(utente!=null){
 
             if(utente.getCarrello()!=null){

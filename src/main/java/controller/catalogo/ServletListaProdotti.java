@@ -2,6 +2,7 @@ package controller.catalogo;
 
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -13,6 +14,15 @@ import java.util.ArrayList;
 public class ServletListaProdotti extends HttpServlet {
     private   static int start=0;
     private static  final  int end=9;
+    private ProdottoDAOMethod prodottoDAO;
+
+    public ServletListaProdotti() {
+        prodottoDAO = new ProdottoDAO();
+    }
+
+    public ServletListaProdotti(ProdottoDAO prodottoDAO) {
+        this.prodottoDAO = prodottoDAO;
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +50,7 @@ public class ServletListaProdotti extends HttpServlet {
         String nomejsp=request.getParameter("nomejsp");
         System.out.println("Nome jsp " + nomejsp);
 
-        ProdottoDAO prodottoDAO= new ProdottoDAO();
+        prodottoDAO= new ProdottoDAO();
         if(nomejsp.equals("header")){
             start=0;
         }else {

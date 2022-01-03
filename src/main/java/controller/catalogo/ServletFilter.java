@@ -2,6 +2,7 @@ package controller.catalogo;
 
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +16,17 @@ import java.util.ArrayList;
 
 @WebServlet(name = "ServletFilter", value = "/ServletFilter")
 public class ServletFilter extends HttpServlet {
+
+    private ProdottoDAOMethod prodottoDAO;
+
+    public ServletFilter() {
+        prodottoDAO = new ProdottoDAO();
+    }
+
+    public ServletFilter(ProdottoDAO prodottoDAO) {
+        this.prodottoDAO = prodottoDAO;
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nome=request.getParameter("nome");
@@ -48,7 +60,7 @@ public class ServletFilter extends HttpServlet {
 
     private void filtraProdotti(String nome, String categoria, String marchio, double min, double max, HttpServletRequest request) throws ServletException, IOException {
         String opzione="filtro";
-        ProdottoDAO prodottoDAO=new ProdottoDAO();
+        prodottoDAO=new ProdottoDAO();
         ArrayList<Prodotto> prodotti=prodottoDAO.doRetreiveByAllProdotti();
 
         if(nome!=null)

@@ -15,4 +15,10 @@ public interface ProdottoDAOMethod {
     public ArrayList<Prodotto> doRetraiveByAllProdottiByMarchio(String nomeMarchio);
     public ArrayList<Prodotto> cercaProdottiRoot(int root);
     public ArrayList<Prodotto> cercaProdotti(int root,int start, int end);
+
+    ArrayList<Prodotto> FiltroNome(ArrayList<Prodotto> prodotti, String nome);
+    ArrayList<Prodotto> FiltroCategoria(ArrayList<Prodotto> prodotti, String categoria);
+    ArrayList<Prodotto> FiltroMarchio(ArrayList<Prodotto> prodotti, String marchio);
+    ArrayList<Prodotto> FiltroMax(ArrayList<Prodotto> prodotti, double max);
+    ArrayList<Prodotto> FiltroMin(ArrayList<Prodotto> prodotti, double min);
 }

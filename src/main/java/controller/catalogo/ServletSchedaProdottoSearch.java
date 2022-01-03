@@ -2,6 +2,7 @@ package controller.catalogo;
 
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -10,6 +11,17 @@ import java.io.IOException;
 
 @WebServlet(name = "ServletSchedaProdottoSearch", value = "/ServletSchedaProdottoSearch")
 public class ServletSchedaProdottoSearch extends HttpServlet {
+
+    private ProdottoDAOMethod prodottoDAO;
+
+    public ServletSchedaProdottoSearch() {
+        prodottoDAO =  new ProdottoDAO();
+    }
+
+    public ServletSchedaProdottoSearch(ProdottoDAO prodottoDAO) {
+        this.prodottoDAO = prodottoDAO;
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
@@ -22,7 +34,7 @@ public class ServletSchedaProdottoSearch extends HttpServlet {
 
     private void ricercaSchedaProdotto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String nomeProdotto=request.getParameter("search");
-        ProdottoDAO prodottoDAO= new ProdottoDAO();
+        prodottoDAO= new ProdottoDAO();
         Prodotto prodotto= prodottoDAO.cercaProdottoByNome(nomeProdotto);
         request.setAttribute("prodotto",prodotto);
         RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/schedaProdotto.jsp");

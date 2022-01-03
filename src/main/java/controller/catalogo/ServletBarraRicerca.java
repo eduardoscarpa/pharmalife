@@ -16,11 +16,21 @@ import java.util.ArrayList;
 @WebServlet(name = "ServletBarraRicerca", value = "/ServletBarraRicerca")
 public class ServletBarraRicerca extends HttpServlet {
 
+    private ProdottoDAOMethod prodottoDAO;
+
+    public ServletBarraRicerca() {
+        prodottoDAO = new ProdottoDAO();
+    }
+
+    public ServletBarraRicerca(ProdottoDAO prodottoDAO) {
+        this.prodottoDAO = prodottoDAO;
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String valore=request.getParameter("value");
         //String prodottiJson = ricercaProdotto(valore);
-        ProdottoDAO prodottoDAO= new ProdottoDAO();
+        prodottoDAO = new ProdottoDAO();
         ArrayList<Prodotto> prodotti=prodottoDAO.prodottoSearch(valore);
         Gson gson= new Gson();
         String prodottiJson=gson.toJson(prodotti);
@@ -44,7 +54,7 @@ public class ServletBarraRicerca extends HttpServlet {
      */
 
     private void ricercaProdotto(String valore) throws IOException {
-            ProdottoDAO prodottoDAO = new ProdottoDAO();
+            prodottoDAO = new ProdottoDAO();
             ArrayList<Prodotto> prodotti = prodottoDAO.prodottoSearch(valore);
             Gson gson = new Gson();
             String prodottiJson = gson.toJson(prodotti);
