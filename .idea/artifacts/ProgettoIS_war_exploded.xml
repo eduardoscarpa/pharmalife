@@ -20,6 +20,9 @@
           <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy:1.10.5" />
           <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy-agent:1.10.5" />
           <element id="library" level="project" name="Maven: org.objenesis:objenesis:2.6" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.6.2" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-jdbc:10.1.0-M8" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-juli:10.1.0-M8" />
         </element>
       </element>
       <element id="directory" name="META-INF">

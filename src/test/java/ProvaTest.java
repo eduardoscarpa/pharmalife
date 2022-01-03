@@ -1,26 +1,22 @@
-package testing;
-
-
 import controller.utente.ServletIscrizione;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
 import model.utente.UtenteDAOMethod;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.stubbing.OngoingStubbing;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
-public class MockitoTest {
+public class ProvaTest {
 
    /* @Mock
     UtenteDAOMethod utenteDAOMethod;*/
+
     @Test
-    public  void test1() throws SQLException {
+    public  void utenteTest() throws SQLException {
 
         UtenteDAOMethod utenteDAOMethod= Mockito.mock(UtenteDAO.class);
         ArrayList<Utente> utentes= new ArrayList<>();
@@ -35,13 +31,15 @@ public class MockitoTest {
         ServletIscrizione servletIscrizione=Mockito.mock(ServletIscrizione.class);
         Mockito.when(servletIscrizione.isNotPresentCf("FRRCMN99R25A361J")).thenReturn(true);
         boolean val=servletIscrizione.isNotPresentCf("FRRCMN99R25A361J");
+
         //assertEquals(true, val);
         assertTrue("Ok", val);
+
 
        //assertEquals(2, users.size());
     }
     @Test
-    public void test2(){
+    public void utenteogTest(){
 
     }
 }

@@ -15,6 +15,8 @@ import java.io.IOException;
 
 @WebServlet(name = "ServletAccessoUtente", value = "/ServletAccessoUtente")
 public class ServletAccessoUtente extends HttpServlet {
+    private UtenteDAO  serviceUtenteDAO;
+    private Utente utente;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -45,7 +47,7 @@ public class ServletAccessoUtente extends HttpServlet {
      */
     private void logoutUtente(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
-        Utente utente = (Utente) session.getAttribute("utente");
+         utente = (Utente) session.getAttribute("utente");
         if (utente != null) {
             session.removeAttribute("utente");
             Carrello carrello = (Carrello) session.getAttribute("carrello");
@@ -68,12 +70,12 @@ public class ServletAccessoUtente extends HttpServlet {
      */
     private void loginUtente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Utente utente = (Utente) session.getAttribute("utente");
+         utente = (Utente) session.getAttribute("utente");
         if (utente == null) {
             String email = request.getParameter("emailUser");
             String password = request.getParameter("password");
-            UtenteDAO utenteDAO = new UtenteDAO();
-            utente = (Utente) utenteDAO.cercaUtentebyEmail(email, password);
+             serviceUtenteDAO = new UtenteDAO();
+            utente = (Utente) serviceUtenteDAO.cercaUtentebyEmail(email, password);
             if (utente != null) {
                 if (session.getAttribute("carrello") != null) {
                     session.removeAttribute("carrello");

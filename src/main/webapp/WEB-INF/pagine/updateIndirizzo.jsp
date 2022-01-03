@@ -18,7 +18,7 @@
     <style>
         h2{
             text-align: center;
-            color: deepskyblue;
+            color: #00bfff;
         }
     </style>
     <script src="js/header.js" type="text/javascript" defer></script>
@@ -33,7 +33,7 @@
 <div class="container-form">
     <fieldset>
         <legend>Modifica Indirizzo</legend>
-        <form action="ServletUpdateIndirizzo" method="post" onclick="">
+        <form action="ServletUpdateIndirizzo" method="post" onsubmit="validateAddress()">
             <div class="blocco">
                 <label for="via">VIA</label>
                 <input type="text" name="via" id="via">

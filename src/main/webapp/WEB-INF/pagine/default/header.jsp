@@ -85,7 +85,7 @@
             </div>
         </div>
     </div>
-    <a href="<%=request.getContextPath()%>/WEB-INF/pagine/infoAzienda.jsp" >Chi siamo</a>
+    <a href="ServletLink?scelta=infoAzienda" >Chi siamo</a>
   <%--  <a href="ServletLink?scelta=infoAzienda">Chi siamo</a>--%>
     <a href="ServletAssistenza">Contatti</a>
     <%if(utente!=null) {  %>
