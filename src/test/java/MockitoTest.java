@@ -30,8 +30,10 @@ public class MockitoTest {
         ServletIscrizione servletIscrizione=Mockito.mock(ServletIscrizione.class);
         Mockito.when(servletIscrizione.isNotPresentCf("FRRCMN99R25A361J")).thenReturn(true);
         boolean val=servletIscrizione.isNotPresentCf("FRRCMN99R25A361J");
+        Mockito.verify(servletIscrizione, Mockito.times(1)).isNotPresentCf("FRRCMN99R25A361J");
         //assertEquals(true, val);
-        assertTrue("Ok", val);
+
+       // assertTrue("Ok", val);
 
        //assertEquals(2, users.size());
     }

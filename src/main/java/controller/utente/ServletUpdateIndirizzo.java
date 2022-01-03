@@ -2,6 +2,7 @@ package controller.utente;
 
 import model.utente.Utente;
 import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -11,6 +12,14 @@ import java.io.IOException;
 @WebServlet(name = "ServletUpdateIndirizzo", value = "/ServletUpdateIndirizzo")
 public class ServletUpdateIndirizzo extends HttpServlet {
 
+    private UtenteDAOMethod utenteDAO;
+
+    public ServletUpdateIndirizzo(UtenteDAO utenteDAO){
+        this.utenteDAO=utenteDAO;
+    }
+    public ServletUpdateIndirizzo(){
+        utenteDAO=new UtenteDAO();
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -2,6 +2,7 @@ package controller.admin;
 
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,9 @@ import java.io.IOException;
 
 @WebServlet(name = "ServletUpdateAdminDUE", value = "/ServletUpdateAdminDUE")
 public class ServletUpdateProdotto extends HttpServlet {
+    private ProdottoDAOMethod prodottoDAO;
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       //aggiornaProdotto(request,response);

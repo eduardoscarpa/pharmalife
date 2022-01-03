@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
 public class ServletIscrizione extends HttpServlet {
     private String message;
     private String address;
+    private Matcher matcher;
 
     UtenteDAOMethod service;
 
@@ -81,63 +82,17 @@ public class ServletIscrizione extends HttpServlet {
                                 int numeroCivico,String cap,String telefono,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException {
             service=new UtenteDAO();
             Utente utente = new Utente();
-            Pattern nome = Pattern.compile("^([a-z A-Z]{3,20})$");
-            Matcher matcher = nome.matcher(fn);
-            if (!matcher.matches()) {
-                address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Il nome deve essere formato solo da lettere e deve contenere almeno tre caratteri.";
-            }
-            Pattern cognome = Pattern.compile("^([a-z A-Z]{3,20})$");
-            matcher = cognome.matcher(ln);
-            if (!matcher.matches()) {
-                address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Il cognome deve essere formato solo da lettere e deve contenere almeno tre caratteri.";
-            }
-
-            Pattern codiceFiscale = Pattern.compile("(^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$)");
-            matcher = codiceFiscale.matcher(cf);
-            if (!matcher.matches()) {
-                address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Codice fiscale non valido.";
-            }
-
-            Pattern e_mail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$");
-            matcher = e_mail.matcher(email);
-            if (!matcher.matches()) {
-                address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Formato email non valido.";
-            }
-
-            Pattern password = Pattern.compile("(^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20}$)");
-            matcher = password.matcher(psw);
-            if (!matcher.matches()) {
-                address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero.";
-            }
-
+            formatName(fn);
+            formatCodiceFiscale(cf);
+            formatEmail(email);
+            formatPassword(psw);
             if (!psw_rip.equals(psw)) {
                 address = "WEB-INF/pagine/iscriviti.jsp";
                 message = "La password non coincide con quella digitata precedentemente.";
             }
+            formatNumCivico(numeroCivico);
+            formatCap(cap);
 
-            Pattern numCivico = Pattern.compile(("^[0-9]{1,3}$"));
-            matcher = numCivico.matcher(Integer.toString(numeroCivico));
-            if (!matcher.matches()) {
-                address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Il numero civico deve contenere solo numeri (da una a tre cifre).";
-            }
-            Pattern codicePostale = Pattern.compile(("^[0-9]{5}$"));
-            matcher = codicePostale.matcher(cap);
-            if (!matcher.matches()) {
-                address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Il CAP deve contenere esattamente 5 cifre.";
-            }
-            Pattern numTelefono = Pattern.compile(("^[0-9]{10}$"));
-            matcher = numTelefono.matcher(telefono);
-            if (!matcher.matches()) {
-                address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "Il numero di telefono deve contenere esattamente 10 cifre.";
-            }
 
             utente.setNome(fn);
             utente.setCognome(ln);
@@ -197,5 +152,77 @@ public class ServletIscrizione extends HttpServlet {
             dispatcher.forward(request, response);
         }
     }
+
+    public void formatName(String fn){
+        Pattern nome = Pattern.compile("^([a-z A-Z]{3,20})$");
+         matcher = nome.matcher(fn);
+        if (!matcher.matches()) {
+            address = "WEB-INF/pagine/iscriviti.jsp";
+            message = "Il nome deve essere formato solo da lettere e deve contenere almeno tre caratteri.";
+
+        }
+    }
+    public void formatSurname(String ln){
+        Pattern cognome = Pattern.compile("^([a-z A-Z]{3,20})$");
+        matcher = cognome.matcher(ln);
+        if (!matcher.matches()) {
+            address = "WEB-INF/pagine/iscriviti.jsp";
+            message = "Il cognome deve essere formato solo da lettere e deve contenere almeno tre caratteri.";
+        }
+    }
+    public void formatCodiceFiscale(String cf){
+        Pattern codiceFiscale = Pattern.compile("(^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$)");
+        matcher = codiceFiscale.matcher(cf);
+        if (!matcher.matches()) {
+            address = "WEB-INF/pagine/iscriviti.jsp";
+            message = "Codice fiscale non valido.";
+        }
+    }
+
+    public void formatEmail(String email){
+        Pattern e_mail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$");
+        matcher = e_mail.matcher(email);
+        if (!matcher.matches()) {
+            address = "WEB-INF/pagine/iscriviti.jsp";
+            message = "Formato email non valido.";
+        }
+    }
+
+
+    public void formatPassword(String psw ){
+        Pattern password = Pattern.compile("(^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20}$)");
+        matcher = password.matcher(psw);
+        if (!matcher.matches()) {
+            address = "WEB-INF/pagine/iscriviti.jsp";
+            message = "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero.";
+        }
+    }
+
+    public void formatNumCivico(int numeroCivico ){
+        Pattern numCivico = Pattern.compile(("^[0-9]{1,3}$"));
+        matcher = numCivico.matcher(Integer.toString(numeroCivico));
+        if (!matcher.matches()) {
+            address = "WEB-INF/pagine/iscriviti.jsp";
+            message = "Il numero civico deve contenere solo numeri (da una a tre cifre).";
+        }
+    }
+
+    public void formatCap(String cap){
+        Pattern codicePostale = Pattern.compile(("^[0-9]{5}$"));
+        matcher = codicePostale.matcher(cap);
+        if (!matcher.matches()) {
+            address = "WEB-INF/pagine/iscriviti.jsp";
+            message = "Il CAP deve contenere esattamente 5 cifre.";
+        }
+    }
+    public void formatTel(String telefono){
+        Pattern numTelefono = Pattern.compile(("^[0-9]{10}$"));
+        matcher = numTelefono.matcher(telefono);
+        if (!matcher.matches()) {
+            address = "WEB-INF/pagine/iscriviti.jsp";
+            message = "Il numero di telefono deve contenere esattamente 10 cifre.";
+        }
+    }
+
 
 }
