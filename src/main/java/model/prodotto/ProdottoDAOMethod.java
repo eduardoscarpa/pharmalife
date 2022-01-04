@@ -11,7 +11,7 @@ public interface ProdottoDAOMethod {
     public void insertProdotto(Prodotto p);
     public void updateProdotto(Prodotto p);
 
-    public ArrayList<Prodotto> doRetreiveByAllProdotti();
+    public ArrayList<Prodotto> doRetrieveByAllProdotti();
     public ArrayList<Prodotto> doRetraiveByAllProdottiByMarchio(String nomeMarchio);
     public ArrayList<Prodotto> cercaProdottiRoot(int root);
     public ArrayList<Prodotto> cercaProdotti(int root,int start, int end);
