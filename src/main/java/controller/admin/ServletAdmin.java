@@ -44,7 +44,7 @@ public class ServletAdmin extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
             String valore=request.getParameter("value");
             String pagina="";
@@ -64,13 +64,13 @@ public class ServletAdmin extends HttpServlet {
             RequestDispatcher dispatcher=request.getRequestDispatcher(pagina);
             dispatcher.forward(request,response);
     }
-    private  void visualizzaMessaggi(HttpServletRequest request,HttpServletResponse response){
+    public void visualizzaMessaggi(HttpServletRequest request,HttpServletResponse response){
         messaggioDAO= new MessaggioDAO();
         ArrayList<Messaggio> messaggi= messaggioDAO.doRetrieveByAllMessaggi();
         request.setAttribute("messaggi",messaggi);
     }
 
-    private void visualizzaStatistiche(HttpServletRequest request,HttpServletResponse response){
+    public void visualizzaStatistiche(HttpServletRequest request,HttpServletResponse response){
          messaggioDAO= new MessaggioDAO();
          prodottoDAO= new ProdottoDAO();
          utenteDAO= new UtenteDAO();
