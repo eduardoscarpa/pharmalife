@@ -42,14 +42,14 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
      * @param request
      * @param response
      * @throws IOException
-     * @post
+     * @post getNumProdotti = @pre getNumProdotti + 1
      */
     private void aggiuntaAlCarrello(int idProdotto, HttpServletRequest request, HttpServletResponse response) throws IOException{
         int totale=1;
         if(request.getParameter("totale")!=null){
             totale=Integer.parseInt(request.getParameter("totale"));
         }
-        int prezzoTotale=0;
+        //int prezzoTotale=0;
         HttpSession session=request.getSession();
         Carrello carrello=(Carrello) session.getAttribute("carrello");
 

@@ -42,12 +42,12 @@ public class ServletRimuoviDalCarrello extends HttpServlet {
 
     /**
      * Questo metodo serve per rimuovere un prodotto dal carrello
-     * @pre session.contains(prodotto)
+     * @pre //
      * @param codiceProdotto del prodotto da eliminare dal carrello
      * @param request
      * @throws ServletException
      * @throws IOException
-     * @post
+     * @post getNumProdotti = @pre getNumProdotti - 1
      */
     private void rimozioneDalCarrello(int codiceProdotto, HttpServletRequest request) throws ServletException, IOException {
         serviceProdotto= new ProdottoDAO();

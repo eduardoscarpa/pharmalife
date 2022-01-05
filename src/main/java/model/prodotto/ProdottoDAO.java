@@ -198,7 +198,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      * @return ArrayList di oggetti di tipo Prodotto
      */
     @Override
-    public ArrayList<Prodotto> doRetreiveByAllProdotti() {
+    public ArrayList<Prodotto> doRetrieveByAllProdotti() {
         try (Connection connection = ConPool.getConnection()) {
             PreparedStatement ps;
             ps = connection.prepareStatement("select * from Prodotto");

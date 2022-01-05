@@ -48,6 +48,10 @@ public class Carrello {
         return prodotti;
     }
 
+    public int getNumProdotti() {
+        return prodotti.size();
+    }
+
     public void setProdotti(ArrayList<Prodotto> prodotti) {
         this.prodotti = prodotti;
     }

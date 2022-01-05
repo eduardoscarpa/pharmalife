@@ -32,6 +32,16 @@ public class ServletSchedaProdottoSearch extends HttpServlet {
         ricercaSchedaProdotto(request, response);
     }
 
+    /**
+     * Questo metodo consente di ricercare la scheda di un prodotto nel catalogo.
+     * @pre //
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @post
+     */
+
     private void ricercaSchedaProdotto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String nomeProdotto=request.getParameter("search");
         prodottoDAO= new ProdottoDAO();

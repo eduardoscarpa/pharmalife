@@ -35,6 +35,16 @@ public class ServletListaMarchi extends HttpServlet {
         visualizzaListaMarchi(request, response);
     }
 
+    /**
+     * Questo metodo consente di visualizzare la lista dei marchi disponibili nel catalogo.
+     * @pre //
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @post //
+     */
+
     private void visualizzaListaMarchi(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String opzione="Marchio";
         String nomeMarchio=(request.getParameter("value"));

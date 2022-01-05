@@ -40,12 +40,12 @@ public class ServletSchedaProdotto extends HttpServlet {
 
     /**
      * Questo metodo permette di visualizzare la scheda di un prodotto con descrizione e prezzo
-     * @pre
+     * @pre //
      * @param codiceProdotto
      * @param request
      * @throws ServletException
      * @throws IOException
-     * @post
+     * @post //
      */
 
     private void VisualizzaSchedaProdotto(int codiceProdotto, HttpServletRequest request) throws ServletException, IOException {
