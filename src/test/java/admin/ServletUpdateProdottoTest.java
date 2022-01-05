@@ -43,8 +43,8 @@ public class ServletUpdateProdottoTest {
         verify(requestDispatcher).forward(request, response);
         int id=Integer.parseInt(request.getParameter("idProdotto"));
 
-         //  verify(request).getParameter("idProdotto");
-        // verify(request).getParameter("nome");
+      //  verify(request).getParameter("idProdotto");
+       // verify(request).getParameter("nome");
        // verify(request).getParameter("prezzo");
 
         assertEquals(2,id );
