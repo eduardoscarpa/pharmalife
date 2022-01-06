@@ -43,7 +43,11 @@ public class ServletDeleteProdottoAdminTest {
 
 
     @Test
-    public void eliminaProdottoDalCatalogoTest() {
-
+    public void eliminaProdottoDalCatalogoTest() throws ServletException, IOException {
+        HttpServletRequest request= mock(HttpServletRequest.class);
+        when(request.getParameter("id")).thenReturn("1");
+        int id=Integer.parseInt(request.getParameter("id"));
+        servletDeleteProdottoAdmin.eliminaProdottoDalCatalogo(id);
+        verify(prodottoDAO).deleteProdotto(id);
     }
 }
