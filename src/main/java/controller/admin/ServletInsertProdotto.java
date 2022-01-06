@@ -28,6 +28,9 @@ public class ServletInsertProdotto extends HttpServlet {
     }
 
     public ServletInsertProdotto() {
+        marchioDAO= new MarchioDAO();
+        categoriaDAO= new CategoriaDAO();
+        prodottoDAO= new ProdottoDAO();
     }
 
     @Override
@@ -68,18 +71,15 @@ public class ServletInsertProdotto extends HttpServlet {
         Prodotto prodotto =new Prodotto();
         prodotto.setNome(nomeProdotto);
         prodotto.setPrezzo(prezzoProdotto);
-        marchioDAO= new MarchioDAO();
         Marchio marchio= marchioDAO.cercaMarchio(marchioProdotto);
         // marchio.setNomeMarchio(marchioProdotto);
         prodotto.setMarchio(marchio);
         prodotto.setQuantita(quantita);
         // System.out.println(prodotto.getMarchio().getNomeMarchio());
-        categoriaDAO= new CategoriaDAO();
         Categoria categoria1= categoriaDAO.cercaCategoria(categoria);
         prodotto.setCategoria(categoria1);
         prodotto.setDescrrizione(descrizione);
         prodotto.setPathImmagine(pathImmagine);
-        prodottoDAO=new ProdottoDAO();
         prodottoDAO.insertProdotto(prodotto);
     }
 }

@@ -25,12 +25,14 @@ public class ServletAdmin extends HttpServlet {
     private UtenteDAOMethod utenteDAO;
     private ProdottoDAOMethod prodottoDAO;
     private OrdineDAOMethod ordineDAO;
+    private ArrayList<Messaggio> messaggi;
 
     public ServletAdmin(){
         messaggioDAO= new MessaggioDAO();
         utenteDAO= new UtenteDAO();
         prodottoDAO= new ProdottoDAO();
         ordineDAO= new OrdineDAO();
+        messaggi= new ArrayList<>();
     }
     public ServletAdmin(MessaggioDAO messaggioDAO,UtenteDAO utenteDAO,ProdottoDAO prodottoDAO,OrdineDAO ordineDAO){
         this.messaggioDAO=messaggioDAO;
@@ -39,7 +41,7 @@ public class ServletAdmin extends HttpServlet {
         this.ordineDAO=ordineDAO;
     }
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             doPost(request,response);
     }
 
@@ -65,19 +67,19 @@ public class ServletAdmin extends HttpServlet {
             dispatcher.forward(request,response);
     }
     public void visualizzaMessaggi(HttpServletRequest request,HttpServletResponse response){
-        messaggioDAO= new MessaggioDAO();
-        ArrayList<Messaggio> messaggi= messaggioDAO.doRetrieveByAllMessaggi();
+
+        //ArrayList<Messaggio> messaggi= messaggioDAO.doRetrieveByAllMessaggi();
         request.setAttribute("messaggi",messaggi);
     }
 
     public void visualizzaStatistiche(HttpServletRequest request,HttpServletResponse response){
-         messaggioDAO= new MessaggioDAO();
-         prodottoDAO= new ProdottoDAO();
-         utenteDAO= new UtenteDAO();
-         ordineDAO= new OrdineDAO();
+
          request.setAttribute("messaggi",Integer.parseInt(String.valueOf(messaggioDAO.doRetrieveByAllMessaggi().size())));
          request.setAttribute("utenti",Integer.parseInt(String.valueOf(utenteDAO.doRetrieveByAllUtenti().size())));
          request.setAttribute("prodotti",Integer.parseInt(String.valueOf(prodottoDAO.doRetrieveByAllProdotti().size())));
          request.setAttribute("ordini",Integer.parseInt(String.valueOf(ordineDAO.doRetraiveByAllOrdini().size())));
+    }
+    public void setArrayMessaggi(ArrayList<Messaggio> messaggi){
+        this.messaggi=messaggi;
     }
 }

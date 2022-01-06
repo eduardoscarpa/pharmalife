@@ -47,7 +47,7 @@ public class ServletUpdateProdottoTest {
        // verify(request).getParameter("nome");
        // verify(request).getParameter("prezzo");
 
-        assertEquals(2,id );
+        assertEquals(1,id );
     }
 
     @Test
@@ -58,24 +58,9 @@ public class ServletUpdateProdottoTest {
         prodotto.setCodiceProdotto(1);
         prodotto.setNome("Oki");
         prodotto.setPrezzo(12);
-
-       /* ServletUpdateProdotto servletUpdateProdotto= new ServletUpdateProdotto(prodottoDAO);
-        HttpServletRequest request=Mockito.mock(HttpServletRequest.class);
-        HttpServletResponse response=Mockito.mock(HttpServletResponse.class);
-        Mockito.when(request.getParameter("idProdotto")).thenReturn("1");
-        Mockito.when(request.getParameter("nome")).thenReturn("1");
-        Mockito.when(request.getParameter("prezzo")).thenReturn("1");*/
-
-
-      //  RequestDispatcher requestDispatcher=Mockito.mock(RequestDispatcher.class);
-       // Mockito.when(request.getRequestDispatcher("index.jsp")).thenReturn(requestDispatcher);
-       // servletUpdateProdotto.doGet(request, response);
-        //servletUpdateProdotto.aggiornaProdotto(1, "Oki", 12);
-
         prodottoDAO.updateProdotto(prodotto);
-       // prodottoDAO.updateProdotto(prodotto);
-        //Mockito.verify(prodottoDAO, Mockito.times(2)).updateProdotto(prodotto);
-       // Mockito.verify(prodottoDAO).updateProdotto(prodotto);
         verify(prodottoDAO).updateProdotto(prodotto);
     }
+
+
 }

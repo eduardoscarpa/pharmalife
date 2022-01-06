@@ -22,17 +22,16 @@ public class ServletDeleteProdottoAdmin extends HttpServlet {
         this.prodottoDAO=prodottoDAO;
     }
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProdotto=Integer.parseInt(request.getParameter("id"));
         eliminaProdottoDalCatalogo(idProdotto);
-
         RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/admin/areaAmministratore.jsp");
         dispatcher.forward(request,response);
 
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
@@ -43,9 +42,8 @@ public class ServletDeleteProdottoAdmin extends HttpServlet {
      * @throws IOException
      * @post @post prodottoDAO.doRetrieveByAllProdotti.size=@pre prodottoDAO.doRetrieveByAllProdotti.size-1
      */
-    private void eliminaProdottoDalCatalogo(int idProdotto) throws ServletException, IOException {
+    public void eliminaProdottoDalCatalogo(int idProdotto) throws ServletException, IOException {
 
-         prodottoDAO= new ProdottoDAO();
         prodottoDAO.deleteProdotto(idProdotto);
 
     }

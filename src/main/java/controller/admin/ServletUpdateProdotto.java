@@ -27,7 +27,7 @@ public class ServletUpdateProdotto extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       //aggiornaProdotto(request,response);
+
         int idProdotto=Integer.parseInt(request.getParameter("idProdotto"));
         String nome=request.getParameter("nome");
         double prezzo=Double.parseDouble(request.getParameter("prezzo"));

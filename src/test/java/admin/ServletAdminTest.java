@@ -5,6 +5,7 @@ import model.messaggio.Messaggio;
 import model.messaggio.MessaggioDAO;
 import model.ordine.OrdineDAO;
 import model.prodotto.ProdottoDAO;
+import model.utente.Utente;
 import model.utente.UtenteDAO;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +17,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -36,22 +39,25 @@ public class ServletAdminTest {
     @Mock
     private HttpServletResponse response;
 
+    @Mock
+    private ArrayList<Messaggio> messaggi;
+
 
     private ServletAdmin servletAdmin;
     @Before
-    public void startUp(){
+    public void setUp(){
         MockitoAnnotations.initMocks(this);
         servletAdmin= new ServletAdmin(messaggioDAO,utenteDAO,prodottoDAO,ordineDAO);
+        messaggi= new ArrayList<>();
     }
 
     @Test
     public void doPostTest() throws ServletException, IOException {
-       // HttpServletRequest request=mock(HttpServletRequest.class);
-        //HttpServletResponse response=mock(HttpServletResponse.class);
+
         RequestDispatcher requestDispatcher=mock(RequestDispatcher.class);
         when(request.getParameter("value")).thenReturn("messaggi");
         when(request.getRequestDispatcher("WEB-INF/pagine/admin/assistenzaUtenti.jsp")).thenReturn(requestDispatcher);
-        //ServletAdmin servletAdmin= new ServletAdmin();
+        ServletAdmin servletAdmin= new ServletAdmin(messaggioDAO,utenteDAO,prodottoDAO,ordineDAO);
         servletAdmin.doPost(request,response);
         String val=request.getParameter("value");
         verify(requestDispatcher).forward(request, response);
@@ -61,14 +67,17 @@ public class ServletAdminTest {
 
     @Test
     public void visualizzaMessaggiTest(){
-        ArrayList<Messaggio> messaggi=new ArrayList<>();
+
+
+
         messaggi.add(new Messaggio());
         messaggi.add(new Messaggio());
-        messaggi.add(new Messaggio());
+        servletAdmin.setArrayMessaggi(messaggi);
         when(messaggioDAO.doRetrieveByAllMessaggi()).thenReturn(messaggi);
         int size=messaggioDAO.doRetrieveByAllMessaggi().size();
+        //messaggioDAO.doRetrieveByAllMessaggi();
         servletAdmin.visualizzaMessaggi(request,response);
         verify(messaggioDAO).doRetrieveByAllMessaggi();
-        assertEquals(3, size);
+        assertEquals(2, size);
     }
 }

@@ -67,6 +67,7 @@
             <artifactId>tomcat-jdbc</artifactId>
             <version>10.1.0-M8</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -96,12 +97,8 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
 
 
     </build>
-
-
-
 </project>
