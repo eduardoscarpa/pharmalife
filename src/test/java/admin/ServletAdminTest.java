@@ -3,7 +3,9 @@ package admin;
 import controller.admin.ServletAdmin;
 import model.messaggio.Messaggio;
 import model.messaggio.MessaggioDAO;
+import model.ordine.Ordine;
 import model.ordine.OrdineDAO;
+import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
@@ -17,9 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -38,17 +38,31 @@ public class ServletAdminTest {
     private HttpServletRequest request;
     @Mock
     private HttpServletResponse response;
-
     @Mock
     private ArrayList<Messaggio> messaggi;
+    @Mock
+    private ArrayList<Utente> utenti;
+    @Mock
+    private ArrayList<Prodotto> prodotti;
+    @Mock
+    private ArrayList<Ordine> ordini;
 
 
     private ServletAdmin servletAdmin;
+
+
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
         servletAdmin= new ServletAdmin(messaggioDAO,utenteDAO,prodottoDAO,ordineDAO);
         messaggi= new ArrayList<>();
+        utenti= new ArrayList<>();
+        prodotti= new ArrayList<>();
+        ordini= new ArrayList<>();
+        servletAdmin.setArrayOrdini(ordini);
+        servletAdmin.setArrayProdotti(prodotti);
+        servletAdmin.setArrayUtenti(utenti);
+        servletAdmin.setArrayMessaggi(messaggi);
     }
 
     @Test
@@ -68,16 +82,29 @@ public class ServletAdminTest {
     @Test
     public void visualizzaMessaggiTest(){
 
-
-
         messaggi.add(new Messaggio());
         messaggi.add(new Messaggio());
-        servletAdmin.setArrayMessaggi(messaggi);
+        //servletAdmin.setArrayMessaggi(messaggi);
         when(messaggioDAO.doRetrieveByAllMessaggi()).thenReturn(messaggi);
         int size=messaggioDAO.doRetrieveByAllMessaggi().size();
         //messaggioDAO.doRetrieveByAllMessaggi();
         servletAdmin.visualizzaMessaggi(request,response);
         verify(messaggioDAO).doRetrieveByAllMessaggi();
         assertEquals(2, size);
+    }
+
+    @Test
+    public void visualizzaStatisticheTest(){
+
+      //  servletAdmin.setArrayUtenti(utenti);
+       // when(utenteDAO.doRetrieveByAllUtenti()).thenReturn(utenti);
+        when(utenteDAO.doRetrieveByAllUtenti().size()).thenReturn(4);
+        int num = utenteDAO.doRetrieveByAllUtenti().size();
+        assertEquals(4, num);
+       /* request.setAttribute("messaggi", 4);
+        servletAdmin.visualizzaStatistiche(request, response);
+        verify(messaggioDAO).doRetrieveByAllMessaggi();
+        verify(request).setAttribute("messaggi", 4);
+        */
     }
 }
