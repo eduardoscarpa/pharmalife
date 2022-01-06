@@ -3,10 +3,13 @@ package controller.admin;
 import model.messaggio.Messaggio;
 import model.messaggio.MessaggioDAO;
 import model.messaggio.MessaggioDAOMethod;
+import model.ordine.Ordine;
 import model.ordine.OrdineDAO;
 import model.ordine.OrdineDAOMethod;
+import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
 import model.prodotto.ProdottoDAOMethod;
+import model.utente.Utente;
 import model.utente.UtenteDAO;
 import model.utente.UtenteDAOMethod;
 
@@ -26,6 +29,9 @@ public class ServletAdmin extends HttpServlet {
     private ProdottoDAOMethod prodottoDAO;
     private OrdineDAOMethod ordineDAO;
     private ArrayList<Messaggio> messaggi;
+    private ArrayList<Utente> utenti;
+    private ArrayList<Prodotto> prodotti;
+    private ArrayList<Ordine> ordini;
 
     public ServletAdmin(){
         messaggioDAO= new MessaggioDAO();
@@ -74,12 +80,38 @@ public class ServletAdmin extends HttpServlet {
 
     public void visualizzaStatistiche(HttpServletRequest request,HttpServletResponse response){
 
+         this.messaggi = messaggioDAO.doRetrieveByAllMessaggi();
+         this.utenti = utenteDAO.doRetrieveByAllUtenti();
+         this.prodotti = prodottoDAO.doRetrieveByAllProdotti();
+         this.ordini = ordineDAO.doRetraiveByAllOrdini();
+         int sizeMessaggi = messaggi.size();
+         int sizeUtenti = utenteDAO.doRetrieveByAllUtenti().size();
+         int sizeProdotti = prodotti.size();
+         int sizeOrdini = ordini.size();
+
+         request.setAttribute("messaggi", sizeMessaggi);
+         request.setAttribute("utenti", sizeUtenti);
+         request.setAttribute("prodotti", sizeProdotti);
+         request.setAttribute("ordini", sizeOrdini);
+
+         /*
          request.setAttribute("messaggi",Integer.parseInt(String.valueOf(messaggioDAO.doRetrieveByAllMessaggi().size())));
          request.setAttribute("utenti",Integer.parseInt(String.valueOf(utenteDAO.doRetrieveByAllUtenti().size())));
          request.setAttribute("prodotti",Integer.parseInt(String.valueOf(prodottoDAO.doRetrieveByAllProdotti().size())));
          request.setAttribute("ordini",Integer.parseInt(String.valueOf(ordineDAO.doRetraiveByAllOrdini().size())));
+          */
     }
+
     public void setArrayMessaggi(ArrayList<Messaggio> messaggi){
         this.messaggi=messaggi;
+    }
+    public void setArrayUtenti(ArrayList<Utente> utenti){
+        this.utenti=utenti;
+    }
+    public void setArrayProdotti(ArrayList<Prodotto> prodotti){
+        this.prodotti=prodotti;
+    }
+    public void setArrayOrdini(ArrayList<Ordine> ordini){
+        this.ordini=ordini;
     }
 }
