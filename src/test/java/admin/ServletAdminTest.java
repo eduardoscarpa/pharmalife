@@ -97,14 +97,17 @@ public class ServletAdminTest {
     public void visualizzaStatisticheTest(){
 
       //  servletAdmin.setArrayUtenti(utenti);
-       // when(utenteDAO.doRetrieveByAllUtenti()).thenReturn(utenti);
-        when(utenteDAO.doRetrieveByAllUtenti().size()).thenReturn(4);
-        int num = utenteDAO.doRetrieveByAllUtenti().size();
-        assertEquals(4, num);
-       /* request.setAttribute("messaggi", 4);
+        ArrayList<Utente> utentes= new ArrayList<>();
+        utentes.add(new Utente());
+        utentes.add(new Utente());
+        when(utenteDAO.doRetrieveByAllUtenti()).thenReturn(utentes);
+        //when(utenteDAO.doRetrieveByAllUtenti().size()).thenReturn(4);
+        int num = utentes.size();
+        assertEquals(2, num);
+        request.setAttribute("messaggi", num);
         servletAdmin.visualizzaStatistiche(request, response);
         verify(messaggioDAO).doRetrieveByAllMessaggi();
-        verify(request).setAttribute("messaggi", 4);
-        */
+        verify(request).setAttribute("messaggi", num);
+
     }
 }

@@ -75,6 +75,7 @@ public class ServletAdmin extends HttpServlet {
     public void visualizzaMessaggi(HttpServletRequest request,HttpServletResponse response){
 
         //ArrayList<Messaggio> messaggi= messaggioDAO.doRetrieveByAllMessaggi();
+        this.messaggi=messaggioDAO.doRetrieveByAllMessaggi();
         request.setAttribute("messaggi",messaggi);
     }
 
