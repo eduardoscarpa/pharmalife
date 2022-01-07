@@ -38,13 +38,11 @@ public class ServletAdminTest {
     private HttpServletRequest request;
     @Mock
     private HttpServletResponse response;
-    @Mock
+
+
     private ArrayList<Messaggio> messaggi;
-    @Mock
     private ArrayList<Utente> utenti;
-    @Mock
     private ArrayList<Prodotto> prodotti;
-    @Mock
     private ArrayList<Ordine> ordini;
 
 
@@ -59,10 +57,7 @@ public class ServletAdminTest {
         utenti= new ArrayList<>();
         prodotti= new ArrayList<>();
         ordini= new ArrayList<>();
-       /* servletAdmin.setArrayOrdini(ordini);
-        servletAdmin.setArrayProdotti(prodotti);
-        servletAdmin.setArrayUtenti(utenti);
-        servletAdmin.setArrayMessaggi(messaggi);*/
+
     }
 
     @Test

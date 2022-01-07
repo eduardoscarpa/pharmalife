@@ -53,4 +53,8 @@ public class ServletMostraPref extends HttpServlet {
             }
         }
     }
+
+    public void setArrayPreferiti(ArrayList<Prodotto> preferiti){
+        this.preferiti = preferiti;
+    }
 }
