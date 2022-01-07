@@ -23,10 +23,12 @@ public class ServletMostraPref extends HttpServlet {
 
     public ServletMostraPref(){
         utenteDAO = new UtenteDAO();
+        preferiti = new ArrayList<>();
     }
 
     public ServletMostraPref(UtenteDAO utenteDAO){
         this.utenteDAO = utenteDAO;
+        this.preferiti = new ArrayList<>();
     }
 
     @Override
@@ -44,17 +46,11 @@ public class ServletMostraPref extends HttpServlet {
     public void visualizzaPreferiti(HttpServletRequest request) throws ServletException, IOException {
         HttpSession session = request.getSession();
         if (session != null) {
-            utenteDAO = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
             if(utente != null) {
-                ArrayList<Prodotto> prodottiPref = new ArrayList<>();
-                prodottiPref = utenteDAO.doRetrieveByAllPreferitiOfUtente(utente.getCodiceFiscale());
-                request.setAttribute("prodottiPref", prodottiPref);
+                this.preferiti = utenteDAO.doRetrieveByAllPreferitiOfUtente(utente.getCodiceFiscale());
+                request.setAttribute("prodottiPref", preferiti);
             }
         }
-    }
-
-    public void setArrayPreferiti(ArrayList<Prodotto> preferiti){
-        this.preferiti = preferiti;
     }
 }

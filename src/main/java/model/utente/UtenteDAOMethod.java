@@ -10,8 +10,7 @@ import java.util.Optional;
 
 public interface UtenteDAOMethod {
 
-
-
+    //public UtenteDAO getUtenteDAO();
     public Utente cercaUtente (String codiceFiscale);
     public Utente cercaUtentebyEmail (String email,String password);
     public ArrayList<Prodotto> doRetrieveByAllPreferitiOfUtente(String codiceFiscale);
@@ -26,5 +25,5 @@ public interface UtenteDAOMethod {
     public boolean updateUtente(Utente utente);
     public boolean updateIndirizzoUtente(Utente utente);
     public ArrayList<Utente> doRetrieveByAllUtenti();
-   // public ArrayList<Utente> cercaUtenti(int start, int end);
+    // public ArrayList<Utente> cercaUtenti(int start, int end);
 }
