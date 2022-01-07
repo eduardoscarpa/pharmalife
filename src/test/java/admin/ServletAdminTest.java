@@ -38,13 +38,11 @@ public class ServletAdminTest {
     private HttpServletRequest request;
     @Mock
     private HttpServletResponse response;
-    @Mock
+
+
     private ArrayList<Messaggio> messaggi;
-    @Mock
     private ArrayList<Utente> utenti;
-    @Mock
     private ArrayList<Prodotto> prodotti;
-    @Mock
     private ArrayList<Ordine> ordini;
 
 
@@ -59,10 +57,7 @@ public class ServletAdminTest {
         utenti= new ArrayList<>();
         prodotti= new ArrayList<>();
         ordini= new ArrayList<>();
-        servletAdmin.setArrayOrdini(ordini);
-        servletAdmin.setArrayProdotti(prodotti);
-        servletAdmin.setArrayUtenti(utenti);
-        servletAdmin.setArrayMessaggi(messaggi);
+
     }
 
     @Test
@@ -86,7 +81,7 @@ public class ServletAdminTest {
         messaggi.add(new Messaggio());
         //servletAdmin.setArrayMessaggi(messaggi);
         when(messaggioDAO.doRetrieveByAllMessaggi()).thenReturn(messaggi);
-        int size=messaggioDAO.doRetrieveByAllMessaggi().size();
+        int size=messaggi.size();
         //messaggioDAO.doRetrieveByAllMessaggi();
         servletAdmin.visualizzaMessaggi(request,response);
         verify(messaggioDAO).doRetrieveByAllMessaggi();
@@ -95,19 +90,15 @@ public class ServletAdminTest {
 
     @Test
     public void visualizzaStatisticheTest(){
-
-      //  servletAdmin.setArrayUtenti(utenti);
-        ArrayList<Utente> utentes= new ArrayList<>();
-        utentes.add(new Utente());
-        utentes.add(new Utente());
-        when(utenteDAO.doRetrieveByAllUtenti()).thenReturn(utentes);
-        //when(utenteDAO.doRetrieveByAllUtenti().size()).thenReturn(4);
-        int num = utentes.size();
-        assertEquals(2, num);
+        //servletAdmin.setArrayUtenti(utenti);
+        utenti.add(new Utente());
+        utenti.add(new Utente());
+        when(utenteDAO.doRetrieveByAllUtenti()).thenReturn(utenti);
+        int num = utenti.size();
         request.setAttribute("messaggi", num);
         servletAdmin.visualizzaStatistiche(request, response);
         verify(messaggioDAO).doRetrieveByAllMessaggi();
         verify(request).setAttribute("messaggi", num);
-
+        assertEquals(2, num);
     }
 }

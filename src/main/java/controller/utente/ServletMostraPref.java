@@ -18,39 +18,43 @@ import java.util.ArrayList;
 @WebServlet(name = "ServletMostraPref", value = "/ServletMostraPref")
 public class ServletMostraPref extends HttpServlet {
 
-    private UtenteDAOMethod utenteDAO;
+    private UtenteDAO utenteDAO; //PRIMA ERA UtenteDAOMethod;
+    private ArrayList<Prodotto> preferiti;
 
     public ServletMostraPref(){
-        utenteDAO= new UtenteDAO();
+        utenteDAO = new UtenteDAO();
+        preferiti = new ArrayList<>();
     }
+
     public ServletMostraPref(UtenteDAO utenteDAO){
-        this.utenteDAO=utenteDAO;
-    }
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        visualizzaPreferiti(request,response);
+        this.utenteDAO = utenteDAO;
+        this.preferiti = new ArrayList<>();
     }
 
-
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        visualizzaPreferiti(request);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pagine/preferiti.jsp");
+        dispatcher.forward(request, response);
+    }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
-    private void visualizzaPreferiti(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+    public void visualizzaPreferiti(HttpServletRequest request) throws ServletException, IOException {
         HttpSession session = request.getSession();
         if (session != null) {
-             utenteDAO = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
             if(utente != null) {
-                ArrayList<Prodotto> prodottiPref = new ArrayList<>();
-                prodottiPref = utenteDAO.doRetrieveByAllPreferitiOfUtente(utente.getCodiceFiscale());
-                request.setAttribute("prodottiPref", prodottiPref);
+                this.preferiti = utenteDAO.doRetrieveByAllPreferitiOfUtente(utente.getCodiceFiscale());
+                request.setAttribute("prodottiPref", preferiti);
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pagine/preferiti.jsp");
-            dispatcher.forward(request, response);
         }
+    }
+
+    public void setArrayPreferiti(ArrayList<Prodotto> preferiti){
+        this.preferiti = preferiti;
     }
 }

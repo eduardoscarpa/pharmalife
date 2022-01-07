@@ -72,10 +72,10 @@ public class ServletInsertProdotto extends HttpServlet {
         prodotto.setNome(nomeProdotto);
         prodotto.setPrezzo(prezzoProdotto);
         Marchio marchio= marchioDAO.cercaMarchio(marchioProdotto);
-        // marchio.setNomeMarchio(marchioProdotto);
+
         prodotto.setMarchio(marchio);
         prodotto.setQuantita(quantita);
-        // System.out.println(prodotto.getMarchio().getNomeMarchio());
+
         Categoria categoria1= categoriaDAO.cercaCategoria(categoria);
         prodotto.setCategoria(categoria1);
         prodotto.setDescrrizione(descrizione);
