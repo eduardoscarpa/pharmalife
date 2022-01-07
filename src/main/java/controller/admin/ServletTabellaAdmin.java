@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class ServletTabellaAdmin extends HttpServlet {
     private UtenteDAOMethod utenteDAO;
     private ProdottoDAOMethod prodottoDAO;
+    private String dati;
 
     public ServletTabellaAdmin(UtenteDAO utenteDAO, ProdottoDAO prodottoDAO) {
         this.utenteDAO = utenteDAO;
@@ -29,7 +30,7 @@ public class ServletTabellaAdmin extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
        // String dati="";
         String lista=request.getParameter("lista");
@@ -40,8 +41,6 @@ public class ServletTabellaAdmin extends HttpServlet {
             case "prodotti":
                visualizzaTabellaProdotti(request,response);
         }
-
-
     }
 
     @Override
@@ -60,13 +59,12 @@ public class ServletTabellaAdmin extends HttpServlet {
      */
     public void visualizzaTabellaUtenti(HttpServletRequest request,HttpServletResponse response) throws IOException {
         String dati="";
-        utenteDAO= new UtenteDAO();
+       // utenteDAO= new UtenteDAO();
         ArrayList<Utente> utenti=utenteDAO.doRetrieveByAllUtenti();
         Gson gson= new Gson();
         dati=gson.toJson(utenti);
         response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("application/json");
-
         response.getWriter().write(dati);
     }
 
@@ -77,16 +75,15 @@ public class ServletTabellaAdmin extends HttpServlet {
      * @param response
      * @throws IOException
      */
-    private void visualizzaTabellaProdotti(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void visualizzaTabellaProdotti(HttpServletRequest request,HttpServletResponse response) throws IOException {
         String dati="";
 
-        prodottoDAO= new ProdottoDAO();
+        //prodottoDAO= new ProdottoDAO();
         ArrayList<Prodotto> prodotti=prodottoDAO.doRetrieveByAllProdotti();
         Gson gson1= new Gson();
         dati=gson1.toJson(prodotti);
         response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("application/json");
-
         response.getWriter().write(dati);
     }
 }

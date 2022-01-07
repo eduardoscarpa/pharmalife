@@ -106,5 +106,10 @@
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.6.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-jdbc:10.1.0-M8" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-juli:10.1.0-M8" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-module-junit4:2.0.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-module-junit4-common:2.0.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-reflect:2.0.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-core:2.0.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.javassist:javassist:3.27.0-GA" level="project" />
   </component>
 </module>
