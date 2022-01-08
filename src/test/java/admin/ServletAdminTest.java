@@ -38,6 +38,8 @@ public class ServletAdminTest {
     private HttpServletRequest request;
     @Mock
     private HttpServletResponse response;
+    @Mock
+    private RequestDispatcher dispatcher;
 
 
 
@@ -60,22 +62,34 @@ public class ServletAdminTest {
         prodotti= new ArrayList<>();
         ordini= new ArrayList<>();
 
+
     }
 
     @Test
-    public void doPostTest() throws ServletException, IOException {
+    public void doPostValueIsMessaggiTest() throws ServletException, IOException {
 
-        RequestDispatcher requestDispatcher=mock(RequestDispatcher.class);
+        //RequestDispatcher requestDispatcher=mock(RequestDispatcher.class);
         when(request.getParameter("value")).thenReturn("messaggi");
-        when(request.getRequestDispatcher("WEB-INF/pagine/admin/assistenzaUtenti.jsp")).thenReturn(requestDispatcher);
-        ServletAdmin servletAdmin= new ServletAdmin(messaggioDAO,utenteDAO,prodottoDAO,ordineDAO);
+        when(request.getRequestDispatcher("WEB-INF/pagine/admin/assistenzaUtenti.jsp")).thenReturn(dispatcher);
         servletAdmin.doPost(request,response);
         String val=request.getParameter("value");
-        verify(requestDispatcher).forward(request, response);
+        verify(dispatcher).forward(request, response);
         assertEquals("messaggi", val);
         //assertNotEquals("Non uguale", "messaggi", val);
     }
+    @Test
+    public void doPostValueIsStatisticheTest() throws ServletException, IOException {
 
+       // RequestDispatcher requestDispatcher=mock(RequestDispatcher.class);
+        when(request.getParameter("value")).thenReturn("statistiche");
+        when(request.getRequestDispatcher("WEB-INF/pagine/admin/statistiche.jsp")).thenReturn(dispatcher);
+       // ServletAdmin servletAdmin= new ServletAdmin(messaggioDAO,utenteDAO,prodottoDAO,ordineDAO);
+        servletAdmin.doPost(request,response);
+        String val=request.getParameter("value");
+        verify(dispatcher).forward(request, response);
+        assertEquals("statistiche", val);
+        //assertNotEquals("Non uguale", "messaggi", val);
+    }
     @Test
     public void visualizzaMessaggiTest(){
 

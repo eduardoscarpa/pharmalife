@@ -41,6 +41,9 @@ public class ServletTabellaAdmin extends HttpServlet {
             case "prodotti":
                visualizzaTabellaProdotti(request,response);
         }
+        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("application/json");
+        //response.getWriter().write(dati);
     }
 
     @Override
@@ -58,14 +61,14 @@ public class ServletTabellaAdmin extends HttpServlet {
      * @throws IOException
      */
     public void visualizzaTabellaUtenti(HttpServletRequest request,HttpServletResponse response) throws IOException {
-        String dati="";
+       // String dati="";
        // utenteDAO= new UtenteDAO();
         ArrayList<Utente> utenti=utenteDAO.doRetrieveByAllUtenti();
         Gson gson= new Gson();
         dati=gson.toJson(utenti);
-        response.setContentType("text/plain;charset=UTF-8");
+       /* response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("application/json");
-        response.getWriter().write(dati);
+        response.getWriter().write(dati);*/
     }
 
     /**
@@ -76,14 +79,14 @@ public class ServletTabellaAdmin extends HttpServlet {
      * @throws IOException
      */
     public void visualizzaTabellaProdotti(HttpServletRequest request,HttpServletResponse response) throws IOException {
-        String dati="";
+       // String dati="";
 
         //prodottoDAO= new ProdottoDAO();
         ArrayList<Prodotto> prodotti=prodottoDAO.doRetrieveByAllProdotti();
         Gson gson1= new Gson();
         dati=gson1.toJson(prodotti);
-        response.setContentType("text/plain;charset=UTF-8");
+       /* response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("application/json");
-        response.getWriter().write(dati);
+        response.getWriter().write(dati);*/
     }
 }
