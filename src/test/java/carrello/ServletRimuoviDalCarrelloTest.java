@@ -9,10 +9,14 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import static org.junit.Assert.*;
+import java.io.IOException;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class ServletRimuoviDalCarrelloTest {
 
@@ -36,8 +40,16 @@ public class ServletRimuoviDalCarrelloTest {
     }
 
     @Test
-    public void doGetTest(){
+    public void doGetTest() throws ServletException, IOException {
         when(request.getParameter("value")).thenReturn("1");
+        RequestDispatcher dispatcher=mock(RequestDispatcher.class);
+        when(request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp")).thenReturn(dispatcher);
+        int codice=Integer.parseInt(request.getParameter("value"));
+        servletRimuoviDalCarrello.doGet(request, response);
+        verify(request,times(2)).getParameter("value");
+        verify(dispatcher).forward(request, response);
+        assertEquals(1, codice);
+
 
     }
 }
