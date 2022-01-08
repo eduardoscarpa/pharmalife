@@ -16,22 +16,22 @@ import java.io.IOException;
 
 @WebServlet(name = "ServletRimuoviPreferito", value = "/ServletRimuoviPreferito")
 public class ServletRimuoviPreferito extends HttpServlet {
-    private UtenteDAOMethod service;
+    private UtenteDAOMethod utenteDAO; //prima era UtenteDAOMethod
 
-    public ServletRimuoviPreferito(UtenteDAOMethod service){
-        this.service=service;
+    public ServletRimuoviPreferito(UtenteDAO utenteDAO){
+        this.utenteDAO = utenteDAO;
     }
     public ServletRimuoviPreferito(){
-        service= new UtenteDAO();
+        utenteDAO = new UtenteDAO();
     }
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         rimuoviProdottoDaiPreferiti(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
@@ -43,16 +43,16 @@ public class ServletRimuoviPreferito extends HttpServlet {
      * @throws IOException
      * @post service.doRetrieveByAllPreferitiOfUtente.size=@pre.service.doRetrieveByAllPreferitiOfUtente.size-1
      */
-    private  void rimuoviProdottoDaiPreferiti(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+    public void rimuoviProdottoDaiPreferiti(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
         if(session != null) {
-            service = new UtenteDAO();
+            //utenteDAO = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
             if (utente != null) {
                 Prodotto p=new Prodotto();
                 p.setCodiceProdotto(codiceProdotto);
-                service.deletePreferito(utente,p);
+                utenteDAO.deletePreferito(utente,p);
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
             dispatcher.forward(request,response);

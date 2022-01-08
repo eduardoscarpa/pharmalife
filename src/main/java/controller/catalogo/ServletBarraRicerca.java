@@ -27,10 +27,9 @@ public class ServletBarraRicerca extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String valore=request.getParameter("value");
-        //String prodottiJson = ricercaProdotto(valore);
-        prodottoDAO = new ProdottoDAO();
+
         ArrayList<Prodotto> prodotti=prodottoDAO.prodottoSearch(valore);
         Gson gson= new Gson();
         String prodottiJson=gson.toJson(prodotti);
@@ -41,8 +40,7 @@ public class ServletBarraRicerca extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
     /**
@@ -53,11 +51,10 @@ public class ServletBarraRicerca extends HttpServlet {
      * @post //
      */
 
-    private void ricercaProdotto(String valore) throws IOException {
-            prodottoDAO = new ProdottoDAO();
+    public void ricercaProdotto(String valore) throws IOException {
+
             ArrayList<Prodotto> prodotti = prodottoDAO.prodottoSearch(valore);
             Gson gson = new Gson();
             String prodottiJson = gson.toJson(prodotti);
-            // return prodottiJson;
     }
 }

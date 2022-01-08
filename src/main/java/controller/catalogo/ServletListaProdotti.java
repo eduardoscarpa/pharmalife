@@ -25,12 +25,12 @@ public class ServletListaProdotti extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         visualizzaListaProdotti(request, response);
     }
 
@@ -44,13 +44,11 @@ public class ServletListaProdotti extends HttpServlet {
      * @post
      */
 
-    private void visualizzaListaProdotti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    public void visualizzaListaProdotti(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String opzione="Categoria";
         int idCategoria=Integer.parseInt(request.getParameter("value"));
         String nomejsp=request.getParameter("nomejsp");
-        System.out.println("Nome jsp " + nomejsp);
 
-        prodottoDAO= new ProdottoDAO();
         if(nomejsp.equals("header")){
             start=0;
         }else {
@@ -60,7 +58,6 @@ public class ServletListaProdotti extends HttpServlet {
 
 
         HttpSession session=request.getSession();
-        // System.out.println("start " + start + " end " +end);
         request.setAttribute("prodotti",prodotti);
         request.setAttribute("idCategoria",idCategoria);
         request.setAttribute("opzione",opzione);

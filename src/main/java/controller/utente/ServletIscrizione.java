@@ -37,7 +37,7 @@ public class ServletIscrizione extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        // String cf= request.getParameter("CodiceFiscale");
        // this.request=request1;
         //this.response=response;
@@ -52,7 +52,7 @@ public class ServletIscrizione extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
@@ -201,16 +201,19 @@ public class ServletIscrizione extends HttpServlet {
     }
 
 
-    public void formatPassword(String psw ){
+    //Metodo modificato
+    public static boolean formatPassword(String psw){
+        Matcher matcher;
         Pattern password = Pattern.compile("(^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20}$)");
         matcher = password.matcher(psw);
         if (!matcher.matches()) {
-            address = "WEB-INF/pagine/iscriviti.jsp";
-            message = "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero.";
+            String address = "WEB-INF/pagine/iscriviti.jsp";
+            String message = "La password deve contenere almeno una lettera minuscola, una maiuscola e un numero.";
         }
+        return matcher.matches();
     }
 
-    public void formatNumCivico(int numeroCivico ){
+    public void formatNumCivico(int numeroCivico){
         Pattern numCivico = Pattern.compile(("^[0-9]{1,3}$"));
         matcher = numCivico.matcher(Integer.toString(numeroCivico));
         if (!matcher.matches()) {

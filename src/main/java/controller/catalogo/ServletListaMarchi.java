@@ -26,12 +26,12 @@ public class ServletListaMarchi extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         visualizzaListaMarchi(request, response);
     }
 
@@ -45,11 +45,10 @@ public class ServletListaMarchi extends HttpServlet {
      * @post //
      */
 
-    private void visualizzaListaMarchi(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void visualizzaListaMarchi(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String opzione="Marchio";
         String nomeMarchio=(request.getParameter("value"));
         String nomejsp=request.getParameter("nomejsp");
-        System.out.println("Nome jsp " + nomejsp);
 
         prodottoDAO= new ProdottoDAO();
         if(nomejsp.equals("header")){
@@ -58,9 +57,6 @@ public class ServletListaMarchi extends HttpServlet {
             start+=9;
         }
         ArrayList<Prodotto> prodotti= prodottoDAO.cercaProdottiMarchio(nomeMarchio,start,end);
-
-
-        System.out.println("start " + start + " end " +end);
         request.setAttribute("prodotti",prodotti);
         request.setAttribute("opzione",opzione);
         request.setAttribute("nomeMarchio",nomeMarchio);

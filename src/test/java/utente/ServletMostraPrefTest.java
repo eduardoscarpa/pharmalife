@@ -1,6 +1,5 @@
 package utente;
 
-
 import controller.utente.ServletMostraPref;
 import model.prodotto.Prodotto;
 import model.utente.Utente;
@@ -24,16 +23,10 @@ public class ServletMostraPrefTest {
 
     @Mock
     private UtenteDAO utenteDAO;
-    /*
-    @Mock
-    private Utente utente;
-     */
     @Mock
     private HttpServletRequest request;
     @Mock
     private HttpServletResponse response;
-    @Mock
-    private HttpSession session;
 
     private ServletMostraPref servletMostraPref;
 
@@ -41,23 +34,15 @@ public class ServletMostraPrefTest {
     public void setUp(){
         MockitoAnnotations.initMocks(this);
         servletMostraPref = new ServletMostraPref(utenteDAO);
-        /*
-        preferiti = new ArrayList<>();
-        servletMostraPref.setArrayPreferiti(preferiti);
-         */
     }
 
     @Test
     public void doGetTest() throws ServletException, IOException {
-        //request = mock(HttpServletRequest.class);
-        //response = mock(HttpServletResponse.class);
         RequestDispatcher requestDispatcher = mock(RequestDispatcher.class);
         when(request.getRequestDispatcher("/WEB-INF/pagine/preferiti.jsp")).thenReturn(requestDispatcher);
         servletMostraPref.doGet(request, response);
         verify(requestDispatcher).forward(request, response);
     }
-
-
 
     @Test
     public void visualizzaPreferitiSessionNotNullTest() throws ServletException, IOException {

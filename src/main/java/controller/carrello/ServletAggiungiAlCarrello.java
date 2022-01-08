@@ -25,7 +25,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProdotto=Integer.parseInt(request.getParameter("prodotto"));
         aggiuntaAlCarrello(idProdotto, request, response);
     }
@@ -44,7 +44,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
      * @throws IOException
      * @post getNumProdotti = @pre getNumProdotti + 1
      */
-    private void aggiuntaAlCarrello(int idProdotto, HttpServletRequest request, HttpServletResponse response) throws IOException{
+    public void aggiuntaAlCarrello(int idProdotto, HttpServletRequest request, HttpServletResponse response) throws IOException{
         int totale=1;
         if(request.getParameter("totale")!=null){
             totale=Integer.parseInt(request.getParameter("totale"));
@@ -54,10 +54,9 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
         Carrello carrello=(Carrello) session.getAttribute("carrello");
 
         Utente utente=(Utente) session.getAttribute("utente");
-        prodottoDAO= new ProdottoDAO();
+
         Prodotto prodotto= prodottoDAO.cercaProdotto(idProdotto);
         if(utente!=null){
-
             if(utente.getCarrello()!=null){
                 prodotto.setPrezzoQuantita(totale);
                 utente.getCarrello().addProdotto(prodotto);

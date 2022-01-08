@@ -30,12 +30,12 @@ public class ServletOrdini extends HttpServlet {
         this.ordineDAO=ordineDAO;
     }
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session= request.getSession();
         Utente utente=(Utente) session.getAttribute("utente");
         if(utente!=null){
@@ -48,7 +48,7 @@ public class ServletOrdini extends HttpServlet {
                 ordine.setOra(time);
                 ordine.setDataOrdine(date);
                 ordine.setUtente(utente);
-                 ordineDAO= new OrdineDAO();
+                //ordineDAO= new OrdineDAO();
                 ordineDAO.insertCarrello(ordine);
                 utente.setCarrello(null);
             }
