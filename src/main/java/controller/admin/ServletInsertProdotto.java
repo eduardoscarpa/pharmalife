@@ -34,7 +34,7 @@ public class ServletInsertProdotto extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String nomeProdotto=request.getParameter("nome");
         double prezzoProdotto=Double.parseDouble(request.getParameter("prezzo"));
@@ -49,7 +49,7 @@ public class ServletInsertProdotto extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
@@ -65,17 +65,14 @@ public class ServletInsertProdotto extends HttpServlet {
      * @param pathImmagine indica la directory all'interno del progetto dove è posizionata l'immagine del prodotto
      * @post prodottoDAO.doRetrieveByAllProdotti.size=@pre prodottoDAO.doRetrieveByAllProdotti.size+1
      * */
-    private void aggiungiProdottoAlCatalogo(String nomeProdotto,double prezzoProdotto,String marchioProdotto,int quantita,String categoria,
-    String descrizione, String pathImmagine){
-
+    public void aggiungiProdottoAlCatalogo(String nomeProdotto,double prezzoProdotto,String marchioProdotto,int quantita,
+                                           String categoria, String descrizione, String pathImmagine){
         Prodotto prodotto =new Prodotto();
         prodotto.setNome(nomeProdotto);
         prodotto.setPrezzo(prezzoProdotto);
         Marchio marchio= marchioDAO.cercaMarchio(marchioProdotto);
-
         prodotto.setMarchio(marchio);
         prodotto.setQuantita(quantita);
-
         Categoria categoria1= categoriaDAO.cercaCategoria(categoria);
         prodotto.setCategoria(categoria1);
         prodotto.setDescrrizione(descrizione);
