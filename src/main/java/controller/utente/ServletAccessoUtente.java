@@ -74,7 +74,7 @@ public class ServletAccessoUtente extends HttpServlet {
         if (utente == null) {
             String email = request.getParameter("emailUser");
             String password = request.getParameter("password");
-             serviceUtenteDAO = new UtenteDAO();
+            serviceUtenteDAO = new UtenteDAO();
             utente = (Utente) serviceUtenteDAO.cercaUtentebyEmail(email, password);
             if (utente != null) {
                 if (session.getAttribute("carrello") != null) {

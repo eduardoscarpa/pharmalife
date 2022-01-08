@@ -13,16 +13,25 @@ import java.util.regex.Pattern;
 
 @WebServlet(name = "ServletUpdateUtente", value = "/ServletUpdateUtente")
 public class ServletUpdateUtente extends HttpServlet {
-    private UtenteDAOMethod serviceUtente;
+    //private UtenteDAOMethod serviceUtente;
+    private UtenteDAOMethod utenteDAO; //prima era un UtenteDAO
 
+    /*
     public  ServletUpdateUtente(UtenteDAOMethod utenteDAOMethod){
         serviceUtente=utenteDAOMethod;
     }
-    private ServletUpdateUtente(){
-        serviceUtente=new UtenteDAO();
+     */
+
+    public ServletUpdateUtente(UtenteDAO utenteDAO) {
+        this.utenteDAO = utenteDAO;
     }
+
+    public ServletUpdateUtente(){
+        this.utenteDAO = new UtenteDAO();
+    }
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String codiceFiscale=request.getParameter("codiceFiscale");
         String nomeUtente=request.getParameter("nome");
@@ -31,11 +40,12 @@ public class ServletUpdateUtente extends HttpServlet {
         String password=request.getParameter("password");
         String nuovaPassword=request.getParameter("newPassword");
         aggiornaDatiUtente(codiceFiscale,nomeUtente,cognomeUtente,email,password,nuovaPassword,request,response);
-
+        RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/InfoUtente.jsp");
+        dispatcher.forward(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         doGet(request,response);
     }
@@ -53,7 +63,7 @@ public class ServletUpdateUtente extends HttpServlet {
      * @throws IOException
      * @post //
      */
-    private  void aggiornaDatiUtente(String codiceFiscale,String nomeUtente,String cognomeUtente,
+    public void aggiornaDatiUtente(String codiceFiscale,String nomeUtente,String cognomeUtente,
     String email,String password,String nuovaPassword,HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
 
         Utente utente= new Utente();
@@ -62,9 +72,9 @@ public class ServletUpdateUtente extends HttpServlet {
         utente.setCognome(cognomeUtente);
         utente.setEmail(email);
         utente.criptPassword(password);
-        serviceUtente= new UtenteDAO();
+        //utenteDAO = new UtenteDAO();
         HttpSession session= request.getSession();
-        Utente utente1=serviceUtente.cercaUtente(codiceFiscale);
+        Utente utente1=utenteDAO.cercaUtente(codiceFiscale);
         Pattern pattern = Pattern.compile("^((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20})$");
         Matcher matcher = pattern.matcher(nuovaPassword);
         String up="";
@@ -77,9 +87,9 @@ public class ServletUpdateUtente extends HttpServlet {
                 if (password.equals(nuovaPassword)) {
                     up = "La nuova password deve essere diversa da quella precedente";
                 } else {
-                    if (serviceUtente.updateUtente(utente)) {
+                    if (utenteDAO.updateUtente(utente)) {
                         up = "Dati Aggiornati Correttamente";
-                        Utente u = (Utente) serviceUtente.cercaUtente(utente.getCodiceFiscale());
+                        Utente u = (Utente) utenteDAO.cercaUtente(utente.getCodiceFiscale());
                         if (utente != null) {
                             session.setAttribute("utente", u);
                         }
@@ -90,8 +100,5 @@ public class ServletUpdateUtente extends HttpServlet {
             }
         }
         request.setAttribute("update",up);
-        RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/InfoUtente.jsp");
-        dispatcher.forward(request,response);
-
     }
 }

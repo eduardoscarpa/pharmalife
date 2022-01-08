@@ -18,7 +18,7 @@ import java.util.ArrayList;
 @WebServlet(name = "ServletMostraPref", value = "/ServletMostraPref")
 public class ServletMostraPref extends HttpServlet {
 
-    private UtenteDAO utenteDAO; //PRIMA ERA UtenteDAOMethod;
+    private UtenteDAOMethod utenteDAO; //PRIMA ERA UtenteDAOMethod;
     private ArrayList<Prodotto> preferiti;
 
     public ServletMostraPref(){
@@ -52,9 +52,5 @@ public class ServletMostraPref extends HttpServlet {
                 request.setAttribute("prodottiPref", preferiti);
             }
         }
-    }
-
-    public void setArrayPreferiti(ArrayList<Prodotto> preferiti){
-        this.preferiti = preferiti;
     }
 }

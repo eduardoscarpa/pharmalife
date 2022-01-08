@@ -1,8 +1,9 @@
-/*
 package utente;
 
 import controller.utente.ServletMostraPref;
 import controller.utente.ServletOrdini;
+import model.ordine.Ordine;
+import model.ordine.OrdineDAO;
 import model.prodotto.Prodotto;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
@@ -25,13 +26,17 @@ import static org.mockito.Mockito.*;
 public class ServletOrdiniTest  {
 
     @Mock
-    private ServletOrdini servletOrdini;
+    OrdineDAO ordineDAO;
+    @Mock
+    Ordine ordine;
+    @Mock
+    Utente utente;
     @Mock
     private HttpServletRequest request;
     @Mock
     private HttpServletResponse response;
-    @Mock
-    private RequestDispatcher requestDispatcher;
+
+    private ServletOrdini servletOrdini;
 
     @Before
     public void setUp(){
@@ -41,19 +46,16 @@ public class ServletOrdiniTest  {
 
     @Test
     public void doPostTest() throws ServletException, IOException {
-        //request = mock(HttpServletRequest.class);
-        //response = mock(HttpServletResponse.class);
         HttpSession session = mock(HttpSession.class);
+        RequestDispatcher requestDispatcher=mock(RequestDispatcher.class);
         when(request.getSession()).thenReturn(session);
-        when(request.getSession().getAttribute("utente")).thenReturn(session);
+        //when(request.getSession().getAttribute("utente")).thenReturn(session);
+        session.setAttribute("utente", ordine);
+        //Utente utente = new Utente();
+        when(session.getAttribute("utente")).thenReturn(utente);
         //RequestDispatcher requestDispatcher = mock(RequestDispatcher.class);
         when(request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp")).thenReturn(requestDispatcher);
         servletOrdini.doPost(request, response);
         verify(requestDispatcher).forward(request, response);
-
     }
-
-
 }
-
-     */

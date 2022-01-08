@@ -48,7 +48,7 @@ public class ServletOrdini extends HttpServlet {
                 ordine.setOra(time);
                 ordine.setDataOrdine(date);
                 ordine.setUtente(utente);
-                ordineDAO= new OrdineDAO();
+                //ordineDAO= new OrdineDAO();
                 ordineDAO.insertCarrello(ordine);
                 utente.setCarrello(null);
             }

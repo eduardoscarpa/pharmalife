@@ -22,21 +22,22 @@ public class ServletUpdateIndirizzo extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String via=request.getParameter("via");
         int numero=Integer.parseInt(request.getParameter("numero"));
         String cap=request.getParameter("cap");
         String codiceFiscale=request.getParameter("codiceFiscale");
         aggiornaIndirizzoUtente(via,numero,cap,codiceFiscale,request,response);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/updateIndirizzo.jsp");
+        dispatcher.forward(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
     /**
-     *
      * @param via
      * @param numero
      * @param cap
@@ -47,20 +48,19 @@ public class ServletUpdateIndirizzo extends HttpServlet {
      * @throws IOException
      * @post
      */
-    private  void aggiornaIndirizzoUtente(String via,int numero,String cap,String codiceFiscale,
+
+    public void aggiornaIndirizzoUtente(String via,int numero,String cap,String codiceFiscale,
                                           HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         Utente utente= new Utente();
         utente.setVia(via);
         utente.setNumeroCivico(numero);
         utente.setCap(cap);
         utente.setCodiceFiscale(codiceFiscale);
-        UtenteDAO utenteDAO= new UtenteDAO();
+        //UtenteDAO utenteDAO= new UtenteDAO();
         if(utenteDAO.updateIndirizzoUtente(utente)){
             request.setAttribute("updateAddress","Il nuovo indirizzo è stato aggiornato correttamente.");
         }else {
             request.setAttribute("updateAddress","Errore durante l'aggiornamento dell'indirizzo.");
         }
-        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/updateIndirizzo.jsp");
-        dispatcher.forward(request,response);
     }
 }
