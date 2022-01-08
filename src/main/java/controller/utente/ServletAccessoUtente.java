@@ -17,8 +17,20 @@ import java.io.IOException;
 public class ServletAccessoUtente extends HttpServlet {
     private UtenteDAO  serviceUtenteDAO;
     private Utente utente;
+
+
+    public ServletAccessoUtente(){
+        this.utente=new Utente();
+        this.serviceUtenteDAO=new UtenteDAO();
+    }
+
+    public ServletAccessoUtente(UtenteDAO serviceUtenteDAO,Utente utente){
+        this.utente=utente;
+        this.serviceUtenteDAO=serviceUtenteDAO;
+    }
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String valore = request.getParameter("value");
         switch (valore) {
@@ -28,10 +40,13 @@ public class ServletAccessoUtente extends HttpServlet {
             case "logout":
                 logoutUtente(request,response);
         }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pagine/formLogin.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
@@ -45,7 +60,7 @@ public class ServletAccessoUtente extends HttpServlet {
      * @throws IOException
      * @post !session.contains(utente)
      */
-    private void logoutUtente(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void logoutUtente(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
          utente = (Utente) session.getAttribute("utente");
         if (utente != null) {
@@ -68,13 +83,13 @@ public class ServletAccessoUtente extends HttpServlet {
      * @throws IOException
      * @post session.contains(utente)
      */
-    private void loginUtente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void loginUtente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
          utente = (Utente) session.getAttribute("utente");
         if (utente == null) {
             String email = request.getParameter("emailUser");
             String password = request.getParameter("password");
-             serviceUtenteDAO = new UtenteDAO();
+             //serviceUtenteDAO = new UtenteDAO();
             utente = (Utente) serviceUtenteDAO.cercaUtentebyEmail(email, password);
             if (utente != null) {
                 if (session.getAttribute("carrello") != null) {
@@ -84,8 +99,7 @@ public class ServletAccessoUtente extends HttpServlet {
                 response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));
             } else {
                 request.setAttribute("errore", "Utente non trovato!");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pagine/formLogin.jsp");
-                dispatcher.forward(request, response);
+
             }
         }
     }

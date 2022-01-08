@@ -132,6 +132,18 @@ public class ServletIscrizione extends HttpServlet {
         return true;
     }
 
+//FARE
+    public boolean isNotPresentEmail(String codiceFiscale) throws SQLException {
+
+        ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
+        if (codiciFiscali.contains(codiceFiscale)){
+            address = "WEB-INF/pagine/iscriviti.jsp";
+            message="Questo codice fiscale è già presente nel sistema!";
+            return  false;
+        }
+        return true;
+    }
+
     public   void saveParameter(HttpServletRequest request,HttpServletResponse response ) throws SQLException, ServletException, IOException {
 
         String fn=request.getParameter("nome");
