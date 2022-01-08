@@ -23,12 +23,12 @@ public class ServletSchedaProdottoSearch extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ricercaSchedaProdotto(request, response);
     }
 
@@ -42,9 +42,8 @@ public class ServletSchedaProdottoSearch extends HttpServlet {
      * @post
      */
 
-    private void ricercaSchedaProdotto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    public void ricercaSchedaProdotto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String nomeProdotto=request.getParameter("search");
-        prodottoDAO= new ProdottoDAO();
         Prodotto prodotto= prodottoDAO.cercaProdottoByNome(nomeProdotto);
         request.setAttribute("prodotto",prodotto);
         RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/schedaProdotto.jsp");

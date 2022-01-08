@@ -28,7 +28,7 @@ public class ServletFilter extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nome=request.getParameter("nome");
         String categoria=request.getParameter("categoria");
         String marchio=request.getParameter("marchio");
@@ -40,7 +40,7 @@ public class ServletFilter extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
@@ -58,9 +58,9 @@ public class ServletFilter extends HttpServlet {
      * @post //
      */
 
-    private void filtraProdotti(String nome, String categoria, String marchio, double min, double max, HttpServletRequest request) throws ServletException, IOException {
+    public void filtraProdotti(String nome, String categoria, String marchio, double min, double max, HttpServletRequest request) throws ServletException, IOException {
         String opzione="filtro";
-        prodottoDAO=new ProdottoDAO();
+
         ArrayList<Prodotto> prodotti=prodottoDAO.doRetrieveByAllProdotti();
 
         if(nome!=null)
