@@ -50,7 +50,7 @@ public class ServletListaMarchi extends HttpServlet {
         String nomeMarchio=(request.getParameter("value"));
         String nomejsp=request.getParameter("nomejsp");
 
-        prodottoDAO= new ProdottoDAO();
+
         if(nomejsp.equals("header")){
             start=0;
         }else {

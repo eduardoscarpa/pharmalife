@@ -1,4 +1,4 @@
-package carrello;
+/*package carrello;
 
 import controller.carrello.ServletRimuoviDalCarrello;
 import model.prodotto.Prodotto;
@@ -53,3 +53,4 @@ public class ServletRimuoviDalCarrelloTest {
 
     }
 }
+*/
