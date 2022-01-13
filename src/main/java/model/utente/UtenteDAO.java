@@ -154,6 +154,30 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
     /**
+     * Questo metodo cerca tutti i codici fiscali di tutti gli utenti iscritti alla piattaforma
+     * @return un ArrayList di String con tutti i codici fiscali
+     * @throws SQLException
+     */
+    @Override
+    public ArrayList<String> doRetraiveByAllEmail() throws SQLException {
+        ArrayList<String> arrayEmail = new ArrayList<>();
+        try (Connection connection = ConPool.getConnection()) {
+
+            PreparedStatement ps=connection.prepareStatement("select email from Utente");
+            ResultSet resultSet= ps.executeQuery();
+            while (resultSet.next()){
+                arrayEmail.add(resultSet.getString("email"));
+            }
+
+
+
+        }catch (SQLException sqlException){
+            throw new RuntimeException(sqlException);
+        }
+        return arrayEmail;
+    }
+
+    /**
      *
      * @return
      */

@@ -1,6 +1,5 @@
 package utente;
 
-import controller.utente.ServletAccessoUtente;
 import controller.utente.ServletInvioMessaggio;
 import model.messaggio.Messaggio;
 import model.messaggio.MessaggioDAO;
@@ -16,13 +15,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.*;
 
 public class ServletInvioMessaggioTest {

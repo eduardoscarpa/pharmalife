@@ -123,7 +123,7 @@ public class ServletIscrizione extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-
+    @Generated
     public boolean isNotPresentCf(String codiceFiscale) throws SQLException {
         ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
         if (codiciFiscali.contains(codiceFiscale)){
@@ -134,10 +134,10 @@ public class ServletIscrizione extends HttpServlet {
         return true;
     }
 
-
+    @Generated
     public boolean isNotPresentEmail(String email) throws SQLException {
-        ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
-        if (codiciFiscali.contains(email)){
+        ArrayList<String> arrayEmail=service.doRetraiveByAllEmail();
+        if (arrayEmail.contains(email)){
             address = "WEB-INF/pagine/iscriviti.jsp";
             message="Questa email è già presente nel sistema!";
             return  false;
@@ -158,7 +158,9 @@ public class ServletIscrizione extends HttpServlet {
         String cap=request.getParameter("cap");
         String telefono=request.getParameter("telefono");
         if (isNotPresentCf(cf)){
-            registraUtente(fn,ln,cf,email,psw,psw_rip,via,numeroCivico,cap,telefono,request,response);
+            if (isNotPresentEmail(email)) {
+                registraUtente(fn,ln,cf,email,psw,psw_rip,via,numeroCivico,cap,telefono,request,response);
+            }
         }else {
             request.setAttribute("iscriviti", message);
             RequestDispatcher dispatcher = request.getRequestDispatcher(address);
