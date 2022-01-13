@@ -39,18 +39,12 @@ public class ServletRimuoviPreferitoTest {
         servletRimuoviPreferito = new ServletRimuoviPreferito(utenteDAO);
     }
 
-    @Test
+   @Test
     public void doGetTest() throws ServletException, IOException {
         when(request.getParameter("value")).thenReturn("1");
         //int codiceProdotto = Integer.parseInt(request.getParameter("value"));
         servletRimuoviPreferito.doGet(request, response);
-        /*
-        when(request.getParameter("id")).thenReturn("1");
-        int id=Integer.parseInt(request.getParameter("id"));
-        servletDeleteProdottoAdmin.eliminaProdottoDalCatalogo(id);
-        verify(prodottoDAO).deleteProdotto(id);
 
-         */
     }
 
     @Test

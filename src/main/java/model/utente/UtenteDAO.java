@@ -12,24 +12,9 @@ import java.util.ArrayList;
 
 public class UtenteDAO implements UtenteDAOMethod {
 
-    /*
-    private UtenteDAO utenteDAO;
-
-    public UtenteDAO (UtenteDAO utenteDAO) {
-        this.utenteDAO = utenteDAO;
-    }
-     */
-
     public UtenteDAO() {
 
     }
-
-    /*
-    @Override
-    public UtenteDAO getUtenteDAO() {
-        return utenteDAO;
-    }
-     */
 
     /**
      * Questo metodo serve a ricercare un utente nel datbase in base al suo codice fiscale
