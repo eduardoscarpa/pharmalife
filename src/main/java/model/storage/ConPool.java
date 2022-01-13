@@ -23,6 +23,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Generated
 public class ConPool {
+
     private static DataSource datasource;
 
     public static Connection getConnection() throws SQLException {
