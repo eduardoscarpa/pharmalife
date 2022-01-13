@@ -4,6 +4,7 @@ import model.messaggio.Messaggio;
 import model.messaggio.MessaggioDAO;
 import model.messaggio.MessaggioDAOMethod;
 import model.utente.Utente;
+import model.utente.UtenteDAO;
 import model.utente.UtenteDAOMethod;
 
 import javax.servlet.RequestDispatcher;
@@ -25,9 +26,9 @@ public class ServletInvioMessaggio extends HttpServlet {
     private String address;
 
 
-    public ServletInvioMessaggio(MessaggioDAOMethod messaggioDAOMethod,UtenteDAOMethod utenteDAOMethod){
-        serviceMessaggio =messaggioDAOMethod;
-        serviceUtente =utenteDAOMethod;
+    public ServletInvioMessaggio(MessaggioDAO messaggioDAO, UtenteDAO utenteDAO){
+        serviceMessaggio =messaggioDAO;
+        serviceUtente =utenteDAO;
     }
     public ServletInvioMessaggio(){
         serviceMessaggio =new MessaggioDAO();

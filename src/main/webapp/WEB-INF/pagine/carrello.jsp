@@ -86,7 +86,7 @@
 
             <div class="total-delete">
 
-                <a href="ServletRimuoviDalCarrello?value=<%=p.getCodiceProdotto()%>">
+                <a href="ServletRimuoviDalCarrello2?value=<%=p.getCodiceProdotto()%>">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </div>

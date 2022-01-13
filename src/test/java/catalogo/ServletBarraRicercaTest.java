@@ -1,4 +1,4 @@
-package catalogo;
+/*package catalogo;
 
 import com.google.gson.Gson;
 import controller.catalogo.ServletBarraRicerca;
@@ -21,7 +21,7 @@ public class ServletBarraRicercaTest {
         MockitoAnnotations.initMocks(this);
         servletBarraRicerca = new ServletBarraRicerca(prodottoDAO);
     }
-/*
+
     @Test // Da finire
     public void doGetTest() throws ServletException, IOException {
         HttpServletRequest request=mock(HttpServletRequest.class);
@@ -51,5 +51,6 @@ public class ServletBarraRicercaTest {
     public void ricercaProdottoTest(){
 
     }
-*/
+
 }
+*/

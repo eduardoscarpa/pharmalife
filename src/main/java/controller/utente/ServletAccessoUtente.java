@@ -40,9 +40,6 @@ public class ServletAccessoUtente extends HttpServlet {
             case "logout":
                 logoutUtente(request,response);
         }
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pagine/formLogin.jsp");
-        dispatcher.forward(request, response);
     }
 
     @Override
@@ -70,6 +67,7 @@ public class ServletAccessoUtente extends HttpServlet {
                 session.removeAttribute("carrello");
             }
             response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));
+
         }
 
     }
@@ -99,7 +97,8 @@ public class ServletAccessoUtente extends HttpServlet {
                 response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));
             } else {
                 request.setAttribute("errore", "Utente non trovato!");
-
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pagine/formLogin.jsp");
+                dispatcher.forward(request, response);
             }
         }
     }

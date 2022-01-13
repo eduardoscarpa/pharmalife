@@ -1,7 +1,10 @@
 package carrello;
 
 import controller.carrello.ServletAggiungiAlCarrello;
+import model.carrello.Carrello;
+import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
+import model.utente.Utente;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -16,6 +19,12 @@ public class ServletAggiungiAlCarrelloTest {
     @Mock
     private ProdottoDAO prodottoDAO;
     @Mock
+    private Carrello carrello;
+    @Mock
+    private Utente utente;
+    @Mock
+    private Prodotto prodotto;
+    @Mock
     private  HttpServletRequest request;
     @Mock
     private HttpServletResponse response;
@@ -27,7 +36,7 @@ public class ServletAggiungiAlCarrelloTest {
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
-        servletAggiungiAlCarrello= new ServletAggiungiAlCarrello(prodottoDAO);
+        servletAggiungiAlCarrello= new ServletAggiungiAlCarrello(prodottoDAO,carrello,utente,prodotto);
     }
 
     @Test

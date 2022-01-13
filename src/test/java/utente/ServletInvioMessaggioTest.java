@@ -2,7 +2,10 @@ package utente;
 
 import controller.utente.ServletAccessoUtente;
 import controller.utente.ServletInvioMessaggio;
+import model.messaggio.Messaggio;
+import model.messaggio.MessaggioDAO;
 import model.utente.Utente;
+import model.utente.UtenteDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -15,9 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Time;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.mockito.Mockito.*;
 
 public class ServletInvioMessaggioTest {
 
@@ -30,10 +36,21 @@ public class ServletInvioMessaggioTest {
     @Mock
     private HttpServletResponse response;
 
+
+
+    @Mock
+    private Utente utente1;
+
+    @Mock
+    private MessaggioDAO messaggioDAO;
+
+    @Mock
+    private UtenteDAO utenteDAO;
+
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
-        servletInvioMessaggio = new ServletInvioMessaggio();
+        servletInvioMessaggio = new ServletInvioMessaggio(messaggioDAO,utenteDAO);
     }
 
 
@@ -53,11 +70,33 @@ public class ServletInvioMessaggioTest {
 
 
     @Test
-    public void invioMessaggioTest(){
+    public void invioMessaggioTest() throws ServletException, IOException {
+    Messaggio messaggio=new Messaggio();
+    Utente utente=new Utente();
+    messaggio.setUtente(utente);
+    messaggio.setTesto("asdasdasdas");
+    messaggio.setCodiceMessaggio(2);
+    messaggio.setOra(new Time(22,25,12));
+    messaggio.setData(new Date(2000,04,02));
+    servletInvioMessaggio.invioMessaggio(utente,messaggio);
+    verify(messaggioDAO).insertMessaggio(messaggio);
 
     }
+
+
+   @Test
+    public void checkUtenteTestEqualsCognome(){
+
+    }
+
     @Test
-    public void checkUtenteTest(){
+    public void checkUtenteTestEqualsTelefono(){
 
     }
+
+    @Test
+    public void checkUtenteTestEqualsEmail(){
+
+    }
+
 }

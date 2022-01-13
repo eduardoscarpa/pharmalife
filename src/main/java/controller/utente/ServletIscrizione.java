@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -26,9 +27,10 @@ public class ServletIscrizione extends HttpServlet {
     UtenteDAOMethod service;
 
 
-    public ServletIscrizione(UtenteDAOMethod utenteDAO){
+    public ServletIscrizione(UtenteDAOMethod utenteDAO,String address){
         super();
         service=utenteDAO;
+        this.address=address;
     }
 
     public ServletIscrizione(){
@@ -80,7 +82,6 @@ public class ServletIscrizione extends HttpServlet {
      */
     public void registraUtente(String fn,String ln,String cf, String email,String psw,String psw_rip,String via,
                                 int numeroCivico,String cap,String telefono,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException {
-            service=new UtenteDAO();
             Utente utente = new Utente();
             formatName(fn);
             formatCodiceFiscale(cf);
@@ -121,6 +122,9 @@ public class ServletIscrizione extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+
+
+
     public boolean isNotPresentCf(String codiceFiscale) throws SQLException {
 
         ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
@@ -132,13 +136,13 @@ public class ServletIscrizione extends HttpServlet {
         return true;
     }
 
-//FARE
-    public boolean isNotPresentEmail(String codiceFiscale) throws SQLException {
+
+    public boolean isNotPresentEmail(String email) throws SQLException {
 
         ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
-        if (codiciFiscali.contains(codiceFiscale)){
+        if (codiciFiscali.contains(email)){
             address = "WEB-INF/pagine/iscriviti.jsp";
-            message="Questo codice fiscale è già presente nel sistema!";
+            message="Questa email è già presente nel sistema!";
             return  false;
         }
         return true;
