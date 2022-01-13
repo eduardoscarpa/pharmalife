@@ -1,11 +1,9 @@
 package controller.carrello;
-
 import model.carrello.Carrello;
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
 import model.prodotto.ProdottoDAOMethod;
 import model.utente.Utente;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -15,19 +13,28 @@ import java.io.IOException;
 public class ServletAggiungiAlCarrello extends HttpServlet {
 
     private ProdottoDAOMethod prodottoDAO;
+    private Carrello carrello;
+    private Utente utente;
+    private Prodotto prodotto;
 
     public ServletAggiungiAlCarrello(){
         prodottoDAO=new ProdottoDAO();
+        utente= new Utente();
+        prodotto= new Prodotto();
     }
 
-    public ServletAggiungiAlCarrello(ProdottoDAO prodottoDAO){
+    public ServletAggiungiAlCarrello(ProdottoDAO prodottoDAO,Carrello carrello,Utente utente,Prodotto prodotto){
         this.prodottoDAO=prodottoDAO;
+        this.carrello=carrello;
+        this.utente=utente;
+        this.prodotto=prodotto;
     }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProdotto=Integer.parseInt(request.getParameter("prodotto"));
         aggiuntaAlCarrello(idProdotto, request, response);
+        response.getWriter().write("Prodotto aggiunto al carrello!");
     }
 
     @Override
@@ -46,16 +53,17 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
      */
     public void aggiuntaAlCarrello(int idProdotto, HttpServletRequest request, HttpServletResponse response) throws IOException{
         int totale=1;
+
         if(request.getParameter("totale")!=null){
             totale=Integer.parseInt(request.getParameter("totale"));
         }
         //int prezzoTotale=0;
         HttpSession session=request.getSession();
-        Carrello carrello=(Carrello) session.getAttribute("carrello");
+         carrello=(Carrello) session.getAttribute("carrello");
 
-        Utente utente=(Utente) session.getAttribute("utente");
+         utente=(Utente) session.getAttribute("utente");
 
-        Prodotto prodotto= prodottoDAO.cercaProdotto(idProdotto);
+         prodotto= prodottoDAO.cercaProdotto(idProdotto);
         if(utente!=null){
             if(utente.getCarrello()!=null){
                 prodotto.setPrezzoQuantita(totale);
@@ -79,6 +87,6 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
                 session.setMaxInactiveInterval(60);
             }
         }
-        response.getWriter().write("Prodotto aggiunto al carrello!");
+        //response.getWriter().write("Prodotto aggiunto al carrello!");
     }
 }

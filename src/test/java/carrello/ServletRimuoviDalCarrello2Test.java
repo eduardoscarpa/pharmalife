@@ -80,8 +80,7 @@ public class ServletRimuoviDalCarrello2Test {
     @Test
     public void rimozioneDalCarrelloUtenteIsNotNullTest() throws ServletException, IOException {
         when(prodotto.getPrezzo()).thenReturn(12.5);
-        //ArrayList<Prodotto> prodottos= new ArrayList<>();
-        //when(carrello.getProdotti()).thenReturn(prodottos);
+
         servletRimuoviDalCarrello2.rimozioneDalCarrello(utenteMock, prodotto, session);
         verify(utenteMock,times(1)).getCarrello();
         verify(prodotto,times(1)).getPrezzo();
@@ -104,6 +103,21 @@ public class ServletRimuoviDalCarrello2Test {
         verify(carrello).sottraiTotale(12.50);
         verify(carrello).setProdotti(prodotti);
         verify(prodotti).remove(prodotto);
+    }
+
+    @Test
+    public void rimozioneDalCarrelloCarrelloIsNull() throws ServletException, IOException {
+       // when(prodotto.getPrezzo()).thenReturn(12.50);
+        when(session.getAttribute("carrello")).thenReturn(null);
+        Carrello carrello1=(Carrello) session.getAttribute("carrello");
+        assertEquals(null, carrello1);
+       /* servletRimuoviDalCarrello2.rimozioneDalCarrello(utenteMock, prodotto, session);
+        verify(prodotto).getPrezzo();
+        verify(carrello).sottraiTotale(12.50);
+        verify(carrello).getProdotti();
+        verify(prodotti).remove(prodotto);
+        verify(carrello).setProdotti(prodotti);*/
+
     }
 
 }

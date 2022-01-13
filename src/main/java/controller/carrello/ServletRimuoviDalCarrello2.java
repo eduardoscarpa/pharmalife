@@ -47,7 +47,7 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
          prodotto=serviceProdotto.cercaProdotto(codiceProdotto);
-        HttpSession session= request.getSession();
+         HttpSession session= request.getSession();
          utente=(Utente) session.getAttribute("utente");
        // rimozioneDalCarrello(codiceProdotto, request);
         rimozioneDalCarrello(utente, prodotto, session);
@@ -93,7 +93,5 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
             }
         }
     }
-    public void setProdotti(ArrayList<Prodotto> prodotti){
-        this.prodotti=prodotti;
-    }
+
 }
