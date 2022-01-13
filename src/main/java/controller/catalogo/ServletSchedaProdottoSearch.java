@@ -35,7 +35,7 @@ public class ServletSchedaProdottoSearch extends HttpServlet {
     }
 
     /**
-     * Questo metodo consente di ricercare la scheda di un prodotto nel logic.catalogo.
+     * Questo metodo consente di ricercare la scheda di un prodotto nel catalogo.
      * @pre //
      * @param request
      * @param response

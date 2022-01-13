@@ -1,6 +1,6 @@
 <%@ page import="model.prodotto.ProdottoDAO" %>
 <%@ page import="model.prodotto.Prodotto" %>
-<%@ page import="model.logic.utente.Utente" %><%--
+<%@ page import="model.utente.Utente" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore
   Date: 13/07/2021
@@ -9,7 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%Prodotto prodotto=(Prodotto) request.getAttribute("prodotto"); %>
-<%Utente logic.utente=(Utente)session.getAttribute("logic.utente"); %>
+<%Utente utente=(Utente)session.getAttribute("utente"); %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/pagine/default/head.jsp">
@@ -47,10 +47,10 @@
             <% if (prodotto.getQuantita()<=0){ %>
             <button class="aggiungiAlCarrelloTerminato">Prodotto terminato</button>
             <% } else { %>
-            <button onclick="aggiungiAlCarrello(<%=prodotto.getCodiceProdotto()%>)" class="aggiungiAlCarrello">Aggiungi al logic.carrello</button>
+            <button onclick="aggiungiAlCarrello(<%=prodotto.getCodiceProdotto()%>)" class="aggiungiAlCarrello">Aggiungi al carrello</button>
             <% } %>
 
-            <%if(logic.utente!=null) {  %>
+            <%if(utente!=null) {  %>
             <a onclick="aggiungiAiPreferiti(<%=prodotto.getCodiceProdotto()%>)"> <i class="fas fa-heart" title="Aggiungi ai preferiti"></i></a>
             <% }  %>
         </div>

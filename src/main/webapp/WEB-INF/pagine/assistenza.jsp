@@ -1,6 +1,6 @@
-<%@ page import="model.logic.utente.Utente" %>
+<%@ page import="model.utente.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%Utente logic.utente=(Utente)session.getAttribute("logic.utente"); %>
+<%Utente utente =(Utente)session.getAttribute("utente"); %>
 <%String invioMessaggio=(String) request.getAttribute("assistenza");%>
 <% System.out.println(invioMessaggio); %>
 <html>
@@ -25,7 +25,7 @@
 <h3><%=invioMessaggio%></h3>
 <% }  %>
 
-<%if(logic.utente!=null){   %>
+<%if(utente!=null){   %>
 <h1 class="assistenza">TI AIUTIAMO NOI</h1>
 <h1 class="assistenza">CI PENSA PHARMALIFE</h1><br>
 

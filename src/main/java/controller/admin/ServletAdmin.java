@@ -60,15 +60,15 @@ public class ServletAdmin extends HttpServlet {
             String pagina="";
             switch (valore){
                 case "insertProdotto" :
-                    pagina="WEB-INF/pagine/logic.admin/insertProdotto.jsp";
+                    pagina="WEB-INF/pagine/admin/insertProdotto.jsp";
                 break;
                 case "messaggi":
                     visualizzaMessaggi(request,response);
-                    pagina="WEB-INF/pagine/logic.admin/assistenzaUtenti.jsp";
+                    pagina="WEB-INF/pagine/admin/assistenzaUtenti.jsp";
                 break;
                 case "statistiche":
                     visualizzaStatistiche(request,response);
-                    pagina="WEB-INF/pagine/logic.admin/statistiche.jsp";
+                    pagina="WEB-INF/pagine/admin/statistiche.jsp";
                     break;
             }
             RequestDispatcher dispatcher=request.getRequestDispatcher(pagina);

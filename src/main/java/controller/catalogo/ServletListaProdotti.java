@@ -37,7 +37,7 @@ public class ServletListaProdotti extends HttpServlet {
     }
 
     /**
-     * Questo metodo permette di visualizzare la lista di tutti i prodotti presenti nel logic.catalogo
+     * Questo metodo permette di visualizzare la lista di tutti i prodotti presenti nel catalogo
      * @pre
      * @param request
      * @param response

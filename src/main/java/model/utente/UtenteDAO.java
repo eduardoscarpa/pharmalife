@@ -18,7 +18,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
     /**
-     * Questo metodo serve a ricercare un logic.utente nel datbase in base al suo codice fiscale
+     * Questo metodo serve a ricercare un utente nel datbase in base al suo codice fiscale
      * @param codiceFiscale
      * @return un oggetto di tipo Utente
      */
@@ -53,10 +53,10 @@ public class UtenteDAO implements UtenteDAOMethod {
 
 
     /**
-     * Questo logic.utente cerca un logic.utente nel database in base all'email e la password,
+     * Questo utente cerca un utente nel database in base all'email e la password,
      * paramentri necessari per effettuare l'accesso alla piattaforma
-     * @param email di un logic.utente
-     * @param password d un logic.utente
+     * @param email di un utente
+     * @param password d un utente
      * @return un oggetto di tipo Utente
      */
     @Override
@@ -236,7 +236,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     }*/
 
     /**
-     * Questo metodo inserisce un nuovo logic.utente nel database ,
+     * Questo metodo inserisce un nuovo utente nel database ,
      * @param utente da iscrivire alla piattaforma
      */
     @Override
@@ -298,8 +298,8 @@ public class UtenteDAO implements UtenteDAOMethod {
 
 
     /**
-     * Questo metodo aggiorna le credenziali di un logic.utente
-     * @param utente è l'logic.utente che richiede di aggiornare le proprie credenziali
+     * Questo metodo aggiorna le credenziali di un utente
+     * @param utente è l'utente che richiede di aggiornare le proprie credenziali
      * @return true se l'aggiornamento delle credenziali va a buon fine , altrimenti false
      */
     @Override
@@ -324,7 +324,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
     /**
-     * Questo metodo aggiorna l'indirizzo di spedizione di un logic.utente
+     * Questo metodo aggiorna l'indirizzo di spedizione di un utente
      * @param utente che richiede di aggiornare il proprio indirizzo di pedizione
      * @return true se l'aggiornamento dell'indirizzo di spedizione  va a buon fine , altrimenti false
      */
@@ -393,18 +393,18 @@ public class UtenteDAO implements UtenteDAOMethod {
             ps.setInt(2,end);
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
-                Utente logic.utente=new Utente();
-                logic.utente.setCodiceFiscale(rs.getString(1));
-                logic.utente.setNome(rs.getString(2));
-                logic.utente.setCognome(rs.getString(3));
-                logic.utente.setEmail(rs.getString(4));
-                logic.utente.setPassword(rs.getString(5));
-                logic.utente.setVia(rs.getString(6));
-                logic.utente.setNumeroCivico(rs.getInt(7));
-                logic.utente.setCap(rs.getString(8));
-                logic.utente.setTelefono(rs.getString(9));
-                logic.utente.setAdmin(rs.getBoolean(10));
-                lista.add(logic.utente);
+                Utente utente=new Utente();
+                utente.setCodiceFiscale(rs.getString(1));
+                utente.setNome(rs.getString(2));
+                utente.setCognome(rs.getString(3));
+                utente.setEmail(rs.getString(4));
+                utente.setPassword(rs.getString(5));
+                utente.setVia(rs.getString(6));
+                utente.setNumeroCivico(rs.getInt(7));
+                utente.setCap(rs.getString(8));
+                utente.setTelefono(rs.getString(9));
+                utente.setAdmin(rs.getBoolean(10));
+                lista.add(utente);
             }
             connection.close();
             return lista;

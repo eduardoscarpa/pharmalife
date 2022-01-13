@@ -43,7 +43,7 @@ public class ServletUpdateProdotto extends HttpServlet {
     }
 
     /**
-     * Questo metodo permette ad un Amministratore di aggiornare/modificare un prodotto presente nel logic.catalogo
+     * Questo metodo permette ad un Amministratore di aggiornare/modificare un prodotto presente nel catalogo
      * @param idProdotto identificativo del prodotto
      * @param nome  nome da aggiornare  del prodotto
      * @param prezzo  nuovo prezzo del prodotto

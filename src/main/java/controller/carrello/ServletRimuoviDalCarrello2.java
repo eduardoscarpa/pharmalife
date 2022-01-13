@@ -34,7 +34,7 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
     public ServletRimuoviDalCarrello2(ProdottoDAO prodottoDAO){
         serviceProdotto=prodottoDAO;
         //this.prodotto=prodotto;
-        //this.logic.utente=logic.utente;
+        //this.utente=utente;
     }
 
     public ServletRimuoviDalCarrello2(){
@@ -53,7 +53,7 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
          utente=(Utente) session.getAttribute("utente");
        // rimozioneDalCarrello(codiceProdotto, request);
         rimozioneDalCarrello(utente, prodotto, session);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/logic.carrello.jsp");
+        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp");
         dispatcher.forward(request,response);
     }
 
@@ -64,9 +64,9 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
     }
 
     /**
-     * Questo metodo serve per rimuovere un prodotto dal logic.carrello
+     * Questo metodo serve per rimuovere un prodotto dal carrello
      * @pre //
-     * @param prodotto del prodotto da eliminare dal logic.carrello
+     * @param prodotto del prodotto da eliminare dal carrello
      * @param request
      * @throws ServletException
      * @throws IOException
@@ -80,11 +80,11 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
             prodotti= carrello.getProdotti();
             prodotti.remove(prodotto);
             carrello.setProdotti(prodotti);
-            //logic.carrello.getProdotti().remove(prodotto);
+            //carrello.getProdotti().remove(prodotto);
             utente.setCarrello(carrello);
 
-            //logic.utente.getCarrello().sottraiTotale(prodotto.getPrezzo());
-            //logic.utente.getCarrello().getProdotti().remove(prodotto);
+            //utente.getCarrello().sottraiTotale(prodotto.getPrezzo());
+            //utente.getCarrello().getProdotti().remove(prodotto);
         }else{
             carrello=(Carrello) session.getAttribute("carrello");
             if(carrello!=null){
@@ -92,7 +92,7 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
                 prodotti= carrello.getProdotti();
                 prodotti.remove(prodotto);
                 carrello.setProdotti(prodotti);
-                //logic.carrello.getProdotti().remove(prodotto);
+                //carrello.getProdotti().remove(prodotto);
             }
         }
     }

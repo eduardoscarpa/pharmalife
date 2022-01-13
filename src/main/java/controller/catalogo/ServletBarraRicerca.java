@@ -59,7 +59,7 @@ public class ServletBarraRicerca extends HttpServlet {
     }
 
     /**
-     * Questo meteodo serve per ricercare un prodotto nel logic.catalogo mediante barra di ricerca
+     * Questo meteodo serve per ricercare un prodotto nel catalogo mediante barra di ricerca
      * @pre //
      * @param valore
      * @throws IOException

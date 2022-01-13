@@ -26,7 +26,7 @@ public class ServletUpdateProdottoAdmin extends HttpServlet {
         Integer idProdotto=Integer.parseInt(request.getParameter("id"));
         Prodotto prodotto= prodottoDAO.cercaProdotto(idProdotto);
         request.setAttribute("prodotto",prodotto);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/logic.admin/updateProdottoAdmin.jsp");
+        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/admin/updateProdottoAdmin.jsp");
         dispatcher.forward(request,response);
     }
 

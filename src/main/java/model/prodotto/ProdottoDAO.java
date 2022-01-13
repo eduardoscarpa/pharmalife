@@ -85,7 +85,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
     }
 
     /**
-     * Questo metodo elimina un prodotto dal logic.catalogo
+     * Questo metodo elimina un prodotto dal catalogo
      * @param codiceProdotto del prodotto da eliminare
      */
     @Override
@@ -101,8 +101,8 @@ public class ProdottoDAO implements ProdottoDAOMethod {
     }
 
     /**
-     * Questo metodo aggiunge un prodotto al logic.catalogo
-     * @param prodotto oggetto di tipo prodotto da aggiungere al logic.catalogo
+     * Questo metodo aggiunge un prodotto al catalogo
+     * @param prodotto oggetto di tipo prodotto da aggiungere al catalogo
      */
     @Override
     public void insertProdotto(Prodotto prodotto) {
@@ -178,7 +178,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
 
 
    /* @Override
-    public void aggiungiUtente(int codiceProdotto,Utente logic.utente) {
+    public void aggiungiUtente(int codiceProdotto,Utente utente) {
         try(Connection connection=ConPool.getConnection()){
             ProdottoDAO prodottoDAO= new ProdottoDAO();
             Optional<Prodotto> prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
@@ -195,7 +195,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
     }*/
 
     /**
-     * Questo metodo restituisce la lista di tutti i prodotti presenti nel logic.catalogo
+     * Questo metodo restituisce la lista di tutti i prodotti presenti nel catalogo
      * @return ArrayList di oggetti di tipo Prodotto
      */
     @Override

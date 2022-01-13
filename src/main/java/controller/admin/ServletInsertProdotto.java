@@ -55,7 +55,7 @@ public class ServletInsertProdotto extends HttpServlet {
 
 
     /**
-     * Questo metodo permette ad un Amministratore di aggiungere un prodotto nel logic.catalogo
+     * Questo metodo permette ad un Amministratore di aggiungere un prodotto nel catalogo
      * @param nomeProdotto indica il nome del prodotto
      * @param prezzoProdotto indica il prezzo del prodotto
      * @param marchioProdotto indica il marchio del prodotto

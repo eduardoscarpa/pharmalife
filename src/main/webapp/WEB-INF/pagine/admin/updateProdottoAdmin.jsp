@@ -1,4 +1,4 @@
-<%@ page import="model.logic.utente.Utente" %>
+<%@ page import="model.utente.Utente" %>
 <%@ page import="model.prodotto.Prodotto" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore

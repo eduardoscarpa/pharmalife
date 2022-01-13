@@ -53,7 +53,7 @@ public class ServletOrdini extends HttpServlet {
                 ordineDAO.insertCarrello(ordine);
                 utente.setCarrello(null);
             }
-            RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/logic.carrello.jsp");
+            RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp");
             dispatcher.forward(request,response);
         }
     }

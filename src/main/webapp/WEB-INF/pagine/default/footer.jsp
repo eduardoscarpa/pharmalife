@@ -49,7 +49,7 @@
         <div class="dropdown-content-footer">
             <a href="ServletLink?scelta=login">Accedi</a>
             <a href="ServletLink?scelta=mioAccount">Il Mio Account</a>
-            <% if(session.getAttribute("logic.utente")!=null){  %>
+            <% if(session.getAttribute("utente")!=null){  %>
             <a href="ServletLink?scelta=ordini">I Miei Ordini</a>
             <%  }  else { %>
             <a style="cursor: pointer" onclick="alert('Registrati per accedere')">I Miei Ordini</a>

@@ -65,11 +65,11 @@ public class ServletAccessoUtente extends HttpServlet {
      * Questo metodo serve per effettuare il logout di un Utente, per poter effettuare questa operazione è
      * necessario che ci sia un Utente loggato in sessione, al termine dell'esecuzione del metodo non sarà
      * più presente nella sessione
-     * @pre session.contains(logic.utente)
+     * @pre session.contains(utente)
      * @param request
      * @param response
      * @throws IOException
-     * @post !session.contains(logic.utente)
+     * @post !session.contains(utente)
      */
     public void logoutUtente(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
@@ -93,7 +93,7 @@ public class ServletAccessoUtente extends HttpServlet {
      * @param response
      * @throws ServletException
      * @throws IOException
-     * @post session.contains(logic.utente)
+     * @post session.contains(utente)
      */
     public void loginUtente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();

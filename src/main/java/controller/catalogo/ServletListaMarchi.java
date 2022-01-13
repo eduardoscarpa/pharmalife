@@ -38,7 +38,7 @@ public class ServletListaMarchi extends HttpServlet {
     }
 
     /**
-     * Questo metodo consente di visualizzare la lista dei marchi disponibili nel logic.catalogo.
+     * Questo metodo consente di visualizzare la lista dei marchi disponibili nel catalogo.
      * @pre //
      * @param request
      * @param response

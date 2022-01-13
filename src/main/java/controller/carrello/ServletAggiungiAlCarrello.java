@@ -47,7 +47,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProdotto=Integer.parseInt(request.getParameter("prodotto"));
         aggiuntaAlCarrello(idProdotto, request, response);
-        response.getWriter().write("Prodotto aggiunto al logic.carrello!");
+        response.getWriter().write("Prodotto aggiunto al carrello!");
     }
 
     @Generated
@@ -57,9 +57,9 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
     }
 
     /**
-     * Questo metodo serve per aggiungere un prodotto al logic.carrello
+     * Questo metodo serve per aggiungere un prodotto al carrello
      * @pre //
-     * @param idProdotto del prodotto da aggiungere al logic.carrello
+     * @param idProdotto del prodotto da aggiungere al carrello
      * @param request
      * @param response
      * @throws IOException
@@ -101,6 +101,6 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
                 session.setMaxInactiveInterval(60);
             }
         }
-        //response.getWriter().write("Prodotto aggiunto al logic.carrello!");
+        //response.getWriter().write("Prodotto aggiunto al carrello!");
     }
 }

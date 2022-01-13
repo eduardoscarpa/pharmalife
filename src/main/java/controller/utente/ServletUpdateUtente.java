@@ -97,7 +97,7 @@ public class ServletUpdateUtente extends HttpServlet {
                     }
                 }
             } else {
-                up = "La password non corrisponde con quella dell'logic.utente loggato";
+                up = "La password non corrisponde con quella dell'utente loggato";
             }
         }
         request.setAttribute("update",up);

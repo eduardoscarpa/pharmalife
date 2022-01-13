@@ -87,7 +87,7 @@ public class ServletTabellaAdmin extends HttpServlet {
     }
 
     /**
-     * Questo metodo permette all'amministratore di visualizzare una tabella contenete la lista di tutti i prodotti presenti nel logic.catalogo
+     * Questo metodo permette all'amministratore di visualizzare una tabella contenete la lista di tutti i prodotti presenti nel catalogo
      *
      * @param request
      * @param response
