@@ -13,9 +13,24 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 import java.util.ArrayList;
 
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+@Documented
+@Retention(RUNTIME)
+@Target({TYPE, METHOD})
+@interface Generated {
+}
+
 @WebServlet(name = "ServletTabellaAdmin", value = "/ServletTabellaAdmin")
+
+@Generated
 public class ServletTabellaAdmin extends HttpServlet {
     private UtenteDAOMethod utenteDAO;
     private ProdottoDAOMethod prodottoDAO;

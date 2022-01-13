@@ -9,6 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
+@Generated
 public class ProdottoDAO implements ProdottoDAOMethod {
 
     /**

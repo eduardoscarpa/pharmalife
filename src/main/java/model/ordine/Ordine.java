@@ -3,10 +3,24 @@ package model.ordine;
 import model.carrello.Carrello;
 import model.utente.Utente;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 import java.sql.Time;
 import java.sql.Date;
 import java.util.Objects;
 
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+@Documented
+@Retention(RUNTIME)
+@Target({TYPE, METHOD})
+@interface Generated {
+}
+
+@Generated
 public class Ordine {
     private int idOrdine;
     private Date dataOrdine;

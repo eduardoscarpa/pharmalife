@@ -8,9 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
-
-
-
+@Generated
 public class OrdineDAO implements OrdineDAOMethod {
 
 

@@ -2,11 +2,19 @@ package model.categoria;
 
 import model.storage.ConPool;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+
+@Generated
 public class CategoriaDAO implements CategoriaDAOMethod {
 
 

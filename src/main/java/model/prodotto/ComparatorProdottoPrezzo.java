@@ -2,6 +2,7 @@ package model.prodotto;
 
 import java.util.Comparator;
 
+@Generated
 public class ComparatorProdottoPrezzo implements Comparator<Prodotto> {
     @Override
     public int compare(Prodotto o1, Prodotto o2) {

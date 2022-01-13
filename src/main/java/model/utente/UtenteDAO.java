@@ -10,6 +10,7 @@ import model.storage.ConPool;
 import java.sql.*;
 import java.util.ArrayList;
 
+@Generated
 public class UtenteDAO implements UtenteDAOMethod {
 
     /*

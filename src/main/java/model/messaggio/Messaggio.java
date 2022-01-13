@@ -2,9 +2,23 @@ package model.messaggio;
 
 import model.utente.Utente;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 import java.sql.Time;
 import java.util.Date;
 
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+@Documented
+@Retention(RUNTIME)
+@Target({TYPE, METHOD})
+@interface Generated {
+}
+
+@Generated
 public class Messaggio {
     private int codiceMessaggio;
     private String testo;

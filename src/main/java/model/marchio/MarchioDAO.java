@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
+@Generated
 public class MarchioDAO implements MarchioDAOMethod {
 
     /**
