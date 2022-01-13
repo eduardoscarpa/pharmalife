@@ -14,30 +14,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "ServletPreferiti", value = "/ServletPreferiti")
 public class ServletPreferiti extends HttpServlet {
     private ProdottoDAOMethod prodottoDAO;
     private UtenteDAOMethod utenteDAO;
 
-    public ServletPreferiti(){
+    public ServletPreferiti() {
         prodottoDAO= new ProdottoDAO();
         utenteDAO= new UtenteDAO();
     }
+
     public ServletPreferiti(ProdottoDAO prodottoDAO,UtenteDAO utenteDAO){
         this.prodottoDAO=prodottoDAO;
         this.utenteDAO=utenteDAO;
     }
 
-    @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         inserisciProdottoAiPreferiti(request,response);
     }
 
-    @Generated
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
@@ -48,14 +48,14 @@ public class ServletPreferiti extends HttpServlet {
      * @throws IOException
      * @post service.doRetrieveByAllPreferitiOfUtente.size=@pre.service.doRetrieveByAllPreferitiOfUtente.size+1
      */
-    private void inserisciProdottoAiPreferiti(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void inserisciProdottoAiPreferiti(HttpServletRequest request,HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
-         prodottoDAO=new ProdottoDAO();
+        //prodottoDAO=new ProdottoDAO();
         Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
         String risposta="";
         if(session != null) {
-             utenteDAO = new UtenteDAO();
+            //utenteDAO = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
 
             if (utente != null) {

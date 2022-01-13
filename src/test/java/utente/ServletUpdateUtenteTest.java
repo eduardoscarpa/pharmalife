@@ -67,8 +67,15 @@ public class ServletUpdateUtenteTest {
         session.setAttribute("utente", utente);
         when(session.getAttribute("utente")).thenReturn(utente);
         when(utenteDAO.cercaUtente(utente.getCodiceFiscale())).thenReturn(utente);
+        String nome = utente.getNome();
         String password = utente.getPassword();
+        String codiceFiscale = utente.getCodiceFiscale();
+        /*
+        assertTrue(ServletIscrizione.formatCodiceFiscale(codiceFiscale));
+        assertTrue(ServletIscrizione.formatName(nome));
         assertTrue(ServletIscrizione.formatPassword(password));
+
+         */
         //assertFalse(ServletIscrizione.formatPassword(password));
         //passwordValidatorTest(password);
     }
@@ -78,10 +85,14 @@ public class ServletUpdateUtenteTest {
         HttpSession session=mock(HttpSession.class);
         when(request.getSession()).thenReturn(session);
         Utente utente = new Utente();
-        utente.setPassword("Carmine1");
+        utente.setPassword("Carmine");
+        session.setAttribute("utente", utente);
         when(session.getAttribute("utente")).thenReturn(utente);
         when(utenteDAO.cercaUtente(utente.getCodiceFiscale())).thenReturn(utente);
         String password = utente.getPassword();
+        String nome = utente.getNome();
+        assertFalse(ServletIscrizione.formatPassword(password));
+        //assertFalse(ServletIscrizione.formatName(nome));
         //assertFalse(ServletIscrizione.formatPassword(password));
     }
 }

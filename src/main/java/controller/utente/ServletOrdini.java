@@ -36,7 +36,9 @@ public class ServletOrdini extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session= request.getSession();
-        Utente utente=(Utente) session.getAttribute("utente");
+        Utente utente = null;
+        if(session != null)
+            utente=(Utente) session.getAttribute("utente");
         if(utente!=null){
             if(utente.getCarrello()!=null){
                 utente.getCarrello().prodottiToString();
