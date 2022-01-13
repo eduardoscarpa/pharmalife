@@ -14,7 +14,7 @@
 <body>
 <jsp:include page="default/header.jsp"/>
 
-<% if(session.getAttribute("utente")==null){%>
+<% if(session.getAttribute("logic.utente")==null){%>
 <h1 class="pref" style="text-align: center">Registrati per accedere all'area Preferiti</h1>
 <%} else if(prodotti.isEmpty()){%>
 <h1 class="pref">NON HAI PREFERITI</h1><hr>

@@ -36,13 +36,14 @@ public class ServletUpdateProdotto extends HttpServlet {
         requestDispatcher.forward(request,response);
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
     /**
-     * Questo metodo permette ad un Amministratore di aggiornare/modificare un prodotto presente nel catalogo
+     * Questo metodo permette ad un Amministratore di aggiornare/modificare un prodotto presente nel logic.catalogo
      * @param idProdotto identificativo del prodotto
      * @param nome  nome da aggiornare  del prodotto
      * @param prezzo  nuovo prezzo del prodotto

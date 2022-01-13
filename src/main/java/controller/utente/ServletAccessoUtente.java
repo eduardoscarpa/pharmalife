@@ -12,6 +12,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+@Documented
+@Retention(RUNTIME)
+@Target({TYPE, METHOD})
+@interface Generated {
+}
 
 @WebServlet(name = "ServletAccessoUtente", value = "/ServletAccessoUtente")
 public class ServletAccessoUtente extends HttpServlet {
@@ -42,6 +55,7 @@ public class ServletAccessoUtente extends HttpServlet {
         }
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
@@ -51,11 +65,11 @@ public class ServletAccessoUtente extends HttpServlet {
      * Questo metodo serve per effettuare il logout di un Utente, per poter effettuare questa operazione è
      * necessario che ci sia un Utente loggato in sessione, al termine dell'esecuzione del metodo non sarà
      * più presente nella sessione
-     * @pre session.contains(utente)
+     * @pre session.contains(logic.utente)
      * @param request
      * @param response
      * @throws IOException
-     * @post !session.contains(utente)
+     * @post !session.contains(logic.utente)
      */
     public void logoutUtente(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
@@ -79,7 +93,7 @@ public class ServletAccessoUtente extends HttpServlet {
      * @param response
      * @throws ServletException
      * @throws IOException
-     * @post session.contains(utente)
+     * @post session.contains(logic.utente)
      */
     public void loginUtente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();

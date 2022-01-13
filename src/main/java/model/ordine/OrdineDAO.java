@@ -59,7 +59,7 @@ public class OrdineDAO implements OrdineDAOMethod {
     }
 
     /**
-     * Questo metodo genera un ordine dal carrello
+     * Questo metodo genera un ordine dal logic.carrello
      * @param o è un oggetto di tipo ordine
      */
     public void insertCarrello(Ordine o) {
@@ -170,8 +170,8 @@ public class OrdineDAO implements OrdineDAOMethod {
 
 
     /**
-     * Questo metodo retituisce tutti gli ordini di un determinato utente
-     * @param utente è un oggetto di tipo utente
+     * Questo metodo retituisce tutti gli ordini di un determinato logic.utente
+     * @param utente è un oggetto di tipo logic.utente
      * @return un ArrayList di oggetti di tipo Ordine
      */
     @Override

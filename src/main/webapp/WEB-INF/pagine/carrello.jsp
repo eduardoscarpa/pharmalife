@@ -1,7 +1,7 @@
-<%@ page import="model.carrello.Carrello" %>
+<%@ page import="model.logic.carrello.Carrello" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.prodotto.Prodotto" %>
-<%@ page import="model.utente.Utente" %>
+<%@ page import="model.logic.utente.Utente" %>
 <%@ page import="java.io.ByteArrayOutputStream" %>
 <%@ page import="java.io.ObjectOutputStream" %><%--
   Created by IntelliJ IDEA.
@@ -12,17 +12,17 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Carrello carrello=(Carrello)session.getAttribute("carrello");   %>
-<%Utente utente=(Utente)session.getAttribute("utente");  %>
+<% Carrello logic.carrello=(Carrello)session.getAttribute("logic.carrello");   %>
+<%Utente logic.utente=(Utente)session.getAttribute("logic.utente");  %>
 <%ArrayList<Prodotto> prodotti=null;   %>
 <%
-    if(utente!=null) {
-        if(utente.getCarrello()!=null) {
-            prodotti=utente.getCarrello().getProdotti();
+    if(logic.utente!=null) {
+        if(logic.utente.getCarrello()!=null) {
+            prodotti=logic.utente.getCarrello().getProdotti();
         }
     }else {
-        if(carrello!=null) {
-            prodotti = carrello.getProdotti();
+        if(logic.carrello!=null) {
+            prodotti = logic.carrello.getProdotti();
         }
     }
 
@@ -46,12 +46,12 @@
 <body>
 
 <jsp:include page="default/header.jsp"/>
-<% if(utente!=null){ if(utente.getCarrello()==null) { %>
-<h2>  <%=utente.getNome()%> il tuo carrello è vuoto </h2>
+<% if(logic.utente!=null){ if(logic.utente.getCarrello()==null) { %>
+<h2>  <%=logic.utente.getNome()%> il tuo logic.carrello è vuoto </h2>
 <% }else {   %>
-<h2> Ecco il tuo Carrello <%=utente.getNome()%></h2>
-<%  }  }else { if(carrello!=null) { %>
-<h2>Ecco il tuo carrello Visitatore</h2>
+<h2> Ecco il tuo Carrello <%=logic.utente.getNome()%></h2>
+<%  }  }else { if(logic.carrello!=null) { %>
+<h2>Ecco il tuo logic.carrello Visitatore</h2>
 <%  } else {  %>
 <h2>Il tuo carrelo è vuoto</h2>
 <% } %>
@@ -102,10 +102,10 @@
         </div>
         <div class="totale">
             <span class="label">Totale&nbsp;(Tasse incl.)</span>
-            <% if(utente!=null) { %>
-            <span class="value"> <%=utente.getCarrello().getTotalePrezzo()/2%>&nbsp;€ </span>
+            <% if(logic.utente!=null) { %>
+            <span class="value"> <%=logic.utente.getCarrello().getTotalePrezzo()/2%>&nbsp;€ </span>
             <% } else{  %>
-            <span class="value"> <%=carrello.getTotalePrezzo()/2%>&nbsp;€ </span>
+            <span class="value"> <%=logic.carrello.getTotalePrezzo()/2%>&nbsp;€ </span>
             <% } %>
         </div>
         <div class="codice-sconto">
@@ -130,13 +130,13 @@
         <div class="checkout">
 
             <div class="text-centered">
-                <% if (utente != null) { %>
+                <% if (logic.utente != null) { %>
                 <form action="ServletOrdini" method="post">
                     <input type="submit" href="ServletOrdini" class="button-outline" value="Vai alla cassa"
                            ></input>
 
                 </form>
-                <% } else if (utente==null) { %>
+                <% } else if (logic.utente==null) { %>
                 <h3>ACCEDI PER ACQUISTARE </h3>
                 <% } %>
             </div>
@@ -145,7 +145,7 @@
 
     </div>
 <% }else { %>
-<h2>Non ci sono prodotti nel carrello</h2>
+<h2>Non ci sono prodotti nel logic.carrello</h2>
 <%  }  %>
 
 

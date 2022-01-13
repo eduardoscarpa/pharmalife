@@ -39,6 +39,7 @@ public class ServletFilter extends HttpServlet {
         dispatcher.forward(request,response);
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -58,6 +59,7 @@ public class ServletFilter extends HttpServlet {
      * @post //
      */
 
+    @Generated
     public void filtraProdotti(String nome, String categoria, String marchio, double min, double max, HttpServletRequest request) throws ServletException, IOException {
         String opzione="filtro";
 

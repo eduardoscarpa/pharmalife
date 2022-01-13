@@ -28,11 +28,14 @@ public class ServletPreferiti extends HttpServlet {
         this.prodottoDAO=prodottoDAO;
         this.utenteDAO=utenteDAO;
     }
+
+    @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         inserisciProdottoAiPreferiti(request,response);
     }
 
+    @Generated
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

@@ -78,7 +78,7 @@
             <% if (p.getQuantita()<=0){ %>
             <button>Prodotto terminato   <i class="fas fa-exclamation-triangle"></i></button>
             <% } else { %>
-            <button onclick="aggiungiAlCarrello(<%=p.getCodiceProdotto()%>)">Aggiungi al carrello   <i class="fas fa-cart-plus"></i></button>
+            <button onclick="aggiungiAlCarrello(<%=p.getCodiceProdotto()%>)">Aggiungi al logic.carrello   <i class="fas fa-cart-plus"></i></button>
             <% } %>
 
         </article>

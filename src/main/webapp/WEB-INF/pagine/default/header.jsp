@@ -2,10 +2,10 @@
 
 <%@ page contentType="text/html; charset=UTF-8" language="java"  pageEncoding="UTF-8" %>
 <%@ page import="java.util.ArrayList,model.marchio.Marchio" %>
-<%@ page import="model.utente.Utente" %>
+<%@ page import="model.logic.utente.Utente" %>
 <%@ page import="model.categoria.Categoria" %>
 <%@ page import="model.marchio.MarchioDAO" %>
-<% Utente utente=(Utente) session.getAttribute("utente"); %>
+<% Utente logic.utente=(Utente) session.getAttribute("logic.utente"); %>
 <% ArrayList<Categoria> categorie=(ArrayList<Categoria>) application.getAttribute("categorie");%> <!-- L'oggetto application fa parte della ServletContext in ServletStart-->
 <%ArrayList<Marchio> marchi=(ArrayList<Marchio>) application.getAttribute("marchi"); %>
 
@@ -33,9 +33,9 @@
                 <a   href="ServletLink?scelta=login"  class="icone"> <i class="fa fa-user-circle"  onclick="mostraForm()" style="color: limegreen;font-size: 30px" ></i> </a>
                 <a   href="https://www.facebook.com/pharmalife.ivane.5" class="icone"> <i class="fab fa-facebook-f" style="color: limegreen;font-size: 30px" ></i></a>
                 <a   href="ServletAssistenza" class="icone"> <i class="fas fa-phone-square" style="color: limegreen;font-size: 30px"></i> </a>
-                <a   href="ServletLink?scelta=carrello" class="icone"><i class="fas fa-shopping-cart" style="color: limegreen;font-size: 30px"></i></a>
+                <a   href="ServletLink?scelta=logic.carrello" class="icone"><i class="fas fa-shopping-cart" style="color: limegreen;font-size: 30px"></i></a>
                 <a  title="Preferiti" href="ServletMostraPref" class="icone"><i class="far fa-heart" style="color: limegreen;font-size: 30px"></i> </a>
-                <% if(utente!=null){%>
+                <% if(logic.utente!=null){%>
                 <a  title="Logout" href="ServletAccessoUtente?value=logout" class="icone"><i class="fas fa-sign-out-alt" style="color: limegreen;font-size: 30px"></i></a>
                 <% }%>
             </div>
@@ -88,7 +88,7 @@
     <a href="ServletLink?scelta=infoAzienda" >Chi siamo</a>
   <%--  <a href="ServletLink?scelta=infoAzienda">Chi siamo</a>--%>
     <a href="ServletAssistenza">Contatti</a>
-    <%if(utente!=null) {  %>
+    <%if(logic.utente!=null) {  %>
     <a href="ServletLink?scelta=assistenza">Ti Aiutiamo Noi</a>
     <%   } %>
 </nav>

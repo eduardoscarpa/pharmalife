@@ -1,4 +1,4 @@
-<%@ page import="model.utente.Utente" %><%--
+<%@ page import="model.logic.utente.Utente" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore
   Date: 12/07/2021
@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Utente utente=(Utente)session.getAttribute("utente");%>
+<% Utente logic.utente=(Utente)session.getAttribute("logic.utente");%>
 <%String update=(String) request.getAttribute("update");%>
 <% System.out.println(update); %>
 <html>
@@ -41,15 +41,15 @@
 
             <div class="input-info">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome"  name="nome" value="<%=utente.getNome()%>" readonly>
+                <input type="text" id="nome"  name="nome" value="<%=logic.utente.getNome()%>" readonly>
             </div>
             <div class="input-info">
                 <label for="cognome">Cognome</label>
-                <input type="text" id="cognome"  name="cognome" value="<%=utente.getCognome()%>" readonly>
+                <input type="text" id="cognome"  name="cognome" value="<%=logic.utente.getCognome()%>" readonly>
             </div>
             <div class="input-info">
                 <label for="email">Email</label>
-                <input type="text" id="email"  name="email" value="<%=utente.getEmail()%>" readonly>
+                <input type="text" id="email"  name="email" value="<%=logic.utente.getEmail()%>" readonly>
             </div>
             <div class="input-info">
                 <label for="password">Password</label>
@@ -67,7 +67,7 @@
                 <input type="checkbox" id="check" value="Acconsento">
                 <label  for="check">Acconsento alla <a href="ServletLink?scelta=termini">Terms & Privacy</a> di pHarmaLife.</label>
             </div>
-            <input type="hidden"  name="codiceFiscale" value="<%=utente.getCodiceFiscale()%>">
+            <input type="hidden"  name="codiceFiscale" value="<%=logic.utente.getCodiceFiscale()%>">
             <input type="submit" value="Salva">
 
         </div>

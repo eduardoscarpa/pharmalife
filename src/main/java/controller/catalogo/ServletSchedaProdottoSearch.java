@@ -22,18 +22,20 @@ public class ServletSchedaProdottoSearch extends HttpServlet {
         this.prodottoDAO = prodottoDAO;
     }
 
+    @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ricercaSchedaProdotto(request, response);
     }
 
     /**
-     * Questo metodo consente di ricercare la scheda di un prodotto nel catalogo.
+     * Questo metodo consente di ricercare la scheda di un prodotto nel logic.catalogo.
      * @pre //
      * @param request
      * @param response

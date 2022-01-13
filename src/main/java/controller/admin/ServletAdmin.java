@@ -46,6 +46,8 @@ public class ServletAdmin extends HttpServlet {
         this.prodottoDAO=prodottoDAO;
         this.ordineDAO=ordineDAO;
     }
+
+    @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             doPost(request,response);
@@ -58,15 +60,15 @@ public class ServletAdmin extends HttpServlet {
             String pagina="";
             switch (valore){
                 case "insertProdotto" :
-                    pagina="WEB-INF/pagine/admin/insertProdotto.jsp";
+                    pagina="WEB-INF/pagine/logic.admin/insertProdotto.jsp";
                 break;
                 case "messaggi":
                     visualizzaMessaggi(request,response);
-                    pagina="WEB-INF/pagine/admin/assistenzaUtenti.jsp";
+                    pagina="WEB-INF/pagine/logic.admin/assistenzaUtenti.jsp";
                 break;
                 case "statistiche":
                     visualizzaStatistiche(request,response);
-                    pagina="WEB-INF/pagine/admin/statistiche.jsp";
+                    pagina="WEB-INF/pagine/logic.admin/statistiche.jsp";
                     break;
             }
             RequestDispatcher dispatcher=request.getRequestDispatcher(pagina);
@@ -103,15 +105,19 @@ public class ServletAdmin extends HttpServlet {
           */
     }
 
+    @Generated
     public void setArrayMessaggi(ArrayList<Messaggio> messaggi){
         this.messaggi=messaggi;
     }
+    @Generated
     public void setArrayUtenti(ArrayList<Utente> utenti){
         this.utenti=utenti;
     }
+    @Generated
     public void setArrayProdotti(ArrayList<Prodotto> prodotti){
         this.prodotti=prodotti;
     }
+    @Generated
     public void setArrayOrdini(ArrayList<Ordine> ordini){
         this.ordini=ordini;
     }

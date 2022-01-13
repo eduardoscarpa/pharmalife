@@ -47,7 +47,7 @@ public class ServletInsertProdotto extends HttpServlet {
         response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));
     }
 
-
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -55,7 +55,7 @@ public class ServletInsertProdotto extends HttpServlet {
 
 
     /**
-     * Questo metodo permette ad un Amministratore di aggiungere un prodotto nel catalogo
+     * Questo metodo permette ad un Amministratore di aggiungere un prodotto nel logic.catalogo
      * @param nomeProdotto indica il nome del prodotto
      * @param prezzoProdotto indica il prezzo del prodotto
      * @param marchioProdotto indica il marchio del prodotto

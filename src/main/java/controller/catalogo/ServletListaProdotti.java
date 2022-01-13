@@ -24,18 +24,20 @@ public class ServletListaProdotti extends HttpServlet {
         this.prodottoDAO = prodottoDAO;
     }
 
+    @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         visualizzaListaProdotti(request, response);
     }
 
     /**
-     * Questo metodo permette di visualizzare la lista di tutti i prodotti presenti nel catalogo
+     * Questo metodo permette di visualizzare la lista di tutti i prodotti presenti nel logic.catalogo
      * @pre
      * @param request
      * @param response

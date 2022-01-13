@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -38,6 +37,7 @@ public class ServletIscrizione extends HttpServlet {
         service= new UtenteDAO();
     }
 
+    @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        // String cf= request.getParameter("CodiceFiscale");
@@ -53,6 +53,7 @@ public class ServletIscrizione extends HttpServlet {
 
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -123,10 +124,7 @@ public class ServletIscrizione extends HttpServlet {
     }
 
 
-
-
     public boolean isNotPresentCf(String codiceFiscale) throws SQLException {
-
         ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
         if (codiciFiscali.contains(codiceFiscale)){
             address = "WEB-INF/pagine/iscriviti.jsp";
@@ -138,7 +136,6 @@ public class ServletIscrizione extends HttpServlet {
 
 
     public boolean isNotPresentEmail(String email) throws SQLException {
-
         ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
         if (codiciFiscali.contains(email)){
             address = "WEB-INF/pagine/iscriviti.jsp";
@@ -148,8 +145,8 @@ public class ServletIscrizione extends HttpServlet {
         return true;
     }
 
-    public   void saveParameter(HttpServletRequest request,HttpServletResponse response ) throws SQLException, ServletException, IOException {
-
+    @Generated
+    public void saveParameter(HttpServletRequest request,HttpServletResponse response ) throws SQLException, ServletException, IOException {
         String fn=request.getParameter("nome");
         String ln=request.getParameter("cognome");
         String cf= request.getParameter("CodiceFiscale");
@@ -169,6 +166,7 @@ public class ServletIscrizione extends HttpServlet {
         }
     }
 
+    @Generated
     public void formatName(String fn){
         Pattern nome = Pattern.compile("^([a-z A-Z]{3,20})$");
          matcher = nome.matcher(fn);
@@ -178,6 +176,8 @@ public class ServletIscrizione extends HttpServlet {
 
         }
     }
+
+    @Generated
     public void formatSurname(String ln){
         Pattern cognome = Pattern.compile("^([a-z A-Z]{3,20})$");
         matcher = cognome.matcher(ln);
@@ -186,6 +186,8 @@ public class ServletIscrizione extends HttpServlet {
             message = "Il cognome deve essere formato solo da lettere e deve contenere almeno tre caratteri.";
         }
     }
+
+    @Generated
     public void formatCodiceFiscale(String cf){
         Pattern codiceFiscale = Pattern.compile("(^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$)");
         matcher = codiceFiscale.matcher(cf);
@@ -195,6 +197,7 @@ public class ServletIscrizione extends HttpServlet {
         }
     }
 
+    @Generated
     public void formatEmail(String email){
         Pattern e_mail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$");
         matcher = e_mail.matcher(email);
@@ -205,7 +208,7 @@ public class ServletIscrizione extends HttpServlet {
     }
 
 
-    //Metodo modificato
+    @Generated
     public static boolean formatPassword(String psw){
         Matcher matcher;
         Pattern password = Pattern.compile("(^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20}$)");
@@ -217,6 +220,7 @@ public class ServletIscrizione extends HttpServlet {
         return matcher.matches();
     }
 
+    @Generated
     public void formatNumCivico(int numeroCivico){
         Pattern numCivico = Pattern.compile(("^[0-9]{1,3}$"));
         matcher = numCivico.matcher(Integer.toString(numeroCivico));
@@ -226,6 +230,7 @@ public class ServletIscrizione extends HttpServlet {
         }
     }
 
+    @Generated
     public void formatCap(String cap){
         Pattern codicePostale = Pattern.compile(("^[0-9]{5}$"));
         matcher = codicePostale.matcher(cap);
@@ -234,6 +239,8 @@ public class ServletIscrizione extends HttpServlet {
             message = "Il CAP deve contenere esattamente 5 cifre.";
         }
     }
+
+    @Generated
     public void formatTel(String telefono){
         Pattern numTelefono = Pattern.compile(("^[0-9]{10}$"));
         matcher = numTelefono.matcher(telefono);

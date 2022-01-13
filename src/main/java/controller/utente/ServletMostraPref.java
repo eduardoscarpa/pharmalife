@@ -38,6 +38,7 @@ public class ServletMostraPref extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);

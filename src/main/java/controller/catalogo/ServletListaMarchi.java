@@ -25,18 +25,20 @@ public class ServletListaMarchi extends HttpServlet {
         this.prodottoDAO = prodottoDAO;
     }
 
+    @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         visualizzaListaMarchi(request, response);
     }
 
     /**
-     * Questo metodo consente di visualizzare la lista dei marchi disponibili nel catalogo.
+     * Questo metodo consente di visualizzare la lista dei marchi disponibili nel logic.catalogo.
      * @pre //
      * @param request
      * @param response

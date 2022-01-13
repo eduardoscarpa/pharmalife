@@ -1,4 +1,4 @@
-<%@ page import="model.utente.Utente" %><%--
+<%@ page import="model.logic.utente.Utente" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore
   Date: 03/07/2021
@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Utente utente=(Utente) session.getAttribute("utente"); %>
+<% Utente logic.utente=(Utente) session.getAttribute("logic.utente"); %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/pagine/default/head.jsp">
@@ -18,8 +18,8 @@
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
-<%if(utente!=null){  %>
-<h1 class="myAccount">Benvenuto in pHarmaLife, <%=utente.getNome()%></h1>
+<%if(logic.utente!=null){  %>
+<h1 class="myAccount">Benvenuto in pHarmaLife, <%=logic.utente.getNome()%></h1>
 <div class="flex-container">
     <div class="flex-item">
         <a href="ServletLink?scelta=info"><i class="fas fa-user-circle" style="background-color: white" ></i></a><br>
@@ -61,9 +61,9 @@
         <p>LE MIE CARTE</p>
     </div>
 
-    <% if(utente!=null){ if(utente.isAdmin()){ %>
+    <% if(logic.utente!=null){ if(logic.utente.isAdmin()){ %>
     <div class="flex-item">
-        <a href="ServletLink?scelta=admin"> <i class="fas fa-user-lock"></i></a><br>
+        <a href="ServletLink?scelta=logic.admin"> <i class="fas fa-user-lock"></i></a><br>
         <p>AREA ADMIN</p>
     </div>
     <% } } %>

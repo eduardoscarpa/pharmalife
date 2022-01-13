@@ -1,6 +1,6 @@
-<%@ page import="model.utente.Utente" %>
+<%@ page import="model.logic.utente.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<%Utente utente=(Utente)session.getAttribute("utente");%>--%>
+<%--<%Utente logic.utente=(Utente)session.getAttribute("logic.utente");%>--%>
 <%String iscrizione=(String) request.getAttribute("iscriviti");%>
 
 <html>

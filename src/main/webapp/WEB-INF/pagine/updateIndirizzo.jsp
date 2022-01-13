@@ -1,4 +1,4 @@
-<%@ page import="model.utente.Utente" %><%--
+<%@ page import="model.logic.utente.Utente" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore
   Date: 19/07/2021
@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%Utente utente=(Utente)session.getAttribute("utente");%>
+<%Utente logic.utente=(Utente)session.getAttribute("logic.utente");%>
 <%String messaggio=(String) request.getAttribute("updateAddress");    %>
 <html>
 <head>
@@ -46,7 +46,7 @@
                 <label for="cap">CAP</label>
                 <input type="text" name="cap" id="Idcap">
             </div>
-            <input type="hidden" name="codiceFiscale" value="<%=utente.getCodiceFiscale()%>">
+            <input type="hidden" name="codiceFiscale" value="<%=logic.utente.getCodiceFiscale()%>">
             <input type="submit" value="MODIFICA">
         </form>
     </fieldset>

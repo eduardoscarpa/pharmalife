@@ -66,6 +66,7 @@ public class ServletInvioMessaggio extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -73,7 +74,7 @@ public class ServletInvioMessaggio extends HttpServlet {
 
     /**
      *
-     * @pre not checkUtente(utenteLoggato,utente)
+     * @pre not checkUtente(utenteLoggato,logic.utente)
      * @param utenteLoggato
      * @param message
      * @throws ServletException
@@ -91,26 +92,27 @@ public class ServletInvioMessaggio extends HttpServlet {
      * @param utente
      * @return
      */
+    @Generated
     public boolean checkUtente(Utente utenteLoggato,Utente utente){
         if (utenteLoggato != null) {
             if (!utenteLoggato.getNome().equals(utente.getNome())) {
                 address = "WEB-INF/pagine/assistenza.jsp";
-                avviso="Il nome non coincide con quello dell'utente loggato.";
+                avviso="Il nome non coincide con quello dell'logic.utente loggato.";
                 return  false;
             }
             if (!utenteLoggato.getCognome().equals(utente.getCognome())) {
                 address = "WEB-INF/pagine/assistenza.jsp";
-                avviso="Il cognome non coincide con quello dell'utente loggato.";
+                avviso="Il cognome non coincide con quello dell'logic.utente loggato.";
                 return  false;
             }
             if (!utenteLoggato.getTelefono().equals(utente.getTelefono())) {
                 address = "WEB-INF/pagine/assistenza.jsp";
-                avviso="Il numero di telefono non coincide con quello dell'utente loggato.";
+                avviso="Il numero di telefono non coincide con quello dell'logic.utente loggato.";
                 return  false;
             }
             if (!utenteLoggato.getEmail().equals(utente.getEmail())) {
                 address = "WEB-INF/pagine/assistenza.jsp";
-                avviso="L'e-mail non coincide con quella dell'utente loggato.";
+                avviso="L'e-mail non coincide con quella dell'logic.utente loggato.";
                 return  false;
             }
         }

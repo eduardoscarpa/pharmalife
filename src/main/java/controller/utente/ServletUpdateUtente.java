@@ -44,6 +44,7 @@ public class ServletUpdateUtente extends HttpServlet {
         dispatcher.forward(request,response);
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -96,7 +97,7 @@ public class ServletUpdateUtente extends HttpServlet {
                     }
                 }
             } else {
-                up = "La password non corrisponde con quella dell'utente loggato";
+                up = "La password non corrisponde con quella dell'logic.utente loggato";
             }
         }
         request.setAttribute("update",up);

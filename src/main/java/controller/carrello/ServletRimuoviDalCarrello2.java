@@ -34,8 +34,9 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
     public ServletRimuoviDalCarrello2(ProdottoDAO prodottoDAO){
         serviceProdotto=prodottoDAO;
         //this.prodotto=prodotto;
-        //this.utente=utente;
+        //this.logic.utente=logic.utente;
     }
+
     public ServletRimuoviDalCarrello2(){
         serviceProdotto=new ProdottoDAO();
         utente=new Utente();
@@ -43,6 +44,7 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
         carrello= new Carrello();
         prodotti= new ArrayList<>();
     }
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
@@ -51,19 +53,20 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
          utente=(Utente) session.getAttribute("utente");
        // rimozioneDalCarrello(codiceProdotto, request);
         rimozioneDalCarrello(utente, prodotto, session);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp");
+        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/logic.carrello.jsp");
         dispatcher.forward(request,response);
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     /**
-     * Questo metodo serve per rimuovere un prodotto dal carrello
+     * Questo metodo serve per rimuovere un prodotto dal logic.carrello
      * @pre //
-     * @param codiceProdotto del prodotto da eliminare dal carrello
+     * @param prodotto del prodotto da eliminare dal logic.carrello
      * @param request
      * @throws ServletException
      * @throws IOException
@@ -77,11 +80,11 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
             prodotti= carrello.getProdotti();
             prodotti.remove(prodotto);
             carrello.setProdotti(prodotti);
-            //carrello.getProdotti().remove(prodotto);
+            //logic.carrello.getProdotti().remove(prodotto);
             utente.setCarrello(carrello);
 
-            //utente.getCarrello().sottraiTotale(prodotto.getPrezzo());
-            //utente.getCarrello().getProdotti().remove(prodotto);
+            //logic.utente.getCarrello().sottraiTotale(prodotto.getPrezzo());
+            //logic.utente.getCarrello().getProdotti().remove(prodotto);
         }else{
             carrello=(Carrello) session.getAttribute("carrello");
             if(carrello!=null){
@@ -89,7 +92,7 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
                 prodotti= carrello.getProdotti();
                 prodotti.remove(prodotto);
                 carrello.setProdotti(prodotti);
-                //carrello.getProdotti().remove(prodotto);
+                //logic.carrello.getProdotti().remove(prodotto);
             }
         }
     }

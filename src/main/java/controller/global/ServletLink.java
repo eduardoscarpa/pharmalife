@@ -72,7 +72,7 @@ public class ServletLink extends HttpServlet {
                 pagina="WEB-INF/pagine/listaProdotti.jsp";
                 break;
             case "admin"    :
-                pagina="WEB-INF/pagine/admin/areaAmministratore.jsp";
+                pagina="WEB-INF/pagine/logic.admin/areaAmministratore.jsp";
                 break;
             case "termini"  :
                 pagina="WEB-INF/pagine/terminiCondizioni.jsp";
@@ -84,7 +84,7 @@ public class ServletLink extends HttpServlet {
                 pagina="WEB-INF/pagine/InfoUtente.jsp";
                 break;
             case "carrello" :
-                pagina="WEB-INF/pagine/carrello.jsp";
+                pagina="WEB-INF/pagine/logic.carrello.jsp";
                 break;
             case "indirizzo":
                 pagina="WEB-INF/pagine/updateIndirizzo.jsp";

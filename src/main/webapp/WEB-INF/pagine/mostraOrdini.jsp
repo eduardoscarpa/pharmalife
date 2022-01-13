@@ -31,13 +31,13 @@
             <td>${ordine.idOrdine}</td>
             <td>${ordine.dataOrdine}</td>
             <td>${ordine.ora}</td>
-            <td>${ordine.utente.codiceFiscale}</td>
+            <td>${ordine.logic.utente.codiceFiscale}</td>
         </tr>
             <tr>
                 <th  colspan="4"> Prodotti </th>
             </tr>
         <tr>
-        <c:forTokens items="${ordine.carrello.prodottiCarrello}" delims="," var="element">
+        <c:forTokens items="${ordine.logic.carrello.prodottiCarrello}" delims="," var="element">
                 <td>${element}</td>
         </c:forTokens>
         </tr>

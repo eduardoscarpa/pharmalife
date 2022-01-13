@@ -21,6 +21,8 @@ public class ServletMostraOrdini extends HttpServlet {
     public ServletMostraOrdini(OrdineDAO ordineDAO){
         this.ordineDAO=ordineDAO;
     }
+
+    @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

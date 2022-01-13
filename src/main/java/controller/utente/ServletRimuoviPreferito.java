@@ -24,12 +24,14 @@ public class ServletRimuoviPreferito extends HttpServlet {
     public ServletRimuoviPreferito(){
         utenteDAO = new UtenteDAO();
     }
+
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         rimuoviProdottoDaiPreferiti(request,response);
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);

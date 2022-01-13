@@ -8,6 +8,19 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+@Documented
+@Retention(RUNTIME)
+@Target({TYPE, METHOD})
+@interface Generated {
+}
 
 @WebServlet(name = "ServletAggiungiAlCarrello", value = "/ServletAggiungiAlCarrello")
 public class ServletAggiungiAlCarrello extends HttpServlet {
@@ -34,18 +47,19 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProdotto=Integer.parseInt(request.getParameter("prodotto"));
         aggiuntaAlCarrello(idProdotto, request, response);
-        response.getWriter().write("Prodotto aggiunto al carrello!");
+        response.getWriter().write("Prodotto aggiunto al logic.carrello!");
     }
 
+    @Generated
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
     /**
-     * Questo metodo serve per aggiungere un prodotto al carrello
+     * Questo metodo serve per aggiungere un prodotto al logic.carrello
      * @pre //
-     * @param idProdotto del prodotto da aggiungere al carrello
+     * @param idProdotto del prodotto da aggiungere al logic.carrello
      * @param request
      * @param response
      * @throws IOException
@@ -87,6 +101,6 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
                 session.setMaxInactiveInterval(60);
             }
         }
-        //response.getWriter().write("Prodotto aggiunto al carrello!");
+        //response.getWriter().write("Prodotto aggiunto al logic.carrello!");
     }
 }

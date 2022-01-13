@@ -1,10 +1,8 @@
 package controller.utente;
 
-import model.carrello.Carrello;
 import model.ordine.Ordine;
 import model.ordine.OrdineDAO;
 import model.ordine.OrdineDAOMethod;
-import model.prodotto.Prodotto;
 import model.utente.Utente;
 
 import javax.servlet.RequestDispatcher;
@@ -15,9 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.Time;
-import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.Time;
 
 @WebServlet(name = "ServletOrdini", value = "/ServletOrdini")
 public class ServletOrdini extends HttpServlet {
@@ -29,6 +26,8 @@ public class ServletOrdini extends HttpServlet {
     public ServletOrdini(OrdineDAO ordineDAO){
         this.ordineDAO=ordineDAO;
     }
+
+    @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
@@ -52,7 +51,7 @@ public class ServletOrdini extends HttpServlet {
                 ordineDAO.insertCarrello(ordine);
                 utente.setCarrello(null);
             }
-            RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp");
+            RequestDispatcher dispatcher= request.getRequestDispatcher("WEB-INF/pagine/logic.carrello.jsp");
             dispatcher.forward(request,response);
         }
     }

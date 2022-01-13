@@ -25,26 +25,25 @@ public class ServletDeleteProdottoAdmin extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProdotto=Integer.parseInt(request.getParameter("id"));
         eliminaProdottoDalCatalogo(idProdotto);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/admin/areaAmministratore.jsp");
+        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/logic.admin/areaAmministratore.jsp");
         dispatcher.forward(request,response);
 
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
     /**
-     * Questo metodo permette ad un Amministratore di eliminare un prodotto dal catalogo
+     * Questo metodo permette ad un Amministratore di eliminare un prodotto dal logic.catalogo
      * @param idProdotto del prodotto da eliminare
      * @throws ServletException
      * @throws IOException
      * @post @post prodottoDAO.doRetrieveByAllProdotti.size=@pre prodottoDAO.doRetrieveByAllProdotti.size-1
      */
     public void eliminaProdottoDalCatalogo(int idProdotto) throws ServletException, IOException {
-
         prodottoDAO.deleteProdotto(idProdotto);
-
     }
 }
