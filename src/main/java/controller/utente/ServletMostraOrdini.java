@@ -22,17 +22,16 @@ public class ServletMostraOrdini extends HttpServlet {
         this.ordineDAO=ordineDAO;
     }
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         doPost(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session=request.getSession();
         Utente utente=(Utente) session.getAttribute("utente");
-             ordineDAO= new OrdineDAO();
         ArrayList<Ordine> ordini= ordineDAO.doRetraiveByAllById(utente);
         request.setAttribute("ordini",ordini);
         RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/mostraOrdini.jsp");
