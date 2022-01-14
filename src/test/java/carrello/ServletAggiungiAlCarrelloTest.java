@@ -50,7 +50,7 @@ public class ServletAggiungiAlCarrelloTest {
     public void doGetTest() throws ServletException, IOException {
         when(request.getParameter("prodotto")).thenReturn("1");
         int id=Integer.parseInt(request.getParameter("prodotto"));
-        when(session.getAttribute("utente")).thenReturn(utente);
+        when(session.getAttribute("utente")).thenReturn(null);
         when(session.getAttribute("carrello")).thenReturn(carrello);
         when(prodottoDAO.cercaProdotto(id)).thenReturn(prodotto);
         PrintWriter printWriter=mock(PrintWriter.class);
@@ -66,6 +66,24 @@ public class ServletAggiungiAlCarrelloTest {
     }
 
     @Test
+    public void doGetUteneNotNullTest() throws ServletException, IOException {
+        when(request.getParameter("prodotto")).thenReturn("1");
+        int id=Integer.parseInt(request.getParameter("prodotto"));
+        when(session.getAttribute("utente")).thenReturn(utente);
+        when(session.getAttribute("carrello")).thenReturn(carrello);
+        when(prodottoDAO.cercaProdotto(id)).thenReturn(prodotto);
+        PrintWriter printWriter=mock(PrintWriter.class);
+        when(response.getWriter()).thenReturn(printWriter);
+        assertEquals(1,id);
+        servletAggiungiAlCarrello.doGet(request, response);
+        verify(request,times(2)).getParameter("prodotto");
+        verify(session).getAttribute("utente");
+        verify(session).getAttribute("carrello");
+        verify(prodottoDAO).cercaProdotto(id);
+        verify(response).getWriter();
+        verify(printWriter).write("Prodotto Aggiunto al Carrello");
+    }
+    @Test
     public void aggiuntaAlCarrelloUtenteIsNotNullTest() throws IOException {
         when(utente.getCarrello()).thenReturn(carrello);
         int totale=Integer.parseInt(request.getParameter("totale"));
@@ -75,6 +93,7 @@ public class ServletAggiungiAlCarrelloTest {
         verify(prodotto).setPrezzoQuantita(totale);
         verify(utente.getCarrello()).addProdotto(prodotto);
     }
+
     @Test
     public void aggiuntaAlCarrelloUtenteIstNullTest() throws IOException {
         when(utente.getCarrello()).thenReturn(carrello);
