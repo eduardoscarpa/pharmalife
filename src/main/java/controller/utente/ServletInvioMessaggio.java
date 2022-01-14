@@ -20,19 +20,27 @@ import java.sql.Time;
 
 @WebServlet(name = "ServletInvioMessaggio", value = "/ServletInvioMessaggio")
 public class ServletInvioMessaggio extends HttpServlet {
+
     private String avviso;
     private MessaggioDAOMethod serviceMessaggio;
     private UtenteDAOMethod serviceUtente;
     private String address;
+    private Messaggio message;
+    private Utente utente;
 
 
-    public ServletInvioMessaggio(MessaggioDAO messaggioDAO, UtenteDAO utenteDAO){
+    public ServletInvioMessaggio(MessaggioDAO messaggioDAO, UtenteDAO utenteDAO, Messaggio message, Utente utente){
         serviceMessaggio =messaggioDAO;
         serviceUtente =utenteDAO;
+        this.message = message;
+        this.utente = utente;
     }
     public ServletInvioMessaggio(){
         serviceMessaggio =new MessaggioDAO();
+        message = new Messaggio();
+        utente = new Utente();
     }
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        // invioMessaggio(request, response);
@@ -48,8 +56,6 @@ public class ServletInvioMessaggio extends HttpServlet {
         Date data2 = new Date(System.currentTimeMillis());
         Time time1 = new Time(System.currentTimeMillis());
 
-        Messaggio message = new Messaggio();
-        Utente utente=new Utente();
         utente.setNome(nomeUtente);
         utente.setCognome(cognome);
         utente.setTelefono(telefono);

@@ -33,10 +33,12 @@ public class ServletInvioMessaggioTest {
     private HttpServletResponse response;
 
 
-
     @Mock
-    private Utente utente1;
-
+    private Utente utente;
+    @Mock
+    private Messaggio messaggio;
+    @Mock
+    private HttpSession session;
     @Mock
     private MessaggioDAO messaggioDAO;
 
@@ -44,9 +46,17 @@ public class ServletInvioMessaggioTest {
     private UtenteDAO utenteDAO;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
-        servletInvioMessaggio = new ServletInvioMessaggio(messaggioDAO,utenteDAO);
+        session = mock(HttpSession.class);
+        utente = mock(Utente.class);
+        messaggio = mock(Messaggio.class);
+        servletInvioMessaggio = new ServletInvioMessaggio(messaggioDAO, utenteDAO, messaggio, utente);
+        when(utente.getNome()).thenReturn("Catello");
+        when(utente.getCognome()).thenReturn("Scarpa");
+        when(utente.getTelefono()).thenReturn("23423424");
+        when(utente.getEmail()).thenReturn("eduardo@gmail.com");
+
     }
 
 
@@ -58,47 +68,26 @@ public class ServletInvioMessaggioTest {
         when(request.getParameter("email")).thenReturn("alfredo@libero.it");
         when(request.getParameter("messaggio")).thenReturn("Ho problemicon il login");
 
-        HttpSession session=mock(HttpSession.class);
         when(request.getSession()).thenReturn(session);
 
-        Utente utente=new Utente();
         when(session.getAttribute("utente")).thenReturn(utente);
 
-        RequestDispatcher requestDispatcher=mock(RequestDispatcher.class);
+        RequestDispatcher requestDispatcher = mock(RequestDispatcher.class);
         when(request.getRequestDispatcher("WEB-INF/pagine/messaggioInviato.jsp")).thenReturn(requestDispatcher);
-
-
+        servletInvioMessaggio.doGet(request, response);
+        verify(requestDispatcher).forward(request, response);
     }
 
 
     @Test
     public void invioMessaggioTest() throws ServletException, IOException {
-    Messaggio messaggio=new Messaggio();
-    Utente utente=new Utente();
-    messaggio.setUtente(utente);
-    messaggio.setTesto("asdasdasdas");
-    messaggio.setCodiceMessaggio(2);
-    messaggio.setOra(new Time(22,25,12));
-    messaggio.setData(new Date(2000,04,02));
-    servletInvioMessaggio.invioMessaggio(utente,messaggio);
-    verify(messaggioDAO).insertMessaggio(messaggio);
+        messaggio.setUtente(utente);
+        messaggio.setTesto("asdasdasdas");
+        messaggio.setCodiceMessaggio(2);
+        messaggio.setOra(new Time(22, 25, 12));
+        messaggio.setData(new Date(2000, 04, 02));
+        servletInvioMessaggio.invioMessaggio(utente, messaggio);
+        verify(messaggioDAO).insertMessaggio(messaggio);
 
     }
-
-
-   @Test
-    public void checkUtenteTestEqualsCognome(){
-
-    }
-
-    @Test
-    public void checkUtenteTestEqualsTelefono(){
-
-    }
-
-    @Test
-    public void checkUtenteTestEqualsEmail(){
-
-    }
-
 }
