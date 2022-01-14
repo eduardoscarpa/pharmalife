@@ -54,13 +54,24 @@ public class ServletAccessoUtenteTest {
     }
 
     @Test
-    public void doGetTest() throws ServletException, IOException {
+    public void doGetTestLogin() throws ServletException, IOException {
         when(request.getSession()).thenReturn(session);
         when(request.getParameter("value")).thenReturn("login");
         when(request.getRequestDispatcher("/WEB-INF/pagine/formLogin.jsp")).thenReturn(dispatcher);
         String val = request.getParameter("value");
         servletAccessoUtente.doGet(request, response);
         assertEquals("login", val);
+        verify(request, times(2)).getParameter("value");
+    }
+
+    @Test
+    public void doGetTestLogout() throws ServletException, IOException {
+        when(request.getSession()).thenReturn(session);
+        when(request.getParameter("value")).thenReturn("logout");
+        when(request.getRequestDispatcher("/index.jsp")).thenReturn(dispatcher);
+        String val = request.getParameter("value");
+        servletAccessoUtente.doGet(request, response);
+        assertEquals("logout", val);
         verify(request, times(2)).getParameter("value");
     }
 
@@ -87,9 +98,12 @@ public class ServletAccessoUtenteTest {
         when(request.getParameter("value")).thenReturn("login");
         when(session.getAttribute("utente")).thenReturn(utente);
         when(session.getAttribute("carrello")).thenReturn(carrello);
+        assertNotEquals(null,session.getAttribute("utente"));
+        assertNotEquals(null,session.getAttribute("carrello"));
         servletAccessoUtente.loginUtente(request, response);
         String val=request.getParameter("value");
         assertEquals("login",val);
+        verify(session).removeAttribute("carrello");
     }
 
 
