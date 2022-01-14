@@ -89,7 +89,7 @@ public class ServletUpdateUtente extends HttpServlet {
                     up = "La nuova password deve essere diversa da quella precedente";
                 } else {
                     if (utenteDAO.updateUtente(utente)) {
-                        up = "Dati Aggiornati Correttamente";
+                        up = "Dati aggiornati correttamente.";
                         Utente u = (Utente) utenteDAO.cercaUtente(utente.getCodiceFiscale());
                         if (utente != null) {
                             session.setAttribute("utente", u);

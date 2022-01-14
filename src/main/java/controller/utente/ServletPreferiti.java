@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet(name = "ServletPreferiti", value = "/ServletPreferiti")
 public class ServletPreferiti extends HttpServlet {
@@ -36,6 +35,7 @@ public class ServletPreferiti extends HttpServlet {
         inserisciProdottoAiPreferiti(request,response);
     }
 
+    @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

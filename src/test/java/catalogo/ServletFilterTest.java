@@ -53,7 +53,6 @@ public class ServletFilterTest {
 
     @Test // Da finire
     public void filtraProdottiTest(){
-
         ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
         prodotti.add(new Prodotto());
         prodotti.add(new Prodotto());

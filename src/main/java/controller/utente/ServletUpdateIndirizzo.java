@@ -13,12 +13,15 @@ import java.io.IOException;
 public class ServletUpdateIndirizzo extends HttpServlet {
 
     private UtenteDAOMethod utenteDAO;
+    private Utente utente;
 
-    public ServletUpdateIndirizzo(UtenteDAO utenteDAO){
+    public ServletUpdateIndirizzo(UtenteDAO utenteDAO, Utente utente){
         this.utenteDAO=utenteDAO;
+        this.utente = utente;
     }
     public ServletUpdateIndirizzo(){
         utenteDAO=new UtenteDAO();
+        utente = new Utente();
     }
 
     @Override
@@ -52,7 +55,6 @@ public class ServletUpdateIndirizzo extends HttpServlet {
 
     public void aggiornaIndirizzoUtente(String via,int numero,String cap,String codiceFiscale,
                                           HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        Utente utente= new Utente();
         utente.setVia(via);
         utente.setNumeroCivico(numero);
         utente.setCap(cap);
