@@ -91,6 +91,19 @@ public class ServletAdminTest {
         //assertNotEquals("Non uguale", "messaggi", val);
     }
     @Test
+    public void doPostValueIsInsertProdottoTest() throws ServletException, IOException {
+
+       // RequestDispatcher requestDispatcher=mock(RequestDispatcher.class);
+        when(request.getParameter("value")).thenReturn("insertProdotto");
+        when(request.getRequestDispatcher("WEB-INF/pagine/admin/insertProdotto.jsp")).thenReturn(dispatcher);
+        // ServletAdmin servletAdmin= new ServletAdmin(messaggioDAO,utenteDAO,prodottoDAO,ordineDAO);
+        servletAdmin.doPost(request,response);
+        String val=request.getParameter("value");
+        verify(dispatcher).forward(request, response);
+        assertEquals("insertProdotto", val);
+        //assertNotEquals("Non uguale", "messaggi", val);
+    }
+    @Test
     public void visualizzaMessaggiTest(){
 
         messaggi.add(new Messaggio());
