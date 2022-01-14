@@ -64,6 +64,7 @@ public class ServletUpdateUtente extends HttpServlet {
      * @throws IOException
      * @post //
      */
+    @Generated
     public void aggiornaDatiUtente(String codiceFiscale,String nomeUtente,String cognomeUtente,
     String email,String password,String nuovaPassword,HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
 
