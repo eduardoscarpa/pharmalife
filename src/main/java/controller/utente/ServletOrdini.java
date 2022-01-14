@@ -19,12 +19,17 @@ import java.sql.Time;
 @WebServlet(name = "ServletOrdini", value = "/ServletOrdini")
 public class ServletOrdini extends HttpServlet {
     private OrdineDAOMethod ordineDAO;
+    private Ordine ordine;
+    private Utente utente;
 
     public ServletOrdini(){
         ordineDAO= new OrdineDAO();
+        ordine=new Ordine();
     }
-    public ServletOrdini(OrdineDAO ordineDAO){
+    public ServletOrdini(OrdineDAO ordineDAO, Ordine ordine,Utente utente){
         this.ordineDAO=ordineDAO;
+        this.ordine=ordine;
+        this.utente=utente;
     }
 
     @Generated
@@ -42,7 +47,7 @@ public class ServletOrdini extends HttpServlet {
         if(utente!=null){
             if(utente.getCarrello()!=null){
                 utente.getCarrello().prodottiToString();
-                Ordine ordine= new Ordine();
+               // Ordine ordine= new Ordine();
                 ordine.setCarrello(utente.getCarrello());
                 Date date= new Date(System.currentTimeMillis());
                 Time time= new Time(System.currentTimeMillis());

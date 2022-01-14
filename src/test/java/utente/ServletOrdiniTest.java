@@ -46,23 +46,23 @@ public class ServletOrdiniTest  {
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
-        servletOrdini = new ServletOrdini();
+        servletOrdini = new ServletOrdini(ordineDAO,ordine,utente);
     }
 
     @Test
     public void doPostSessionNotNullTest() throws ServletException, IOException {
         HttpSession session=mock(HttpSession.class);
         when(request.getSession()).thenReturn(session);
-        Utente utente= new Utente();
+        //Utente utente= new Utente();
         utente.setCodiceFiscale("GFGHHH88U88V678G");
         session.setAttribute("utente", utente);
         when(session.getAttribute("utente")).thenReturn(utente);
         //StringBuilder prod = new StringBuilder();
         //Carrello carrello = new Carrello();
-        Carrello carr = new Carrello();
-        //when(utente.getCarrello()).thenReturn(carr);
-        Ordine ordine = new Ordine();
-        ordine.setCarrello(carr);
+        //Carrello carr = new Carrello();
+        when(utente.getCarrello()).thenReturn(carrello);
+        //Ordine ordine = new Ordine();
+        ordine.setCarrello(carrello);
         Time time = new Time(11,30,0);
         ordine.setOra(time);
         Date date = new Date(2022, 0, 9);
@@ -78,9 +78,13 @@ public class ServletOrdiniTest  {
         servletOrdini.doPost(request, response);
         verify(requestDispatcher).forward(request, response);
 
+        verify(ordine).setOra(time);
+        verify(ordine).setDataOrdine(date);
+        verify(ordine,times(2)).setCarrello(utente.getCarrello());
+        verify(session).setAttribute("utente", utente);
         //servletOrdini.doPost(request, response);
         ordineDAO.insertCarrello(ordine);
-        verify(ordineDAO).insertCarrello(ordine);
+        verify(ordineDAO,times(2)).insertCarrello(ordine);
     }
 
     @Test
