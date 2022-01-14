@@ -30,16 +30,18 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public class ServletAccessoUtente extends HttpServlet {
     private UtenteDAO  serviceUtenteDAO;
     private Utente utente;
-
+private Carrello carrello;
 
     public ServletAccessoUtente(){
         this.utente=new Utente();
         this.serviceUtenteDAO=new UtenteDAO();
+        this.carrello=new Carrello();
     }
 
-    public ServletAccessoUtente(UtenteDAO serviceUtenteDAO,Utente utente){
+    public ServletAccessoUtente(UtenteDAO serviceUtenteDAO,Utente utente,Carrello carrello){
         this.utente=utente;
         this.serviceUtenteDAO=serviceUtenteDAO;
+        this.carrello=carrello;
     }
 
     @Override
@@ -76,7 +78,7 @@ public class ServletAccessoUtente extends HttpServlet {
          utente = (Utente) session.getAttribute("utente");
         if (utente != null) {
             session.removeAttribute("utente");
-            Carrello carrello = (Carrello) session.getAttribute("carrello");
+            carrello = (Carrello) session.getAttribute("carrello");
             if (carrello != null) {
                 session.removeAttribute("carrello");
             }
@@ -85,6 +87,9 @@ public class ServletAccessoUtente extends HttpServlet {
         }
 
     }
+
+
+
 
     /**
      * Questo metodo serve per effettuare il login di un Utente, al termine dell'esecuzione del metodo l'Utente

@@ -33,6 +33,9 @@ public class ServletAccessoUtenteTest {
     private Utente utente;
 
     @Mock
+    private Carrello carrello;
+
+    @Mock
     private HttpServletResponse response;
 
 
@@ -42,34 +45,52 @@ public class ServletAccessoUtenteTest {
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
-        servletAccessoUtente = new ServletAccessoUtente(utenteDAO,utente);
+        servletAccessoUtente = new ServletAccessoUtente(utenteDAO,utente,carrello);
     }
 
     @Test
     public void doGetTestLogout() throws ServletException, IOException {
         HttpSession session=mock(HttpSession.class);
+        when(session.getAttribute("carrello")).thenReturn(carrello);
+        when(session.getAttribute("utente")).thenReturn(utente);
         when(request.getSession()).thenReturn(session);
         when(request.getParameter("value")).thenReturn("logout");
-        servletAccessoUtente.doGet(request, response);
+        servletAccessoUtente.logoutUtente(request,response);
         String val=request.getParameter("value");
         assertEquals("logout",val );
+        assertNotEquals(null,carrello);
+        assertNotEquals(null,utente);
 
+       verify(session).getAttribute("carrello");
+       verify(session).removeAttribute("carrello");
+        verify(session).removeAttribute("utente");
     }
 
     @Test
-    public void doGetTestLogin() throws ServletException, IOException {
+    public void loginTest() throws ServletException, IOException {
         HttpSession session=mock(HttpSession.class);
-        RequestDispatcher requestDispatcher=mock(RequestDispatcher.class);
        when(request.getSession()).thenReturn(session);
         when(request.getParameter("value")).thenReturn("login");
-        when(request.getRequestDispatcher("/WEB-INF/pagine/formLogin.jsp")).thenReturn(requestDispatcher);
-        servletAccessoUtente.doGet(request, response);
-        verify(requestDispatcher).forward(request, response);
+        when(session.getAttribute("utente")).thenReturn(utente);
+        when(session.getAttribute("carrello")).thenReturn(carrello);
+        servletAccessoUtente.loginUtente(request, response);
         String val=request.getParameter("value");
         assertEquals("login",val);
 
+       // verify(session).removeAttribute("carrello");
+
+    }
 
 
+    @Test
+    public void loginUtenteIsNullTest() throws ServletException, IOException {
+        HttpSession session=mock(HttpSession.class);
+        RequestDispatcher requestDispatcher=mock(RequestDispatcher.class);
+        when(request.getSession()).thenReturn(session);
+        when(request.getRequestDispatcher("/WEB-INF/pagine/formLogin.jsp")).thenReturn(requestDispatcher);
+        when(session.getAttribute("utente")).thenReturn(null);
+        servletAccessoUtente.loginUtente(request, response);
+        verify(requestDispatcher).forward(request, response);
     }
 
 
