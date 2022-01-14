@@ -19,9 +19,11 @@ import java.util.regex.Pattern;
 
 @WebServlet(name = "ServletIscrizione", value = "/ServletIscrizione")
 public class ServletIscrizione extends HttpServlet {
+
     private String message;
     private String address;
     private Matcher matcher;
+    private Carrello carrello;
 
     UtenteDAOMethod service;
 
@@ -30,6 +32,7 @@ public class ServletIscrizione extends HttpServlet {
         super();
         service=utenteDAO;
         this.address=address;
+
     }
 
     public ServletIscrizione(){
@@ -40,9 +43,6 @@ public class ServletIscrizione extends HttpServlet {
     @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       // String cf= request.getParameter("CodiceFiscale");
-       // this.request=request1;
-        //this.response=response;
         address="index.jsp";
         message="";
         try {

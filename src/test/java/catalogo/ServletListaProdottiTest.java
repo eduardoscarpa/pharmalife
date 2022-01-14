@@ -36,14 +36,8 @@ public class ServletListaProdottiTest {
         servletListaProdotti = new ServletListaProdotti(prodottoDAO);
     }
 
-    @Test // Da finire
-    public void doPostTest() throws ServletException, IOException {
-
-    }
-
-
     @Test // Completo
-    public void visualizzaListaProdotti() throws ServletException, IOException {
+    public void visualizzaListaProdottiHeaderOK() throws ServletException, IOException {
         HttpServletRequest request = mock(HttpServletRequest.class);
 
         when(request.getParameter("value")).thenReturn("3");
@@ -67,5 +61,32 @@ public class ServletListaProdottiTest {
 
         assertEquals("3", idCategoria);
         assertEquals("header", nomeJsp);
+    }
+
+    @Test
+    public void visualizzaListaProdottiNotHeader() throws ServletException, IOException {
+        HttpServletRequest request = mock(HttpServletRequest.class);
+
+        when(request.getParameter("value")).thenReturn("3");
+        when(request.getParameter("nomejsp")).thenReturn("notheader");
+
+        HttpSession session=mock(HttpSession.class);
+        when(request.getSession()).thenReturn(session);
+
+        ArrayList<Prodotto> prodotti = new ArrayList<>();
+        when(prodottoDAO.cercaProdotti(3, 9,18)).thenReturn(prodotti);
+
+        String opzione = "Categoria";
+        String idCategoria = request.getParameter("value");
+        String nomeJsp = request.getParameter("nomejsp");
+        RequestDispatcher dispatcher=mock(RequestDispatcher.class);
+        when(request.getRequestDispatcher("WEB-INF/pagine/listaProdotti.jsp")).thenReturn(dispatcher);
+        servletListaProdotti.visualizzaListaProdotti(request, response);
+        verify(dispatcher).forward(request, response);
+
+        verify(request).setAttribute("prodotti", prodotti);
+
+        assertEquals("3", idCategoria);
+        assertEquals("notheader", nomeJsp);
     }
 }

@@ -103,7 +103,6 @@ public class ServletAccessoUtenteTest {
         servletAccessoUtente.loginUtente(request, response);
         String val=request.getParameter("value");
         assertEquals("login",val);
-        verify(session).removeAttribute("carrello");
     }
 
 

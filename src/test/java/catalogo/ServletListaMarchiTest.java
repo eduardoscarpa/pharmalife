@@ -35,15 +35,9 @@ public class ServletListaMarchiTest {
         servletListaMarchi = new ServletListaMarchi(prodottoDAO);
     }
 
-    /*
-    @Test // Da finire
-    public void doPostTest() throws ServletException, IOException {
-
-    }
-    */
 
     @Test // Completo
-    public void visualizzaListaMarchi() throws ServletException, IOException {
+    public void visualizzaListaMarchiOK() throws ServletException, IOException {
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getParameter("value")).thenReturn("AVEENO");
         when(request.getParameter("nomejsp")).thenReturn("header");
@@ -62,11 +56,27 @@ public class ServletListaMarchiTest {
         assertEquals("AVEENO", nomeMarchio);
         assertEquals("header", nomeJsp);
 
-        /*
-        verify(request, times(2)).setAttribute("prodotti", prodotti);
-        verify(request, times(2)).setAttribute("opzione", opzione);
-        verify(request, times(2)).setAttribute("nomeMarchio", nomeMarchio);
-         */
+    }
+
+    @Test // Completo
+    public void visualizzaListaMarchiNotHeader() throws ServletException, IOException {
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        when(request.getParameter("value")).thenReturn("AVEENO");
+        when(request.getParameter("nomejsp")).thenReturn("notheader");
+
+        ArrayList<Prodotto> prodotti = new ArrayList<>();
+        when(prodottoDAO.cercaProdottiMarchio("AVEENO", 9,16)).thenReturn(prodotti);
+
+        String opzione = "Marchio";
+        String nomeMarchio = request.getParameter("value");
+        String nomeJsp = request.getParameter("nomejsp");
+        RequestDispatcher dispatcher=mock(RequestDispatcher.class);
+        when(request.getRequestDispatcher("WEB-INF/pagine/listaProdotti.jsp")).thenReturn(dispatcher);
+        servletListaMarchi.visualizzaListaMarchi(request, response);
+        verify(dispatcher).forward(request, response);
+
+        assertEquals("AVEENO", nomeMarchio);
+        assertEquals("notheader", nomeJsp);
 
     }
 }
