@@ -3,6 +3,7 @@ package controller.utente;
 import model.carrello.Carrello;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,9 +29,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @WebServlet(name = "ServletAccessoUtente", value = "/ServletAccessoUtente")
 public class ServletAccessoUtente extends HttpServlet {
-    private UtenteDAO  serviceUtenteDAO;
+
+    private UtenteDAOMethod serviceUtenteDAO;
     private Utente utente;
-private Carrello carrello;
+    private Carrello carrello;
 
     public ServletAccessoUtente(){
         this.utente=new Utente();
@@ -48,6 +50,7 @@ private Carrello carrello;
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession session=request.getSession();
         String valore = request.getParameter("value");
         switch (valore) {
             case "login":
