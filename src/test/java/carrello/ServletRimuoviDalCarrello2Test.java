@@ -97,8 +97,10 @@ public class ServletRimuoviDalCarrello2Test {
         when(session.getAttribute("carrello")).thenReturn(carrello);
         //ArrayList<Prodotto> prodotti= new ArrayList<>();
         //when(carrello.getProdotti()).thenReturn(prodotti);
-        assertEquals(carrello, session.getAttribute("carrello"));
-        servletRimuoviDalCarrello2.rimozioneDalCarrello(utenteMock, prodotto, session);
+        //Carrello c=(Carrello)session.getAttribute("carrello");
+       // assertNotEquals(carrello, session.getAttribute("carrello"));
+        assertNotEquals(null, carrello);
+        servletRimuoviDalCarrello2.rimozioneDalCarrello(null, prodotto, session);
         verify(prodotto).getPrezzo();
         verify(carrello).sottraiTotale(12.50);
         verify(carrello).setProdotti(prodotti);

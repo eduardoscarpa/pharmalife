@@ -44,11 +44,8 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
         this.carrello=carrello;
     }
 
-    public ServletRimuoviDalCarrello2(ProdottoDAO prodottoDAO){
-        serviceProdotto=prodottoDAO;
-        //this.prodotto=prodotto;
-        //this.utente=utente;
-    }
+
+
 
     public ServletRimuoviDalCarrello2(){
         serviceProdotto=new ProdottoDAO();
