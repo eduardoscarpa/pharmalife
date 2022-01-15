@@ -82,43 +82,43 @@ public class ServletIscrizione extends HttpServlet {
      * @post doRetrieveByAllUtenti = @pre doRetrieveByAllUtenti+1
      */
     public void registraUtente(String fn,String ln,String cf, String email,String psw,String psw_rip,String via,
-                                int numeroCivico,String cap,String telefono,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException {
-            Utente utente = new Utente();
-            formatName(fn);
-            formatCodiceFiscale(cf);
-            formatEmail(email);
-            formatPassword(psw);
-            if (!psw_rip.equals(psw)) {
-                address = "WEB-INF/pagine/iscriviti.jsp";
-                message = "La password non coincide con quella digitata precedentemente.";
+                               int numeroCivico,String cap,String telefono,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException {
+        Utente utente = new Utente();
+        formatName(fn);
+        formatCodiceFiscale(cf);
+        formatEmail(email);
+        formatPassword(psw);
+        if (!psw_rip.equals(psw)) {
+            address = "WEB-INF/pagine/iscriviti.jsp";
+            message = "La password non coincide con quella digitata precedentemente.";
+        }
+        formatNumCivico(numeroCivico);
+        formatCap(cap);
+
+
+        utente.setNome(fn);
+        utente.setCognome(ln);
+        utente.setCodiceFiscale(cf);
+        utente.setEmail(email);
+        utente.criptPassword(psw);
+        utente.setVia(via);
+        utente.setNumeroCivico(numeroCivico);
+        utente.setCap(cap);
+        utente.setTelefono(telefono);
+
+        if (address.contains("index")) {
+            service.insertUtente(utente);
+            HttpSession session = request.getSession();
+
+            if (session.getAttribute("carrello") != null) {
+                Carrello carrello = (Carrello) session.getAttribute("carrello");
+                utente.setCarrello(carrello);
             }
-            formatNumCivico(numeroCivico);
-            formatCap(cap);
+            session.setAttribute("utente", utente);
 
-
-            utente.setNome(fn);
-            utente.setCognome(ln);
-            utente.setCodiceFiscale(cf);
-            utente.setEmail(email);
-            utente.criptPassword(psw);
-            utente.setVia(via);
-            utente.setNumeroCivico(numeroCivico);
-            utente.setCap(cap);
-            utente.setTelefono(telefono);
-
-            if (address.contains("index")) {
-                service.insertUtente(utente);
-                HttpSession session = request.getSession();
-
-                if (session.getAttribute("carrello") != null) {
-                    Carrello carrello = (Carrello) session.getAttribute("carrello");
-                    utente.setCarrello(carrello);
-                }
-                session.setAttribute("utente", utente);
-
-            } else {
-                request.setAttribute("iscriviti", message);
-            }
+        } else {
+            request.setAttribute("iscriviti", message);
+        }
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
     }
@@ -171,7 +171,7 @@ public class ServletIscrizione extends HttpServlet {
     @Generated
     public void formatName(String fn){
         Pattern nome = Pattern.compile("^([a-z A-Z]{3,20})$");
-         matcher = nome.matcher(fn);
+        matcher = nome.matcher(fn);
         if (!matcher.matches()) {
             address = "WEB-INF/pagine/iscriviti.jsp";
             message = "Il nome deve essere formato solo da lettere e deve contenere almeno tre caratteri.";

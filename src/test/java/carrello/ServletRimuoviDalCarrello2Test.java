@@ -38,7 +38,6 @@ public class ServletRimuoviDalCarrello2Test {
     private Prodotto prodotto;
     @Mock
     private Carrello carrello;
-
     @Mock
     private ArrayList<Prodotto> prodotti;
 
@@ -48,8 +47,6 @@ public class ServletRimuoviDalCarrello2Test {
     public void setUp(){
         MockitoAnnotations.initMocks(this);
         servletRimuoviDalCarrello2= new ServletRimuoviDalCarrello2(prodottoDAO,prodotto,utenteMock,carrello);
-      //  when(request.getSession()).thenReturn(session);
-       // when(session.getAttribute("utente")).thenReturn(utenteMock);
         when(request.getParameter("value")).thenReturn("1");
         when(request.getSession()).thenReturn(session);
         when(session.getAttribute("utente")).thenReturn(utenteMock);
@@ -80,7 +77,6 @@ public class ServletRimuoviDalCarrello2Test {
     @Test
     public void rimozioneDalCarrelloUtenteIsNotNullTest() throws ServletException, IOException {
         when(prodotto.getPrezzo()).thenReturn(12.5);
-
         servletRimuoviDalCarrello2.rimozioneDalCarrello(utenteMock, prodotto, session);
         verify(utenteMock,times(1)).getCarrello();
         verify(prodotto,times(1)).getPrezzo();
@@ -95,10 +91,6 @@ public class ServletRimuoviDalCarrello2Test {
         when(prodotto.getPrezzo()).thenReturn(12.50);
         assertEquals(null, session.getAttribute("utente"));
         when(session.getAttribute("carrello")).thenReturn(carrello);
-        //ArrayList<Prodotto> prodotti= new ArrayList<>();
-        //when(carrello.getProdotti()).thenReturn(prodotti);
-        //Carrello c=(Carrello)session.getAttribute("carrello");
-       // assertNotEquals(carrello, session.getAttribute("carrello"));
         assertNotEquals(null, carrello);
         servletRimuoviDalCarrello2.rimozioneDalCarrello(null, prodotto, session);
         verify(prodotto).getPrezzo();
@@ -109,17 +101,9 @@ public class ServletRimuoviDalCarrello2Test {
 
     @Test
     public void rimozioneDalCarrelloCarrelloIsNull() throws ServletException, IOException {
-       // when(prodotto.getPrezzo()).thenReturn(12.50);
         when(session.getAttribute("carrello")).thenReturn(null);
         Carrello carrello1=(Carrello) session.getAttribute("carrello");
         assertEquals(null, carrello1);
-       /* servletRimuoviDalCarrello2.rimozioneDalCarrello(utenteMock, prodotto, session);
-        verify(prodotto).getPrezzo();
-        verify(carrello).sottraiTotale(12.50);
-        verify(carrello).getProdotti();
-        verify(prodotti).remove(prodotto);
-        verify(carrello).setProdotti(prodotti);*/
-
     }
 
 }

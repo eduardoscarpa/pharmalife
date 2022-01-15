@@ -28,11 +28,8 @@ public class ServletInvioMessaggioTest {
 
     @Mock
     private HttpServletRequest request;
-
     @Mock
     private HttpServletResponse response;
-
-
     @Mock
     private Utente utente;
     @Mock
@@ -41,7 +38,6 @@ public class ServletInvioMessaggioTest {
     private HttpSession session;
     @Mock
     private MessaggioDAO messaggioDAO;
-
     @Mock
     private UtenteDAO utenteDAO;
 
@@ -58,7 +54,6 @@ public class ServletInvioMessaggioTest {
         when(utente.getEmail()).thenReturn("eduardo@gmail.com");
 
     }
-
 
     @Test
     public void doGetTest() throws ServletException, IOException {
@@ -88,6 +83,5 @@ public class ServletInvioMessaggioTest {
         messaggio.setData(new Date(2000, 04, 02));
         servletInvioMessaggio.invioMessaggio(utente, messaggio);
         verify(messaggioDAO).insertMessaggio(messaggio);
-
     }
 }

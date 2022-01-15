@@ -6,17 +6,16 @@ import model.prodotto.ProdottoDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.stubbing.OngoingStubbing;
-import static org.mockito.Mockito.*;
-import  static org.junit.Assert.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 public class ServletUpdateProdottoTest {
 
@@ -33,7 +32,6 @@ public class ServletUpdateProdottoTest {
 
     @Test
     public void doGetTest() throws ServletException, IOException {
-
         HttpServletRequest request=mock(HttpServletRequest.class);
         HttpServletResponse response=mock(HttpServletResponse.class);
         when(request.getParameter("idProdotto")).thenReturn("1");
@@ -58,7 +56,6 @@ public class ServletUpdateProdottoTest {
     @Test
     public void aggiornaProdottoTest() throws ServletException, IOException {
 
-
         Prodotto prodotto= new Prodotto();
         prodotto.setCodiceProdotto(1);
         prodotto.setNome("Oki");
@@ -66,6 +63,4 @@ public class ServletUpdateProdottoTest {
         prodottoDAO.updateProdotto(prodotto);
         verify(prodottoDAO).updateProdotto(prodotto);
     }
-
-
 }

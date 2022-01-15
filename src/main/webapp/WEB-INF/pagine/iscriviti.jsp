@@ -38,54 +38,54 @@
 
         <div class="register">
             <label for="Idnome"><b>Nome</b></label>
-            <input type="text" placeholder="Inserisci il tuo nome" name="nome" id="Idnome" required>
+            <input type="text" placeholder="Inserisci il tuo nome..." name="nome" id="Idnome" required>
         </div>
 
 
         <div class="register">
             <label for="Idcognome"><b>Cognome</b></label>
-            <input type="text" placeholder="Inserisci il tuo cognome" name="cognome" id="Idcognome" required>
+            <input type="text" placeholder="Inserisci il tuo cognome..." name="cognome" id="Idcognome" required>
         </div>
 
         <div class="register">
-            <label for="IdcodiceFiscale"><b>Codice Fiscale</b></label>
-            <input type="text" placeholder="Inserisci il tuo codice fiscale" name="CodiceFiscale" id="IdcodiceFiscale" required style="text-transform: uppercase">
+            <label for="IdcodiceFiscale"><b>Codice fiscale</b></label>
+            <input type="text" placeholder="Inserisci il tuo codice fiscale..." name="CodiceFiscale" id="IdcodiceFiscale" required style="text-transform: uppercase">
         </div>
 
 
         <div class="register">
-            <label for="Idemail"><b>Email</b></label>
-            <input type="email" placeholder="Inserisci Email" name="email" id="Idemail" required>
+            <label for="Idemail"><b>E-mail</b></label>
+            <input type="email" placeholder="Inserisci e-mail..." name="email" id="Idemail" required>
         </div>
 
         <div class="register">
             <label for="Idpsw"><b>Password</b></label>
-            <input type="password" placeholder="Inserisci Password" name="psw" id="Idpsw"  title="Ripeti la password" required>
+            <input type="password" placeholder="Inserisci password..." name="psw" id="Idpsw"  title="Ripeti la password" required>
         </div>
 
         <div class="register">
-            <label for="Idpsw-rip"><b>Ripeti Password</b></label>
-            <input type="password" placeholder="Inserisci di nuovo la Password" name="psw-rip" id="Idpsw-rip" required>
+            <label for="Idpsw-rip"><b>Ripeti la password</b></label>
+            <input type="password" placeholder="Inserisci di nuovo la password..." name="psw-rip" id="Idpsw-rip" required>
         </div>
 
         <div class="register">
-            <label for="Idvia"><b>Via</b></label>
-            <input type="text" placeholder="Inserisci la via" name="via" id="Idvia" required>
+            <label for="Idvia"><b>VIA</b></label>
+            <input type="text" placeholder="Inserisci la via..." name="via" id="Idvia" required>
         </div>
 
         <div class="register">
-            <label for="IdnumeroCivico"><b>Numero Civico</b></label>
-            <input type="text" placeholder="Numero Civico" name="numeroCivico" id="IdnumeroCivico" required>
+            <label for="IdnumeroCivico"><b>NUMERO CIVICO</b></label>
+            <input type="text" placeholder="Numero civico..." name="numeroCivico" id="IdnumeroCivico" required>
         </div>
 
         <div class="register">
             <label for="Idcap"><b>CAP</b></label>
-            <input type="text" placeholder="Inserisci CAP" name="cap" id="Idcap" required>
+            <input type="text" placeholder="CAP..." name="cap" id="Idcap" required>
         </div>
 
         <div class="register">
             <label for="Idtelefono"><b>Telefono</b></label>
-            <input type="tel" placeholder="Inserisci il numero di telefono" name="telefono" id="Idtelefono" required>
+            <input type="tel" placeholder="Inserisci il numero di telefono..." name="telefono" id="Idtelefono" required>
         </div>
 
         <hr>
@@ -94,7 +94,7 @@
         <input type="submit" class="registerbtn" value="Registrati">
 
         <div class="container signin">
-            <p>Hai gia un account? <a href="#">Accedi</a>.</p>
+            <p>Hai gia un account? <a href="#">Accedi</a></p>
         </div>
         <!--  </form>-->
     </div>

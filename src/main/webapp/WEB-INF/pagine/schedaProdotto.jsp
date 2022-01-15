@@ -57,15 +57,14 @@
         <div class="descrizione">
             <div class="note">
                 <fieldset>
-                    <legend>Informazioni</legend>
+                    <legend>INFORMAZIONI</legend>
                     <b>Categoria</b>: <%=prodotto.getCategoria().getNomeCategoria()%> <br>
-                    <b>Prezzo</b>:<%=prodotto.getPrezzo()%> € <br>
-                    <b>Codice Prodotto</b>: 0PR00<%=prodotto.getCodiceProdotto()%><br>
-                    <b>Marchio</b>: <%=prodotto.getMarchio().getNomeMarchio()%><br>
-                    <b>Descrizione</b>: <%=prodotto.getDescrrizione()%><br>
+                    <b>Prezzo</b>: <%=prodotto.getPrezzo()%>€ <br>
+                    <b>Codice del prodotto</b>: 0PR00<%=prodotto.getCodiceProdotto()%><br>
+                    <b>Marchio del prodotto</b>: <%=prodotto.getMarchio().getNomeMarchio()%><br>
+                    <b>Descrizione del prodotto</b>: <%=prodotto.getDescrrizione()%><br>
 
                 </fieldset>
-
             </div>
 
             <div class="card">

@@ -56,9 +56,11 @@ public class ServletListaMarchi extends HttpServlet {
         if(nomejsp.equals("header")){
             start=0;
         }else {
-            start+=9;
+            start+=25;
         }
         ArrayList<Prodotto> prodotti= prodottoDAO.cercaProdottiMarchio(nomeMarchio,start,end);
+        //ArrayList<Prodotto> prodotti= prodottoDAO.doRetraiveByAllProdottiByMarchio(nomeMarchio);
+
         request.setAttribute("prodotti",prodotti);
         request.setAttribute("opzione",opzione);
         request.setAttribute("nomeMarchio",nomeMarchio);

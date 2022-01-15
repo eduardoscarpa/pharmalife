@@ -7,14 +7,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import  static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 public class ServletUpdateProdottoAdminTest {
 
@@ -32,7 +33,6 @@ public class ServletUpdateProdottoAdminTest {
     public void setUp(){
         MockitoAnnotations.initMocks(this);
         servletUpdateProdottoAdmin= new ServletUpdateProdottoAdmin(prodottoDAO);
-
     }
 
     @Test

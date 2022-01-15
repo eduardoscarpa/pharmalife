@@ -48,11 +48,11 @@
 
 <jsp:include page="default/header.jsp"/>
 <% if(utente!=null){ if(utente.getCarrello()==null) { %>
-<h2>  <%=utente.getNome()%> il tuo carrello è vuoto </h2>
+<h2>  <%=utente.getNome()%> il tuo carrello è vuoto!</h2>
 <% }else {   %>
-<h2> Ecco il tuo Carrello <%=utente.getNome()%></h2>
+<h2> Ecco il tuo carrello, <%=utente.getNome()%></h2>
 <%  }  }else { if(carrello!=null) { %>
-<h2>Ecco il tuo carrello Visitatore</h2>
+<h2>Ecco il tuo carrello, caro Visitatore</h2>
 <%  } else {  %>
 <h2>Il tuo carrelo è vuoto</h2>
 <% } %>
@@ -146,7 +146,7 @@
 
     </div>
 <% }else { %>
-<h2>Non ci sono prodotti nel carrello</h2>
+<h2>Non ci sono prodotti nel carrello...</h2>
 <%  }  %>
 
 
