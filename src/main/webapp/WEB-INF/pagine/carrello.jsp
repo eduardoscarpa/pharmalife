@@ -58,8 +58,6 @@
 <% } %>
 
 <% }  %>
-
-
 <% if(prodotti!=null){  %>
 
 <div class="include-tutto">
@@ -86,7 +84,6 @@
             </div>
 
             <div class="total-delete">
-
                 <a href="ServletRimuoviDalCarrello2?value=<%=p.getCodiceProdotto()%>">
                     <i class="fas fa-trash-alt"></i>
                 </a>
@@ -129,13 +126,10 @@
             </div>
         </div>
         <div class="checkout">
-
             <div class="text-centered">
                 <% if (utente != null) { %>
-                <form action="ServletOrdini" method="post">
-                    <input type="submit" href="ServletOrdini" class="button-outline" value="Vai alla cassa"
-                           ></input>
-
+                <form action="ServletOrdini" method="post" onsubmit="confirm()">
+                    <input type="submit" href="ServletOrdini" class="button-outline" value="Vai alla cassa"></input>
                 </form>
                 <% } else if (utente==null) { %>
                 <h3>ACCEDI PER ACQUISTARE </h3>
@@ -148,8 +142,11 @@
 <% }else { %>
 <h2>Non ci sono prodotti nel carrello</h2>
 <%  }  %>
-
-
 <jsp:include page="default/footer.jsp"/>
+<script>
+    function confirm(){
+        alert("Confermi il tuo acquisto?");
+    }
+</script>
 </body>
 </html>

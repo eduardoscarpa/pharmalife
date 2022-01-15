@@ -47,14 +47,12 @@ public class ServletOrdini extends HttpServlet {
         if(utente!=null){
             if(utente.getCarrello()!=null){
                 utente.getCarrello().prodottiToString();
-               // Ordine ordine= new Ordine();
                 ordine.setCarrello(utente.getCarrello());
                 Date date= new Date(System.currentTimeMillis());
                 Time time= new Time(System.currentTimeMillis());
                 ordine.setOra(time);
                 ordine.setDataOrdine(date);
                 ordine.setUtente(utente);
-                //ordineDAO= new OrdineDAO();
                 ordineDAO.insertCarrello(ordine);
                 utente.setCarrello(null);
             }
