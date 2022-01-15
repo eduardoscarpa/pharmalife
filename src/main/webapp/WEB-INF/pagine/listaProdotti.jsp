@@ -36,20 +36,17 @@
             </div>
             <div class="filtraggio">
                 <label for="categoria">Categoria</label>
-                <input id="categoria" name="categoria" type="text">
+                <input id="categoria" name="categoria" type="text" required>
             </div>
             <div class="filtraggio">
                 <label for="marchio">Marchio</label>
-                <input type="text" id="marchio" name="marchio">
-            </div>
-            <div class="filtraggioPrezzo">
-                <label for="prezzoMin">Min </label>
-                <input type="text" id="min" name="min" placeholder="Da">
-            </div>
-            <div class="filtraggioPrezzo">
-                <label for="prezzoMax">Max </label>
-                <input type="text" id="max" name="max" placeholder="A">
-            </div>
+                <input type="text" id="marchio" name="marchio" required>
+                <div class="filtraggioPrezzo" id="filatraggioPrezzo" >
+                    <label for="prezzoMinimo">Min </label>
+                    <input id="prezzoMinimo" name="min" class="prezzo-filter" value="0" type="text" placeholder="Da " required>
+                    <label for="prezzoMassimo">Max </label>
+                    <input id="prezzoMassimo" name="max" class="prezzo-filter" value="50" type="text" placeholder="A " required>
+                </div>
             <input class="submit" type="submit" value="CERCA">
         </form>
     </aside>
