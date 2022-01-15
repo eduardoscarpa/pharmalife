@@ -42,6 +42,8 @@ public class ServletTabellaAdmin extends HttpServlet {
     }
 
     public ServletTabellaAdmin() {
+        this.prodottoDAO= new ProdottoDAO();
+        this.utenteDAO= new UtenteDAO();
     }
 
     @Override
@@ -58,7 +60,7 @@ public class ServletTabellaAdmin extends HttpServlet {
         }
         response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("application/json");
-        //response.getWriter().write(dati);
+        response.getWriter().write(dati);
     }
 
     @Override
