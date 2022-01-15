@@ -1,26 +1,22 @@
 package utente;
 
 import controller.utente.ServletIscrizione;
-import controller.utente.ServletMostraPref;
 import controller.utente.ServletUpdateUtente;
-import model.prodotto.Prodotto;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.*;
 
 public class ServletUpdateUtenteTest {
@@ -70,14 +66,6 @@ public class ServletUpdateUtenteTest {
         String nome = utente.getNome();
         String password = utente.getPassword();
         String codiceFiscale = utente.getCodiceFiscale();
-        /*
-        assertTrue(ServletIscrizione.formatCodiceFiscale(codiceFiscale));
-        assertTrue(ServletIscrizione.formatName(nome));
-        assertTrue(ServletIscrizione.formatPassword(password));
-
-         */
-        //assertFalse(ServletIscrizione.formatPassword(password));
-        //passwordValidatorTest(password);
     }
 
     @Test
@@ -92,7 +80,5 @@ public class ServletUpdateUtenteTest {
         String password = utente.getPassword();
         String nome = utente.getNome();
         assertFalse(ServletIscrizione.formatPassword(password));
-        //assertFalse(ServletIscrizione.formatName(nome));
-        //assertFalse(ServletIscrizione.formatPassword(password));
     }
 }

@@ -33,11 +33,6 @@ public class ServletSchedaProdottoSearchTest {
         servletSchedaProdottoSearch = new ServletSchedaProdottoSearch(prodottoDAO);
     }
 
-    @Test // Da finire
-    public void doPostTest() throws ServletException, IOException {
-
-    }
-
     @Test // Completo
     public void ricercaSchedaProdottoTest() throws ServletException, IOException {
         when(request.getParameter("search")).thenReturn("TACHIPIRINA");
@@ -49,6 +44,5 @@ public class ServletSchedaProdottoSearchTest {
 
         servletSchedaProdottoSearch.doPost(request, response);
         verify(requestDispatcher).forward(request, response);
-
     }
 }

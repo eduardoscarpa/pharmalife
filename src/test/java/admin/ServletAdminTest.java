@@ -41,15 +41,10 @@ public class ServletAdminTest {
     @Mock
     private RequestDispatcher dispatcher;
 
-
-
-
     private ArrayList<Messaggio> messaggi;
     private ArrayList<Utente> utenti;
     private ArrayList<Prodotto> prodotti;
     private ArrayList<Ordine> ordini;
-
-
     private ServletAdmin servletAdmin;
 
 
@@ -61,57 +56,45 @@ public class ServletAdminTest {
         utenti= new ArrayList<>();
         prodotti= new ArrayList<>();
         ordini= new ArrayList<>();
-
-
     }
 
     @Test
     public void doPostValueIsMessaggiTest() throws ServletException, IOException {
-
-        //RequestDispatcher requestDispatcher=mock(RequestDispatcher.class);
         when(request.getParameter("value")).thenReturn("messaggi");
         when(request.getRequestDispatcher("WEB-INF/pagine/admin/assistenzaUtenti.jsp")).thenReturn(dispatcher);
         servletAdmin.doPost(request,response);
         String val=request.getParameter("value");
         verify(dispatcher).forward(request, response);
         assertEquals("messaggi", val);
-        //assertNotEquals("Non uguale", "messaggi", val);
     }
+
     @Test
     public void doPostValueIsStatisticheTest() throws ServletException, IOException {
-
-       // RequestDispatcher requestDispatcher=mock(RequestDispatcher.class);
         when(request.getParameter("value")).thenReturn("statistiche");
         when(request.getRequestDispatcher("WEB-INF/pagine/admin/statistiche.jsp")).thenReturn(dispatcher);
-       // ServletAdmin servletAdmin= new ServletAdmin(messaggioDAO,utenteDAO,prodottoDAO,ordineDAO);
         servletAdmin.doPost(request,response);
         String val=request.getParameter("value");
         verify(dispatcher).forward(request, response);
         assertEquals("statistiche", val);
-        //assertNotEquals("Non uguale", "messaggi", val);
     }
+
     @Test
     public void doPostValueIsInsertProdottoTest() throws ServletException, IOException {
 
-       // RequestDispatcher requestDispatcher=mock(RequestDispatcher.class);
         when(request.getParameter("value")).thenReturn("insertProdotto");
         when(request.getRequestDispatcher("WEB-INF/pagine/admin/insertProdotto.jsp")).thenReturn(dispatcher);
-        // ServletAdmin servletAdmin= new ServletAdmin(messaggioDAO,utenteDAO,prodottoDAO,ordineDAO);
         servletAdmin.doPost(request,response);
         String val=request.getParameter("value");
         verify(dispatcher).forward(request, response);
         assertEquals("insertProdotto", val);
-        //assertNotEquals("Non uguale", "messaggi", val);
     }
+
     @Test
     public void visualizzaMessaggiTest(){
-
         messaggi.add(new Messaggio());
         messaggi.add(new Messaggio());
-        //servletAdmin.setArrayMessaggi(messaggi);
         when(messaggioDAO.doRetrieveByAllMessaggi()).thenReturn(messaggi);
         int size=messaggi.size();
-        //messaggioDAO.doRetrieveByAllMessaggi();
         servletAdmin.visualizzaMessaggi(request,response);
         verify(messaggioDAO).doRetrieveByAllMessaggi();
         assertEquals(2, size);
@@ -119,7 +102,6 @@ public class ServletAdminTest {
 
     @Test
     public void visualizzaStatisticheTest(){
-        //servletAdmin.setArrayUtenti(utenti);
         utenti.add(new Utente());
         utenti.add(new Utente());
         when(utenteDAO.doRetrieveByAllUtenti()).thenReturn(utenti);

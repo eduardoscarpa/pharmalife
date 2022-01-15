@@ -42,7 +42,6 @@ public class ServletRimuoviPreferitoTest {
    @Test
     public void doGetTest() throws ServletException, IOException {
         when(request.getParameter("value")).thenReturn("1");
-        //int codiceProdotto = Integer.parseInt(request.getParameter("value"));
         servletRimuoviPreferito.doGet(request, response);
 
     }

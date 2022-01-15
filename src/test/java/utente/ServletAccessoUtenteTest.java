@@ -8,8 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.mockito.Mockito.*;
 
 public class ServletAccessoUtenteTest {
 
@@ -52,9 +54,8 @@ public class ServletAccessoUtenteTest {
         assertEquals("login", val);
         servletAccessoUtente.doGet(request, response);
         verify(request,times(2)).getParameter("value");
-
-
     }
+
     @Test
     public void doGetValueIsLogoutTest() throws ServletException, IOException {
         when(request.getParameter("value")).thenReturn("logout");
@@ -63,6 +64,7 @@ public class ServletAccessoUtenteTest {
         servletAccessoUtente.doGet(request, response);
         verify(request,times(2)).getParameter("value");
     }
+
     @Test
     public void logoutUtenteTest() throws IOException {
         when(session.getAttribute("utente")).thenReturn(utente);
@@ -75,6 +77,7 @@ public class ServletAccessoUtenteTest {
         verify(session).getAttribute("carrello");
         verify(session).removeAttribute("carrello");
     }
+
     @Test
     public void loginUtenteIsNullTest() throws ServletException, IOException {
         when(session.getAttribute("utente")).thenReturn(null);
@@ -92,6 +95,5 @@ public class ServletAccessoUtenteTest {
         verify(utenteDAO).cercaUtentebyEmail(email, password);
         verify(session).getAttribute("carrello");
         verify(session).removeAttribute("carrello");
-
     }
 }

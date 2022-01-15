@@ -11,13 +11,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import  static org.mockito.Mockito.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.WeakHashMap;
+
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class ServletInsertProdottoTest {
 
@@ -59,7 +60,6 @@ public class ServletInsertProdottoTest {
 
     @Test
     public void doGetTest() throws ServletException, IOException {
-
          nomeProdotto=request.getParameter("nome");
          prezzoProdotto=Double.parseDouble(request.getParameter("prezzo"));
          marchioProdotto=request.getParameter("marchio");
@@ -68,7 +68,6 @@ public class ServletInsertProdottoTest {
          descrizione=request.getParameter("descrizione");
          pathImmagine=request.getParameter("pathImmagine");
         servletInsertProdotto.doGet(request, response);
-        //verify(response).sendRedirect(response.encodeRedirectURL(request.getContextPath()));
         verify(request).getContextPath();
     }
 
@@ -88,8 +87,6 @@ public class ServletInsertProdottoTest {
         when(categoriaDAO.cercaCategoria("Farmaco da anco")).thenReturn(categoriaProdotto);
         servletInsertProdotto.aggiungiProdottoAlCatalogo(nomeProdotto,prezzoProdotto,marchioProdotto,quantita,categoria,descrizione,
                 pathImmagine);
-      //  verify(prodottoDAO).updateProdotto(prodotto);
-     verify(prodottoDAO).insertProdotto(prodotto);
-
+        verify(prodottoDAO).insertProdotto(prodotto);
     }
 }

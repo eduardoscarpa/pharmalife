@@ -63,12 +63,10 @@ public class ServletMostraPrefTest {
         verify(utenteDAO).doRetrieveByAllPreferitiOfUtente(utente.getCodiceFiscale());
         verify(request).setAttribute("prodottiPref", preferiti);
         assertNotEquals(null, request.getAttribute("utente"));
-        //assertEquals(utente, request.getAttribute("utente"));
     }
 
     @Test
     public void visualizzaPreferitiSessionIsNullTest() throws ServletException, IOException {
-       // HttpSession session=mock(HttpSession.class);
         when(request.getSession()).thenReturn(null);
         HttpSession session=request.getSession();
         servletMostraPref.visualizzaPreferiti(request);
@@ -79,7 +77,6 @@ public class ServletMostraPrefTest {
     public void visualizzaPreferitiUtenteIsNullTest(){
         HttpSession session=mock(HttpSession.class);
         when(request.getSession()).thenReturn(session);
-
         when(session.getAttribute("utente")).thenReturn(null);
         Utente utente=(Utente) session.getAttribute("utente");
         assertEquals(null, utente);
