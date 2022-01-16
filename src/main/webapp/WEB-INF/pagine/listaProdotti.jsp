@@ -22,6 +22,7 @@
     <script src="js/aggiungiProdotto.js" type="text/javascript" defer></script>
 
     <script src="./js/header.js" type="text/javascript" defer></script>
+    <script src="./js/showFormFilter.js" type="text/javascript" defer></script>
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
@@ -29,26 +30,28 @@
 <div class="container_catalogo">
 
     <aside class="filter_container">
-        <form action="ServletFilter" method="get">
+        <button type="button"  id="show-filter" onclick="showForm()">Filtra prodotti</button>
+        <form action="ServletFilter" method="get" id="formFilter">
             <div class="filtraggio">
                 <label for="nome">Nome</label>
                 <input id="nome"  name="nome" type="text">
             </div>
             <div class="filtraggio">
                 <label for="categoria">Categoria</label>
-                <input id="categoria" name="categoria" type="text" required>
+                <input id="categoria" name="categoria" type="text" >
             </div>
             <div class="filtraggio">
                 <label for="marchio">Marchio</label>
-                <input type="text" id="marchio" name="marchio" required>
+                <input type="text" id="marchio" name="marchio" >
                 <div class="filtraggioPrezzo" id="filatraggioPrezzo" >
                     <label for="prezzoMinimo">Min </label>
-                    <input id="prezzoMinimo" name="min" class="prezzo-filter" value="0" type="text" placeholder="Da " required>
+                    <input id="prezzoMinimo" name="min" class="prezzo-filter" value="0" type="text" placeholder="Da " >
                     <label for="prezzoMassimo">Max </label>
                     <input id="prezzoMassimo" name="max" class="prezzo-filter" value="50" type="text" placeholder="A " required>
                 </div>
             <input class="submit" type="submit" value="CERCA">
-        </form>
+            </div>
+            </form>
     </aside>
     <div class="list_catalogo">
         <%for(Prodotto p : prodotti) {%>

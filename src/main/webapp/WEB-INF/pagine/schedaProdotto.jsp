@@ -33,7 +33,6 @@
 
         <h1 style="text-align: center;color: deepskyblue"><%=prodotto.getNome()%></h1>
         <h2></h2>
-
         <div class="bottoni">
             <% if (prodotto.getQuantita()<=0){ %>
             <% } else { %>
@@ -43,13 +42,11 @@
                 <button name="decremento" onclick="decrementa()"><i class="fas fa-minus"></i></button>
             </div>
             <% } %>
-
             <% if (prodotto.getQuantita()<=0){ %>
             <button class="aggiungiAlCarrelloTerminato">Prodotto terminato</button>
             <% } else { %>
             <button onclick="aggiungiAlCarrello(<%=prodotto.getCodiceProdotto()%>)" class="aggiungiAlCarrello">Aggiungi al carrello</button>
             <% } %>
-
             <%if(utente!=null) {  %>
             <a onclick="aggiungiAiPreferiti(<%=prodotto.getCodiceProdotto()%>)"> <i class="fas fa-heart" title="Aggiungi ai preferiti"></i></a>
             <% }  %>

@@ -22,10 +22,18 @@ body{
     align-items: center;
     margin-top: 50px;
     margin-bottom: 50px;
-
 }
-.filter_container form{
-    display: flex;
+#show-filter{
+    background-color: lime;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+.filter_container form#formFilter{
+
+    display: none;
     flex-basis: 100%;
     width: 100%;
     flex-direction: column;
@@ -85,13 +93,16 @@ body{
     border-radius: 20px;
     padding: 5px;
 }
+
 .list_catalogo{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     flex-basis: 75%;
     justify-content: space-around;
-    overflow: scroll;
+    /*overflow: scroll;*/
+
+    overflow-y: scroll;
 }
 
 article{
@@ -111,7 +122,6 @@ article figure{
     background-color:transparent;
     text-align: center;
     margin-bottom: 10px;
-    /*border: 1px solid lightgray;*/
 }
 .price{
     display: flex;
