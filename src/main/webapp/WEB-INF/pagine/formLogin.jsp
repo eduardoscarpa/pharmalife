@@ -43,7 +43,7 @@
                 <% } %>
                 <div class="input-fields">
                     <label id="nomeUtente"  class="label">E-mail</label><br>
-                    <input type="email"    name="emailUser" class="input" id="nomeUtente" placeholder="Nome Utente" required>
+                    <input type="email"    name="emailUser" class="input" id="nomeUtente" placeholder="E-mail..." required>
                 </div>
                 <div class="input-fields">
                     <label id="password"  class="label">Password</label><br>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="forgot">
                     <a href="#">Hai dimenticato la password?</a><br>
-                  <a href="ServletLink?scelta=iscriviti">Non sei ancora registrato? Iscriviti</a>
+                  <a href="ServletLink?scelta=iscriviti">Non sei ancora registrato? Iscriviti!</a>
                 </div>
                 <input class="submit" type="submit" value="Accedi" >
             </form>

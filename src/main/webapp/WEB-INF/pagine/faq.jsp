@@ -23,7 +23,7 @@
 
     I prodotti a scadenza breve vengono segnalati o inseriti in una categoria specifica.
 
-    Per ricevere più informazioni inviare una E-mail a assistenza@faimed.it
+    Per ricevere più informazioni inviare una E-mail a assistenza@pharmalife.it
 
 
 
@@ -54,7 +54,7 @@
 
     Se si effettua un acquisto di un importo minore a 69,99€ la spedizione ha un costo di 5,00€.
 
-    Il corriere che utilizziamo per le spedizioni Nazionali è GLS. Se sei a conoscenza di problemi che ha GLS sul tuo territorio e preferisci usufruire di un altro corriere contattaci alla mail assistenza@faimed.it per comunicarci le tue preferenze.
+    Il corriere che utilizziamo per le spedizioni Nazionali è GLS. Se sei a conoscenza di problemi che ha GLS sul tuo territorio e preferisci usufruire di un altro corriere contattaci alla mail assistenza@pharmalife.it per comunicarci le tue preferenze.
 
     *In caso di prodotti liquidi, particolarmente pesanti e/o voluminosi, pHarmaLife si riserva il diritto di contattare il cliente, per comunicare eventuali adeguamenti dei costi di spedizione.
 
@@ -78,7 +78,7 @@
 
     <h1>Ho indicato un indirizzo errato. Come posso modificarlo?</h1>
 
-    Per richiedere la modifica di un indirizzo inviare una E-mail a assistenza@faimed.it indicando il numero ordine e l’indirizzo corretto.
+    Per richiedere la modifica di un indirizzo inviare una E-mail a assistenza@pharmalife.it indicando il numero ordine e l’indirizzo corretto.
 
     Questa procedura è la stessa da utilizzare anche per ordini già spediti. Saremo noi a comunicare al corriere il nuovo indirizzo.
 
@@ -96,7 +96,7 @@
 
     <h1>Il prodotto che mi interessa risulta terminato. Tornerà disponibile?</h1>
 
-    I prodotti presenti su pHarmaLife.IT vengono periodicamente riordinati. Se non trovi un prodotto invia una mail al servizio clienti: assistenza@faimed.it .
+    I prodotti presenti su pHarmaLife.IT vengono periodicamente riordinati. Se non trovi un prodotto invia una mail al servizio clienti: assistenza@pharmalife.it .
 
 
 
@@ -140,7 +140,7 @@
 
     Si, noi di pHarmaLife.it spediamo in tutta Europa.
 
-    Per conoscere i costi di spedizione ti consigliamo di contattare il servizio clienti all’ indirizzo E-mail assistenza@faimed.it indicando i prodotti che si desidera acquistare e l’indirizzo di spedizione. Saremo noi a fornire un rapido preventivo.
+    Per conoscere i costi di spedizione ti consigliamo di contattare il servizio clienti all’ indirizzo E-mail assistenza@pharmalife.it indicando i prodotti che si desidera acquistare e l’indirizzo di spedizione. Saremo noi a fornire un rapido preventivo.
 
 </div>
 <jsp:include page="default/footer.jsp"/>
