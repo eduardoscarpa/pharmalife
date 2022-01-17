@@ -47,7 +47,7 @@
                 </div>
                 <div class="input-fields">
                     <label id="password"  class="label">Password</label><br>
-                    <input type="password"  name="password" class="input" id="passw" placeholder="password" required>
+                    <input type="password"  name="password" class="input" id="passw" placeholder="Password..." required>
 
                 </div>
                 <div class="forgot">
