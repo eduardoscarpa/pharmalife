@@ -59,11 +59,11 @@ System.out.println(idProdotto);%>--%>
         <form action="ServletUpdateAdminDUE" method="post" onclick="">
             <div class="blocco">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome">
+                <input type="text" name="nome" id="nome" required>
             </div>
             <div class="blocco">
                 <label for="prezzo">Prezzo</label>
-                <input type="number" name="prezzo" id="prezzo">
+                <input type="number" name="prezzo" id="prezzo" required>
             </div>
             <input type="hidden" name="idProdotto" value="<%=prodotto.getCodiceProdotto()%>">
             <input type="submit" value="MODIFICA">
