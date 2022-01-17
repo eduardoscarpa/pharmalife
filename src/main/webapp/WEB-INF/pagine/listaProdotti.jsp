@@ -30,24 +30,24 @@
 <div class="container_catalogo">
 
     <aside class="filter_container">
-        <button type="button"  id="show-filter" onclick="showForm()">Filtra prodotti</button>
+        <button type="button"  id="show-filter" onclick="showForm()">FILTRO</button>
         <form action="ServletFilter" method="get" id="formFilter">
             <div class="filtraggio">
-                <label for="nome">Nome</label>
+                <label for="nome">NOME PRODOTTO</label>
                 <input id="nome"  name="nome" type="text">
             </div>
             <div class="filtraggio">
-                <label for="categoria">Categoria</label>
+                <label for="categoria">CATEGORIA DEL PRODOTTO</label>
                 <input id="categoria" name="categoria" type="text" >
             </div>
             <div class="filtraggio">
-                <label for="marchio">Marchio</label>
+                <label for="marchio">MARCHIO DEL PRODOTTO</label>
                 <input type="text" id="marchio" name="marchio" >
                 <div class="filtraggioPrezzo" id="filatraggioPrezzo" >
-                    <label for="prezzoMinimo">Min </label>
+                    <label for="prezzoMinimo">Min.  </label>
                     <input id="prezzoMinimo" name="min" class="prezzo-filter" value="0" type="text" placeholder="Da " >
-                    <label for="prezzoMassimo">Max </label>
-                    <input id="prezzoMassimo" name="max" class="prezzo-filter" value="50" type="text" placeholder="A " required>
+                    <label for="prezzoMassimo">Max. </label>
+                    <input id="prezzoMassimo" name="max" class="prezzo-filter" value="50" type="text" placeholder="A " >
                 </div>
             <input class="submit" type="submit" value="CERCA">
             </div>
