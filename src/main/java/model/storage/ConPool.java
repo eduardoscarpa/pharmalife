@@ -1,15 +1,25 @@
 package model.storage;
-        import org.apache.tomcat.jdbc.pool.PoolProperties;
 
-        import java.sql.Connection;
-        import java.sql.DriverManager;
-        import java.sql.SQLException;
-        import java.util.TimeZone;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.TimeZone;
 
-/**
- *
- * @author Deny Prasetyo
- */
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+
+@Documented
+@Retention(RUNTIME)
+@Target({TYPE, METHOD})
+@interface Generated {
+}
+
+@Generated
 public class ConPool {
 
     private static ConPool instance;
@@ -24,7 +34,7 @@ public class ConPool {
             this.connection = DriverManager.getConnection(url, username, password);
 
         } catch (ClassNotFoundException ex) {
-            System.out.println("Database Connection Creation Failed : " + ex.getMessage());
+            System.out.println("Database Connection Creation Failed: " + ex.getMessage());
         }
     }
 
@@ -38,7 +48,6 @@ public class ConPool {
         } else if (instance.getConnection().isClosed()) {
             instance = new ConPool();
         }
-
         return instance;
     }
 }
