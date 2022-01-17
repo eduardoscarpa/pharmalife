@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static java.lang.annotation.ElementType.METHOD;
@@ -41,7 +42,7 @@ public class ServletTabellaAdmin extends HttpServlet {
         this.prodottoDAO = prodottoDAO;
     }
 
-    public ServletTabellaAdmin() {
+    public ServletTabellaAdmin() throws SQLException {
         this.prodottoDAO= new ProdottoDAO();
         this.utenteDAO= new UtenteDAO();
     }

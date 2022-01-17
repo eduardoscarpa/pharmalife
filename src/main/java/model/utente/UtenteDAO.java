@@ -13,7 +13,9 @@ import java.util.ArrayList;
 @Generated
 public class UtenteDAO implements UtenteDAOMethod {
 
-    public UtenteDAO() {
+    private ConPool conpool=ConPool.getInstance();
+    private Connection connection= conpool.getConnection();
+    public UtenteDAO() throws SQLException {
 
     }
 
@@ -24,7 +26,7 @@ public class UtenteDAO implements UtenteDAOMethod {
      */
     @Override
     public Utente cercaUtente(String codiceFiscale) {
-        try(Connection connection= ConPool.getConnection()){
+        try{
 
             PreparedStatement ps;
             ps=connection.prepareStatement("select * from Utente where codiceFiscale=?");
@@ -61,7 +63,7 @@ public class UtenteDAO implements UtenteDAOMethod {
      */
     @Override
     public Utente cercaUtentebyEmail(String email,String password) {
-        try(Connection connection= ConPool.getConnection()){
+        try{
 
             PreparedStatement ps;
             ps=connection.prepareStatement("select * from Utente where email=? and pass=SHA1(?)");
@@ -97,7 +99,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     @Override
     public ArrayList<Prodotto> doRetrieveByAllPreferitiOfUtente(String codiceFiscale) {
         ArrayList<Prodotto> prodottiPreferiti= new ArrayList<>();
-        try(Connection connection=ConPool.getConnection()){
+        try{
 
             PreparedStatement ps=connection.prepareStatement("select p.codiceProdotto, ut.codiceFiscale ,p.nome ,p.prezzo,p.nomeMarchio,p.quantita,p.idCategoria,p.pathImmagine,p.descrizione " +
                     "from Prodotto p,Preferito pr,Utente ut where pr.codiceFiscale=ut.codiceFiscale and pr.codiceProdotto=p.codiceProdotto and ut.codiceFiscale=?");
@@ -137,7 +139,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     @Override
     public ArrayList<String> doRetraiveByAllCodiciFiscali() throws SQLException {
         ArrayList<String> codiciFiscali = new ArrayList<>();
-        try (Connection connection = ConPool.getConnection()) {
+        try {
 
             PreparedStatement ps=connection.prepareStatement("select codiceFiscale  from Utente");
             ResultSet resultSet= ps.executeQuery();
@@ -161,7 +163,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     @Override
     public ArrayList<String> doRetraiveByAllEmail() throws SQLException {
         ArrayList<String> arrayEmail = new ArrayList<>();
-        try (Connection connection = ConPool.getConnection()) {
+        try {
 
             PreparedStatement ps=connection.prepareStatement("select email from Utente");
             ResultSet resultSet= ps.executeQuery();
@@ -184,7 +186,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     @Override
     public ArrayList<Ordine> ordiniAllUtenti() {
         ArrayList<Ordine> ordini= new ArrayList<>();
-        try(Connection connection=ConPool.getConnection()){
+        try{
 
             PreparedStatement ps=connection.prepareStatement("select * from Ordine o , Utente u  " +
                     "where o.cfUtente=u.codiceFiscale;");
@@ -220,7 +222,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     @Override
     public ArrayList<Messaggio> messaggiAllUtenti() {
         ArrayList<Messaggio> messaggi= new ArrayList<>();
-        try(Connection connection=ConPool.getConnection()){
+        try{
 
             PreparedStatement ps=connection.prepareStatement("select * from Messaggio m , Utente u  " +
                     "where m.cf=u.codiceFiscale;");
@@ -265,7 +267,7 @@ public class UtenteDAO implements UtenteDAOMethod {
      */
     @Override
     public void insertUtente(Utente utente) {
-        try(Connection connection=ConPool.getConnection()){
+        try{
 
             PreparedStatement ps= connection.prepareStatement("insert into Utente value (?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, utente.getCodiceFiscale());
@@ -293,7 +295,7 @@ public class UtenteDAO implements UtenteDAOMethod {
      */
     @Override
     public void insertPreferito(Utente utente, Prodotto prodotto) {
-        try(Connection connection=ConPool.getConnection()){
+        try{
             PreparedStatement ps= connection.prepareStatement("insert into Preferito value (?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,utente.getCodiceFiscale());
             ps.setInt(2, prodotto.getCodiceProdotto());
@@ -309,7 +311,7 @@ public class UtenteDAO implements UtenteDAOMethod {
 
     @Override
     public void deletePreferito(Utente utente, Prodotto prodotto) {
-        try(Connection connection=ConPool.getConnection()){
+        try{
             PreparedStatement ps;
             ps=connection.prepareStatement("delete from Preferito where codiceFiscale=? and codiceProdotto=?");
             ps.setString(1, utente.getCodiceFiscale());
@@ -328,7 +330,7 @@ public class UtenteDAO implements UtenteDAOMethod {
      */
     @Override
     public boolean updateUtente(Utente utente){
-        try(Connection connection=ConPool.getConnection()){
+        try{
             PreparedStatement ps=connection.prepareStatement("update Utente set nome = ? ,cognome = ? ," +
                     "email = ? ,pass = ? where codiceFiscale=?");
             ps.setString(5,utente.getCodiceFiscale());
@@ -355,7 +357,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     @Override
     public boolean updateIndirizzoUtente(Utente utente) {
 
-        try(Connection connection=ConPool.getConnection()){
+        try{
             PreparedStatement ps;
             ps=connection.prepareStatement("update Utente set via = ? , numeroCivico = ? , cap = ? where codiceFiscale = ? ");
             ps.setString(4, utente.getCodiceFiscale());
@@ -381,7 +383,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     @Override
     public ArrayList<Utente> doRetrieveByAllUtenti() {
         ArrayList<Utente> lista = new ArrayList<>();
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             PreparedStatement ps;
             ps = connection.prepareStatement("select * from Utente");
             ResultSet rs = ps.executeQuery();
@@ -399,7 +401,7 @@ public class UtenteDAO implements UtenteDAOMethod {
                utente.setAdmin(rs.getBoolean(10));
                lista.add(utente);
             }
-            connection.close();
+
             return lista;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
@@ -430,7 +432,7 @@ public class UtenteDAO implements UtenteDAOMethod {
                 utente.setAdmin(rs.getBoolean(10));
                 lista.add(utente);
             }
-            connection.close();
+
             return lista;
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);

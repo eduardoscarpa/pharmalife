@@ -11,6 +11,11 @@ import java.util.Optional;
 @Generated
 public class OrdineDAO implements OrdineDAOMethod {
 
+    private ConPool conpool=ConPool.getInstance();
+    private Connection connection= conpool.getConnection();
+
+    public OrdineDAO() throws SQLException {
+    }
 
     /**
      * Questo metodo retituisce un ordine con un determinato id
@@ -19,7 +24,7 @@ public class OrdineDAO implements OrdineDAOMethod {
      */
     public Ordine cercaOrdine(int idOrdine) {
 
-        try(Connection connection= ConPool.getConnection()){
+        try{
 
             PreparedStatement ps;
             ps=connection.prepareStatement("select * from Ordine where idOrdine=? ");
@@ -49,7 +54,7 @@ public class OrdineDAO implements OrdineDAOMethod {
      */
     @Override
     public void deleteOrdine(int idOrdine)  {
-        try (Connection connection = ConPool.getConnection()) {
+        try  {
             PreparedStatement ps;
             ps = connection.prepareStatement("delete from Ordine where idOrdine=?");
             ps.setInt(1, idOrdine);
@@ -63,7 +68,7 @@ public class OrdineDAO implements OrdineDAOMethod {
      * @param o è un oggetto di tipo ordine
      */
     public void insertCarrello(Ordine o) {
-        try (Connection connection = ConPool.getConnection()) {
+        try  {
 
             System.out.println("wee");
             PreparedStatement ps = connection.prepareStatement("insert into Ordine(dataOrdine,oraOrdine,listaProdotti,cfUtente) " +
@@ -92,7 +97,7 @@ public class OrdineDAO implements OrdineDAOMethod {
      * @param o è un oggetto di tipo ordine
      */
     public void updateOrdine(Ordine o, int idOrdine) {
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             PreparedStatement ps;
             ps = connection.prepareStatement("update Messaggio set dataOrdine = ?, oraOrdine = ?, cfUtente = ?" +
                     "where idOrdine = ?", Statement.RETURN_GENERATED_KEYS);
@@ -114,7 +119,7 @@ public class OrdineDAO implements OrdineDAOMethod {
      * @return un ArrayList di oggetti di tipo ordine
      */
     public ArrayList<Ordine> doRetraiveByAllOrdini() {
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             PreparedStatement ps;
             ps = connection.prepareStatement("select * from Ordine");
             ResultSet rs = ps.executeQuery();
@@ -130,7 +135,7 @@ public class OrdineDAO implements OrdineDAOMethod {
              //   ordine.getUtente().setCodiceFiscale(rs.getString(4));
                 lista.add(ordine);
             }
-            connection.close();
+
             return lista;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
@@ -146,7 +151,7 @@ public class OrdineDAO implements OrdineDAOMethod {
      */
     public ArrayList<Ordine> cercaOrdini(int start, int end) {
         ArrayList<Ordine> lista =new ArrayList<>();
-        try(Connection connection=ConPool.getConnection()){
+        try{
 
             PreparedStatement ps=connection.prepareStatement("select * from Ordine order by idOrdine" +
                     "limit ? offset ?");
@@ -161,7 +166,7 @@ public class OrdineDAO implements OrdineDAOMethod {
                 ordine.getUtente().setCodiceFiscale(rs.getString(4));
                 lista.add(ordine);
             }
-            connection.close();
+
             return lista;
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
@@ -177,7 +182,7 @@ public class OrdineDAO implements OrdineDAOMethod {
     @Override
     public ArrayList<Ordine> doRetraiveByAllById(Utente utente) {
         ArrayList<Ordine> ordini = new ArrayList<>();
-        try(Connection connection=ConPool.getConnection()){
+        try{
 
             PreparedStatement ps=connection.prepareStatement("select distinct  * from Ordine where cfUtente=?");
             ps.setString(1,utente.getCodiceFiscale());

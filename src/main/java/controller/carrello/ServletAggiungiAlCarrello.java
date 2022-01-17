@@ -9,6 +9,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 @WebServlet(name = "ServletAggiungiAlCarrello", value = "/ServletAggiungiAlCarrello")
 public class ServletAggiungiAlCarrello extends HttpServlet {
@@ -19,7 +20,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
     private Prodotto prodotto;
     private int totale;
 
-    public ServletAggiungiAlCarrello(){
+    public ServletAggiungiAlCarrello() throws SQLException {
         prodottoDAO=new ProdottoDAO();
         utente= new Utente();
         prodotto= new Prodotto();

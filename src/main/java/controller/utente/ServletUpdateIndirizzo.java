@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "ServletUpdateIndirizzo", value = "/ServletUpdateIndirizzo")
 public class ServletUpdateIndirizzo extends HttpServlet {
@@ -19,7 +20,7 @@ public class ServletUpdateIndirizzo extends HttpServlet {
         this.utenteDAO=utenteDAO;
         this.utente = utente;
     }
-    public ServletUpdateIndirizzo(){
+    public ServletUpdateIndirizzo() throws SQLException {
         utenteDAO=new UtenteDAO();
         utente = new Utente();
     }

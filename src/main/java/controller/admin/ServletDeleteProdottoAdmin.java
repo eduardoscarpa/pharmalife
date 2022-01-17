@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "ServletDeleteProdottoAdmin", value = "/ServletDeleteProdottoAdmin")
 public class ServletDeleteProdottoAdmin extends HttpServlet {
     private ProdottoDAOMethod prodottoDAO;
 
-    public ServletDeleteProdottoAdmin(){
+    public ServletDeleteProdottoAdmin() throws SQLException {
         prodottoDAO=new ProdottoDAO();
     }
     public ServletDeleteProdottoAdmin(ProdottoDAO prodottoDAO){

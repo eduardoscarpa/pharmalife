@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ServletMostraPref", value = "/ServletMostraPref")
@@ -21,7 +22,7 @@ public class ServletMostraPref extends HttpServlet {
     private UtenteDAOMethod utenteDAO; //PRIMA ERA UtenteDAOMethod;
     private ArrayList<Prodotto> preferiti;
 
-    public ServletMostraPref(){
+    public ServletMostraPref() throws SQLException {
         utenteDAO = new UtenteDAO();
         preferiti = new ArrayList<>();
     }

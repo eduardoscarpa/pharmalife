@@ -10,14 +10,18 @@ import java.util.Optional;
 
 @Generated
 public class MessaggioDAO implements MessaggioDAOMethod {
+private ConPool conpool=ConPool.getInstance();
+private Connection connection= conpool.getConnection();
 
+    public MessaggioDAO() throws SQLException {
+    }
 
     /**
      * Questo metodo permette ad un utente di inviare i messaggi all'amministratore
      * @param messaggio oggetto da inserire nel dastabase
      */
     public void insertMessaggio(Messaggio messaggio) {
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             PreparedStatement ps = connection.prepareStatement
                     ("insert into Messaggio(testo,dataMessaggio,ora,cf) " +
                             "value (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
@@ -44,7 +48,7 @@ public class MessaggioDAO implements MessaggioDAOMethod {
      * @return ArrayList di oggetti di tipo Messaggio
      */
     public ArrayList<Messaggio> doRetrieveByAllMessaggi() {
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             PreparedStatement ps;
             ps = connection.prepareStatement("select * from Messaggio");
             ResultSet rs = ps.executeQuery();
@@ -61,7 +65,7 @@ public class MessaggioDAO implements MessaggioDAOMethod {
               //  messaggio.getUtente().setCodiceFiscale(rs.getString(5));
                 lista.add(messaggio);
             }
-            connection.close();
+
             return lista;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);

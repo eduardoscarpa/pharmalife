@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.sql.Time;
 
 @WebServlet(name = "ServletInvioMessaggio", value = "/ServletInvioMessaggio")
@@ -35,7 +36,7 @@ public class ServletInvioMessaggio extends HttpServlet {
         this.message = message;
         this.utente = utente;
     }
-    public ServletInvioMessaggio(){
+    public ServletInvioMessaggio() throws SQLException {
         serviceMessaggio =new MessaggioDAO();
         message = new Messaggio();
         utente = new Utente();

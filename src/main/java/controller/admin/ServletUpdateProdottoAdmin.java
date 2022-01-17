@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "ServletUpdateProdottoAdmin", value = "/ServletUpdateProdottoAdmin")
 public class ServletUpdateProdottoAdmin extends HttpServlet {
     private ProdottoDAOMethod prodottoDAO;
-    public ServletUpdateProdottoAdmin(){
+    public ServletUpdateProdottoAdmin() throws SQLException {
         prodottoDAO= new ProdottoDAO();
     }
     public ServletUpdateProdottoAdmin(ProdottoDAO prodottoDAO){

@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ServletAdmin", value = "/ServletAdmin")
@@ -33,7 +34,7 @@ public class ServletAdmin extends HttpServlet {
     private ArrayList<Prodotto> prodotti;
     private ArrayList<Ordine> ordini;
 
-    public ServletAdmin(){
+    public ServletAdmin() throws SQLException {
         messaggioDAO= new MessaggioDAO();
         utenteDAO= new UtenteDAO();
         prodottoDAO= new ProdottoDAO();

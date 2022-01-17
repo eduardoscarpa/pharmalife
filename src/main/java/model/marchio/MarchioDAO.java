@@ -11,6 +11,11 @@ import java.util.Optional;
 
 @Generated
 public class MarchioDAO implements MarchioDAOMethod {
+    private ConPool conpool=ConPool.getInstance();
+    private Connection connection= conpool.getConnection();
+
+    public MarchioDAO() throws SQLException {
+    }
 
     /**
      * Questo metodo retituisce un oggetto di tipo Marchio dato il parametro nomeMarchio
@@ -19,7 +24,7 @@ public class MarchioDAO implements MarchioDAOMethod {
      */
     @Override
     public Marchio cercaMarchio(String nomeMarchio) {
-        try(Connection connection= ConPool.getConnection()){
+        try{
 
             PreparedStatement ps;
             ps=connection.prepareStatement("select * from Marchio where nomeMarchio=? ");
@@ -39,7 +44,7 @@ public class MarchioDAO implements MarchioDAOMethod {
 
     @Override
     public void deleteMarchio(String nomeMarchio) {
-        try(Connection connection=ConPool.getConnection()){
+        try{
             PreparedStatement ps;
             ps=connection.prepareStatement("delete from Marchio where nomeMarchio=?");
             ps.setString(1, nomeMarchio);
@@ -52,7 +57,7 @@ public class MarchioDAO implements MarchioDAOMethod {
     @Override
     public void insertMarchio(Marchio m) {
 
-        try(Connection connection=ConPool.getConnection()){
+        try{
 
             PreparedStatement ps= connection.prepareStatement("insert into Marchio value (?)");
             ps.setString(1, m.getNomeMarchio());
@@ -76,7 +81,7 @@ public class MarchioDAO implements MarchioDAOMethod {
      */
     @Override
     public ArrayList<Marchio> doRetraiveByAllMarchi() {
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             PreparedStatement ps;
             ps = connection.prepareStatement("select * from Marchio");
             ResultSet rs = ps.executeQuery();
@@ -86,7 +91,7 @@ public class MarchioDAO implements MarchioDAOMethod {
                 marchio.setNomeMarchio(rs.getString(1));
                 lista.add(marchio);
             }
-            connection.close();
+
             return lista;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
@@ -96,7 +101,7 @@ public class MarchioDAO implements MarchioDAOMethod {
     @Override
     public ArrayList<Marchio> cercaMarchi(int start, int end) {
         ArrayList<Marchio> lista =new ArrayList<>();
-        try(Connection connection=ConPool.getConnection()){
+        try{
 
             PreparedStatement ps=connection.prepareStatement("select * from Marchio order by nomeMarchio" +
                     "limit ? offset ?");
@@ -108,7 +113,7 @@ public class MarchioDAO implements MarchioDAOMethod {
                 marchio.setNomeMarchio(rs.getString(1));
                 lista.add(marchio);
             }
-            connection.close();
+
             return lista;
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);

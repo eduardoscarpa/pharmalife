@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static java.lang.annotation.ElementType.METHOD;
@@ -33,7 +34,7 @@ public class ServletBarraRicerca extends HttpServlet {
 
     private ProdottoDAOMethod prodottoDAO;
 
-    public ServletBarraRicerca() {
+    public ServletBarraRicerca() throws SQLException {
         prodottoDAO = new ProdottoDAO();
     }
 

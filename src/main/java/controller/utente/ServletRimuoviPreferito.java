@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "ServletRimuoviPreferito", value = "/ServletRimuoviPreferito")
 public class ServletRimuoviPreferito extends HttpServlet {
@@ -21,7 +22,7 @@ public class ServletRimuoviPreferito extends HttpServlet {
     public ServletRimuoviPreferito(UtenteDAO utenteDAO){
         this.utenteDAO = utenteDAO;
     }
-    public ServletRimuoviPreferito(){
+    public ServletRimuoviPreferito() throws SQLException {
         utenteDAO = new UtenteDAO();
     }
 

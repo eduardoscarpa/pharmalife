@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ServletStart", value = "/ServletStart",loadOnStartup = 0) // Serve per chiamare automaticamente la servlet
@@ -21,9 +22,19 @@ public class ServletStart extends HttpServlet {
     public void init() throws ServletException {
         super.init();
 
-        CategoriaDAO categoriaDAO= new CategoriaDAO();
+        CategoriaDAO categoriaDAO= null;
+        try {
+            categoriaDAO = new CategoriaDAO();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         ArrayList<Categoria>categorie= categoriaDAO.doRetraiveByAllCategorieRoot();
-        MarchioDAO marchioDAO= new MarchioDAO();
+        MarchioDAO marchioDAO= null;
+        try {
+            marchioDAO = new MarchioDAO();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         ArrayList<Marchio> marchi= marchioDAO.doRetraiveByAllMarchi();
         getServletContext().setAttribute("marchi",marchi); // ServletContext contiene attributi che sono visibili in tutte le pagine
         getServletContext().setAttribute("categorie",categorie);

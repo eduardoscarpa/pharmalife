@@ -17,6 +17,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Generated
 public class CategoriaDAO implements CategoriaDAOMethod {
 
+    private ConPool conpool=ConPool.getInstance();
+    private Connection connection= conpool.getConnection();
+
+    public CategoriaDAO() throws SQLException {
+    }
 
     /**
      * Questo metodo retituisce una Categoria in base ad un nome
@@ -26,7 +31,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
     @Override
     public Categoria cercaCategoria(String nome) {
 
-        try(Connection connection= ConPool.getConnection()){
+        try{
 
             PreparedStatement ps;
             ps=connection.prepareStatement("select * from Categoria where nomeCategoria=?");
@@ -54,7 +59,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
      */
     @Override
     public Categoria cercaCategoriaById(int id) {
-        try(Connection connection=ConPool.getConnection()) {
+        try{
             PreparedStatement ps=connection.prepareStatement("select * from Categoria where idCategoria=?");
             ps.setInt(1,id);
             ResultSet rs=ps.executeQuery();
@@ -75,7 +80,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
     @Override
     public void deleteCategoria(int idCategoria) {
 
-        try(Connection connection=ConPool.getConnection()){
+        try{
             PreparedStatement ps;
             ps=connection.prepareStatement("delete from Categoria where idCategoria=?");
             ps.setInt(1,idCategoria);
@@ -88,7 +93,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
     @Override
     public void insertCategoria(Categoria c) {
 
-        try(Connection connection=ConPool.getConnection()){
+        try{
 
             PreparedStatement ps= connection.prepareStatement("insert into Categoria value (?,?,?)");
             ps.setInt(1,c.getIdCategoria());
@@ -104,7 +109,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
 
     @Override
     public void updateCategoria(Categoria c, int idCategoria) {
-        try (Connection connection = ConPool.getConnection()) {
+        try  {
             PreparedStatement ps;
             ps = connection.prepareStatement("update Categoria set nomeCategoria = ?, root = ?" +
                     "where idCategoria = ?", Statement.RETURN_GENERATED_KEYS);
@@ -121,7 +126,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
 
     @Override
     public ArrayList<Categoria> doRetraiveByAllCategorie() {
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             PreparedStatement ps;
             ps = connection.prepareStatement("select * from Categoria");
             ResultSet rs = ps.executeQuery();
@@ -133,7 +138,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
                 categoria.setRoot(rs.getInt(3));
                 lista.add(categoria);
             }
-            connection.close();
+
             return lista;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
@@ -148,7 +153,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
      */
     @Override
     public ArrayList<Categoria> doRetraiveByAllCategorieRoot() {
-        try(Connection connection=ConPool.getConnection()){
+        try{
             PreparedStatement ps=connection.prepareStatement("select  * from Categoria where root=0");
             ResultSet rs=ps.executeQuery();
             ArrayList<Categoria> categorie= new ArrayList<>();
@@ -159,7 +164,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
                 categoria.setRoot(rs.getInt(3));
                 categorie.add(categoria);
             }
-            connection.close();
+
             return categorie;
 
         }catch (SQLException sqlException){
@@ -170,7 +175,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
     @Override
     public ArrayList<Categoria> cercaCategorie(int start, int end) {
         ArrayList<Categoria> lista =new ArrayList<>();
-        try(Connection connection=ConPool.getConnection()){
+        try{
 
             PreparedStatement ps=connection.prepareStatement("select * from Categoria order by idCategoria" +
                     "limit ? offset ?");
@@ -184,7 +189,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
                 categoria.setRoot(rs.getInt(3));
                 lista.add(categoria);
             }
-            connection.close();
+
             return lista;
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);

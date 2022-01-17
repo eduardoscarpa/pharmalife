@@ -35,7 +35,7 @@ public class ServletIscrizione extends HttpServlet {
 
     }
 
-    public ServletIscrizione(){
+    public ServletIscrizione() throws SQLException {
         super();
         service= new UtenteDAO();
     }

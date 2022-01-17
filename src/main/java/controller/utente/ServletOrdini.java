@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.sql.Time;
 
 @WebServlet(name = "ServletOrdini", value = "/ServletOrdini")
@@ -22,7 +23,7 @@ public class ServletOrdini extends HttpServlet {
     private Ordine ordine;
     private Utente utente;
 
-    public ServletOrdini(){
+    public ServletOrdini() throws SQLException {
         ordineDAO= new OrdineDAO();
         ordine=new Ordine();
     }

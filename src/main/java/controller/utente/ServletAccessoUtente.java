@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+import java.sql.SQLException;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
@@ -34,7 +35,7 @@ public class ServletAccessoUtente extends HttpServlet {
     private Utente utente;
     private Carrello carrello;
 
-    public ServletAccessoUtente(){
+    public ServletAccessoUtente() throws SQLException {
         this.utente=new Utente();
         this.serviceUtenteDAO=new UtenteDAO();
         this.carrello=new Carrello();

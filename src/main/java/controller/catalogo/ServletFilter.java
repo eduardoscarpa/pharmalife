@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -19,7 +20,7 @@ public class ServletFilter extends HttpServlet {
 
     private ProdottoDAOMethod prodottoDAO;
 
-    public ServletFilter() {
+    public ServletFilter() throws SQLException {
         prodottoDAO = new ProdottoDAO();
     }
 

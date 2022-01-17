@@ -14,13 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "ServletPreferiti", value = "/ServletPreferiti")
 public class ServletPreferiti extends HttpServlet {
     private ProdottoDAOMethod prodottoDAO;
     private UtenteDAOMethod utenteDAO;
 
-    public ServletPreferiti() {
+    public ServletPreferiti() throws SQLException {
         prodottoDAO= new ProdottoDAO();
         utenteDAO= new UtenteDAO();
     }

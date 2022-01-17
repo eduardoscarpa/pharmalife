@@ -11,6 +11,11 @@ import java.util.Collections;
 
 @Generated
 public class ProdottoDAO implements ProdottoDAOMethod {
+    private ConPool conpool=ConPool.getInstance();
+    private Connection connection= conpool.getConnection();
+
+    public ProdottoDAO() throws SQLException {
+    }
 
     /**
      * Questo metodo ricerca un determinato prodotto in base al suo codice identificativo
@@ -18,7 +23,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      * @return un oggetto di tipo Prodotto
      */
     public Prodotto cercaProdotto(int codiceProdotto) {
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             PreparedStatement preparedStatement;
             preparedStatement = connection.prepareStatement("select * from Prodotto where codiceProdotto=?");
             preparedStatement.setInt(1, codiceProdotto);
@@ -55,7 +60,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      */
     @Override
     public Prodotto cercaProdottoByNome(String nomeprodotto) {
-        try(Connection connection=ConPool.getConnection()){
+        try{
             PreparedStatement ps=connection.prepareStatement("select * from prodotto where nome = ?");
             ps.setString(1,nomeprodotto);
             ResultSet resultSet=ps.executeQuery();
@@ -90,7 +95,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      */
     @Override
     public void deleteProdotto(int codiceProdotto) {
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             PreparedStatement ps;
             ps = connection.prepareStatement("delete from Prodotto where codiceProdotto=?");
             ps.setInt(1, codiceProdotto);
@@ -106,7 +111,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      */
     @Override
     public void insertProdotto(Prodotto prodotto) {
-        try (Connection connection = ConPool.getConnection()) {
+        try  {
             PreparedStatement ps = connection.prepareStatement
                     ("insert into Prodotto(nome,prezzo,nomeMarchio,quantita,idCategoria,pathImmagine,descrizione) " +
                             "value (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
@@ -160,7 +165,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      * Questo metodo aggiorna  il nome  e il prezzo di un prodotto
      */
     public void updateProdotto(Prodotto p) {
-        try (Connection connection = ConPool.getConnection()) {
+        try  {
             PreparedStatement ps;
             ps = connection.prepareStatement("update Prodotto set nome = ?, prezzo = ?"+
                     "where codiceProdotto = ?");
@@ -200,7 +205,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      */
     @Override
     public ArrayList<Prodotto> doRetrieveByAllProdotti() {
-        try (Connection connection = ConPool.getConnection()) {
+        try  {
             PreparedStatement ps;
             ps = connection.prepareStatement("select * from Prodotto");
             ResultSet rs = ps.executeQuery();
@@ -223,7 +228,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 lista.add(prodotto);
 
             }
-            connection.close();
+
             return lista;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
@@ -238,7 +243,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      */
     @Override
     public ArrayList<Prodotto> doRetraiveByAllProdottiByMarchio(String nomeMarchio) {
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             PreparedStatement ps;
             ps = connection.prepareStatement("select distinct * from Prodotto where nomeMarchio = ?");
             ps.setString(1, nomeMarchio);
@@ -256,7 +261,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 prodotto.getCategoria().setIdCategoria(rs.getInt(8));
                 lista.add(prodotto);
             }
-            connection.close();
+
             return lista;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
@@ -270,7 +275,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      */
     @Override
     public ArrayList<Prodotto> cercaProdottiRoot(int root) {
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             ArrayList<Prodotto> prodotti = new ArrayList<>();
             PreparedStatement ps;
             if (root == 2 || root == 3) {
@@ -316,7 +321,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      */
    @Override
     public ArrayList<Prodotto> cercaProdotti(int root, int start, int end) {
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             ArrayList<Prodotto> prodotti = new ArrayList<>();
             PreparedStatement ps;
             if (root == 2 || root == 3) {
@@ -366,7 +371,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      */
 
     public ArrayList<Prodotto> cercaProdottiMarchio(String nomeMarchio, int start, int end) {
-        try (Connection connection = ConPool.getConnection()) {
+        try {
             ArrayList<Prodotto> prodotti = new ArrayList<>();
             PreparedStatement ps = connection.prepareStatement("select p.codiceProdotto,p.nome,p.prezzo,p.nomeMarchio,p.quantita," +
                     "p.idCategoria,p.pathImmagine,p.descrizione " +
@@ -406,7 +411,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
 
     @Override
     public ArrayList<Prodotto> prodottoSearch(String start) {
-        try(Connection connection=ConPool.getConnection()){
+        try{
             PreparedStatement ps=connection.prepareStatement("select  * from Prodotto where nome like ?");
             ps.setString(1, start + "%");
             ArrayList<Prodotto> prodotti= new ArrayList<>();
@@ -487,7 +492,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
 
     @Override
     public ArrayList<Prodotto> doRetraiveByAllProdotti() {
-        try (Connection connection = ConPool.getConnection()) {
+        try  {
             PreparedStatement ps;
             ps = connection.prepareStatement("select * from Prodotto");
             ResultSet rs = ps.executeQuery();
@@ -510,7 +515,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 lista.add(prodotto);
 
             }
-            connection.close();
+
             return lista;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);

@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ServletListaMarchi", value = "/ServletListaMarchi")
@@ -17,7 +18,7 @@ public class ServletListaMarchi extends HttpServlet {
     private static  final  int end=9;
     private ProdottoDAOMethod prodottoDAO;
 
-    public ServletListaMarchi() {
+    public ServletListaMarchi() throws SQLException {
         prodottoDAO = new ProdottoDAO();
     }
 

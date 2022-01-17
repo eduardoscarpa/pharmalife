@@ -8,13 +8,14 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "ServletSchedaProdottoSearch", value = "/ServletSchedaProdottoSearch")
 public class ServletSchedaProdottoSearch extends HttpServlet {
 
     private ProdottoDAOMethod prodottoDAO;
 
-    public ServletSchedaProdottoSearch() {
+    public ServletSchedaProdottoSearch() throws SQLException {
         prodottoDAO =  new ProdottoDAO();
     }
 

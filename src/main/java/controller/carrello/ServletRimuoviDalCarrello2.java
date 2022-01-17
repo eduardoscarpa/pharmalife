@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static java.lang.annotation.ElementType.METHOD;
@@ -47,7 +48,7 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
 
 
 
-    public ServletRimuoviDalCarrello2(){
+    public ServletRimuoviDalCarrello2() throws SQLException {
         serviceProdotto=new ProdottoDAO();
         utente=new Utente();
         prodotto=new Prodotto();

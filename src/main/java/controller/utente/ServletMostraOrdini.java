@@ -9,13 +9,14 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ServletMostraOrdini", value = "/ServletMostraOrdini")
 public class ServletMostraOrdini extends HttpServlet {
     private OrdineDAOMethod ordineDAO;
 
-    public ServletMostraOrdini(){
+    public ServletMostraOrdini() throws SQLException {
         ordineDAO= new OrdineDAO();
     }
     public ServletMostraOrdini(OrdineDAO ordineDAO){

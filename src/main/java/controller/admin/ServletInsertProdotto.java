@@ -14,6 +14,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "ServletInsertProdotto", value = "/ServletInsertProdotto")
 public class ServletInsertProdotto extends HttpServlet {
@@ -27,7 +28,7 @@ public class ServletInsertProdotto extends HttpServlet {
         this.prodottoDAO = prodottoDAO;
     }
 
-    public ServletInsertProdotto() {
+    public ServletInsertProdotto() throws SQLException {
         marchioDAO= new MarchioDAO();
         categoriaDAO= new CategoriaDAO();
         prodottoDAO= new ProdottoDAO();
