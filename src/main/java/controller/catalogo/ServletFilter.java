@@ -66,19 +66,19 @@ public class ServletFilter extends HttpServlet {
         ArrayList<Prodotto> prodotti=prodottoDAO.doRetrieveByAllProdotti();
 
         if(nome!=null)
-            prodotti=prodottoDAO.FiltroNome(prodotti,nome);
+            prodotti=prodottoDAO.filtroNome(prodotti,nome);
 
         if(categoria!=null)
-            prodotti=prodottoDAO.FiltroCategoria(prodotti,categoria);
+            prodotti=prodottoDAO.filtroCategoria(prodotti,categoria);
 
         if(marchio!=null)
-            prodotti=prodottoDAO.FiltroMarchio(prodotti,marchio);
+            prodotti=prodottoDAO.filtroMarchio(prodotti,marchio);
 
         if(max!=50)
-            prodotti=prodottoDAO.FiltroMax(prodotti,max);
+            prodotti=prodottoDAO.filtroMax(prodotti,max);
 
         if(min!=0)
-            prodotti=prodottoDAO.FiltroMin(prodotti,min);
+            prodotti=prodottoDAO.filtroMin(prodotti,min);
 
         request.setAttribute("prodotti",prodotti);
         request.setAttribute("opzione",opzione);

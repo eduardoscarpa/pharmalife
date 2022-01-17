@@ -46,7 +46,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
         prodotto= prodottoDAO.cercaProdotto(idProdotto);
         aggiuntaAlCarrello(idProdotto,session);
         PrintWriter printWriter= response.getWriter();
-        printWriter.write("Prodotto Aggiunto al Carrello");
+        printWriter.write("Prodotto aggiunto al carrello!");
 //         response.getWriter().write("Prodotto aggiunto al carrello!");
     }
 

@@ -9,8 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.mockito.Mockito.*;
 
 public class ServletAggiungiAlCarrelloTest {
 
@@ -62,7 +64,7 @@ public class ServletAggiungiAlCarrelloTest {
         verify(session).getAttribute("carrello");
         verify(prodottoDAO).cercaProdotto(id);
         verify(response).getWriter();
-        verify(printWriter).write("Prodotto Aggiunto al Carrello");
+        verify(printWriter).write("Prodotto aggiunto al carrello!");
     }
 
     @Test
@@ -81,7 +83,7 @@ public class ServletAggiungiAlCarrelloTest {
         verify(session).getAttribute("carrello");
         verify(prodottoDAO).cercaProdotto(id);
         verify(response).getWriter();
-        verify(printWriter).write("Prodotto Aggiunto al Carrello");
+        verify(printWriter).write("Prodotto aggiunto al carrello!");
     }
     @Test
     public void aggiuntaAlCarrelloUtenteIsNotNullTest() throws IOException {

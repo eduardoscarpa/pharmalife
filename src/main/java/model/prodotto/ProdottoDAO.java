@@ -443,7 +443,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      * @param nome è il parametro secondo il quale filtriamo la lista
      * @return ArrayList di oggetti di tipo Prodotto con lo stesso nome del paramentro "nome"
      */
-    public ArrayList<Prodotto> FiltroNome(ArrayList<Prodotto> prodotti,String nome){
+    public ArrayList<Prodotto> filtroNome(ArrayList<Prodotto> prodotti, String nome){
         ArrayList<Prodotto> prodotti2=new ArrayList<>();
         for (Prodotto p :prodotti){
             if(p.getNome().contains(nome)) {
@@ -459,7 +459,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      * @param nomeCategoria è il parametro secondo il quale filtriamo la lista
      * @return ArrayList di oggetti di tipo Prodotto con la stessa categoria del paramentro "categoria"
      */
-    public ArrayList<Prodotto> FiltroCategoria(ArrayList<Prodotto> prodotti,String nomeCategoria){
+    public ArrayList<Prodotto> filtroCategoria(ArrayList<Prodotto> prodotti, String nomeCategoria){
         ArrayList<Prodotto> prodotti2=new ArrayList<>();
         for (Prodotto p :prodotti){
             if(p.getCategoria().getNomeCategoria().contains(nomeCategoria)) {
@@ -475,7 +475,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      * @param min è il valore minimo di prezzo che la lista di prodotti deve rispettare
      * @return ArrayList di oggetti di tipo Prodotto con il prezzo minimo pari a min
      */
-    public ArrayList<Prodotto> FiltroMin(ArrayList<Prodotto> prodotti,double min){
+    public ArrayList<Prodotto> filtroMin(ArrayList<Prodotto> prodotti, double min){
         ArrayList<Prodotto> prodotti2=new ArrayList<>();
         for (Prodotto p :prodotti){
             if(p.getPrezzo()>=min) {
@@ -523,7 +523,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      * @param max è il valore massimo di prezzo che la lista di prodotti deve rispettare
      * @return ArrayList di oggetti di tipo Prodotto con il prezzo massimo pari a max
      */
-    public ArrayList<Prodotto> FiltroMax(ArrayList<Prodotto> prodotti,double max){
+    public ArrayList<Prodotto> filtroMax(ArrayList<Prodotto> prodotti, double max){
         ArrayList<Prodotto> prodotti2=new ArrayList<>();
         for (Prodotto p :prodotti){
             if(p.getPrezzo()<=max) {
@@ -539,7 +539,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
      * @param nomeMarchio è il parametro da rispettare per filtrare la lista
      * @return ArrayList di oggetti di tipo Prodotto con il nome Marchio pari al valore di "nomeMarchio"
      */
-    public ArrayList<Prodotto> FiltroMarchio(ArrayList<Prodotto> prodotti,String nomeMarchio){
+    public ArrayList<Prodotto> filtroMarchio(ArrayList<Prodotto> prodotti, String nomeMarchio){
         ArrayList<Prodotto> prodotti2=new ArrayList<>();
         for (Prodotto p :prodotti){
             if(p.getMarchio().getNomeMarchio().contains(nomeMarchio)) {
