@@ -1,2 +1,2 @@
-# PHarmaLife-202122
+# PHarmaLIFE
 Progetto di Ingegneria del Software, 2021/2022
