@@ -1,12 +1,11 @@
 package model.ordine;
 
 import model.carrello.Carrello;
-import model.storage.ConPool;
+import model.utils.ConPool;
 import model.utente.Utente;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Generated
 public class OrdineDAO implements OrdineDAOMethod {

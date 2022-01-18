@@ -5,7 +5,7 @@ import model.marchio.Marchio;
 import model.messaggio.Messaggio;
 import model.ordine.Ordine;
 import model.prodotto.Prodotto;
-import model.storage.ConPool;
+import model.utils.ConPool;
 
 import java.sql.*;
 import java.util.ArrayList;

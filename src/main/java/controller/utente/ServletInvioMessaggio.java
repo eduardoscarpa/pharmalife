@@ -122,11 +122,6 @@ public class ServletInvioMessaggio extends HttpServlet {
                 avviso="L'e-mail non coincide con quella dell'utente loggato.";
                 return  false;
             }
-            if (message.getTesto().isEmpty()) {
-                address = "WEB-INF/pagine/assistenza.jsp";
-                avviso="Il testo del messaggio è vuoto.";
-                return  false;
-            }
         }
         return  true;
     }
