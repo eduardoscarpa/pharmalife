@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServletUpdateProdotto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProgettoIS</a> &gt; <a href="index.source.html" class="el_package">controller.admin</a> &gt; <span class="el_source">ServletUpdateProdotto.java</span></div><h1>ServletUpdateProdotto.java</h1><pre class="source lang-java linenums">package controller.admin;
+
+import model.prodotto.Prodotto;
+import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
+
+@WebServlet(name = &quot;ServletUpdateAdminDUE&quot;, value = &quot;/ServletUpdateAdminDUE&quot;)
+public class ServletUpdateProdotto extends HttpServlet {
+    private ProdottoDAOMethod prodottoDAO;
+    private Prodotto prodotto;
+
+<span class="nc" id="L21">    public ServletUpdateProdotto() throws SQLException {</span>
+<span class="nc" id="L22">        prodottoDAO= new ProdottoDAO();</span>
+<span class="nc" id="L23">    }</span>
+
+<span class="fc" id="L25">    public ServletUpdateProdotto(ProdottoDAO prodottoDAO){</span>
+<span class="fc" id="L26">        this.prodottoDAO=prodottoDAO;</span>
+<span class="fc" id="L27">    }</span>
+
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+<span class="fc" id="L32">        int idProdotto=Integer.parseInt(request.getParameter(&quot;idProdotto&quot;));</span>
+<span class="fc" id="L33">        String nome=request.getParameter(&quot;nome&quot;);</span>
+<span class="fc" id="L34">        double prezzo=Double.parseDouble(request.getParameter(&quot;prezzo&quot;));</span>
+<span class="fc" id="L35">        aggiornaProdotto(idProdotto,nome,prezzo);</span>
+<span class="fc" id="L36">        RequestDispatcher requestDispatcher= request.getRequestDispatcher(&quot;index.jsp&quot;);</span>
+<span class="fc" id="L37">        requestDispatcher.forward(request,response);</span>
+<span class="fc" id="L38">    }</span>
+
+    @Generated
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+    /**
+     * Questo metodo permette ad un Amministratore di aggiornare/modificare un prodotto presente nel catalogo
+     * @param idProdotto identificativo del prodotto
+     * @param nome  nome da aggiornare  del prodotto
+     * @param prezzo  nuovo prezzo del prodotto
+     */
+    public void aggiornaProdotto(int idProdotto,String nome,double prezzo) throws  IOException {
+<span class="fc" id="L53">        Prodotto prodotto = new Prodotto();</span>
+<span class="fc" id="L54">        prodotto.setCodiceProdotto(idProdotto);</span>
+<span class="fc" id="L55">        prodotto.setNome(nome);</span>
+<span class="fc" id="L56">        prodotto.setPrezzo(prezzo);</span>
+<span class="fc" id="L57">        prodottoDAO.updateProdotto(prodotto);</span>
+<span class="fc" id="L58">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

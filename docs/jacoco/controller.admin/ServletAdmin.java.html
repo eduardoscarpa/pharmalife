@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServletAdmin.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProgettoIS</a> &gt; <a href="index.source.html" class="el_package">controller.admin</a> &gt; <span class="el_source">ServletAdmin.java</span></div><h1>ServletAdmin.java</h1><pre class="source lang-java linenums">package controller.admin;
+
+import model.messaggio.Messaggio;
+import model.messaggio.MessaggioDAO;
+import model.messaggio.MessaggioDAOMethod;
+import model.ordine.Ordine;
+import model.ordine.OrdineDAO;
+import model.ordine.OrdineDAOMethod;
+import model.prodotto.Prodotto;
+import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
+import model.utente.Utente;
+import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+@WebServlet(name = &quot;ServletAdmin&quot;, value = &quot;/ServletAdmin&quot;)
+public class ServletAdmin extends HttpServlet {
+    private MessaggioDAOMethod messaggioDAO;
+    private UtenteDAOMethod utenteDAO;
+    private ProdottoDAOMethod prodottoDAO;
+    private OrdineDAOMethod ordineDAO;
+    private ArrayList&lt;Messaggio&gt; messaggi;
+    private ArrayList&lt;Utente&gt; utenti;
+    private ArrayList&lt;Prodotto&gt; prodotti;
+    private ArrayList&lt;Ordine&gt; ordini;
+
+<span class="nc" id="L37">    public ServletAdmin() throws SQLException {</span>
+<span class="nc" id="L38">        messaggioDAO= new MessaggioDAO();</span>
+<span class="nc" id="L39">        utenteDAO= new UtenteDAO();</span>
+<span class="nc" id="L40">        prodottoDAO= new ProdottoDAO();</span>
+<span class="nc" id="L41">        ordineDAO= new OrdineDAO();</span>
+<span class="nc" id="L42">        messaggi= new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L43">    }</span>
+<span class="fc" id="L44">    public ServletAdmin(MessaggioDAO messaggioDAO,UtenteDAO utenteDAO,ProdottoDAO prodottoDAO,OrdineDAO ordineDAO){</span>
+<span class="fc" id="L45">        this.messaggioDAO=messaggioDAO;</span>
+<span class="fc" id="L46">        this.utenteDAO=utenteDAO;</span>
+<span class="fc" id="L47">        this.prodottoDAO=prodottoDAO;</span>
+<span class="fc" id="L48">        this.ordineDAO=ordineDAO;</span>
+<span class="fc" id="L49">    }</span>
+
+    @Generated
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            doPost(request,response);
+    }
+
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+<span class="fc" id="L60">            String valore=request.getParameter(&quot;value&quot;);</span>
+<span class="fc" id="L61">            String pagina=&quot;&quot;;</span>
+<span class="pc bpc" id="L62" title="1 of 4 branches missed.">            switch (valore){</span>
+                case &quot;insertProdotto&quot; :
+<span class="fc" id="L64">                    pagina=&quot;WEB-INF/pagine/admin/insertProdotto.jsp&quot;;</span>
+<span class="fc" id="L65">                break;</span>
+                case &quot;messaggi&quot;:
+<span class="fc" id="L67">                    visualizzaMessaggi(request,response);</span>
+<span class="fc" id="L68">                    pagina=&quot;WEB-INF/pagine/admin/assistenzaUtenti.jsp&quot;;</span>
+<span class="fc" id="L69">                break;</span>
+                case &quot;statistiche&quot;:
+<span class="fc" id="L71">                    visualizzaStatistiche(request,response);</span>
+<span class="fc" id="L72">                    pagina=&quot;WEB-INF/pagine/admin/statistiche.jsp&quot;;</span>
+                    break;
+            }
+<span class="fc" id="L75">            RequestDispatcher dispatcher=request.getRequestDispatcher(pagina);</span>
+<span class="fc" id="L76">            dispatcher.forward(request,response);</span>
+<span class="fc" id="L77">    }</span>
+    public void visualizzaMessaggi(HttpServletRequest request,HttpServletResponse response){
+
+        //ArrayList&lt;Messaggio&gt; messaggi= messaggioDAO.doRetrieveByAllMessaggi();
+<span class="fc" id="L81">        this.messaggi=messaggioDAO.doRetrieveByAllMessaggi();</span>
+<span class="fc" id="L82">        request.setAttribute(&quot;messaggi&quot;,messaggi);</span>
+<span class="fc" id="L83">    }</span>
+
+    public void visualizzaStatistiche(HttpServletRequest request,HttpServletResponse response){
+
+<span class="fc" id="L87">         this.messaggi = messaggioDAO.doRetrieveByAllMessaggi();</span>
+<span class="fc" id="L88">         this.utenti = utenteDAO.doRetrieveByAllUtenti();</span>
+<span class="fc" id="L89">         this.prodotti = prodottoDAO.doRetrieveByAllProdotti();</span>
+<span class="fc" id="L90">         this.ordini = ordineDAO.doRetraiveByAllOrdini();</span>
+<span class="fc" id="L91">         int sizeMessaggi = messaggi.size();</span>
+<span class="fc" id="L92">         int sizeUtenti = utenteDAO.doRetrieveByAllUtenti().size();</span>
+<span class="fc" id="L93">         int sizeProdotti = prodotti.size();</span>
+<span class="fc" id="L94">         int sizeOrdini = ordini.size();</span>
+
+<span class="fc" id="L96">         request.setAttribute(&quot;messaggi&quot;, sizeMessaggi);</span>
+<span class="fc" id="L97">         request.setAttribute(&quot;utenti&quot;, sizeUtenti);</span>
+<span class="fc" id="L98">         request.setAttribute(&quot;prodotti&quot;, sizeProdotti);</span>
+<span class="fc" id="L99">         request.setAttribute(&quot;ordini&quot;, sizeOrdini);</span>
+
+         /*
+         request.setAttribute(&quot;messaggi&quot;,Integer.parseInt(String.valueOf(messaggioDAO.doRetrieveByAllMessaggi().size())));
+         request.setAttribute(&quot;utenti&quot;,Integer.parseInt(String.valueOf(utenteDAO.doRetrieveByAllUtenti().size())));
+         request.setAttribute(&quot;prodotti&quot;,Integer.parseInt(String.valueOf(prodottoDAO.doRetrieveByAllProdotti().size())));
+         request.setAttribute(&quot;ordini&quot;,Integer.parseInt(String.valueOf(ordineDAO.doRetraiveByAllOrdini().size())));
+          */
+<span class="fc" id="L107">    }</span>
+
+    @Generated
+    public void setArrayMessaggi(ArrayList&lt;Messaggio&gt; messaggi){
+        this.messaggi=messaggi;
+    }
+    @Generated
+    public void setArrayUtenti(ArrayList&lt;Utente&gt; utenti){
+        this.utenti=utenti;
+    }
+    @Generated
+    public void setArrayProdotti(ArrayList&lt;Prodotto&gt; prodotti){
+        this.prodotti=prodotti;
+    }
+    @Generated
+    public void setArrayOrdini(ArrayList&lt;Ordine&gt; ordini){
+        this.ordini=ordini;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

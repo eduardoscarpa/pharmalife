@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServletSchedaProdotto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProgettoIS</a> &gt; <a href="index.source.html" class="el_package">controller.catalogo</a> &gt; <span class="el_source">ServletSchedaProdotto.java</span></div><h1>ServletSchedaProdotto.java</h1><pre class="source lang-java linenums">package controller.catalogo;
+
+import model.prodotto.Prodotto;
+import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
+
+@WebServlet(name = &quot;ServletSchedaProdotto&quot;, value = &quot;/ServletSchedaProdotto&quot;)
+public class ServletSchedaProdotto extends HttpServlet {
+
+    private ProdottoDAOMethod prodottoDAO;
+
+<span class="nc" id="L21">    public ServletSchedaProdotto() throws SQLException {</span>
+<span class="nc" id="L22">        prodottoDAO = new ProdottoDAO();</span>
+<span class="nc" id="L23">    }</span>
+
+<span class="fc" id="L25">    public ServletSchedaProdotto(ProdottoDAO prodottoDAO) {</span>
+<span class="fc" id="L26">        this.prodottoDAO = prodottoDAO;</span>
+<span class="fc" id="L27">    }</span>
+
+    @Generated
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       doPost(request,response);
+    }
+
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<span class="fc" id="L37">        int codiceProdotto=Integer.parseInt(request.getParameter(&quot;value&quot;));</span>
+<span class="fc" id="L38">        VisualizzaSchedaProdotto(codiceProdotto, request);</span>
+<span class="fc" id="L39">        RequestDispatcher dispatcher= request.getRequestDispatcher(&quot;WEB-INF/pagine/schedaProdotto.jsp&quot;);</span>
+<span class="fc" id="L40">        dispatcher.forward(request,response);</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * Questo metodo permette di visualizzare la scheda di un prodotto con descrizione e prezzo
+     * @pre //
+     * @param codiceProdotto
+     * @param request
+     * @throws ServletException
+     * @throws IOException
+     * @post //
+     */
+
+    public void VisualizzaSchedaProdotto(int codiceProdotto, HttpServletRequest request) throws ServletException, IOException {
+
+<span class="fc" id="L55">        Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);</span>
+<span class="fc" id="L56">        request.setAttribute(&quot;prodotto&quot;,prodotto);</span>
+<span class="fc" id="L57">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

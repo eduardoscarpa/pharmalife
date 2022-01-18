@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServletInvioMessaggio.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProgettoIS</a> &gt; <a href="index.source.html" class="el_package">controller.utente</a> &gt; <span class="el_source">ServletInvioMessaggio.java</span></div><h1>ServletInvioMessaggio.java</h1><pre class="source lang-java linenums">package controller.utente;
+
+import model.messaggio.Messaggio;
+import model.messaggio.MessaggioDAO;
+import model.messaggio.MessaggioDAOMethod;
+import model.utente.Utente;
+import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.sql.Time;
+
+@WebServlet(name = &quot;ServletInvioMessaggio&quot;, value = &quot;/ServletInvioMessaggio&quot;)
+public class ServletInvioMessaggio extends HttpServlet {
+
+    private String avviso;
+    private MessaggioDAOMethod serviceMessaggio;
+    private UtenteDAOMethod serviceUtente;
+    private String address;
+    private Messaggio message;
+    private Utente utente;
+
+
+<span class="fc" id="L33">    public ServletInvioMessaggio(MessaggioDAO messaggioDAO, UtenteDAO utenteDAO, Messaggio message, Utente utente){</span>
+<span class="fc" id="L34">        serviceMessaggio =messaggioDAO;</span>
+<span class="fc" id="L35">        serviceUtente =utenteDAO;</span>
+<span class="fc" id="L36">        this.message = message;</span>
+<span class="fc" id="L37">        this.utente = utente;</span>
+<span class="fc" id="L38">    }</span>
+<span class="nc" id="L39">    public ServletInvioMessaggio() throws SQLException {</span>
+<span class="nc" id="L40">        serviceMessaggio =new MessaggioDAO();</span>
+<span class="nc" id="L41">        message = new Messaggio();</span>
+<span class="nc" id="L42">        utente = new Utente();</span>
+<span class="nc" id="L43">    }</span>
+
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       // invioMessaggio(request, response);
+<span class="fc" id="L48">        address = &quot;WEB-INF/pagine/messaggioInviato.jsp&quot;;</span>
+<span class="fc" id="L49">        String nomeUtente=request.getParameter(&quot;firstname&quot;);</span>
+<span class="fc" id="L50">        String cognome=request.getParameter(&quot;lastname&quot;);</span>
+<span class="fc" id="L51">        String telefono=request.getParameter(&quot;telefono&quot;);</span>
+<span class="fc" id="L52">        String email=request.getParameter(&quot;email&quot;);</span>
+<span class="fc" id="L53">        String messaggio=request.getParameter(&quot;messaggio&quot;);</span>
+<span class="fc" id="L54">        HttpSession session = request.getSession();</span>
+<span class="fc" id="L55">        Utente utenteLoggato = (Utente) session.getAttribute(&quot;utente&quot;);</span>
+
+<span class="fc" id="L57">        Date data2 = new Date(System.currentTimeMillis());</span>
+<span class="fc" id="L58">        Time time1 = new Time(System.currentTimeMillis());</span>
+
+<span class="fc" id="L60">        utente.setNome(nomeUtente);</span>
+<span class="fc" id="L61">        utente.setCognome(cognome);</span>
+<span class="fc" id="L62">        utente.setTelefono(telefono);</span>
+<span class="fc" id="L63">        utente.setEmail(email);</span>
+<span class="fc" id="L64">        utente.setCodiceFiscale(utenteLoggato.getCodiceFiscale());</span>
+<span class="fc" id="L65">        message.setTesto(messaggio);</span>
+<span class="fc" id="L66">        message.setData(data2);</span>
+<span class="fc" id="L67">        message.setOra(time1);</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if (checkUtente(utenteLoggato,utente)){</span>
+<span class="fc" id="L69">            invioMessaggio(utenteLoggato,message);</span>
+        }
+<span class="fc" id="L71">        request.setAttribute(&quot;assistenza&quot;,avviso);</span>
+<span class="fc" id="L72">        RequestDispatcher dispatcher = request.getRequestDispatcher(address);</span>
+<span class="fc" id="L73">        dispatcher.forward(request, response);</span>
+<span class="fc" id="L74">    }</span>
+
+    @Generated
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+    /**
+     *
+     * @pre not checkUtente(utenteLoggato,utente)
+     * @param utenteLoggato
+     * @param message
+     * @throws ServletException
+     * @throws IOException
+     * @post serviceMessaggio.doRetrieveByAllMessaggi.size = @pre.serviceMessaggio.size.doRetrieveByAllMessaggi()+1.size
+     */
+    public void invioMessaggio (Utente utenteLoggato, Messaggio message) throws ServletException, IOException {
+<span class="fc" id="L92">        message.setUtente(utenteLoggato);</span>
+<span class="fc" id="L93">        serviceMessaggio.insertMessaggio(message);</span>
+<span class="fc" id="L94">    }</span>
+
+    /**
+     *
+     * @param utenteLoggato che si trova in sessione
+     * @param utente
+     * @return
+     */
+    @Generated
+    public boolean checkUtente(Utente utenteLoggato,Utente utente){
+        if (utenteLoggato != null) {
+            if (!utenteLoggato.getNome().equals(utente.getNome())) {
+                address = &quot;WEB-INF/pagine/assistenza.jsp&quot;;
+                avviso=&quot;Il nome non coincide con quello dell'utente loggato.&quot;;
+                return  false;
+            }
+            if (!utenteLoggato.getCognome().equals(utente.getCognome())) {
+                address = &quot;WEB-INF/pagine/assistenza.jsp&quot;;
+                avviso=&quot;Il cognome non coincide con quello dell'utente loggato.&quot;;
+                return  false;
+            }
+            if (!utenteLoggato.getTelefono().equals(utente.getTelefono())) {
+                address = &quot;WEB-INF/pagine/assistenza.jsp&quot;;
+                avviso=&quot;Il numero di telefono non coincide con quello dell'utente loggato.&quot;;
+                return  false;
+            }
+            if (!utenteLoggato.getEmail().equals(utente.getEmail())) {
+                address = &quot;WEB-INF/pagine/assistenza.jsp&quot;;
+                avviso=&quot;L'e-mail non coincide con quella dell'utente loggato.&quot;;
+                return  false;
+            }
+        }
+        return  true;
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
