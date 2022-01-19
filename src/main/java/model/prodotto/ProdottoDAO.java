@@ -7,7 +7,6 @@ import model.storage.ConPool;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
 @Generated
 public class ProdottoDAO implements ProdottoDAOMethod {
@@ -44,7 +43,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
 
                 prodotto.setCategoria(c);
                 prodotto.setPathImmagine(resultSet.getString("pathImmagine"));
-                prodotto.setDescrrizione(resultSet.getString("descrizione"));
+                prodotto.setDescrizione(resultSet.getString("descrizione"));
                 return prodotto;
             }
         } catch (SQLException sqlException) {
@@ -79,7 +78,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
 
                 prodotto.setCategoria(c);
                 prodotto.setPathImmagine(resultSet.getString("pathImmagine"));
-                prodotto.setDescrrizione(resultSet.getString("descrizione"));
+                prodotto.setDescrizione(resultSet.getString("descrizione"));
                 return  prodotto;
             }
 
@@ -121,7 +120,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
             ps.setInt(4, prodotto.getQuantita());
             ps.setInt(5, prodotto.getCategoria().getIdCategoria());
             ps.setString(6, prodotto.getPathImmagine());
-            ps.setString(7, prodotto.getDescrrizione());
+            ps.setString(7, prodotto.getDescrizione());
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
@@ -224,7 +223,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
               //  categoria.setIdCategoria(rs.getInt("idCategoria"));
                 prodotto.setCategoria(categoria);
                 prodotto.setPathImmagine(rs.getString("pathImmagine"));
-                prodotto.setDescrrizione(rs.getString("descrizione"));
+                prodotto.setDescrizione(rs.getString("descrizione"));
                 lista.add(prodotto);
 
             }
@@ -302,7 +301,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 c.setIdCategoria(rs.getInt("idCategoria"));
                 p.setCategoria(c);
                 p.setPathImmagine(rs.getString("pathImmagine"));
-                p.setDescrrizione(rs.getString("descrizione"));
+                p.setDescrizione(rs.getString("descrizione"));
                 prodotti.add(p);
             }
             return prodotti;
@@ -352,7 +351,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 c.setIdCategoria(rs.getInt("idCategoria"));
                 p.setCategoria(c);
                 p.setPathImmagine(rs.getString("pathImmagine"));
-                p.setDescrrizione(rs.getString("descrizione"));
+                p.setDescrizione(rs.getString("descrizione"));
                 prodotti.add(p);
             }
             return prodotti;
@@ -393,7 +392,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 c.setIdCategoria(rs.getInt("idCategoria"));
                 p.setCategoria(c);
                 p.setPathImmagine(rs.getString("pathImmagine"));
-                p.setDescrrizione(rs.getString("descrizione"));
+                p.setDescrizione(rs.getString("descrizione"));
                 prodotti.add(p);
             }
             return prodotti;
@@ -429,7 +428,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 c.setIdCategoria(rs.getInt("idCategoria"));
                 p.setCategoria(c);
                 p.setPathImmagine(rs.getString("pathImmagine"));
-                p.setDescrrizione(rs.getString("descrizione"));
+                p.setDescrizione(rs.getString("descrizione"));
 
                 prodotti.add(p);
             }
@@ -511,7 +510,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 //  categoria.setIdCategoria(rs.getInt("idCategoria"));
                 prodotto.setCategoria(categoria);
                 prodotto.setPathImmagine(rs.getString("pathImmagine"));
-                prodotto.setDescrrizione(rs.getString("descrizione"));
+                prodotto.setDescrizione(rs.getString("descrizione"));
                 lista.add(prodotto);
 
             }

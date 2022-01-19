@@ -59,7 +59,7 @@
                     <b>Prezzo</b>: <%=prodotto.getPrezzo()%>€ <br>
                     <b>Codice del prodotto</b>: 0PR00<%=prodotto.getCodiceProdotto()%><br>
                     <b>Marchio del prodotto</b>: <%=prodotto.getMarchio().getNomeMarchio()%><br>
-                    <b>Descrizione del prodotto</b>: <%=prodotto.getDescrrizione()%><br>
+                    <b>Descrizione del prodotto</b>: <%=prodotto.getDescrizione()%><br>
 
                 </fieldset>
             </div>

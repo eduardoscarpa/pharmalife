@@ -63,7 +63,7 @@ System.out.println(idProdotto);%>--%>
             </div>
             <div class="blocco">
                 <label for="prezzo">Prezzo</label>
-                <input type="number" name="prezzo" id="prezzo" required>
+                <input type="text" name="prezzo" id="prezzo" required>
             </div>
             <input type="hidden" name="idProdotto" value="<%=prodotto.getCodiceProdotto()%>">
             <input type="submit" value="MODIFICA">

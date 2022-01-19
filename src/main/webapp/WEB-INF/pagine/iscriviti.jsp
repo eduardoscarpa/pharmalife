@@ -55,7 +55,7 @@
 
         <div class="register">
             <label for="Idemail"><b>E-mail</b></label>
-            <input type="email" placeholder="Inserisci e-mail..." name="email" id="Idemail" required>
+            <input type="email" placeholder="Inserisci e-mail..." name="email" id="Idemail">
         </div>
 
         <div class="register">

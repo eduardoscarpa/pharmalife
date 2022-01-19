@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface OrdineDAOMethod {
 
     public Ordine cercaOrdine(int idOrdine);
-    public void deleteOrdine(int idOrdine);
+   public void deleteOrdine(int idOrdine);
     public void insertCarrello(Ordine o);
     public void updateOrdine(Ordine o, int idOrdine);
     public ArrayList<Ordine> doRetraiveByAllOrdini();

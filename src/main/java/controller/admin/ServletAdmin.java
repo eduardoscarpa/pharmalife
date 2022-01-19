@@ -75,13 +75,24 @@ public class ServletAdmin extends HttpServlet {
             RequestDispatcher dispatcher=request.getRequestDispatcher(pagina);
             dispatcher.forward(request,response);
     }
-    public void visualizzaMessaggi(HttpServletRequest request,HttpServletResponse response){
 
-        //ArrayList<Messaggio> messaggi= messaggioDAO.doRetrieveByAllMessaggi();
+    /**
+     * Questo metodo serve a settare nella request la lista di tutti i messaggi inviati da tutti gli utenti
+     * @param request
+     * @param response
+     */
+    public void visualizzaMessaggi(HttpServletRequest request,HttpServletResponse response){
         this.messaggi=messaggioDAO.doRetrieveByAllMessaggi();
         request.setAttribute("messaggi",messaggi);
     }
 
+    /**
+     * Questo metodo recupera dal database al la dimensione della lista  di tutti i messaggi, utenti iscitti alla piattaforma,
+     * prodotti presenti nel catalogo e ordini effettuati da tutti gli utenti
+     * La size di queste liste viene settata nella request
+     * @param request
+     * @param response
+     */
     public void visualizzaStatistiche(HttpServletRequest request,HttpServletResponse response){
 
          this.messaggi = messaggioDAO.doRetrieveByAllMessaggi();

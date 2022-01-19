@@ -77,6 +77,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
         return  null;
     }
 
+    /*
     @Override
     public void deleteCategoria(int idCategoria) {
 
@@ -89,7 +90,8 @@ public class CategoriaDAO implements CategoriaDAOMethod {
             throw new RuntimeException("delete error");
         }
     }
-
+     */
+    /*
     @Override
     public void insertCategoria(Categoria c) {
 
@@ -123,7 +125,12 @@ public class CategoriaDAO implements CategoriaDAOMethod {
             throw new RuntimeException(sqlException);
         }
     }
+*/
 
+    /**
+     * Questo metodo permette di visualizzare tutte le categorie di prodotti presenti sulla piattaforma
+     * @return ArrayList di Oggetti di tipo Categoria
+     */
     @Override
     public ArrayList<Categoria> doRetraiveByAllCategorie() {
         try {
@@ -149,7 +156,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
     /**
      * Questo metodo retituisce tutte le Categorie
      * @throws 'sqlException'
-     * @return un ArrayList di tipo Categoria
+     * @return un ArrayList di Oggetti di tipo Categoria
      */
     @Override
     public ArrayList<Categoria> doRetraiveByAllCategorieRoot() {
@@ -172,6 +179,7 @@ public class CategoriaDAO implements CategoriaDAOMethod {
         }
     }
 
+    /*
     @Override
     public ArrayList<Categoria> cercaCategorie(int start, int end) {
         ArrayList<Categoria> lista =new ArrayList<>();
@@ -194,5 +202,5 @@ public class CategoriaDAO implements CategoriaDAOMethod {
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
-    }
+    }*/
 }

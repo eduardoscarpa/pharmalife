@@ -81,7 +81,7 @@ public class ServletInsertProdottoTest {
         prodotto.setQuantita(quantita);
         Categoria categoriaProdotto= new Categoria();
         prodotto.setCategoria(categoriaProdotto);
-        prodotto.setDescrrizione(descrizione);
+        prodotto.setDescrizione(descrizione);
         prodotto.setPathImmagine(pathImmagine);
         when(marchioDAO.cercaMarchio("Aveeno")).thenReturn(marchio);
         when(categoriaDAO.cercaCategoria("Farmaco da anco")).thenReturn(categoriaProdotto);
