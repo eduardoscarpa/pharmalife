@@ -182,6 +182,10 @@ public class ServletIscrizione extends HttpServlet {
         }
     }
 
+    /**
+     * Questo metodo effettua la valizione del formato del nome utente
+     * @param fn firstname nome utente
+     */
     @Generated
     public void formatName(String fn){
         Pattern nome = Pattern.compile("^([a-z A-Z]{3,20})$");
