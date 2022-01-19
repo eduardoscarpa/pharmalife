@@ -5,8 +5,8 @@ Progetto di Ingegneria del Software, 2021/2022
 pHarmalife è una piattaforma e-commerce dedicata alla vendita di farmaci e cosmetici, con funzionalità che permettono all'utenza di avere tutto sotto controllo.
 
 ## Documentation
- - Il javadoc del progetto è presente al seguente link - [JavaDoc](https://gagliardenicolapio.github.io/spotibase/javadoc/)
- - Il report di JaCoco è presente al seguente link - [Jacoco](https://gagliardenicolapio.github.io/spotibase/jacoco/) 
+ - Il javadoc del progetto è presente al seguente link - [JavaDoc](https://edd0y-dev.github.io/PHarmaLife-202122/jacoco/)
+ - Il report di JaCoco è presente al seguente link - [Jacoco](https://edd0y-dev.github.io/PHarmaLife-202122/jacoco/) 
 ## Autori
  - Eduardo Scarpa - [edd0y-dev] - https://github.com/edd0y-dev.
  - Carmine Fierro - [Carmine99F] - https://github.com/Carmine99F.
