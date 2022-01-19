@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServletMostraPref.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProgettoIS</a> &gt; <a href="index.source.html" class="el_package">controller.utente</a> &gt; <span class="el_source">ServletMostraPref.java</span></div><h1>ServletMostraPref.java</h1><pre class="source lang-java linenums">package controller.utente;
+
+import model.prodotto.Prodotto;
+import model.utente.Utente;
+import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+@WebServlet(name = &quot;ServletMostraPref&quot;, value = &quot;/ServletMostraPref&quot;)
+public class ServletMostraPref extends HttpServlet {
+
+    private UtenteDAOMethod utenteDAO; //PRIMA ERA UtenteDAOMethod;
+    private ArrayList&lt;Prodotto&gt; preferiti;
+
+<span class="nc" id="L25">    public ServletMostraPref() throws SQLException {</span>
+<span class="nc" id="L26">        utenteDAO = new UtenteDAO();</span>
+<span class="nc" id="L27">        preferiti = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L28">    }</span>
+
+<span class="fc" id="L30">    public ServletMostraPref(UtenteDAO utenteDAO){</span>
+<span class="fc" id="L31">        this.utenteDAO = utenteDAO;</span>
+<span class="fc" id="L32">        this.preferiti = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L33">    }</span>
+
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<span class="fc" id="L37">        visualizzaPreferiti(request);</span>
+<span class="fc" id="L38">        RequestDispatcher dispatcher = request.getRequestDispatcher(&quot;/WEB-INF/pagine/preferiti.jsp&quot;);</span>
+<span class="fc" id="L39">        dispatcher.forward(request, response);</span>
+<span class="fc" id="L40">    }</span>
+
+    @Generated
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+    public void visualizzaPreferiti(HttpServletRequest request) throws ServletException, IOException {
+<span class="fc" id="L49">        HttpSession session = request.getSession();</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (session != null) {</span>
+<span class="fc" id="L51">            Utente utente = (Utente) session.getAttribute(&quot;utente&quot;);</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">            if(utente != null) {</span>
+<span class="fc" id="L53">                this.preferiti = utenteDAO.doRetrieveByAllPreferitiOfUtente(utente.getCodiceFiscale());</span>
+<span class="fc" id="L54">                request.setAttribute(&quot;prodottiPref&quot;, preferiti);</span>
+            }
+        }
+<span class="fc" id="L57">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

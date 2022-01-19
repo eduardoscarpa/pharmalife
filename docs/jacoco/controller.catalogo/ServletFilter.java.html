@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServletFilter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProgettoIS</a> &gt; <a href="index.source.html" class="el_package">controller.catalogo</a> &gt; <span class="el_source">ServletFilter.java</span></div><h1>ServletFilter.java</h1><pre class="source lang-java linenums">package controller.catalogo;
+
+import model.prodotto.Prodotto;
+import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+
+@WebServlet(name = &quot;ServletFilter&quot;, value = &quot;/ServletFilter&quot;)
+public class ServletFilter extends HttpServlet {
+
+    private ProdottoDAOMethod prodottoDAO;
+
+<span class="nc" id="L23">    public ServletFilter() throws SQLException {</span>
+<span class="nc" id="L24">        prodottoDAO = new ProdottoDAO();</span>
+<span class="nc" id="L25">    }</span>
+
+<span class="fc" id="L27">    public ServletFilter(ProdottoDAO prodottoDAO) {</span>
+<span class="fc" id="L28">        this.prodottoDAO = prodottoDAO;</span>
+<span class="fc" id="L29">    }</span>
+
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<span class="fc" id="L33">        String nome=request.getParameter(&quot;nome&quot;);</span>
+<span class="fc" id="L34">        String categoria=request.getParameter(&quot;categoria&quot;);</span>
+<span class="fc" id="L35">        String marchio=request.getParameter(&quot;marchio&quot;);</span>
+<span class="fc" id="L36">        double min=Double.parseDouble(request.getParameter(&quot;min&quot;));</span>
+<span class="fc" id="L37">        double max=Double.parseDouble(request.getParameter(&quot;max&quot;));</span>
+<span class="fc" id="L38">        filtraProdotti(nome, categoria, marchio, min, max, request);</span>
+<span class="fc" id="L39">        RequestDispatcher dispatcher= request.getRequestDispatcher(&quot;WEB-INF/pagine/listaProdotti.jsp&quot;);</span>
+<span class="fc" id="L40">        dispatcher.forward(request,response);</span>
+<span class="fc" id="L41">    }</span>
+
+    @Generated
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+    /**
+     * Questo metodo serve per filtrare i prodotti in base a varie caratteristiche
+     * @pre //
+     * @param nome
+     * @param categoria
+     * @param marchio
+     * @param min
+     * @param max
+     * @param request
+     * @throws ServletException
+     * @throws IOException
+     * @post //
+     */
+
+    @Generated
+    public void filtraProdotti(String nome, String categoria, String marchio, double min, double max, HttpServletRequest request) throws ServletException, IOException {
+        String opzione=&quot;filtro&quot;;
+
+        ArrayList&lt;Prodotto&gt; prodotti=prodottoDAO.doRetrieveByAllProdotti();
+
+        if(nome!=null)
+            prodotti=prodottoDAO.filtroNome(prodotti,nome);
+
+        if(categoria!=null)
+            prodotti=prodottoDAO.filtroCategoria(prodotti,categoria);
+
+        if(marchio!=null)
+            prodotti=prodottoDAO.filtroMarchio(prodotti,marchio);
+
+        if(max!=50)
+            prodotti=prodottoDAO.filtroMax(prodotti,max);
+
+        if(min!=0)
+            prodotti=prodottoDAO.filtroMin(prodotti,min);
+
+        request.setAttribute(&quot;prodotti&quot;,prodotti);
+        request.setAttribute(&quot;opzione&quot;,opzione);
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

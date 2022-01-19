@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServletUpdateUtente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProgettoIS</a> &gt; <a href="index.source.html" class="el_package">controller.utente</a> &gt; <span class="el_source">ServletUpdateUtente.java</span></div><h1>ServletUpdateUtente.java</h1><pre class="source lang-java linenums">package controller.utente;
+
+import model.utente.Utente;
+import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+@WebServlet(name = &quot;ServletUpdateUtente&quot;, value = &quot;/ServletUpdateUtente&quot;)
+public class ServletUpdateUtente extends HttpServlet {
+    //private UtenteDAOMethod serviceUtente;
+    private UtenteDAOMethod utenteDAO; //prima era un UtenteDAO
+
+    /*
+    public  ServletUpdateUtente(UtenteDAOMethod utenteDAOMethod){
+        serviceUtente=utenteDAOMethod;
+    }
+     */
+
+<span class="fc" id="L26">    public ServletUpdateUtente(UtenteDAO utenteDAO) {</span>
+<span class="fc" id="L27">        this.utenteDAO = utenteDAO;</span>
+<span class="fc" id="L28">    }</span>
+
+<span class="nc" id="L30">    public ServletUpdateUtente() throws SQLException {</span>
+<span class="nc" id="L31">        this.utenteDAO = new UtenteDAO();</span>
+<span class="nc" id="L32">    }</span>
+
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+<span class="fc" id="L37">        String codiceFiscale=request.getParameter(&quot;codiceFiscale&quot;);</span>
+<span class="fc" id="L38">        String nomeUtente=request.getParameter(&quot;nome&quot;);</span>
+<span class="fc" id="L39">        String cognomeUtente=request.getParameter(&quot;cognome&quot;);</span>
+<span class="fc" id="L40">        String email=request.getParameter(&quot;email&quot;);</span>
+<span class="fc" id="L41">        String password=request.getParameter(&quot;password&quot;);</span>
+<span class="fc" id="L42">        String nuovaPassword=request.getParameter(&quot;newPassword&quot;);</span>
+<span class="fc" id="L43">        aggiornaDatiUtente(codiceFiscale,nomeUtente,cognomeUtente,email,password,nuovaPassword,request,response);</span>
+<span class="fc" id="L44">        RequestDispatcher dispatcher= request.getRequestDispatcher(&quot;WEB-INF/pagine/InfoUtente.jsp&quot;);</span>
+<span class="fc" id="L45">        dispatcher.forward(request,response);</span>
+<span class="fc" id="L46">    }</span>
+
+    @Generated
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        doGet(request,response);
+    }
+
+    /**
+     * @pre //
+     * @param codiceFiscale
+     * @param nomeUtente
+     * @param cognomeUtente
+     * @param email
+     * @param password
+     * @param nuovaPassword
+     * @param request
+     * @param response
+     * @throws IOException
+     * @post //
+     */
+    @Generated
+    public void aggiornaDatiUtente(String codiceFiscale,String nomeUtente,String cognomeUtente,
+    String email,String password,String nuovaPassword,HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
+
+        Utente utente= new Utente();
+        utente.setCodiceFiscale(codiceFiscale);
+        utente.setNome(nomeUtente);
+        utente.setCognome(cognomeUtente);
+        utente.setEmail(email);
+        utente.criptPassword(password);
+        //utenteDAO = new UtenteDAO();
+        HttpSession session= request.getSession();
+        Utente utente1=utenteDAO.cercaUtente(codiceFiscale);
+        Pattern pattern = Pattern.compile(&quot;^((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20})$&quot;);
+        Matcher matcher = pattern.matcher(nuovaPassword);
+        String up=&quot;&quot;;
+        if (!matcher.matches()) {
+            up=&quot;La nuova password non rispetta il formato del pattern: deve contenere almeno una lettera minuscola, una maiuscola e un numero&quot;;
+        } else
+        if (utente1 != null) {
+            if (utente1.getPassword().equals(utente.getPassword())) {
+                utente.criptPassword(nuovaPassword);
+                if (password.equals(nuovaPassword)) {
+                    up = &quot;La nuova password deve essere diversa da quella precedente&quot;;
+                } else {
+                    if (utenteDAO.updateUtente(utente)) {
+                        up = &quot;Dati aggiornati correttamente.&quot;;
+                        Utente u = (Utente) utenteDAO.cercaUtente(utente.getCodiceFiscale());
+                        if (utente != null) {
+                            session.setAttribute(&quot;utente&quot;, u);
+                        }
+                    }
+                }
+            } else {
+                up = &quot;La password non corrisponde con quella dell'utente loggato&quot;;
+            }
+        }
+        request.setAttribute(&quot;update&quot;,up);
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

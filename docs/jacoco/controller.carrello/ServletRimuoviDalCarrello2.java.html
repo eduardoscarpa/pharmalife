@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServletRimuoviDalCarrello2.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProgettoIS</a> &gt; <a href="index.source.html" class="el_package">controller.carrello</a> &gt; <span class="el_source">ServletRimuoviDalCarrello2.java</span></div><h1>ServletRimuoviDalCarrello2.java</h1><pre class="source lang-java linenums">package controller.carrello;
+
+import model.carrello.Carrello;
+import model.prodotto.Prodotto;
+import model.prodotto.ProdottoDAO;
+import model.prodotto.ProdottoDAOMethod;
+import model.utente.Utente;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+@Documented
+@Retention(RUNTIME)
+@Target({TYPE, METHOD})
+@interface Generated {
+}
+
+@WebServlet(name = &quot;ServletRimuoviDalCarrello2&quot;, value = &quot;/ServletRimuoviDalCarrello2&quot;)
+public class ServletRimuoviDalCarrello2 extends HttpServlet {
+    private ProdottoDAOMethod serviceProdotto;
+    private Prodotto prodotto;
+    private Utente utente;
+    private Carrello carrello;
+    private ArrayList&lt;Prodotto&gt; prodotti;
+
+<span class="fc" id="L41">    public ServletRimuoviDalCarrello2(ProdottoDAO serviceProdotto, Prodotto prodotto, Utente utente,Carrello carrello) {</span>
+<span class="fc" id="L42">        this.serviceProdotto = serviceProdotto;</span>
+<span class="fc" id="L43">        this.prodotto = prodotto;</span>
+<span class="fc" id="L44">        this.utente = utente;</span>
+<span class="fc" id="L45">        this.carrello=carrello;</span>
+<span class="fc" id="L46">    }</span>
+
+
+
+
+<span class="nc" id="L51">    public ServletRimuoviDalCarrello2() throws SQLException {</span>
+<span class="nc" id="L52">        serviceProdotto=new ProdottoDAO();</span>
+<span class="nc" id="L53">        utente=new Utente();</span>
+<span class="nc" id="L54">        prodotto=new Prodotto();</span>
+<span class="nc" id="L55">        carrello= new Carrello();</span>
+<span class="nc" id="L56">        prodotti= new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L57">    }</span>
+
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<span class="fc" id="L61">        int codiceProdotto=Integer.parseInt(request.getParameter(&quot;value&quot;));</span>
+<span class="fc" id="L62">         prodotto=serviceProdotto.cercaProdotto(codiceProdotto);</span>
+<span class="fc" id="L63">         HttpSession session= request.getSession();</span>
+<span class="fc" id="L64">         utente=(Utente) session.getAttribute(&quot;utente&quot;);</span>
+       // rimozioneDalCarrello(codiceProdotto, request);
+<span class="fc" id="L66">        rimozioneDalCarrello(utente, prodotto, session);</span>
+<span class="fc" id="L67">        RequestDispatcher dispatcher=request.getRequestDispatcher(&quot;WEB-INF/pagine/carrello.jsp&quot;);</span>
+<span class="fc" id="L68">        dispatcher.forward(request,response);</span>
+<span class="fc" id="L69">    }</span>
+
+    @Generated
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+
+    /**
+     * Questo metodo serve per rimuovere un prodotto dal carrello
+     * @pre //
+     * @param prodotto del prodotto da eliminare dal carrello
+     * @param request
+     * @throws ServletException
+     * @throws IOException
+     * @post getNumProdotti = @pre getNumProdotti - 1
+     */
+    public void rimozioneDalCarrello(Utente utente,Prodotto prodotto ,HttpSession session) throws ServletException, IOException {
+
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if(utente!=null){</span>
+<span class="fc" id="L89">            carrello= utente.getCarrello();</span>
+<span class="fc" id="L90">            carrello.sottraiTotale(prodotto.getPrezzo());</span>
+<span class="fc" id="L91">            prodotti= carrello.getProdotti();</span>
+<span class="fc" id="L92">            prodotti.remove(prodotto);</span>
+<span class="fc" id="L93">            carrello.setProdotti(prodotti);</span>
+            //carrello.getProdotti().remove(prodotto);
+<span class="fc" id="L95">            utente.setCarrello(carrello);</span>
+
+            //utente.getCarrello().sottraiTotale(prodotto.getPrezzo());
+            //utente.getCarrello().getProdotti().remove(prodotto);
+        }else{
+<span class="fc" id="L100">            carrello=(Carrello) session.getAttribute(&quot;carrello&quot;);</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">            if(carrello!=null){</span>
+<span class="fc" id="L102">                carrello.sottraiTotale(prodotto.getPrezzo());</span>
+<span class="fc" id="L103">                prodotti= carrello.getProdotti();</span>
+<span class="fc" id="L104">                prodotti.remove(prodotto);</span>
+<span class="fc" id="L105">                carrello.setProdotti(prodotti);</span>
+                //carrello.getProdotti().remove(prodotto);
+            }
+        }
+<span class="fc" id="L109">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

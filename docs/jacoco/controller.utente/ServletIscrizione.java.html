@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServletIscrizione.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProgettoIS</a> &gt; <a href="index.source.html" class="el_package">controller.utente</a> &gt; <span class="el_source">ServletIscrizione.java</span></div><h1>ServletIscrizione.java</h1><pre class="source lang-java linenums">package controller.utente;
+import model.carrello.Carrello;
+import model.utente.Utente;
+import model.utente.UtenteDAO;
+import model.utente.UtenteDAOMethod;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+@WebServlet(name = &quot;ServletIscrizione&quot;, value = &quot;/ServletIscrizione&quot;)
+public class ServletIscrizione extends HttpServlet {
+
+    private String message;
+    private String address;
+    private Matcher matcher;
+    private Carrello carrello;
+
+    UtenteDAOMethod service;
+
+
+    public ServletIscrizione(UtenteDAOMethod utenteDAO,String address){
+<span class="fc" id="L32">        super();</span>
+<span class="fc" id="L33">        service=utenteDAO;</span>
+<span class="fc" id="L34">        this.address=address;</span>
+
+<span class="fc" id="L36">    }</span>
+
+    public ServletIscrizione() throws SQLException {
+<span class="nc" id="L39">        super();</span>
+<span class="nc" id="L40">        service= new UtenteDAO();</span>
+<span class="nc" id="L41">    }</span>
+
+    @Generated
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        address=&quot;index.jsp&quot;;
+        message=&quot;&quot;;
+        try {
+            saveParameter(request,response);
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+
+    }
+
+    @Generated
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+    /**
+     * Questo metodo permette ad Utente di registrarsi al sistema, per poter effettuare questa operazione
+     * il codiceFiscale non deve essere già esistente nel database
+     * @pre isNotPresentCf(codiceFiscale)
+     * @param fn nome
+     * @param ln cognome
+     * @param cf codice fiscale
+     * @param email e-mail
+     * @param psw password
+     * @param psw_rip ripetizione password
+     * @param via via
+     * @param numeroCivico numero civico
+     * @param cap CAP
+     * @param telefono numero di cellulare
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @throws SQLException
+     * @post not isNotPresentCf(codiceFiscale)
+     * @post doRetrieveByAllUtenti = @pre doRetrieveByAllUtenti+1
+     */
+    public void registraUtente(String fn,String ln,String cf, String email,String psw,String psw_rip,String via,
+                               int numeroCivico,String cap,String telefono,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException {
+<span class="fc" id="L86">        Utente utente = new Utente();</span>
+<span class="fc" id="L87">        formatName(fn);</span>
+<span class="fc" id="L88">        formatCodiceFiscale(cf);</span>
+<span class="fc" id="L89">        formatEmail(email);</span>
+<span class="fc" id="L90">        formatPassword(psw);</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        if (!psw_rip.equals(psw)) {</span>
+<span class="fc" id="L92">            address = &quot;WEB-INF/pagine/iscriviti.jsp&quot;;</span>
+<span class="fc" id="L93">            message = &quot;La password non coincide con quella digitata precedentemente.&quot;;</span>
+        }
+<span class="fc" id="L95">        formatNumCivico(numeroCivico);</span>
+<span class="fc" id="L96">        formatCap(cap);</span>
+
+
+<span class="fc" id="L99">        utente.setNome(fn);</span>
+<span class="fc" id="L100">        utente.setCognome(ln);</span>
+<span class="fc" id="L101">        utente.setCodiceFiscale(cf);</span>
+<span class="fc" id="L102">        utente.setEmail(email);</span>
+<span class="fc" id="L103">        utente.criptPassword(psw);</span>
+<span class="fc" id="L104">        utente.setVia(via);</span>
+<span class="fc" id="L105">        utente.setNumeroCivico(numeroCivico);</span>
+<span class="fc" id="L106">        utente.setCap(cap);</span>
+<span class="fc" id="L107">        utente.setTelefono(telefono);</span>
+
+<span class="fc bfc" id="L109" title="All 2 branches covered.">        if (address.contains(&quot;index&quot;)) {</span>
+<span class="fc" id="L110">            service.insertUtente(utente);</span>
+<span class="fc" id="L111">            HttpSession session = request.getSession();</span>
+
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">            if (session.getAttribute(&quot;carrello&quot;) != null) {</span>
+<span class="nc" id="L114">                Carrello carrello = (Carrello) session.getAttribute(&quot;carrello&quot;);</span>
+<span class="nc" id="L115">                utente.setCarrello(carrello);</span>
+            }
+<span class="fc" id="L117">            session.setAttribute(&quot;utente&quot;, utente);</span>
+
+<span class="fc" id="L119">        } else {</span>
+<span class="fc" id="L120">            request.setAttribute(&quot;iscriviti&quot;, message);</span>
+        }
+<span class="fc" id="L122">        RequestDispatcher dispatcher = request.getRequestDispatcher(address);</span>
+<span class="fc" id="L123">        dispatcher.forward(request, response);</span>
+<span class="fc" id="L124">    }</span>
+
+    @Generated
+    public boolean isNotPresentCf(String codiceFiscale) throws SQLException {
+        ArrayList&lt;String&gt; codiciFiscali=service.doRetraiveByAllCodiciFiscali();
+        if (codiciFiscali.contains(codiceFiscale)){
+            address = &quot;WEB-INF/pagine/iscriviti.jsp&quot;;
+            message=&quot;Questo codice fiscale è già presente nel sistema!&quot;;
+            return  false;
+        }
+        return true;
+    }
+
+    @Generated
+    public boolean isNotPresentEmail(String email) throws SQLException {
+        ArrayList&lt;String&gt; arrayEmail=service.doRetraiveByAllEmail();
+        if (arrayEmail.contains(email)){
+            address = &quot;WEB-INF/pagine/iscriviti.jsp&quot;;
+            message=&quot;Questa email è già presente nel sistema!&quot;;
+            return  false;
+        }
+        return true;
+    }
+
+    @Generated
+    public void saveParameter(HttpServletRequest request,HttpServletResponse response ) throws SQLException, ServletException, IOException {
+        String fn=request.getParameter(&quot;nome&quot;);
+        String ln=request.getParameter(&quot;cognome&quot;);
+        String cf= request.getParameter(&quot;CodiceFiscale&quot;);
+        String email=request.getParameter(&quot;email&quot;);
+        String psw=request.getParameter(&quot;psw&quot;);
+        String psw_rip=request.getParameter(&quot;psw-rip&quot;);
+        String via=request.getParameter(&quot;via&quot;);
+        int numeroCivico=Integer.parseInt(request.getParameter(&quot;numeroCivico&quot;));
+        String cap=request.getParameter(&quot;cap&quot;);
+        String telefono=request.getParameter(&quot;telefono&quot;);
+        if (isNotPresentCf(cf)){
+            if (isNotPresentEmail(email)) {
+                registraUtente(fn,ln,cf,email,psw,psw_rip,via,numeroCivico,cap,telefono,request,response);
+            }
+        }else {
+            request.setAttribute(&quot;iscriviti&quot;, message);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+            dispatcher.forward(request, response);
+        }
+    }
+
+    @Generated
+    public void formatName(String fn){
+        Pattern nome = Pattern.compile(&quot;^([a-z A-Z]{3,20})$&quot;);
+        matcher = nome.matcher(fn);
+        if (!matcher.matches()) {
+            address = &quot;WEB-INF/pagine/iscriviti.jsp&quot;;
+            message = &quot;Il nome deve essere formato solo da lettere e deve contenere almeno tre caratteri.&quot;;
+
+        }
+    }
+
+    @Generated
+    public void formatSurname(String ln){
+        Pattern cognome = Pattern.compile(&quot;^([a-z A-Z]{3,20})$&quot;);
+        matcher = cognome.matcher(ln);
+        if (!matcher.matches()) {
+            address = &quot;WEB-INF/pagine/iscriviti.jsp&quot;;
+            message = &quot;Il cognome deve essere formato solo da lettere e deve contenere almeno tre caratteri.&quot;;
+        }
+    }
+
+    @Generated
+    public void formatCodiceFiscale(String cf){
+        Pattern codiceFiscale = Pattern.compile(&quot;(^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$)&quot;);
+        matcher = codiceFiscale.matcher(cf);
+        if (!matcher.matches()) {
+            address = &quot;WEB-INF/pagine/iscriviti.jsp&quot;;
+            message = &quot;Codice fiscale non valido.&quot;;
+        }
+    }
+
+    @Generated
+    public void formatEmail(String email){
+        Pattern e_mail = Pattern.compile(&quot;^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$&quot;);
+        matcher = e_mail.matcher(email);
+        if (!matcher.matches()) {
+            address = &quot;WEB-INF/pagine/iscriviti.jsp&quot;;
+            message = &quot;Formato email non valido.&quot;;
+        }
+    }
+
+
+    @Generated
+    public static boolean formatPassword(String psw){
+        Matcher matcher;
+        Pattern password = Pattern.compile(&quot;(^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20}$)&quot;);
+        matcher = password.matcher(psw);
+        if (!matcher.matches()) {
+            String address = &quot;WEB-INF/pagine/iscriviti.jsp&quot;;
+            String message = &quot;La password deve contenere almeno una lettera minuscola, una maiuscola e un numero.&quot;;
+        }
+        return matcher.matches();
+    }
+
+    @Generated
+    public void formatNumCivico(int numeroCivico){
+        Pattern numCivico = Pattern.compile((&quot;^[0-9]{1,3}$&quot;));
+        matcher = numCivico.matcher(Integer.toString(numeroCivico));
+        if (!matcher.matches()) {
+            address = &quot;WEB-INF/pagine/iscriviti.jsp&quot;;
+            message = &quot;Il numero civico deve contenere solo numeri (da una a tre cifre).&quot;;
+        }
+    }
+
+    @Generated
+    public void formatCap(String cap){
+        Pattern codicePostale = Pattern.compile((&quot;^[0-9]{5}$&quot;));
+        matcher = codicePostale.matcher(cap);
+        if (!matcher.matches()) {
+            address = &quot;WEB-INF/pagine/iscriviti.jsp&quot;;
+            message = &quot;Il CAP deve contenere esattamente 5 cifre.&quot;;
+        }
+    }
+
+    @Generated
+    public void formatTel(String telefono){
+        Pattern numTelefono = Pattern.compile((&quot;^[0-9]{10}$&quot;));
+        matcher = numTelefono.matcher(telefono);
+        if (!matcher.matches()) {
+            address = &quot;WEB-INF/pagine/iscriviti.jsp&quot;;
+            message = &quot;Il numero di telefono deve contenere esattamente 10 cifre.&quot;;
+        }
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -3,7 +3,7 @@ package model.prodotto;
 import model.categoria.Categoria;
 import model.categoria.CategoriaDAO;
 import model.marchio.Marchio;
-import model.storage.ConPool;
+import model.utils.ConPool;
 
 import java.sql.*;
 import java.util.ArrayList;

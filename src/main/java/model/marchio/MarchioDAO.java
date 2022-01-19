@@ -1,13 +1,12 @@
 package model.marchio;
 
-import model.storage.ConPool;
+import model.utils.ConPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Generated
 public class MarchioDAO implements MarchioDAOMethod {

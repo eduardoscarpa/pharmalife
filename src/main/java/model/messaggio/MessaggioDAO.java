@@ -1,12 +1,11 @@
 package model.messaggio;
 
-import model.storage.ConPool;
+import model.utils.ConPool;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Generated
 public class MessaggioDAO implements MessaggioDAOMethod {

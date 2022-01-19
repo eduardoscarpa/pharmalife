@@ -1,4 +1,4 @@
-package model.storage;
+package model.utils;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
