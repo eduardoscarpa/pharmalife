@@ -1,11 +1,5 @@
 <%@ page import="model.utente.Utente" %>
-<%@ page import="model.prodotto.Prodotto" %><%--
-  Created by IntelliJ IDEA.
-  User: Amministratore
-  Date: 19/07/2021
-  Time: 15:08
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="model.prodotto.Prodotto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--<% Integer idProdotto= (Integer) request.getAttribute("idProdotto");
 System.out.println(idProdotto);%>--%>
@@ -47,6 +41,7 @@ System.out.println(idProdotto);%>--%>
         }
     </style>
     <script src="js/header.js" type="text/javascript" defer></script>
+    <script src="./js/scriptUpdateProdotto.js" type="text/javascript" defer></script>
 </head>
 <jsp:include page="/WEB-INF/pagine/default/header.jsp"/>
 
@@ -56,14 +51,14 @@ System.out.println(idProdotto);%>--%>
 <div class="container-form">
     <fieldset>
         <legend>Prodotto 0PR00<%=prodotto.getCodiceProdotto()%></legend>
-        <form action="ServletUpdateAdminDUE" method="post" onclick="">
+        <form action="ServletUpdateAdminDUE" method="post" onclick="" onsubmit="updateProdotto()">
             <div class="blocco">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" required>
+                <input type="text" name="nome" id="nome">
             </div>
             <div class="blocco">
                 <label for="prezzo">Prezzo</label>
-                <input type="number" name="prezzo" id="prezzo" required>
+                <input type="text" name="prezzo" id="prezzo">
             </div>
             <input type="hidden" name="idProdotto" value="<%=prodotto.getCodiceProdotto()%>">
             <input type="submit" value="MODIFICA">

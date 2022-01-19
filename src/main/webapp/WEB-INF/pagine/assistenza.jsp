@@ -11,6 +11,7 @@
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
     <script src="js/header.js" type="text/javascript" defer></script>
+    <script src="./js/invioMessaggio.js" type="text/javascript" defer></script>
     <style>
         h3{
             text-align: center;
@@ -37,7 +38,7 @@
     </div>
 
     <div class="flex-container">
-        <form action="ServletInvioMessaggio" method="post">
+        <form action="ServletInvioMessaggio" method="post" onsubmit="assistenza()">
             <div>
                 <label for="fname"></label>
                 <input type="text" id="fname" name="firstname" placeholder="Nome"><br>
