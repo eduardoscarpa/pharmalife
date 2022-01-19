@@ -19,4 +19,4 @@ pHarmalife è una piattaforma e-commerce dedicata alla vendita di farmaci e cosm
  - [HTML5](https://www.w3schools.com/html/default.asp) - Linguaggio usato per lo sviluppo front-end.
  - [CSS3](https://www.w3schools.com/css/default.asp) - Linguaggio usato per lo sviluppo front-end.
  - [JavaScript](https://www.w3schools.com/js/default.asp) - Linguaggio usato per lo sviluppo front-end.
- - [Mockito](https://site.mockito.org/)
+ - [Mockito](https://site.mockito.org/) - Utilizzato per il testing di unità.
