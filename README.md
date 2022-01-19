@@ -2,7 +2,7 @@
 Progetto di Ingegneria del Software, 2021/2022
 
 ## Introduzione
-pHarmalife è una piattaforma e-commerce dedicata alla vendita di farmaci e cosmetici, con funzionalità che permettono all'utenza di avere tutto sotto controllo.
+PHarmaLIFE è una piattaforma e-commerce dedicata alla vendita di farmaci e cosmetici, con funzionalità che permettono all'utenza di avere tutto sotto controllo.
 
 ## Documentation
  - Il javadoc del progetto è presente al seguente link - [JavaDoc](https://edd0y-dev.github.io/PHarmaLife-202122/jacoco/)
