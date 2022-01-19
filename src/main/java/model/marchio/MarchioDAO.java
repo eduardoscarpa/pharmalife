@@ -41,6 +41,7 @@ public class MarchioDAO implements MarchioDAOMethod {
         return null;
     }
 
+    /*
     @Override
     public void deleteMarchio(String nomeMarchio) {
         try{
@@ -53,6 +54,8 @@ public class MarchioDAO implements MarchioDAOMethod {
         }
     }
 
+     */
+/*
     @Override
     public void insertMarchio(Marchio m) {
 
@@ -67,12 +70,13 @@ public class MarchioDAO implements MarchioDAOMethod {
             throw new RuntimeException("insert error");
         }
     }
-
+*/
+    /*
     @Override
     public void updateMarchio(Marchio m, String nomeMarchio) {
         // Metodo inutile per 'marchio', siccome sono tutti attributi non modificabili
     }
-
+*/
 
     /**
      * Questo metodo retituisce una lista di tutti i Marchi
@@ -97,6 +101,7 @@ public class MarchioDAO implements MarchioDAOMethod {
         }
     }
 
+    /*
     @Override
     public ArrayList<Marchio> cercaMarchi(int start, int end) {
         ArrayList<Marchio> lista =new ArrayList<>();
@@ -117,7 +122,7 @@ public class MarchioDAO implements MarchioDAOMethod {
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
-    }
+    }*/
 }
 
 

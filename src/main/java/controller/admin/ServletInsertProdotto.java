@@ -76,7 +76,7 @@ public class ServletInsertProdotto extends HttpServlet {
         prodotto.setQuantita(quantita);
         Categoria categoria1= categoriaDAO.cercaCategoria(categoria);
         prodotto.setCategoria(categoria1);
-        prodotto.setDescrrizione(descrizione);
+        prodotto.setDescrizione(descrizione);
         prodotto.setPathImmagine(pathImmagine);
         prodottoDAO.insertProdotto(prodotto);
     }

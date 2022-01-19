@@ -81,6 +81,9 @@ public class ServletFilter extends HttpServlet {
         if(min!=0)
             prodotti=prodottoDAO.filtroMin(prodotti,min);
 
+        if(prodotti.size()==0)
+            opzione="nullo";
+
         request.setAttribute("prodotti",prodotti);
         request.setAttribute("opzione",opzione);
     }

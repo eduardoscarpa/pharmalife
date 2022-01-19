@@ -28,6 +28,8 @@ public class Categoria {
     private int idCategoria;
     private String nomeCategoria;
     private int root;
+
+
     private ArrayList<Prodotto> prodotti;
 
     public Categoria() {

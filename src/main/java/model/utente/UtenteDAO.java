@@ -92,9 +92,9 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
     /**
-     *
-     * @param codiceFiscale
-     * @return
+     *Questo metodo sserve per ricecare la lista dei desideri di un Utente
+     * @param codiceFiscale dell'Utente di cui vogliamo la lista dei desideri
+     * @return ArrayList di oggetti di tipo Prodotto
      */
     @Override
     public ArrayList<Prodotto> doRetrieveByAllPreferitiOfUtente(String codiceFiscale) {
@@ -156,7 +156,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
     /**
-     * Questo metodo cerca tutti i codici fiscali di tutti gli utenti iscritti alla piattaforma
+     * Questo metodo cerca tutti le email di tutti gli utenti iscritti alla piattaforma
      * @return un ArrayList di String con tutti i codici fiscali
      * @throws SQLException
      */
@@ -180,8 +180,8 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
     /**
-     *
-     * @return
+     *Questo metodo restituisce la litsa di tutti gli ordini effettuati da tutti gli utenti
+     * @return ArrayList di oggetti di tipo Ordine
      */
     @Override
     public ArrayList<Ordine> ordiniAllUtenti() {
@@ -289,9 +289,9 @@ public class UtenteDAO implements UtenteDAOMethod {
 
 
     /**
-     *
-     * @param utente
-     * @param prodotto
+     *Questo metodo permette ad un Utente di aggiungere un profotto alla sua lista dei desideri
+     * @param Utente che  vuole aggiungere il prodotto alla lista dei desideri
+     * @param Prodotto  da aggiungere alla lista dei desideri
      */
     @Override
     public void insertPreferito(Utente utente, Prodotto prodotto) {
@@ -308,7 +308,11 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
 
-
+    /**
+     * Questo metodo permette ad un utente di rimuovere un prodotto dalla lista dei desideri
+     * @param utente che vuole rimuovere il prodotto dalla liista dei desideri
+     * @param prodotto da rimuovere dalla lista dei desideri
+     */
     @Override
     public void deletePreferito(Utente utente, Prodotto prodotto) {
         try{

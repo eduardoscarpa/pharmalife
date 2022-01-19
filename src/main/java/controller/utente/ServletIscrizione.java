@@ -123,6 +123,13 @@ public class ServletIscrizione extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    /**
+     * Questo metodo ha la funzione di verificare che utente che si registra alla piattaforma
+     * non immetta un codice fiscale già presente nel database
+     * @param codiceFiscale
+     * @return
+     * @throws SQLException
+     */
     @Generated
     public boolean isNotPresentCf(String codiceFiscale) throws SQLException {
         ArrayList<String> codiciFiscali=service.doRetraiveByAllCodiciFiscali();
@@ -134,6 +141,13 @@ public class ServletIscrizione extends HttpServlet {
         return true;
     }
 
+    /**
+     * Questo metodo ha la funzione di verificare che un utente che si registra alla piattaforma
+     * non immetta un'email già presente nel database
+     * @param email
+     * @return
+     * @throws SQLException
+     */
     @Generated
     public boolean isNotPresentEmail(String email) throws SQLException {
         ArrayList<String> arrayEmail=service.doRetraiveByAllEmail();
@@ -157,10 +171,8 @@ public class ServletIscrizione extends HttpServlet {
         int numeroCivico=Integer.parseInt(request.getParameter("numeroCivico"));
         String cap=request.getParameter("cap");
         String telefono=request.getParameter("telefono");
-        if (isNotPresentCf(cf)){
-            if (isNotPresentEmail(email)) {
-                registraUtente(fn,ln,cf,email,psw,psw_rip,via,numeroCivico,cap,telefono,request,response);
-            }
+        if (isNotPresentCf(cf) &&  isNotPresentEmail(email)) {
+            registraUtente(fn, ln, cf, email, psw, psw_rip, via, numeroCivico, cap, telefono, request, response);
         }else {
             request.setAttribute("iscriviti", message);
             RequestDispatcher dispatcher = request.getRequestDispatcher(address);
@@ -168,6 +180,10 @@ public class ServletIscrizione extends HttpServlet {
         }
     }
 
+    /**
+     * Questo metodo effettua la valizione del formato del nome utente
+     * @param fn firstname nome utente
+     */
     @Generated
     public void formatName(String fn){
         Pattern nome = Pattern.compile("^([a-z A-Z]{3,20})$");
@@ -179,6 +195,10 @@ public class ServletIscrizione extends HttpServlet {
         }
     }
 
+    /**
+     * Questo metodo effettua la valizione del formato del cognome utente
+     * @param ln lastname cognome utente
+     */
     @Generated
     public void formatSurname(String ln){
         Pattern cognome = Pattern.compile("^([a-z A-Z]{3,20})$");
@@ -189,6 +209,10 @@ public class ServletIscrizione extends HttpServlet {
         }
     }
 
+    /**
+     * Questo metodo effettua la valizione del formato del codice fiscale dell'utente utente
+     * @param cf codice fiscale
+     */
     @Generated
     public void formatCodiceFiscale(String cf){
         Pattern codiceFiscale = Pattern.compile("(^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$)");
@@ -199,6 +223,10 @@ public class ServletIscrizione extends HttpServlet {
         }
     }
 
+    /**
+     * Questo metodo effettua la valizione del formato dell'email dell' utente
+     * @param email
+     */
     @Generated
     public void formatEmail(String email){
         Pattern e_mail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$");
@@ -210,6 +238,11 @@ public class ServletIscrizione extends HttpServlet {
     }
 
 
+    /**
+     * Questo metodo effettua la valizione del formato della passaword dell'utente utente
+     * @param psw password
+     * @return true se la password rispetta il formato
+     */
     @Generated
     public static boolean formatPassword(String psw){
         Matcher matcher;
@@ -222,6 +255,10 @@ public class ServletIscrizione extends HttpServlet {
         return matcher.matches();
     }
 
+    /**
+     * Questo metodo effettua la valizione del formato del numero civico dell' utente
+     * @param numeroCivico
+     */
     @Generated
     public void formatNumCivico(int numeroCivico){
         Pattern numCivico = Pattern.compile(("^[0-9]{1,3}$"));
@@ -232,6 +269,10 @@ public class ServletIscrizione extends HttpServlet {
         }
     }
 
+    /**
+     * Questo metodo effettua la valizione del formato del cap dell' utente
+     * @param cap
+     */
     @Generated
     public void formatCap(String cap){
         Pattern codicePostale = Pattern.compile(("^[0-9]{5}$"));
@@ -242,6 +283,10 @@ public class ServletIscrizione extends HttpServlet {
         }
     }
 
+    /**
+     * Questo metodo effettua la valizione del formato del telefono dell' utente
+     * @param telefono
+     */
     @Generated
     public void formatTel(String telefono){
         Pattern numTelefono = Pattern.compile(("^[0-9]{10}$"));
