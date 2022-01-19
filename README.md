@@ -10,8 +10,8 @@ pHarmalife è una piattaforma e-commerce dedicata alla vendita di farmaci e cosm
 ## Autori
  - Eduardo Scarpa - [edd0y-dev] - https://github.com/edd0y-dev.
  - Carmine Fierro - [Carmine99F] - https://github.com/Carmine99F.
- - Catello Staiano - [staianocatello] - https://github.com/staianocatello
- - Alfredo Cannavaro - [AlfCan-dev] - https://github.com/AlfCan-dev
+ - Catello Staiano - [staianocatello] - https://github.com/staianocatello.
+ - Alfredo Cannavaro - [AlfCan-dev] - https://github.com/AlfCan-dev.
 
 ## Built With
  - [Java](https://jdk.java.net/15/) - Linguaggio di programmazione usato per lo sviluppo back-end.
