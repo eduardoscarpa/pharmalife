@@ -156,7 +156,7 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
     /**
-     * Questo metodo cerca tutti i codici fiscali di tutti gli utenti iscritti alla piattaforma
+     * Questo metodo cerca tutti le email di tutti gli utenti iscritti alla piattaforma
      * @return un ArrayList di String con tutti i codici fiscali
      * @throws SQLException
      */
