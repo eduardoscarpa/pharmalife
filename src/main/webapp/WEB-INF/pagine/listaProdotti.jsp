@@ -54,6 +54,11 @@
             </form>
     </aside>
     <div class="list_catalogo">
+        <% if (opzione.equalsIgnoreCase("nullo")){ %>
+        <div style="display: flex; justify-content: center">
+<h2 style=" color: red">Prodotti non trovati nel catalogo!</h2>
+        </div>
+        <% } %>
         <%for(Prodotto p : prodotti) {%>
         <article>
             <div class="price"><%=p.getPrezzo()%>€</div>
