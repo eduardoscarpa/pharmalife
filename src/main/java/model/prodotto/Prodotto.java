@@ -8,7 +8,6 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
@@ -31,7 +30,7 @@ public class Prodotto {
     private int quantita;
     private Marchio marchio;
     private String pathImmagine;
-    private String descrrizione;
+    private String descrizione;
 
     public Prodotto() {
     }
@@ -117,12 +116,12 @@ public class Prodotto {
         this.pathImmagine = pathImmagine;
     }
 
-    public String getDescrrizione() {
-        return descrrizione;
+    public String getDescrizione() {
+        return descrizione;
     }
 
-    public void setDescrrizione(String descrrizione) {
-        this.descrrizione = descrrizione;
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
     }
 
     public void setPrezzoQuantita(int quantita){
