@@ -38,18 +38,18 @@
 
         <div class="register">
             <label for="Idnome"><b>Nome</b></label>
-            <input type="text" placeholder="Inserisci il tuo nome..." name="nome" id="Idnome" required>
+            <input type="text" placeholder="Inserisci il tuo nome..." name="nome" id="Idnome">
         </div>
 
 
         <div class="register">
             <label for="Idcognome"><b>Cognome</b></label>
-            <input type="text" placeholder="Inserisci il tuo cognome..." name="cognome" id="Idcognome" required>
+            <input type="text" placeholder="Inserisci il tuo cognome..." name="cognome" id="Idcognome">
         </div>
 
         <div class="register">
             <label for="IdcodiceFiscale"><b>Codice fiscale</b></label>
-            <input type="text" placeholder="Inserisci il tuo codice fiscale..." name="CodiceFiscale" id="IdcodiceFiscale" required style="text-transform: uppercase">
+            <input type="text" placeholder="Inserisci il tuo codice fiscale..." name="CodiceFiscale" id="IdcodiceFiscale" style="text-transform: uppercase">
         </div>
 
 
@@ -75,12 +75,12 @@
 
         <div class="register">
             <label for="IdnumeroCivico"><b>NUMERO CIVICO</b></label>
-            <input type="text" placeholder="Numero civico..." name="numeroCivico" id="IdnumeroCivico" required>
+            <input type="text" placeholder="Numero civico..." name="numeroCivico" id="IdnumeroCivico">
         </div>
 
         <div class="register">
             <label for="Idcap"><b>CAP</b></label>
-            <input type="text" placeholder="CAP..." name="cap" id="Idcap" required>
+            <input type="text" placeholder="CAP..." name="cap" id="Idcap">
         </div>
 
         <div class="register">

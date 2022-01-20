@@ -229,7 +229,7 @@ public class ServletIscrizione extends HttpServlet {
      */
     @Generated
     public void formatEmail(String email){
-        Pattern e_mail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$");
+        Pattern e_mail = Pattern.compile("^[[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}]{6,30}$");
         matcher = e_mail.matcher(email);
         if (!matcher.matches()) {
             address = "WEB-INF/pagine/iscriviti.jsp";
@@ -279,7 +279,7 @@ public class ServletIscrizione extends HttpServlet {
         matcher = codicePostale.matcher(cap);
         if (!matcher.matches()) {
             address = "WEB-INF/pagine/iscriviti.jsp";
-            message = "Il CAP deve contenere esattamente 5 cifre.";
+            message = "Il CAP deve contenere esattamente 5 cifre e deve contenere solo numeri.";
         }
     }
 

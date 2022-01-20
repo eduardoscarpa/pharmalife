@@ -1,7 +1,7 @@
 var patternNomeUtente = new RegExp("^[a-z A-Z]{3,20}$");
 var patternCognomeUtente = new RegExp("^[a-z A-Z]{3,20}$");
 var patternCodiceFiscale = new RegExp("^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$");
-var patternEmail = new RegExp(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/);
+var patternEmail = new RegExp(/^[[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}]{6,30}$/);
 var patternPassword = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/);
 var patternCivico = new RegExp("^[0-9]{1,3}$");
 var patternCap = new RegExp("^[0-9]{5}$");
@@ -84,7 +84,7 @@ function  validazioneIscrizione(){
 
     if (!patternCap.test(cap.val())) {
         cap.addClass("lampeggioBordo");
-        alert("Il cap deve contenere esattamente 5 cifre");
+        alert("Il cap deve contenere esattamente 5 cifre e deve contenere solo numeri");
         return event.preventDefault();
     }
     else {
