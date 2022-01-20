@@ -36,12 +36,12 @@
             <input type="text" id="marchioId"  name="marchio" placeholder="Marchio" required>
         </div>
         <div class="campo">
-            <label for="caegoriaId">Categoria</label><br>
+            <label for="categoriaId">Categoria</label><br>
             <input type="text" id="categoriaId"  name="categoria" placeholder="Categoria" required>
         </div>
         <div class="campo">
             <label for="descrizioneId">Descrizione</label>
-            <textarea name="descrizione"></textarea>
+            <textarea name="descrizione" id="descrizioneId" required></textarea>
         </div>
         <div class="campo">
             <label for="immagine">Scegli Immagine</label>
