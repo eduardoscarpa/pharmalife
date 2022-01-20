@@ -45,7 +45,7 @@
         </div>
         <div class="campo">
             <label for="immagine">Scegli Immagine</label>
-            <input type="file" id="immagine" name="pathImmagine">
+            <input type="file" id="immagine" name="pathImmagine" required>
         </div>
         <input type="hidden" name="quantita" value="100">
     </fieldset>
