@@ -31,14 +31,14 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 }
 
 @WebServlet(name = "ServletRimuoviDalCarrello2", value = "/ServletRimuoviDalCarrello2")
-public class ServletRimuoviDalCarrello2 extends HttpServlet {
+public class ServletRimuoviDalCarrello extends HttpServlet {
     private ProdottoDAOMethod serviceProdotto;
     private Prodotto prodotto;
     private Utente utente;
     private Carrello carrello;
     private ArrayList<Prodotto> prodotti;
 
-    public ServletRimuoviDalCarrello2(ProdottoDAO serviceProdotto, Prodotto prodotto, Utente utente,Carrello carrello) {
+    public ServletRimuoviDalCarrello(ProdottoDAO serviceProdotto, Prodotto prodotto, Utente utente,Carrello carrello) {
         this.serviceProdotto = serviceProdotto;
         this.prodotto = prodotto;
         this.utente = utente;
@@ -48,7 +48,7 @@ public class ServletRimuoviDalCarrello2 extends HttpServlet {
 
 
 
-    public ServletRimuoviDalCarrello2() throws SQLException {
+    public ServletRimuoviDalCarrello() throws SQLException {
         serviceProdotto=new ProdottoDAO();
         utente=new Utente();
         prodotto=new Prodotto();

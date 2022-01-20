@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
+import static org.junit.Assert.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -60,7 +60,7 @@ public class ServletInsertProdottoTest {
 
     @Test
     public void doGetTest() throws ServletException, IOException {
-         nomeProdotto=request.getParameter("nome");
+         nomeProdotto=request.getParameter("nomeProdotto");
          prezzoProdotto=Double.parseDouble(request.getParameter("prezzo"));
          marchioProdotto=request.getParameter("marchio");
          quantita=Integer.parseInt(request.getParameter("quantita"));
@@ -69,6 +69,13 @@ public class ServletInsertProdottoTest {
          pathImmagine=request.getParameter("pathImmagine");
         servletInsertProdotto.doGet(request, response);
         verify(request).getContextPath();
+        assertEquals("Oki", nomeProdotto);
+        assertEquals(12, prezzoProdotto, 5);
+        assertEquals("aveeno", marchioProdotto);
+        assertEquals(10, quantita);
+        assertEquals("farmaco da banco", categoria);
+        assertEquals("", descrizione);
+        assertEquals("immagini/oki.jpg", pathImmagine);
     }
 
     @Test

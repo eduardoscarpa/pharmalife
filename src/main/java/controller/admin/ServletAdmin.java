@@ -56,7 +56,6 @@ public class ServletAdmin extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
             String valore=request.getParameter("value");
             String pagina="";
             switch (valore){
