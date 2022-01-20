@@ -8,7 +8,7 @@ PHarmaLIFE è una piattaforma e-commerce dedicata alla vendita di farmaci e cosm
  - Il javadoc del progetto è presente al seguente link - [JavaDoc](https://edd0y-dev.github.io/PHarmaLife-202122/jacoco/)
  - Il report di JaCoco è presente al seguente link - [JaCoco](https://edd0y-dev.github.io/PHarmaLife-202122/jacoco/) 
 ## Autori
- - Eduardo Scarpa: [edd0y-dev](https://github.com/edd0y-dev). *Supervisor*
+ - Eduardo Scarpa: [edd0y-dev](https://github.com/edd0y-dev). Supervisor *
  - Carmine Fierro: [Carmine99F](https://github.com/Carmine99F).
  - Catello Staiano: [staianocatello](https://github.com/staianocatello).
  - Alfredo Cannavaro: [AlfCan-dev](https://github.com/AlfCan-dev).
