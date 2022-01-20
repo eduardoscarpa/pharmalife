@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.*;
 
@@ -66,6 +67,9 @@ public class ServletUpdateUtenteTest {
         String nome = utente.getNome();
         String password = utente.getPassword();
         String codiceFiscale = utente.getCodiceFiscale();
+        assertEquals("carmine",nome);
+        assertEquals("Carmine1",password);
+        assertEquals("AFGHHH88U88V678Z",codiceFiscale);
     }
 
     @Test
