@@ -171,10 +171,8 @@ public class ServletIscrizione extends HttpServlet {
         int numeroCivico=Integer.parseInt(request.getParameter("numeroCivico"));
         String cap=request.getParameter("cap");
         String telefono=request.getParameter("telefono");
-        if (isNotPresentCf(cf)){
-            if (isNotPresentEmail(email)) {
-                registraUtente(fn,ln,cf,email,psw,psw_rip,via,numeroCivico,cap,telefono,request,response);
-            }
+        if (isNotPresentCf(cf) &&  isNotPresentEmail(email)) {
+            registraUtente(fn, ln, cf, email, psw, psw_rip, via, numeroCivico, cap, telefono, request, response);
         }else {
             request.setAttribute("iscriviti", message);
             RequestDispatcher dispatcher = request.getRequestDispatcher(address);
