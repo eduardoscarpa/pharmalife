@@ -57,7 +57,7 @@ public class ServletUpdateIndirizzoTest {
         String codiceFiscale=request.getParameter("codiceFiscale");
         assertEquals("ponte", via);
         assertEquals("123", numero);
-        assertEquals("cap", "80050");
+        assertEquals("80050", cap);
         assertEquals("GFGHHH88U88V678G", codiceFiscale);
     }
 
