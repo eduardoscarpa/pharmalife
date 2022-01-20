@@ -49,6 +49,24 @@ public class ServletUpdateUtenteTest {
         when(request.getRequestDispatcher("WEB-INF/pagine/InfoUtente.jsp")).thenReturn(requestDispatcher);
         servletUpdateUtente.doGet(request, response);
         verify(requestDispatcher).forward(request, response);
+
+        String codiceFiscale = request.getParameter("codiceFiscale");
+        assertEquals(codiceFiscale, "1");
+
+        String nome = request.getParameter("nome");
+        assertEquals(nome, "catello");
+
+        String cognome = request.getParameter("cognome");
+        assertEquals(cognome, "staiano");
+
+        String email = request.getParameter("email");
+        assertEquals(email, "cat@gmail.it");
+
+        String password = request.getParameter("password");
+        assertEquals(password, "Catello1");
+
+        String newPassword = request.getParameter("newPassword");
+        assertEquals(newPassword, "Catello1");
     }
 
     @Test
