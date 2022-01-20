@@ -46,9 +46,16 @@ public class ServletFilterTest {
         when(request.getRequestDispatcher("WEB-INF/pagine/listaProdotti.jsp")).thenReturn(requestDispatcher);
         servletFilter.doGet(request, response);
         verify(requestDispatcher).forward(request, response);
-
         String nome = request.getParameter("nome");
-        assertEquals(nome, "TACHIPIRINA");
+        String categoria=request.getParameter("categoria");
+        String marchio=request.getParameter("marchio");
+        int prezzoMin=Integer.parseInt(request.getParameter("min"));
+        int prezzoMax=Integer.parseInt(request.getParameter("max"));
+        assertEquals("TACHIPIRINA", nome);
+        assertEquals("INTEGRATORI", categoria);
+        assertEquals("AVEENO", marchio);
+        assertEquals(5, prezzoMin);
+        assertEquals(25, prezzoMax);
     }
 
     @Test // Da finire

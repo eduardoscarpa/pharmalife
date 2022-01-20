@@ -52,7 +52,13 @@ public class ServletUpdateIndirizzoTest {
         servletUpdateIndirizzo.doGet(request, response);
         verify(requestDispatcher).forward(request, response);
         String via = request.getParameter("via");
+        String numero=request.getParameter("numero");
+        String cap=request.getParameter("cap");
+        String codiceFiscale=request.getParameter("codiceFiscale");
         assertEquals("ponte", via);
+        assertEquals("123", numero);
+        assertEquals("80050", cap);
+        assertEquals("GFGHHH88U88V678G", codiceFiscale);
     }
 
     @Test

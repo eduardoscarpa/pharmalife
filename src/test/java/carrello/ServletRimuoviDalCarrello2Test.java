@@ -1,6 +1,7 @@
 package carrello;
 
-import controller.carrello.ServletRimuoviDalCarrello2;
+import controller.carrello.ServletRimuoviDalCarrello;
+
 import model.carrello.Carrello;
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
@@ -41,12 +42,12 @@ public class ServletRimuoviDalCarrello2Test {
     @Mock
     private ArrayList<Prodotto> prodotti;
 
-    private ServletRimuoviDalCarrello2 servletRimuoviDalCarrello2;
+    private ServletRimuoviDalCarrello servletRimuoviDalCarrello2;
 
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
-        servletRimuoviDalCarrello2= new ServletRimuoviDalCarrello2(prodottoDAO,prodotto,utenteMock,carrello);
+        servletRimuoviDalCarrello2= new ServletRimuoviDalCarrello(prodottoDAO,prodotto,utenteMock,carrello);
         when(request.getParameter("value")).thenReturn("1");
         when(request.getSession()).thenReturn(session);
         when(session.getAttribute("utente")).thenReturn(utenteMock);
