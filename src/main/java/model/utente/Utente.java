@@ -101,10 +101,6 @@ public class Utente {
         this.password=password;
     }
 
-    /**
-     *
-     * @param password
-     */
     public void criptPassword(String password) {
 
       try {

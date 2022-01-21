@@ -40,8 +40,6 @@ private Connection connection= conpool.getConnection();
         }
     }
 
-
-
     /**
      * Questo metodo restituisce la litsa di tutti i messaggi inviati da tutti gli utenti
      * @return ArrayList di oggetti di tipo Messaggio
@@ -61,7 +59,6 @@ private Connection connection= conpool.getConnection();
                 UtenteDAO utenteDAO= new UtenteDAO();
                 Utente utente= utenteDAO.cercaUtente(rs.getString("cf"));
                 messaggio.setUtente(utente);
-              //  messaggio.getUtente().setCodiceFiscale(rs.getString(5));
                 lista.add(messaggio);
             }
 

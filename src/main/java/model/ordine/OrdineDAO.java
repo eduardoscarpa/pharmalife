@@ -14,6 +14,7 @@ public class OrdineDAO implements OrdineDAOMethod {
     private Connection connection= conpool.getConnection();
 
     public OrdineDAO() throws SQLException {
+
     }
 
     /**
@@ -68,7 +69,6 @@ public class OrdineDAO implements OrdineDAOMethod {
      */
     public void insertCarrello(Ordine o) {
         try  {
-
             System.out.println("wee");
             PreparedStatement ps = connection.prepareStatement("insert into Ordine(dataOrdine,oraOrdine,listaProdotti,cfUtente) " +
                     "value (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
@@ -131,7 +131,6 @@ public class OrdineDAO implements OrdineDAOMethod {
                 Utente utente= new Utente();
                 utente.setCodiceFiscale(rs.getString(4));
                 ordine.setUtente(utente);
-             //   ordine.getUtente().setCodiceFiscale(rs.getString(4));
                 lista.add(ordine);
             }
 
@@ -195,11 +194,9 @@ public class OrdineDAO implements OrdineDAOMethod {
                 Carrello carrello= new Carrello();
                 carrello.setListaProdottiString(rs.getString("listaProdotti"));
                 ordine.setCarrello(carrello);
-              //  ordine.getCarrello().setListaProdottiString(rs.getString("listaProdotti"));
                 Utente utente1= new Utente();
                 utente1.setCodiceFiscale(rs.getString("cfUtente"));
                 ordine.setUtente(utente);
-              //  ordine.getUtente().setCodiceFiscale(rs.getString("cfUtente"));
                 ordini.add(ordine);
             }
         }catch (SQLException sqlException){

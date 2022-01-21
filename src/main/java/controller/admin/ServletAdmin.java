@@ -93,7 +93,6 @@ public class ServletAdmin extends HttpServlet {
      * @param response
      */
     public void visualizzaStatistiche(HttpServletRequest request,HttpServletResponse response){
-
          this.messaggi = messaggioDAO.doRetrieveByAllMessaggi();
          this.utenti = utenteDAO.doRetrieveByAllUtenti();
          this.prodotti = prodottoDAO.doRetrieveByAllProdotti();
@@ -102,18 +101,10 @@ public class ServletAdmin extends HttpServlet {
          int sizeUtenti = utenteDAO.doRetrieveByAllUtenti().size();
          int sizeProdotti = prodotti.size();
          int sizeOrdini = ordini.size();
-
          request.setAttribute("messaggi", sizeMessaggi);
          request.setAttribute("utenti", sizeUtenti);
          request.setAttribute("prodotti", sizeProdotti);
          request.setAttribute("ordini", sizeOrdini);
-
-         /*
-         request.setAttribute("messaggi",Integer.parseInt(String.valueOf(messaggioDAO.doRetrieveByAllMessaggi().size())));
-         request.setAttribute("utenti",Integer.parseInt(String.valueOf(utenteDAO.doRetrieveByAllUtenti().size())));
-         request.setAttribute("prodotti",Integer.parseInt(String.valueOf(prodottoDAO.doRetrieveByAllProdotti().size())));
-         request.setAttribute("ordini",Integer.parseInt(String.valueOf(ordineDAO.doRetraiveByAllOrdini().size())));
-          */
     }
 
     @Generated

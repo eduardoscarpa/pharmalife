@@ -127,7 +127,7 @@ public class ServletIscrizione extends HttpServlet {
      * Questo metodo ha la funzione di verificare che utente che si registra alla piattaforma
      * non immetta un codice fiscale già presente nel database
      * @param codiceFiscale
-     * @return
+     * @return Booleano che è true se il codice fiscale non è presente
      * @throws SQLException
      */
     @Generated
@@ -145,7 +145,7 @@ public class ServletIscrizione extends HttpServlet {
      * Questo metodo ha la funzione di verificare che un utente che si registra alla piattaforma
      * non immetta un'email già presente nel database
      * @param email
-     * @return
+     * @return Booleano che è true se email non è presente
      * @throws SQLException
      */
     @Generated
@@ -159,6 +159,15 @@ public class ServletIscrizione extends HttpServlet {
         return true;
     }
 
+
+    /**
+     * Questo metodo salva i dati che l'utente inserisce per registrarsi
+     * @param request
+     * @param response
+     * @throws SQLException
+     * @throws ServletException
+     * @throws IOException
+     */
     @Generated
     public void saveParameter(HttpServletRequest request,HttpServletResponse response ) throws SQLException, ServletException, IOException {
         String fn=request.getParameter("nome");

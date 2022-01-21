@@ -48,7 +48,6 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
         aggiuntaAlCarrello(idProdotto,session);
         PrintWriter printWriter= response.getWriter();
         printWriter.write("Prodotto aggiunto al carrello!");
-//         response.getWriter().write("Prodotto aggiunto al carrello!");
     }
 
     @Generated
@@ -66,10 +65,6 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
      * @post getNumProdotti = @pre getNumProdotti + 1
      */
     public void aggiuntaAlCarrello(int idProdotto,HttpSession session) throws IOException{
-        /*HttpSession session=request.getSession();
-         carrello=(Carrello) session.getAttribute("carrello");
-         utente=(Utente) session.getAttribute("utente");
-         prodotto= prodottoDAO.cercaProdotto(idProdotto);*/
         if(utente!=null){
             if(utente.getCarrello()!=null){
                 prodotto.setPrezzoQuantita(totale);
@@ -93,6 +88,5 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
                 session.setMaxInactiveInterval(60);
             }
         }
-        //response.getWriter().write("Prodotto aggiunto al carrello!");
     }
 }

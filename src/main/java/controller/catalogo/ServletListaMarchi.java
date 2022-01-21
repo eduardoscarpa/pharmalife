@@ -60,7 +60,6 @@ public class ServletListaMarchi extends HttpServlet {
             start+=25;
         }
         ArrayList<Prodotto> prodotti= prodottoDAO.cercaProdottiMarchio(nomeMarchio,start,end);
-        //ArrayList<Prodotto> prodotti= prodottoDAO.doRetraiveByAllProdottiByMarchio(nomeMarchio);
 
         request.setAttribute("prodotti",prodotti);
         request.setAttribute("opzione",opzione);

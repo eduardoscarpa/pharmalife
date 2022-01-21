@@ -51,7 +51,6 @@ public class ServletSchedaProdotto extends HttpServlet {
      */
 
     public void VisualizzaSchedaProdotto(int codiceProdotto, HttpServletRequest request) throws ServletException, IOException {
-
         Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
         request.setAttribute("prodotto",prodotto);
     }

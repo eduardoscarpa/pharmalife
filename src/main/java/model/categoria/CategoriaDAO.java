@@ -69,56 +69,6 @@ public class CategoriaDAO implements CategoriaDAOMethod {
         return  null;
     }
 
-    /*
-    @Override
-    public void deleteCategoria(int idCategoria) {
-
-        try{
-            PreparedStatement ps;
-            ps=connection.prepareStatement("delete from Categoria where idCategoria=?");
-            ps.setInt(1,idCategoria);
-            ps.execute();
-        }catch (SQLException sqlException){
-            throw new RuntimeException("delete error");
-        }
-    }
-     */
-    /*
-    @Override
-    public void insertCategoria(Categoria c) {
-
-        try{
-
-            PreparedStatement ps= connection.prepareStatement("insert into Categoria value (?,?,?)");
-            ps.setInt(1,c.getIdCategoria());
-            ps.setString(2,c.getNomeCategoria());
-            ps.setInt(3,c.getRoot());
-
-            ps.execute();
-
-        }catch (SQLException sqlException){
-            throw new RuntimeException("insert error");
-        }
-    }
-
-    @Override
-    public void updateCategoria(Categoria c, int idCategoria) {
-        try  {
-            PreparedStatement ps;
-            ps = connection.prepareStatement("update Categoria set nomeCategoria = ?, root = ?" +
-                    "where idCategoria = ?", Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, c.getNomeCategoria());
-            ps.setInt(2, c.getRoot());
-            ps.setInt(3, c.getIdCategoria());
-            if(ps.executeUpdate() != 1) {
-                throw new RuntimeException("update error");
-            }
-        } catch (SQLException sqlException) {
-            throw new RuntimeException(sqlException);
-        }
-    }
-*/
-
     /**
      * Questo metodo permette di visualizzare tutte le categorie di prodotti presenti sulla piattaforma
      * @return ArrayList di Oggetti di tipo Categoria
@@ -171,28 +121,4 @@ public class CategoriaDAO implements CategoriaDAOMethod {
         }
     }
 
-    /*
-    @Override
-    public ArrayList<Categoria> cercaCategorie(int start, int end) {
-        ArrayList<Categoria> lista =new ArrayList<>();
-        try{
-
-            PreparedStatement ps=connection.prepareStatement("select * from Categoria order by idCategoria" +
-                    "limit ? offset ?");
-            ps.setInt(1,start);
-            ps.setInt(2,end);
-            ResultSet rs= ps.executeQuery();
-            while (rs.next()){
-                Categoria categoria=new Categoria();
-                categoria.setIdCategoria(rs.getInt(1));
-                categoria.setNomeCategoria(rs.getString(2));
-                categoria.setRoot(rs.getInt(3));
-                lista.add(categoria);
-            }
-
-            return lista;
-        }catch (SQLException sqlException){
-            throw new RuntimeException(sqlException);
-        }
-    }*/
 }

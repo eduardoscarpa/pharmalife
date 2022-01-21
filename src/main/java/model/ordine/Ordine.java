@@ -28,8 +28,6 @@ public class Ordine {
     private Utente utente;
     private Carrello carrello;
 
-
-
     public Ordine() {
     }
 
@@ -72,15 +70,6 @@ public class Ordine {
     public void setUtente(Utente utente) {
         this.utente = utente;
     }
-
- //   public ArrayList<Carrello> getCarrelli() {
-  //      return carrelli;
-   // }
-
-    //public void setCarrelli(ArrayList<Carrello> carrelli) {
-      //  this.carrelli = carrelli;
-    //}
-
 
     public Carrello getCarrello() {
         return carrello;

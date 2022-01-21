@@ -97,7 +97,7 @@ public class ServletInvioMessaggio extends HttpServlet {
      *
      * @param utenteLoggato che si trova in sessione
      * @param utente
-     * @return
+     * @return booleano che ritorna true se i dati corrispondono con i dati dell'utente loggato
      */
     @Generated
     public boolean checkUtente(Utente utenteLoggato,Utente utente){

@@ -57,9 +57,8 @@ public class ServletListaProdotti extends HttpServlet {
         }else {
             start+=9;
         }
-     //   ArrayList<Prodotto> prodotti= prodottoDAO.cercaProdotti(idCategoria,start,end);
-       ArrayList<Prodotto> prodotti= prodottoDAO.cercaProdottiRoot(idCategoria);
 
+        ArrayList<Prodotto> prodotti= prodottoDAO.cercaProdottiRoot(idCategoria);
 
         HttpSession session=request.getSession();
         request.setAttribute("prodotti",prodotti);

@@ -136,30 +136,6 @@ public class ProdottoDAO implements ProdottoDAOMethod {
 
     }
 
-
-    @Override
-    /*public void updateProdotto(Prodotto p, int codiceProdotto) {
-        try (Connection connection = ConPool.getConnection()) {
-            PreparedStatement ps;
-            ps = connection.prepareStatement("update Messaggio set codiceCarrello = ?, nome = ?, prezzo = ?," +
-                    "nomeMarchio = ?, quantita = ?, idCategoria = ?" +
-                    "where codiceProdotto = ?", Statement.RETURN_GENERATED_KEYS);
-
-            // ps.setString(2, p.getUtente().getCodiceFiscale()); NON PUOI E' PRIMARY KEY
-            ps.setString(2, p.getNome());
-            ps.setDouble(3, p.getPrezzo());
-            ps.setString(4, p.getMarchio().getNomeMarchio());
-            ps.setInt(5, p.getQuantita());
-            ps.setInt(6, p.getCategoria().getIdCategoria());
-            ps.setInt(7, p.getCodiceProdotto());
-            if (ps.executeUpdate() != 1) {
-                throw new RuntimeException("update error");
-            }
-        } catch (SQLException sqlException) {
-            throw new RuntimeException(sqlException);
-        }
-    }*/
-
     /**
      * Questo metodo aggiorna  il nome  e il prezzo di un prodotto
      */
@@ -178,25 +154,6 @@ public class ProdottoDAO implements ProdottoDAOMethod {
             throw new RuntimeException(sqlException);
         }
     }
-
-
-
-   /* @Override
-    public void aggiungiUtente(int codiceProdotto,Utente utente) {
-        try(Connection connection=ConPool.getConnection()){
-            ProdottoDAO prodottoDAO= new ProdottoDAO();
-            Optional<Prodotto> prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
-            if(prodotto.isPresent()){
-
-            }
-
-
-
-        }catch (SQLException sqlException){
-
-            throw new RuntimeException(sqlException);
-        }
-    }*/
 
     /**
      * Questo metodo restituisce la lista di tutti i prodotti presenti nel catalogo
@@ -220,7 +177,6 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 prodotto.setQuantita(rs.getInt("quantita"));
                 CategoriaDAO categoriaDAO= new CategoriaDAO();
                 Categoria categoria=categoriaDAO.cercaCategoriaById(rs.getInt("idCategoria"));
-              //  categoria.setIdCategoria(rs.getInt("idCategoria"));
                 prodotto.setCategoria(categoria);
                 prodotto.setPathImmagine(rs.getString("pathImmagine"));
                 prodotto.setDescrizione(rs.getString("descrizione"));
@@ -252,7 +208,6 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 Prodotto prodotto = new Prodotto();
                 prodotto.setCodiceProdotto(rs.getInt(1));
 
-                // prodotto.getUtente().setCodiceFiscale(rs.getString(3)); NULL
                 prodotto.setNome(rs.getString(4));
                 prodotto.setPrezzo(rs.getInt(5));
                 prodotto.getMarchio().setNomeMarchio(rs.getString(6));
@@ -311,6 +266,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         }
 
     }
+
     /**
      * Questo metodo retituisce la lista di prodotti di una determinata categoria
      * @param root è la macrocategoria,
@@ -507,7 +463,6 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 prodotto.setQuantita(rs.getInt("quantita"));
                 CategoriaDAO categoriaDAO= new CategoriaDAO();
                 Categoria categoria=categoriaDAO.cercaCategoriaById(rs.getInt("idCategoria"));
-                //  categoria.setIdCategoria(rs.getInt("idCategoria"));
                 prodotto.setCategoria(categoria);
                 prodotto.setPathImmagine(rs.getString("pathImmagine"));
                 prodotto.setDescrizione(rs.getString("descrizione"));
@@ -553,13 +508,4 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         return prodotti2;
     }
 
- /*  public ArrayList<Prodotto> OrdinaDallaAallaZ(ArrayList<Prodotto> prodotti){
-        Collections.sort(prodotti,new ComparatorProdottoNome());
-        return prodotti;
-    }
-
-    public ArrayList<Prodotto> OrdinaDalMenoCaroAlPiuCaro(ArrayList<Prodotto> prodotti){
-        Collections.sort(prodotti,new ComparatorProdottoPrezzo());
-        return prodotti;
-    }*/
 }
