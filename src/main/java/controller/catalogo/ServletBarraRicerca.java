@@ -45,7 +45,6 @@ public class ServletBarraRicerca extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String valore=request.getParameter("value");
-
         ArrayList<Prodotto> prodotti=prodottoDAO.prodottoSearch(valore);
         Gson gson= new Gson();
         String prodottiJson=gson.toJson(prodotti);
@@ -68,7 +67,6 @@ public class ServletBarraRicerca extends HttpServlet {
      */
 
     public void ricercaProdotto(String valore) throws IOException {
-
             ArrayList<Prodotto> prodotti = prodottoDAO.prodottoSearch(valore);
             Gson gson = new Gson();
             String prodottiJson = gson.toJson(prodotti);

@@ -248,19 +248,6 @@ public class UtenteDAO implements UtenteDAOMethod {
         return messaggi;
     }
 
-
-    /*@Override
-    public void deleteUtente(String codiceFiscale) {
-        try(Connection connection=ConPool.getConnection()){
-            PreparedStatement ps;
-            ps=connection.prepareStatement("delete from Utente where codiceFiscale=?");
-            ps.setString(1, codiceFiscale);
-            ps.execute();
-        }catch (SQLException sqlException){
-            throw new RuntimeException(sqlException);
-        }
-    }*/
-
     /**
      * Questo metodo inserisce un nuovo utente nel database ,
      * @param utente da iscrivire alla piattaforma
@@ -268,7 +255,6 @@ public class UtenteDAO implements UtenteDAOMethod {
     @Override
     public void insertUtente(Utente utente) {
         try{
-
             PreparedStatement ps= connection.prepareStatement("insert into Utente value (?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, utente.getCodiceFiscale());
             ps.setString(2, utente.getNome());
@@ -344,7 +330,6 @@ public class UtenteDAO implements UtenteDAOMethod {
             ps.setString(4,utente.getPassword());
             System.out.println("Password " + utente.getPassword());
             if(ps.executeUpdate()!=1){
-                //throw  new RuntimeException("Errore Update");
                 return  false;
             }
             return  true;
@@ -370,7 +355,6 @@ public class UtenteDAO implements UtenteDAOMethod {
             ps.setString(3, utente.getCap());
             if(ps.executeUpdate()!=1){
                 return false;
-               // throw new RuntimeException("Errore Update");
             }
 
         }catch (SQLException sqlException){
@@ -412,34 +396,4 @@ public class UtenteDAO implements UtenteDAOMethod {
         }
     }
 
-    /** non serve
-    @Override
-    public ArrayList<Utente> cercaUtenti(int start, int end) {
-        ArrayList<Utente> lista =new ArrayList<>();
-        try(Connection connection=ConPool.getConnection()){
-            PreparedStatement ps=connection.prepareStatement("select * from Utente order by codiceProdotto" +
-                    "limit ? offset ?");
-            ps.setInt(1,start);
-            ps.setInt(2,end);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()){
-                Utente utente=new Utente();
-                utente.setCodiceFiscale(rs.getString(1));
-                utente.setNome(rs.getString(2));
-                utente.setCognome(rs.getString(3));
-                utente.setEmail(rs.getString(4));
-                utente.setPassword(rs.getString(5));
-                utente.setVia(rs.getString(6));
-                utente.setNumeroCivico(rs.getInt(7));
-                utente.setCap(rs.getString(8));
-                utente.setTelefono(rs.getString(9));
-                utente.setAdmin(rs.getBoolean(10));
-                lista.add(utente);
-            }
-
-            return lista;
-        }catch (SQLException sqlException){
-            throw new RuntimeException(sqlException);
-        }
-    }**/
 }

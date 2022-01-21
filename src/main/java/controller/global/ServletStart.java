@@ -35,6 +35,7 @@ public class ServletStart extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
         ArrayList<Marchio> marchi= marchioDAO.doRetraiveByAllMarchi();
         getServletContext().setAttribute("marchi",marchi); // ServletContext contiene attributi che sono visibili in tutte le pagine
         getServletContext().setAttribute("categorie",categorie);

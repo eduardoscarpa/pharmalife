@@ -26,10 +26,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public class ServletLink extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         doPost(request,response);
-
-
     }
 
     @Override
@@ -92,9 +89,8 @@ public class ServletLink extends HttpServlet {
             case "ordini" :
                 pagina="ServletMostraOrdini";
                 break;
-          /*  default:pagina="webapp/index.jsp";
-                break;*/
         }
+
         RequestDispatcher dispatcher= request.getRequestDispatcher(pagina);
         dispatcher.forward(request,response);
 

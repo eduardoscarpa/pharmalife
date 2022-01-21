@@ -18,10 +18,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @interface Generated {
 }
 
-/**
- *
- */
-
 @Generated
 public class Categoria {
 
@@ -29,19 +25,11 @@ public class Categoria {
     private String nomeCategoria;
     private int root;
 
-
     private ArrayList<Prodotto> prodotti;
 
     public Categoria() {
     }
 
-    /**
-     *
-     * @param idCategoria
-     * @param nomeCategoria
-     * @param root
-     * @param prodotti
-     */
     public Categoria(int idCategoria, String nomeCategoria, int root, ArrayList<Prodotto> prodotti) {
         this.idCategoria = idCategoria;
         this.nomeCategoria = nomeCategoria;
@@ -49,10 +37,6 @@ public class Categoria {
         this.prodotti = prodotti;
     }
 
-    /**
-     *
-     * @return id categoria del prodotto
-     */
     public int getIdCategoria() {
         return idCategoria;
     }
@@ -92,6 +76,5 @@ public class Categoria {
         Categoria categoria = (Categoria) o;
         return idCategoria == categoria.idCategoria;
     }
-
 
 }
