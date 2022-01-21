@@ -19,7 +19,7 @@ import java.util.ArrayList;
 @WebServlet(name = "ServletMostraPref", value = "/ServletMostraPref")
 public class ServletMostraPref extends HttpServlet {
 
-    private UtenteDAOMethod utenteDAO; //PRIMA ERA UtenteDAOMethod;
+    private UtenteDAOMethod utenteDAO;
     private ArrayList<Prodotto> preferiti;
 
     public ServletMostraPref() throws SQLException {
@@ -44,6 +44,13 @@ public class ServletMostraPref extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
+
+    /**
+     * Questo metodo serve per visualizzare la lista dei prodotti che sono stati aggiunti ai preferiti.
+     * @param request
+     * @throws ServletException
+     * @throws IOException
+     */
 
     public void visualizzaPreferiti(HttpServletRequest request) throws ServletException, IOException {
         HttpSession session = request.getSession();

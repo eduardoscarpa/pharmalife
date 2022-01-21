@@ -14,14 +14,8 @@ import java.util.regex.Pattern;
 
 @WebServlet(name = "ServletUpdateUtente", value = "/ServletUpdateUtente")
 public class ServletUpdateUtente extends HttpServlet {
-    //private UtenteDAOMethod serviceUtente;
-    private UtenteDAOMethod utenteDAO; //prima era un UtenteDAO
 
-    /*
-    public  ServletUpdateUtente(UtenteDAOMethod utenteDAOMethod){
-        serviceUtente=utenteDAOMethod;
-    }
-     */
+    private UtenteDAOMethod utenteDAO;
 
     public ServletUpdateUtente(UtenteDAO utenteDAO) {
         this.utenteDAO = utenteDAO;
@@ -48,11 +42,11 @@ public class ServletUpdateUtente extends HttpServlet {
     @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         doGet(request,response);
     }
 
     /**
+     * Questo metodo serve per aggiornare i dati dell'utente.
      * @pre //
      * @param codiceFiscale
      * @param nomeUtente
@@ -75,7 +69,6 @@ public class ServletUpdateUtente extends HttpServlet {
         utente.setCognome(cognomeUtente);
         utente.setEmail(email);
         utente.criptPassword(password);
-        //utenteDAO = new UtenteDAO();
         HttpSession session= request.getSession();
         Utente utente1=utenteDAO.cercaUtente(codiceFiscale);
         Pattern pattern = Pattern.compile("^((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20})$");

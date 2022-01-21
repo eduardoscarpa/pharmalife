@@ -17,7 +17,7 @@ import java.sql.SQLException;
 
 @WebServlet(name = "ServletRimuoviPreferito", value = "/ServletRimuoviPreferito")
 public class ServletRimuoviPreferito extends HttpServlet {
-    private UtenteDAOMethod utenteDAO; //prima era UtenteDAOMethod
+    private UtenteDAOMethod utenteDAO;
 
     public ServletRimuoviPreferito(UtenteDAO utenteDAO){
         this.utenteDAO = utenteDAO;
@@ -39,6 +39,7 @@ public class ServletRimuoviPreferito extends HttpServlet {
     }
 
     /**
+     * Questo metodo serve per rimuovere un prodotto dai preferiti.
      * @pre //
      * @param request
      * @param response
@@ -50,7 +51,6 @@ public class ServletRimuoviPreferito extends HttpServlet {
         HttpSession session = request.getSession();
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
         if(session != null) {
-            //utenteDAO = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
             if (utente != null) {
                 Prodotto p=new Prodotto();

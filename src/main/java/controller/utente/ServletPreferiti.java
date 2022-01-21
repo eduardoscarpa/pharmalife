@@ -43,20 +43,20 @@ public class ServletPreferiti extends HttpServlet {
     }
 
     /**
+     * Questo metodo serve per aggiungere un prodotto ai preferiti.
      * @pre //
      * @param request
      * @param response
      * @throws IOException
      * @post service.doRetrieveByAllPreferitiOfUtente.size=@pre.service.doRetrieveByAllPreferitiOfUtente.size+1
      */
+
     public void inserisciProdottoAiPreferiti(HttpServletRequest request,HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
-        //prodottoDAO=new ProdottoDAO();
         Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
         String risposta="";
         if(session != null) {
-            //utenteDAO = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
 
             if (utente != null) {

@@ -43,6 +43,7 @@ public class ServletUpdateIndirizzo extends HttpServlet {
     }
 
     /**
+     * Questo metodo serve per modificare l'indirizzo dell'utente.
      * @param via
      * @param numero
      * @param cap
@@ -51,7 +52,6 @@ public class ServletUpdateIndirizzo extends HttpServlet {
      * @param response
      * @throws ServletException
      * @throws IOException
-     * @post
      */
 
     public void aggiornaIndirizzoUtente(String via,int numero,String cap,String codiceFiscale,
@@ -60,7 +60,6 @@ public class ServletUpdateIndirizzo extends HttpServlet {
         utente.setNumeroCivico(numero);
         utente.setCap(cap);
         utente.setCodiceFiscale(codiceFiscale);
-        //UtenteDAO utenteDAO= new UtenteDAO();
         if(utenteDAO.updateIndirizzoUtente(utente)){
             request.setAttribute("updateAddress","Il nuovo indirizzo è stato aggiornato correttamente.");
         }else {
