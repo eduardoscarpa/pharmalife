@@ -49,8 +49,6 @@ public class ServletTabellaAdmin extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-       // String dati="";
         String lista=request.getParameter("lista");
         switch (lista){
             case "utenti" :
@@ -79,14 +77,9 @@ public class ServletTabellaAdmin extends HttpServlet {
      * @throws IOException
      */
     public void visualizzaTabellaUtenti(HttpServletRequest request,HttpServletResponse response) throws IOException {
-       // String dati="";
-       // utenteDAO= new UtenteDAO();
         ArrayList<Utente> utenti=utenteDAO.doRetrieveByAllUtenti();
         Gson gson= new Gson();
         dati=gson.toJson(utenti);
-       /* response.setContentType("text/plain;charset=UTF-8");
-        response.setContentType("application/json");
-        response.getWriter().write(dati);*/
     }
 
     /**
@@ -97,14 +90,8 @@ public class ServletTabellaAdmin extends HttpServlet {
      * @throws IOException
      */
     public void visualizzaTabellaProdotti(HttpServletRequest request,HttpServletResponse response) throws IOException {
-       // String dati="";
-
-        //prodottoDAO= new ProdottoDAO();
         ArrayList<Prodotto> prodotti=prodottoDAO.doRetrieveByAllProdotti();
         Gson gson1= new Gson();
         dati=gson1.toJson(prodotti);
-       /* response.setContentType("text/plain;charset=UTF-8");
-        response.setContentType("application/json");
-        response.getWriter().write(dati);*/
     }
 }

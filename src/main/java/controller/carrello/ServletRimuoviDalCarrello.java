@@ -44,10 +44,6 @@ public class ServletRimuoviDalCarrello extends HttpServlet {
         this.utente = utente;
         this.carrello=carrello;
     }
-
-
-
-
     public ServletRimuoviDalCarrello() throws SQLException {
         serviceProdotto=new ProdottoDAO();
         utente=new Utente();
@@ -62,10 +58,9 @@ public class ServletRimuoviDalCarrello extends HttpServlet {
          prodotto=serviceProdotto.cercaProdotto(codiceProdotto);
          HttpSession session= request.getSession();
          utente=(Utente) session.getAttribute("utente");
-       // rimozioneDalCarrello(codiceProdotto, request);
-        rimozioneDalCarrello(utente, prodotto, session);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp");
-        dispatcher.forward(request,response);
+         rimozioneDalCarrello(utente, prodotto, session);
+         RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp");
+         dispatcher.forward(request,response);
     }
 
     @Generated
@@ -90,11 +85,7 @@ public class ServletRimuoviDalCarrello extends HttpServlet {
             prodotti= carrello.getProdotti();
             prodotti.remove(prodotto);
             carrello.setProdotti(prodotti);
-            //carrello.getProdotti().remove(prodotto);
             utente.setCarrello(carrello);
-
-            //utente.getCarrello().sottraiTotale(prodotto.getPrezzo());
-            //utente.getCarrello().getProdotti().remove(prodotto);
         }else{
             carrello=(Carrello) session.getAttribute("carrello");
             if(carrello!=null){
@@ -102,7 +93,6 @@ public class ServletRimuoviDalCarrello extends HttpServlet {
                 prodotti= carrello.getProdotti();
                 prodotti.remove(prodotto);
                 carrello.setProdotti(prodotti);
-                //carrello.getProdotti().remove(prodotto);
             }
         }
     }

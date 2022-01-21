@@ -36,7 +36,6 @@ public class Categoria {
     }
 
     /**
-     *
      * @param idCategoria
      * @param nomeCategoria
      * @param root
