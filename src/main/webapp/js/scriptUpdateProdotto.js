@@ -15,7 +15,7 @@ function updateProdotto(){
         nomeProdotto.removeClass("lampeggioBordo");
     }
 
-    if (prezzoProdotto.val().length == 0) {
+    if (prezzoProdotto.val().length == 0  || prezzoProdotto.val() == 0) {
         prezzoProdotto.addClass("lampeggioBordo");
         alert("Il prezzo del prodotto NON deve essere vuoto");
         return event.preventDefault();

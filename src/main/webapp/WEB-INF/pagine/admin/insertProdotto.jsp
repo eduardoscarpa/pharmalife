@@ -14,34 +14,35 @@
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
     <script src="js/header.js" type="text/javascript" defer></script>
+    <script src="./js/scriptInsertProdotto.js" type="text/javascript" defer></script>
 </head>
 <body>
 <jsp:include page="../default/header.jsp"/>
 <a onclick="tornaIndietro()" class="myButtonTorna">Torna indietro</a>
 <h1 class="insert">AGGIUNGI UN NUOVO PRODOTTO</h1>
 
-<form  class="insert" action="ServletInsertProdotto" method="POST" name="insert">
+<form  class="insert" action="ServletInsertProdotto" method="POST" name="insert" onsubmit="insertProdotto()">
     <fieldset>
         <legend>Nuovo Prodotto</legend>
         <div class="campo">
             <label for="nomeId">Nome Prodotto</label><br>
-            <input type="text" id="nomeId" name="nome" placeholder="Nome Prodotto..." required>
+            <input type="text" id="nomeId" name="nome" placeholder="Nome Prodotto...">
         </div>
         <div class="campo">
             <label for="prezzoId">Prezzo</label><br>
-            <input type="text" id="prezzoId" name="prezzo" placeholder="Prezzo" required>
+            <input type="text" id="prezzoId" name="prezzo" placeholder="Prezzo">
         </div>
         <div class="campo">
             <label for="marchioId">Marchio</label><br>
-            <input type="text" id="marchioId"  name="marchio" placeholder="Marchio" required>
+            <input type="text" id="marchioId"  name="marchio" placeholder="Marchio">
         </div>
         <div class="campo">
-            <label for="caegoriaId">Categoria</label><br>
-            <input type="text" id="categoriaId"  name="categoria" placeholder="Categoria" required>
+            <label for="categoriaId">Categoria</label><br>
+            <input type="text" id="categoriaId"  name="categoria" placeholder="Categoria">
         </div>
         <div class="campo">
             <label for="descrizioneId">Descrizione</label>
-            <textarea name="descrizione"></textarea>
+            <textarea name="descrizione" id="descrizioneId"></textarea>
         </div>
         <div class="campo">
             <label for="immagine">Scegli Immagine</label>

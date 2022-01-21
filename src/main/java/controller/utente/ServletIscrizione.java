@@ -127,7 +127,7 @@ public class ServletIscrizione extends HttpServlet {
      * Questo metodo ha la funzione di verificare che utente che si registra alla piattaforma
      * non immetta un codice fiscale già presente nel database
      * @param codiceFiscale
-     * @return
+     * @return Booleano che è true se il codice fiscale non è presente
      * @throws SQLException
      */
     @Generated
@@ -145,7 +145,7 @@ public class ServletIscrizione extends HttpServlet {
      * Questo metodo ha la funzione di verificare che un utente che si registra alla piattaforma
      * non immetta un'email già presente nel database
      * @param email
-     * @return
+     * @return Booleano che è true se email non è presente
      * @throws SQLException
      */
     @Generated
@@ -159,6 +159,15 @@ public class ServletIscrizione extends HttpServlet {
         return true;
     }
 
+
+    /**
+     * Questo metodo salva i dati che l'utente inserisce per registrarsi
+     * @param request
+     * @param response
+     * @throws SQLException
+     * @throws ServletException
+     * @throws IOException
+     */
     @Generated
     public void saveParameter(HttpServletRequest request,HttpServletResponse response ) throws SQLException, ServletException, IOException {
         String fn=request.getParameter("nome");
@@ -229,7 +238,7 @@ public class ServletIscrizione extends HttpServlet {
      */
     @Generated
     public void formatEmail(String email){
-        Pattern e_mail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$");
+        Pattern e_mail = Pattern.compile("^[[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}]{6,30}$");
         matcher = e_mail.matcher(email);
         if (!matcher.matches()) {
             address = "WEB-INF/pagine/iscriviti.jsp";
@@ -279,7 +288,7 @@ public class ServletIscrizione extends HttpServlet {
         matcher = codicePostale.matcher(cap);
         if (!matcher.matches()) {
             address = "WEB-INF/pagine/iscriviti.jsp";
-            message = "Il CAP deve contenere esattamente 5 cifre.";
+            message = "Il CAP deve contenere esattamente 5 cifre e deve contenere solo numeri.";
         }
     }
 
