@@ -1,5 +1,4 @@
 package admin;
-
 import controller.admin.ServletAdmin;
 import model.messaggio.Messaggio;
 import model.messaggio.MessaggioDAO;
@@ -13,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

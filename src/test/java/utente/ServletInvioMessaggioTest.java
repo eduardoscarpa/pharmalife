@@ -61,12 +61,9 @@ public class ServletInvioMessaggioTest {
         when(request.getParameter("lastname")).thenReturn("Cannavaro");
         when(request.getParameter("telefono")).thenReturn("3282015490");
         when(request.getParameter("email")).thenReturn("alfredo@libero.it");
-        when(request.getParameter("messaggio")).thenReturn("Ho problemicon il login");
-
+        when(request.getParameter("messaggio")).thenReturn("Ho problemi con il login");
         when(request.getSession()).thenReturn(session);
-
         when(session.getAttribute("utente")).thenReturn(utente);
-
         RequestDispatcher requestDispatcher = mock(RequestDispatcher.class);
         when(request.getRequestDispatcher("WEB-INF/pagine/messaggioInviato.jsp")).thenReturn(requestDispatcher);
         servletInvioMessaggio.doGet(request, response);
