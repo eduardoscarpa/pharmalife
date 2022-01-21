@@ -1,0 +1,17 @@
+admin
+application.admin
+application.carrello
+application.catalogo
+application.global
+application.utente
+carrello
+catalogo
+storage.carrello
+storage.categoria
+storage.marchio
+storage.messaggio
+storage.ordine
+storage.prodotto
+storage.utente
+storage.utils
+utente

@@ -1,18 +1,19 @@
-package IntegrationTesting.Admin;
+/*package IntegrationTesting.admin;
 
-import controller.admin.ServletDeleteProdottoAdmin;
-import model.prodotto.ProdottoDAO;
+import application.admin.ServletDeleteProdottoAdmin;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+import storage.prodotto.ProdottoDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 public class ServletDeleteProdottoAdminTest {
 
@@ -42,3 +43,4 @@ public class ServletDeleteProdottoAdminTest {
 
     }
 }
+*/

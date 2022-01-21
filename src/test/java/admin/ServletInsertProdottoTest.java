@@ -1,12 +1,12 @@
 package admin;
 
-import controller.admin.ServletInsertProdotto;
-import model.categoria.Categoria;
-import model.categoria.CategoriaDAO;
-import model.marchio.Marchio;
-import model.marchio.MarchioDAO;
-import model.prodotto.Prodotto;
-import model.prodotto.ProdottoDAO;
+import application.admin.ServletInsertProdotto;
+import storage.categoria.Categoria;
+import storage.categoria.CategoriaDAO;
+import storage.marchio.Marchio;
+import storage.marchio.MarchioDAO;
+import storage.prodotto.Prodotto;
+import storage.prodotto.ProdottoDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

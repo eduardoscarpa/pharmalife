@@ -1,10 +1,10 @@
 
 
 <%@ page contentType="text/html; charset=UTF-8" language="java"  pageEncoding="UTF-8" %>
-<%@ page import="java.util.ArrayList,model.marchio.Marchio" %>
-<%@ page import="model.utente.Utente" %>
-<%@ page import="model.categoria.Categoria" %>
-<%@ page import="model.marchio.MarchioDAO" %>
+<%@ page import="java.util.ArrayList,storage.marchio.Marchio" %>
+<%@ page import="storage.utente.Utente" %>
+<%@ page import="storage.categoria.Categoria" %>
+<%@ page import="storage.marchio.MarchioDAO" %>
 <% Utente utente=(Utente) session.getAttribute("utente"); %>
 <% ArrayList<Categoria> categorie=(ArrayList<Categoria>) application.getAttribute("categorie");%> <!-- L'oggetto application fa parte della ServletContext in ServletStart-->
 <%ArrayList<Marchio> marchi=(ArrayList<Marchio>) application.getAttribute("marchi"); %>

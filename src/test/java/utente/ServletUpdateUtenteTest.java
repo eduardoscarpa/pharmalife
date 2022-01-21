@@ -1,9 +1,9 @@
 package utente;
 
-import controller.utente.ServletIscrizione;
-import controller.utente.ServletUpdateUtente;
-import model.utente.Utente;
-import model.utente.UtenteDAO;
+import application.utente.ServletIscrizione;
+import application.utente.ServletUpdateUtente;
+import storage.utente.Utente;
+import storage.utente.UtenteDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

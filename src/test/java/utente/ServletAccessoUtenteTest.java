@@ -1,9 +1,9 @@
 package utente;
 
-import controller.utente.ServletAccessoUtente;
-import model.carrello.Carrello;
-import model.utente.Utente;
-import model.utente.UtenteDAO;
+import application.utente.ServletAccessoUtente;
+import storage.carrello.Carrello;
+import storage.utente.Utente;
+import storage.utente.UtenteDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

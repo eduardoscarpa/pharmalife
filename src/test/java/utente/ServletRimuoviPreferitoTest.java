@@ -1,9 +1,9 @@
 package utente;
 
-import controller.utente.ServletRimuoviPreferito;
-import model.prodotto.Prodotto;
-import model.utente.Utente;
-import model.utente.UtenteDAO;
+import application.utente.ServletRimuoviPreferito;
+import storage.prodotto.Prodotto;
+import storage.utente.Utente;
+import storage.utente.UtenteDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

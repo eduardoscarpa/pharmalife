@@ -1,6 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.prodotto.Prodotto" %>
-<%@ page import="model.prodotto.ProdottoDAO" %>
+<%@ page import="storage.prodotto.Prodotto" %>
+<%@ page import="storage.prodotto.ProdottoDAO" %>
 <%@ page import="java.lang.reflect.Array" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore

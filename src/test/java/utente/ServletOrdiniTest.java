@@ -1,11 +1,11 @@
 package utente;
 
-import controller.utente.ServletOrdini;
-import model.carrello.Carrello;
-import model.ordine.Ordine;
-import model.ordine.OrdineDAO;
-import model.prodotto.Prodotto;
-import model.utente.Utente;
+import application.utente.ServletOrdini;
+import storage.carrello.Carrello;
+import storage.ordine.Ordine;
+import storage.ordine.OrdineDAO;
+import storage.prodotto.Prodotto;
+import storage.utente.Utente;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

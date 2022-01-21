@@ -1,8 +1,8 @@
 package utente;
 
-import controller.utente.ServletUpdateIndirizzo;
-import model.utente.Utente;
-import model.utente.UtenteDAO;
+import application.utente.ServletUpdateIndirizzo;
+import storage.utente.Utente;
+import storage.utente.UtenteDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

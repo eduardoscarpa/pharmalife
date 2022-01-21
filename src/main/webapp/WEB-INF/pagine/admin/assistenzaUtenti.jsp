@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.messaggio.Messaggio" %><%--
+<%@ page import="storage.messaggio.Messaggio" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore
   Date: 16/07/2021

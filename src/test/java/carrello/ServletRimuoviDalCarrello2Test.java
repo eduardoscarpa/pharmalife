@@ -1,11 +1,11 @@
 package carrello;
 
-import controller.carrello.ServletRimuoviDalCarrello;
+import application.carrello.ServletRimuoviDalCarrello;
 
-import model.carrello.Carrello;
-import model.prodotto.Prodotto;
-import model.prodotto.ProdottoDAO;
-import model.utente.Utente;
+import storage.carrello.Carrello;
+import storage.prodotto.Prodotto;
+import storage.prodotto.ProdottoDAO;
+import storage.utente.Utente;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

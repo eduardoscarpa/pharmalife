@@ -1,7 +1,7 @@
 package admin;
 
-import controller.admin.ServletDeleteProdottoAdmin;
-import model.prodotto.ProdottoDAO;
+import application.admin.ServletDeleteProdottoAdmin;
+import storage.prodotto.ProdottoDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

@@ -1,7 +1,7 @@
-<%@ page import="model.carrello.Carrello" %>
+<%@ page import="storage.carrello.Carrello" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.prodotto.Prodotto" %>
-<%@ page import="model.utente.Utente" %>
+<%@ page import="storage.prodotto.Prodotto" %>
+<%@ page import="storage.utente.Utente" %>
 <%@ page import="java.io.ByteArrayOutputStream" %>
 <%@ page import="java.io.ObjectOutputStream" %>
 <%--

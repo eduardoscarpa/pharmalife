@@ -1,9 +1,9 @@
 package utente;
 
-import controller.utente.ServletMostraOrdini;
-import model.ordine.Ordine;
-import model.ordine.OrdineDAO;
-import model.utente.Utente;
+import application.utente.ServletMostraOrdini;
+import storage.ordine.Ordine;
+import storage.ordine.OrdineDAO;
+import storage.utente.Utente;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

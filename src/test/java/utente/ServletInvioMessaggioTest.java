@@ -1,10 +1,10 @@
 package utente;
 
-import controller.utente.ServletInvioMessaggio;
-import model.messaggio.Messaggio;
-import model.messaggio.MessaggioDAO;
-import model.utente.Utente;
-import model.utente.UtenteDAO;
+import application.utente.ServletInvioMessaggio;
+import storage.messaggio.Messaggio;
+import storage.messaggio.MessaggioDAO;
+import storage.utente.Utente;
+import storage.utente.UtenteDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

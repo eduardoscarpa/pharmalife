@@ -1,14 +1,14 @@
-package IntegrationTesting.Admin;
+/*package IntegrationTesting.admin;
 
-import controller.admin.ServletAdmin;
-import model.messaggio.Messaggio;
-import model.messaggio.MessaggioDAO;
-import model.ordine.Ordine;
-import model.ordine.OrdineDAO;
-import model.prodotto.Prodotto;
-import model.prodotto.ProdottoDAO;
-import model.utente.Utente;
-import model.utente.UtenteDAO;
+import application.admin.ServletAdmin;
+import storage.messaggio.Messaggio;
+import storage.messaggio.MessaggioDAO;
+import storage.ordine.Ordine;
+import storage.ordine.OrdineDAO;
+import storage.prodotto.Prodotto;
+import storage.prodotto.ProdottoDAO;
+import storage.utente.Utente;
+import storage.utente.UtenteDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -90,3 +90,4 @@ public class ServletAdminTest {
 
 
 }
+*/

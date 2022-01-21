@@ -1,4 +1,4 @@
-<%@ page import="model.utente.Utente" %><%--
+<%@ page import="storage.utente.Utente" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore
   Date: 03/07/2021

@@ -1,5 +1,5 @@
-<%@ page import="model.utente.Utente" %>
-<%@ page import="model.prodotto.Prodotto" %>
+<%@ page import="storage.utente.Utente" %>
+<%@ page import="storage.prodotto.Prodotto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--<% Integer idProdotto= (Integer) request.getAttribute("idProdotto");
 System.out.println(idProdotto);%>--%>

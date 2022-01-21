@@ -1,6 +1,6 @@
-<%@ page import="model.prodotto.ProdottoDAO" %>
-<%@ page import="model.prodotto.Prodotto" %>
-<%@ page import="model.utente.Utente" %><%--
+<%@ page import="storage.prodotto.ProdottoDAO" %>
+<%@ page import="storage.prodotto.Prodotto" %>
+<%@ page import="storage.utente.Utente" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore
   Date: 13/07/2021

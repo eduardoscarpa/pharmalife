@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.categoria.Categoria" %>
+<%@ page import="storage.categoria.Categoria" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%ArrayList<Categoria> categorie=(ArrayList<Categoria>) application.getAttribute("categorie"); %>
 

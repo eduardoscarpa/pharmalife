@@ -1,8 +1,8 @@
 package catalogo;
 
-import controller.catalogo.ServletListaMarchi;
-import model.prodotto.Prodotto;
-import model.prodotto.ProdottoDAO;
+import application.catalogo.ServletListaMarchi;
+import storage.prodotto.Prodotto;
+import storage.prodotto.ProdottoDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

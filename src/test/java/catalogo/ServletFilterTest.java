@@ -1,8 +1,8 @@
 package catalogo;
 
-import controller.catalogo.ServletFilter;
-import model.prodotto.Prodotto;
-import model.prodotto.ProdottoDAO;
+import application.catalogo.ServletFilter;
+import storage.prodotto.Prodotto;
+import storage.prodotto.ProdottoDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

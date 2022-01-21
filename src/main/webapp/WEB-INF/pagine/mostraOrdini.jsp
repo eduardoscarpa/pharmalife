@@ -1,7 +1,7 @@
 <%@ page import="java.lang.reflect.Array" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.prodotto.Prodotto" %>
-<%@ page import="model.ordine.Ordine" %>
+<%@ page import="storage.prodotto.Prodotto" %>
+<%@ page import="storage.ordine.Ordine" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 

@@ -1,4 +1,4 @@
-<%@ page import="model.utente.Utente" %>
+<%@ page import="storage.utente.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     Utente utente= (Utente) session.getAttribute("utente");

@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.prodotto.Prodotto" %>
+<%@ page import="storage.prodotto.Prodotto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% ArrayList<Prodotto> prodotti=(ArrayList<Prodotto>) request.getAttribute("prodottiPref");%>
 <html>
