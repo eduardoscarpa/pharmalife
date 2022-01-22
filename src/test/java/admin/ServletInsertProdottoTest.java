@@ -60,13 +60,13 @@ public class ServletInsertProdottoTest {
 
     @Test
     public void doGetTest() throws ServletException, IOException {
-         nomeProdotto=request.getParameter("nomeProdotto");
-         prezzoProdotto=Double.parseDouble(request.getParameter("prezzo"));
-         marchioProdotto=request.getParameter("marchio");
-         quantita=Integer.parseInt(request.getParameter("quantita"));
-         categoria=request.getParameter("categoria");
-         descrizione=request.getParameter("descrizione");
-         pathImmagine=request.getParameter("pathImmagine");
+        nomeProdotto=request.getParameter("nomeProdotto");
+        prezzoProdotto=Double.parseDouble(request.getParameter("prezzo"));
+        marchioProdotto=request.getParameter("marchio");
+        quantita=Integer.parseInt(request.getParameter("quantita"));
+        categoria=request.getParameter("categoria");
+        descrizione=request.getParameter("descrizione");
+        pathImmagine=request.getParameter("pathImmagine");
         servletInsertProdotto.doGet(request, response);
         verify(request).getContextPath();
         assertEquals("Oki", nomeProdotto);

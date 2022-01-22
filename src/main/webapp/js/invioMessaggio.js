@@ -1,15 +1,15 @@
-var patternMessaggio = new RegExp("^[a-zA-Z0-9]{1,}$");
 
 function assistenza(){
 
     let messaggio = $("#subject");
 
-    if (!patternMessaggio.test(messaggio.val())) {
+    if(messaggio.val().length<=0){
+        console.log(messaggio.val()+ "   " +messaggio.val().length);
         messaggio.addClass("lampeggioBordo");
         alert("Il testo del messaggio NON deve essere vuoto");
         return event.preventDefault();
     }
-    else {
-        messaggio.removeClass("lampeggioBordo");
+    else{
+        essaggio.removeClass("lampeggioBordo");
     }
 }

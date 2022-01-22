@@ -13,6 +13,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -59,7 +60,9 @@ public class ServletTabellaAdmin extends HttpServlet {
         }
         response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("application/json");
-        response.getWriter().write(dati);
+       // response.getWriter().write(dati);
+        PrintWriter printWriter= response.getWriter();
+        printWriter.write(dati);
     }
 
     @Override
