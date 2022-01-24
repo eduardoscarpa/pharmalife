@@ -48,6 +48,7 @@ public class ServletTabellaAdmin extends HttpServlet {
         this.utenteDAO= new UtenteDAO();
     }
 
+    @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String lista=request.getParameter("lista");
@@ -72,6 +73,7 @@ public class ServletTabellaAdmin extends HttpServlet {
         doGet(request,response);
     }
 
+    @Generated
     /**
      * Questo metodo permette all'amministratore di visualizzare una tabella contenete
      * la lista di tutti gli utenti presenti iscritti alla piattaforma
@@ -83,6 +85,7 @@ public class ServletTabellaAdmin extends HttpServlet {
         dati=gson.toJson(utenti);
     }
 
+    @Generated
     /**
      * Questo metodo permette all'amministratore di visualizzare una tabella contenete la lista di tutti i prodotti presenti nel catalogo
      * @throws IOException

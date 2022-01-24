@@ -1,4 +1,4 @@
-/*package admin;
+package admin;
 
 import application.admin.ServletTabellaAdmin;
 import org.junit.Before;
@@ -49,4 +49,3 @@ public class ServletTabellaAdminIntegrationTest {
         prodotti.add(new Prodotto());
     }
 }
-*/

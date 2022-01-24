@@ -1,4 +1,4 @@
-/*package catalogo;
+package catalogo;
 
 import application.catalogo.ServletBarraRicerca;
 import org.junit.Before;
@@ -45,4 +45,3 @@ public class ServletBarraRicercaIntegrationTest {
     }
 
 }
-*/

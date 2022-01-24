@@ -1,4 +1,4 @@
-/*package admin;
+package admin;
 
 import application.admin.ServletDeleteProdottoAdmin;
 import org.junit.Before;
@@ -57,4 +57,3 @@ public class ServletDeleteProdottoAdminIntegrationTest {
         assertTrue(!prodotti.contains(prodotto));
     }
 }
-*/
