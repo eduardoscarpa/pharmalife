@@ -38,6 +38,10 @@ public class ConPool {
         }
     }
 
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
     public Connection getConnection() {
         return connection;
     }

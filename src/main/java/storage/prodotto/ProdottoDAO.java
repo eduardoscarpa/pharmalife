@@ -14,6 +14,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
     private Connection connection= conpool.getConnection();
 
     public ProdottoDAO() throws SQLException {
+
     }
 
     /**
@@ -75,7 +76,6 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 prodotto.setQuantita(resultSet.getInt("quantita"));
                 CategoriaDAO categoriaDAO= new CategoriaDAO();
                 Categoria c = categoriaDAO.cercaCategoriaById(resultSet.getInt("idCategoria"));
-
                 prodotto.setCategoria(c);
                 prodotto.setPathImmagine(resultSet.getString("pathImmagine"));
                 prodotto.setDescrizione(resultSet.getString("descrizione"));
@@ -96,6 +96,9 @@ public class ProdottoDAO implements ProdottoDAOMethod {
     public void deleteProdotto(int codiceProdotto) {
         try {
             PreparedStatement ps;
+            if(connection==null){
+                System.out.println("Connection è null " );
+            }else System.out.println("Connection non null");
             ps = connection.prepareStatement("delete from Prodotto where codiceProdotto=?");
             ps.setInt(1, codiceProdotto);
             ps.execute();

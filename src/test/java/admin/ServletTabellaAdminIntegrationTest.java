@@ -1,18 +1,21 @@
-package admin;
+/*package admin;
 
 import application.admin.ServletTabellaAdmin;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import static org.mockito.Mockito.*;
+import storage.prodotto.Prodotto;
 
+import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ServletTabellaAdminIntegrationTest {
 
@@ -34,10 +37,16 @@ public class ServletTabellaAdminIntegrationTest {
         PrintWriter printWriter= mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(printWriter);
         servletTabellaAdmin.doGet(request, response);
+        verify(request).getParameter("lista");
+        assertEquals("utenti", request.getParameter("lista"));
     }
 
     @Test
     public void visualizzaTabellaUtenti() throws IOException {
-        servletTabellaAdmin.visualizzaTabellaUtenti(request, response);
+        //servletTabellaAdmin.visualizzaTabellaUtenti(request, response);
+        ArrayList<Prodotto> prodotti= new ArrayList<>();
+        prodotti.add(new Prodotto());
+        prodotti.add(new Prodotto());
     }
 }
+*/

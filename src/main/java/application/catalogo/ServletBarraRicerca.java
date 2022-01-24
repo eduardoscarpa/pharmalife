@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -29,7 +30,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @WebServlet(name = "ServletBarraRicerca", value = "/ServletBarraRicerca")
 
-@Generated
+
 public class ServletBarraRicerca extends HttpServlet {
 
     private ProdottoDAOMethod prodottoDAO;
@@ -50,25 +51,22 @@ public class ServletBarraRicerca extends HttpServlet {
         String prodottiJson=gson.toJson(prodotti);
         response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("application/json");
-        response.getWriter().write(prodottiJson);
-        ricercaProdotto(valore);
+        PrintWriter printWriter= response.getWriter();
+        printWriter.write(prodottiJson);
+      //  response.getWriter().write(prodottiJson);
+      //  ricercaProdotto(valore);
     }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
-    /**
-     * Questo meteodo serve per ricercare un prodotto nel catalogo mediante barra di ricerca
-     * @pre //
-     * @param valore
-     * @throws IOException
-     * @post //
-     */
-
+/*
     public void ricercaProdotto(String valore) throws IOException {
             ArrayList<Prodotto> prodotti = prodottoDAO.prodottoSearch(valore);
             Gson gson = new Gson();
             String prodottiJson = gson.toJson(prodotti);
     }
+
+ */
 }

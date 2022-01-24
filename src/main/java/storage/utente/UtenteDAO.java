@@ -27,11 +27,9 @@ public class UtenteDAO implements UtenteDAOMethod {
     @Override
     public Utente cercaUtente(String codiceFiscale) {
         try{
-
             PreparedStatement ps;
             ps=connection.prepareStatement("select * from Utente where codiceFiscale=?");
             ps.setString(1, codiceFiscale);
-
             ResultSet rs=ps.executeQuery();
             if (rs.next()){
                 Utente utente= new Utente();
@@ -100,16 +98,12 @@ public class UtenteDAO implements UtenteDAOMethod {
     public ArrayList<Prodotto> doRetrieveByAllPreferitiOfUtente(String codiceFiscale) {
         ArrayList<Prodotto> prodottiPreferiti= new ArrayList<>();
         try{
-
             PreparedStatement ps=connection.prepareStatement("select p.codiceProdotto, ut.codiceFiscale ,p.nome ,p.prezzo,p.nomeMarchio,p.quantita,p.idCategoria,p.pathImmagine,p.descrizione " +
                     "from Prodotto p,Preferito pr,Utente ut where pr.codiceFiscale=ut.codiceFiscale and pr.codiceProdotto=p.codiceProdotto and ut.codiceFiscale=?");
             ps.setString(1,codiceFiscale);
-
-
             ResultSet rs=ps.executeQuery();
             while (rs.next()){
                 Prodotto p= new Prodotto();
-
                 p.setCodiceProdotto(rs.getInt("codiceProdotto"));
                 p.setNome(rs.getString("nome"));
                 p.setPrezzo(rs.getDouble("prezzo"));
@@ -146,9 +140,6 @@ public class UtenteDAO implements UtenteDAOMethod {
             while (resultSet.next()){
                 codiciFiscali.add(resultSet.getString("codiceFiscale"));
             }
-
-
-
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
@@ -164,15 +155,11 @@ public class UtenteDAO implements UtenteDAOMethod {
     public ArrayList<String> doRetraiveByAllEmail() throws SQLException {
         ArrayList<String> arrayEmail = new ArrayList<>();
         try {
-
             PreparedStatement ps=connection.prepareStatement("select email from Utente");
             ResultSet resultSet= ps.executeQuery();
             while (resultSet.next()){
                 arrayEmail.add(resultSet.getString("email"));
             }
-
-
-
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
@@ -187,7 +174,6 @@ public class UtenteDAO implements UtenteDAOMethod {
     public ArrayList<Ordine> ordiniAllUtenti() {
         ArrayList<Ordine> ordini= new ArrayList<>();
         try{
-
             PreparedStatement ps=connection.prepareStatement("select * from Ordine o , Utente u  " +
                     "where o.cfUtente=u.codiceFiscale;");
            ResultSet rs=ps.executeQuery();
@@ -205,7 +191,6 @@ public class UtenteDAO implements UtenteDAOMethod {
                o.getUtente().setCap(rs.getString(12));
                o.getUtente().setTelefono(rs.getString(13));
                o.getUtente().setAdmin(rs.getBoolean(14));
-
                ordini.add(o);
            }
 
@@ -223,7 +208,6 @@ public class UtenteDAO implements UtenteDAOMethod {
     public ArrayList<Messaggio> messaggiAllUtenti() {
         ArrayList<Messaggio> messaggi= new ArrayList<>();
         try{
-
             PreparedStatement ps=connection.prepareStatement("select * from Messaggio m , Utente u  " +
                     "where m.cf=u.codiceFiscale;");
             ResultSet rs=ps.executeQuery();
@@ -238,10 +222,8 @@ public class UtenteDAO implements UtenteDAOMethod {
                 m.getUtente().setCognome(rs.getString(8));
                 m.getUtente().setEmail(rs.getString(9));
                 m.getUtente().setAdmin(rs.getBoolean(10));
-
                 messaggi.add(m);
             }
-
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
@@ -267,7 +249,6 @@ public class UtenteDAO implements UtenteDAOMethod {
             ps.setString(9, utente.getTelefono());
             ps.setBoolean(10, utente.isAdmin());
             ps.execute();
-
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
@@ -389,7 +370,6 @@ public class UtenteDAO implements UtenteDAOMethod {
                utente.setAdmin(rs.getBoolean(10));
                lista.add(utente);
             }
-
             return lista;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);

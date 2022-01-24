@@ -32,7 +32,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @WebServlet(name = "ServletTabellaAdmin", value = "/ServletTabellaAdmin")
 
-@Generated
+
 public class ServletTabellaAdmin extends HttpServlet {
     private UtenteDAOMethod utenteDAO;
     private ProdottoDAOMethod prodottoDAO;
@@ -53,14 +53,15 @@ public class ServletTabellaAdmin extends HttpServlet {
         String lista=request.getParameter("lista");
         switch (lista){
             case "utenti" :
-               visualizzaTabellaUtenti(request,response);
+               visualizzaTabellaUtenti();
             break;
             case "prodotti":
-               visualizzaTabellaProdotti(request,response);
+               visualizzaTabellaProdotti();
         }
         response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("application/json");
        // response.getWriter().write(dati);
+
         PrintWriter printWriter= response.getWriter();
         printWriter.write(dati);
     }
@@ -74,12 +75,9 @@ public class ServletTabellaAdmin extends HttpServlet {
     /**
      * Questo metodo permette all'amministratore di visualizzare una tabella contenete
      * la lista di tutti gli utenti presenti iscritti alla piattaforma
-     *
-     * @param request
-     * @param response
      * @throws IOException
      */
-    public void visualizzaTabellaUtenti(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void visualizzaTabellaUtenti() throws IOException {
         ArrayList<Utente> utenti=utenteDAO.doRetrieveByAllUtenti();
         Gson gson= new Gson();
         dati=gson.toJson(utenti);
@@ -87,12 +85,9 @@ public class ServletTabellaAdmin extends HttpServlet {
 
     /**
      * Questo metodo permette all'amministratore di visualizzare una tabella contenete la lista di tutti i prodotti presenti nel catalogo
-     *
-     * @param request
-     * @param response
      * @throws IOException
      */
-    public void visualizzaTabellaProdotti(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void visualizzaTabellaProdotti() throws IOException {
         ArrayList<Prodotto> prodotti=prodottoDAO.doRetrieveByAllProdotti();
         Gson gson1= new Gson();
         dati=gson1.toJson(prodotti);
