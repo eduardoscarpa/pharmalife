@@ -4,11 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 import storage.messaggio.Messaggio;
 import storage.messaggio.MessaggioDAO;
-import static org.junit.Assert.*;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MessaggioDAOTest {
+import static org.junit.Assert.assertNotEquals;
+
+public class MessaggioDAOIntegrationTest {
 
     private MessaggioDAO messaggioDAO;
 
