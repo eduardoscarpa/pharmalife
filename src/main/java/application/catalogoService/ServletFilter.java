@@ -28,6 +28,13 @@ public class ServletFilter extends HttpServlet {
         this.prodottoDAO = prodottoDAO;
     }
 
+    /**
+     *
+     * @param request oggetto della Servlet contenente i valori ricevuti dal client raltivi al filtrggio dei prodotti
+     * @param response oggetto della Servlet utile per effettuare il forward
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nome=request.getParameter("nome");
@@ -42,6 +49,9 @@ public class ServletFilter extends HttpServlet {
 
     @Generated
     @Override
+    /**
+     * richiama il doGet
+     */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }

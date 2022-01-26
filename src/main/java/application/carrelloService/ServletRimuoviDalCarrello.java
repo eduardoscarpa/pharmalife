@@ -53,6 +53,13 @@ public class ServletRimuoviDalCarrello extends HttpServlet {
         prodotti= new ArrayList<>();
     }
 
+    /**
+     *
+     * @param request oggetto della Servlet contenente l'identificativo del prodotto da rimuovere dal carrello
+     * @param response oggetto della Servlet utile ad effettuare il forward
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
@@ -77,6 +84,7 @@ public class ServletRimuoviDalCarrello extends HttpServlet {
      * @param session da cui prelevare il carrello
      * @throws ServletException
      * @throws IOException
+     * <p><b>post</b></p>
      */
     public void rimozioneDalCarrello(Utente utente,Prodotto prodotto ,HttpSession session) throws ServletException, IOException {
 

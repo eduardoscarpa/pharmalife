@@ -25,6 +25,13 @@ public class ServletUpdateIndirizzo extends HttpServlet {
         utente = new Utente();
     }
 
+    /**
+     *
+     * @param request oggetto della Servlet contenente le informazioni utili ad aggiornare l'indirizzo di spedizione di un utente
+     * @param response oggetto della Servlet utile ad effettuare il forward
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String via=request.getParameter("via");

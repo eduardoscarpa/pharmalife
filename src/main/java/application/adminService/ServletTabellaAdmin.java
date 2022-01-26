@@ -48,6 +48,14 @@ public class ServletTabellaAdmin extends HttpServlet {
         this.utenteDAO= new UtenteDAO();
     }
 
+    /**
+     *
+     * @param request oggetto della Servlet contenente i valori inviati dal client relativi alla scelta effettuata dall'admin
+     * in merito alla scelta di visualizzare la lista degli utenti iscritti alla piattaforma o l'eleneoc dei prodotti presenti nel catalogo
+     * @param response oggetto della servlet che ha la funzione di inviare i dati al client in formato json
+     * @throws ServletException
+     * @throws IOException
+     */
     @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -67,6 +75,9 @@ public class ServletTabellaAdmin extends HttpServlet {
         printWriter.write(dati);
     }
 
+    /**
+     *richiama il doGet
+     */
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

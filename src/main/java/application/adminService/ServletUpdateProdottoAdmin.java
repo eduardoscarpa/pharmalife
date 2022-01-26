@@ -22,6 +22,7 @@ public class ServletUpdateProdottoAdmin extends HttpServlet {
     public ServletUpdateProdottoAdmin(ProdottoDAO prodottoDAO){
         this.prodottoDAO=prodottoDAO;
     }
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer idProdotto=Integer.parseInt(request.getParameter("id"));
@@ -33,6 +34,9 @@ public class ServletUpdateProdottoAdmin extends HttpServlet {
 
     @Generated
     @Override
+    /**
+     * richiama il doGet
+     */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }

@@ -22,6 +22,14 @@ public class ServletDeleteProdottoAdmin extends HttpServlet {
     public ServletDeleteProdottoAdmin(ProdottoDAO prodottoDAO){
         this.prodottoDAO=prodottoDAO;
     }
+
+    /**
+     *
+     * @param request oggetto della Servlet contentente il valore dell'ide del prodotto da eliminare
+     * @param response  oggetto della Servlet utile per eseguire il forward
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProdotto=Integer.parseInt(request.getParameter("id"));
@@ -31,6 +39,9 @@ public class ServletDeleteProdottoAdmin extends HttpServlet {
 
     }
 
+    /**
+     *richiama il doGet
+     */
     @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +53,7 @@ public class ServletDeleteProdottoAdmin extends HttpServlet {
      * @param idProdotto del prodotto da eliminare
      * @throws ServletException
      * @throws IOException
-     * @post @post prodottoDAO.doRetrieveByAllProdotti.size=@pre prodottoDAO.doRetrieveByAllProdotti.size-1
+     * <p><b>post</b></p>  prodottoDAO.doRetrieveByAllProdotti.size=@pre prodottoDAO.doRetrieveByAllProdotti.size-1
      */
     public void eliminaProdottoDalCatalogo(int idProdotto) throws ServletException, IOException {
         prodottoDAO.deleteProdotto(idProdotto);

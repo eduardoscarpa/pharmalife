@@ -34,6 +34,13 @@ public class ServletInsertProdotto extends HttpServlet {
         prodottoDAO= new ProdottoDAO();
     }
 
+    /**
+     *
+     * @param request oggetto della Servlet contente le informazioni relative al nuovo prodotto da aggiungere al catalogo
+     * @param response oggetto della Servlet utile per eseguire il forward
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -48,6 +55,9 @@ public class ServletInsertProdotto extends HttpServlet {
         response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));
     }
 
+    /**
+     *richiama il metodo doGet
+     */
     @Generated
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -64,7 +74,7 @@ public class ServletInsertProdotto extends HttpServlet {
      * @param categoria indica la categoria del prodotto
      * @param descrizione fornisce ulteriori info aggiuntive sul prodotto
      * @param pathImmagine indica la directory all'interno del progetto dove è posizionata l'immagine del prodotto
-     * @post prodottoDAO.doRetrieveByAllProdotti.size=@pre prodottoDAO.doRetrieveByAllProdotti.size+1
+     * <p><b>post</b></p> prodottoDAO.doRetrieveByAllProdotti.size=@pre prodottoDAO.doRetrieveByAllProdotti.size+1
      * */
     public void aggiungiProdottoAlCatalogo(String nomeProdotto,double prezzoProdotto,String marchioProdotto,int quantita,
                                            String categoria, String descrizione, String pathImmagine){

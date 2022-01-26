@@ -43,6 +43,14 @@ public class ServletBarraRicerca extends HttpServlet {
         this.prodottoDAO = prodottoDAO;
     }
 
+    /**
+     * Il doGete si occupa di ricercare  per ogni parola digitata dall'utente nella barra di ricerca i prodotto che hanno il prefisso
+     * digitato dall'utente ,tutto ciò in modo asincrono
+     * @param request oggetto della Servlet contente il prefisso del nome del prodotto da ricercare
+     * @param response oggeto della Servlet utile ad effettuare il forward
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String valore=request.getParameter("value");

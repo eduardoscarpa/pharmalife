@@ -93,7 +93,7 @@ public class ServletAdminTest {
         messaggi.add(new Messaggio());
         when(messaggioDAO.doRetrieveByAllMessaggi()).thenReturn(messaggi);
         int size=messaggi.size();
-        servletAdmin.visualizzaMessaggi(request,response);
+        servletAdmin.visualizzaMessaggi(request);
         verify(messaggioDAO).doRetrieveByAllMessaggi();
         assertEquals(2, size);
     }
@@ -105,7 +105,7 @@ public class ServletAdminTest {
         when(utenteDAO.doRetrieveByAllUtenti()).thenReturn(utenti);
         int num = utenti.size();
         request.setAttribute("messaggi", num);
-        servletAdmin.visualizzaStatistiche(request, response);
+        servletAdmin.visualizzaStatistiche(request);
         verify(messaggioDAO).doRetrieveByAllMessaggi();
         verify(request).setAttribute("messaggi", num);
         assertEquals(2, num);

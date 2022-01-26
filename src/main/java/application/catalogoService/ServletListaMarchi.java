@@ -34,6 +34,9 @@ public class ServletListaMarchi extends HttpServlet {
 
     @Generated
     @Override
+    /**
+     * richiama il metodo visualizzaMarchi
+     */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         visualizzaListaMarchi(request, response);
     }

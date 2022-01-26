@@ -48,6 +48,13 @@ public class ServletAccessoUtente extends HttpServlet {
     }
 
 
+    /**
+     *
+     * @param request oggetto della Servlet utile contenente il valori inviati dal client
+     * @param response oggetto della servlet utile ad effettuare il forward
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -64,6 +71,9 @@ public class ServletAccessoUtente extends HttpServlet {
 
     @Generated
     @Override
+    /**
+     * richiama il doGet
+     */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -72,11 +82,11 @@ public class ServletAccessoUtente extends HttpServlet {
      * Questo metodo serve per effettuare il logout di un Utente, per poter effettuare questa operazione è
      * necessario che ci sia un Utente loggato in sessione, al termine dell'esecuzione del metodo non sarà
      * più presente nella sessione
-     * @pre session.contains(utente)
-     * @param request
-     * @param response
+     * <p><b>pre</b></p>session.contains(utente)
+     * @param request oggetto della Servlet utile contenente il valori inviati dal client
+     * @param response oggetto della servlet utile ad effettuare il forward
      * @throws IOException
-     * @post !session.contains(utente)
+     * <p><b>post</b></p>!session.contains(utente)
      */
     public void logoutUtente(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
@@ -88,13 +98,8 @@ public class ServletAccessoUtente extends HttpServlet {
                 session.removeAttribute("carrello");
             }
             response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));
-
         }
-
     }
-
-
-
 
     /**
      * Questo metodo serve per effettuare il login di un Utente, al termine dell'esecuzione del metodo l'Utente
@@ -103,7 +108,7 @@ public class ServletAccessoUtente extends HttpServlet {
      * @param response
      * @throws ServletException
      * @throws IOException
-     * @post session.contains(utente)
+     * <p><b>post</b></p> session.contains(utente)
      */
     public void loginUtente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -111,7 +116,6 @@ public class ServletAccessoUtente extends HttpServlet {
         if (utente == null) {
             String email = request.getParameter("emailUser");
             String password = request.getParameter("password");
-             //serviceUtenteDAO = new UtenteDAO();
             utente = (Utente) serviceUtenteDAO.cercaUtentebyEmail(email, password);
             if (utente != null) {
                 if (session.getAttribute("carrello") != null) {

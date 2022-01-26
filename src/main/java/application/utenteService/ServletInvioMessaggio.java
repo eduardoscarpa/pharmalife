@@ -42,6 +42,13 @@ public class ServletInvioMessaggio extends HttpServlet {
         utente = new Utente();
     }
 
+    /**
+     *
+     * @param request oggetto della Servlet  contenente i valori ricevuti dal client relativi al messaggio da inviare
+     * @param response oggetto della Servlet utile ad effettuare il forward
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        // invioMessaggio(request, response);
@@ -81,12 +88,12 @@ public class ServletInvioMessaggio extends HttpServlet {
 
     /**
      *
-     * @pre not checkUtente(utenteLoggato,utente)
+     * <p><b>pre</b></p> not checkUtente(utenteLoggato,utente)
      * @param utenteLoggato
      * @param message
      * @throws ServletException
      * @throws IOException
-     * @post serviceMessaggio.doRetrieveByAllMessaggi.size = @pre.serviceMessaggio.size.doRetrieveByAllMessaggi()+1.size
+     * <p><b>post</b></p> serviceMessaggio.doRetrieveByAllMessaggi.size = @pre.serviceMessaggio.size.doRetrieveByAllMessaggi()+1.size
      */
     public void invioMessaggio (Utente utenteLoggato, Messaggio message) throws ServletException, IOException {
         message.setUtente(utenteLoggato);

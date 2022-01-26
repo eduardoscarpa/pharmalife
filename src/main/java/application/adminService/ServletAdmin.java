@@ -48,12 +48,23 @@ public class ServletAdmin extends HttpServlet {
         this.ordineDAO=ordineDAO;
     }
 
+    /**
+     * richiama il doPost
+     */
     @Generated
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             doPost(request,response);
     }
 
+    /**
+     *
+     * @param request oggetto che contenenti i dati inviati dal client ,relativi alla scelta dell'admin sull'inserrire un prodotto
+     * al catalogo, visualizzare la lista dei messaggi degli utenti o  varie statistiche sulla piattaforma
+     * @param response oggetto della Servlet utile per eseguire il forward
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             String valore=request.getParameter("value");
@@ -63,11 +74,11 @@ public class ServletAdmin extends HttpServlet {
                     pagina="WEB-INF/pagine/admin/insertProdotto.jsp";
                 break;
                 case "messaggi":
-                    visualizzaMessaggi(request,response);
+                    visualizzaMessaggi(request);
                     pagina="WEB-INF/pagine/admin/assistenzaUtenti.jsp";
                 break;
                 case "statistiche":
-                    visualizzaStatistiche(request,response);
+                    visualizzaStatistiche(request);
                     pagina="WEB-INF/pagine/admin/statistiche.jsp";
                     break;
             }
@@ -77,10 +88,9 @@ public class ServletAdmin extends HttpServlet {
 
     /**
      * Questo metodo serve a settare nella request la lista di tutti i messaggi inviati da tutti gli utenti
-     * @param request
-     * @param response
+     * @param request oggetto della Servlet utile allo scopo di settare i valori da inviare al client
      */
-    public void visualizzaMessaggi(HttpServletRequest request,HttpServletResponse response){
+    public void visualizzaMessaggi(HttpServletRequest request){
         this.messaggi=messaggioDAO.doRetrieveByAllMessaggi();
         request.setAttribute("messaggi",messaggi);
     }
@@ -89,10 +99,9 @@ public class ServletAdmin extends HttpServlet {
      * Questo metodo recupera dal database al la dimensione della lista  di tutti i messaggi, utenti iscitti alla piattaforma,
      * prodotti presenti nel catalogo e ordini effettuati da tutti gli utenti
      * La size di queste liste viene settata nella request
-     * @param request
-     * @param response
+     * @param request oggetto della Servlet utile allo scopo di settare i valori da inviare al client
      */
-    public void visualizzaStatistiche(HttpServletRequest request,HttpServletResponse response){
+    public void visualizzaStatistiche(HttpServletRequest request){
          this.messaggi = messaggioDAO.doRetrieveByAllMessaggi();
          this.utenti = utenteDAO.doRetrieveByAllUtenti();
          this.prodotti = prodottoDAO.doRetrieveByAllProdotti();
@@ -107,20 +116,5 @@ public class ServletAdmin extends HttpServlet {
          request.setAttribute("ordini", sizeOrdini);
     }
 
-    @Generated
-    public void setArrayMessaggi(ArrayList<Messaggio> messaggi){
-        this.messaggi=messaggi;
-    }
-    @Generated
-    public void setArrayUtenti(ArrayList<Utente> utenti){
-        this.utenti=utenti;
-    }
-    @Generated
-    public void setArrayProdotti(ArrayList<Prodotto> prodotti){
-        this.prodotti=prodotti;
-    }
-    @Generated
-    public void setArrayOrdini(ArrayList<Ordine> ordini){
-        this.ordini=ordini;
-    }
+
 }

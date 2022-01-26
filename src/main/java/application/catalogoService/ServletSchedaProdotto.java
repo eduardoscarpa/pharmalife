@@ -32,6 +32,13 @@ public class ServletSchedaProdotto extends HttpServlet {
        doPost(request,response);
     }
 
+    /**
+     *
+     * @param request oggetto della Servlet contentente l'identificativo del prodotto da visualizzare
+     * @param response oggetto della Servlet utile ad effettuare il forward
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));

@@ -62,7 +62,7 @@ public class ServletIscrizione extends HttpServlet {
     /**
      * Questo metodo permette ad Utente di registrarsi al sistema, per poter effettuare questa operazione
      * il codiceFiscale non deve essere già esistente nel database
-     * @pre isNotPresentCf(codiceFiscale)
+     * <p><b>pre</b></p> isNotPresentCf(codiceFiscale)
      * @param fn nome
      * @param ln cognome
      * @param cf codice fiscale
@@ -78,8 +78,8 @@ public class ServletIscrizione extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      * @throws SQLException
-     * @post not isNotPresentCf(codiceFiscale)
-     * @post doRetrieveByAllUtenti = @pre doRetrieveByAllUtenti+1
+     *<p><b>post</b></p> not isNotPresentCf(codiceFiscale)
+     * <p><b>post</b></p> service.doRetrieveByAllUtenti = @pre service.doRetrieveByAllUtenti+1
      */
     public void registraUtente(String fn,String ln,String cf, String email,String psw,String psw_rip,String via,
                                int numeroCivico,String cap,String telefono,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException {

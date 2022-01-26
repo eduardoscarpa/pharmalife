@@ -39,6 +39,13 @@ public class ServletOrdini extends HttpServlet {
         doPost(request,response);
     }
 
+    /**
+     * Questo serve a ricercare la lista di tutti gli ordini effettuati da un utente
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session= request.getSession();

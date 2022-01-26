@@ -48,7 +48,7 @@ public class ServletPreferiti extends HttpServlet {
      * @param request
      * @param response
      * @throws IOException
-     * @post service.doRetrieveByAllPreferitiOfUtente.size=@pre.service.doRetrieveByAllPreferitiOfUtente.size+1
+     * <p><b>post</b></p>service.doRetrieveByAllPreferitiOfUtente.size=@pre.service.doRetrieveByAllPreferitiOfUtente.size+1
      */
 
     public void inserisciProdottoAiPreferiti(HttpServletRequest request,HttpServletResponse response) throws IOException {

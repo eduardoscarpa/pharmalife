@@ -34,6 +34,14 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
         this.prodotto=prodotto;
     }
 
+    /**
+     *
+     * @param request oggetto della Servlet contenente i valori inviati dal client relativi all'identificativo del prodotto da aggiungere
+     * al carrello
+     * @param response oggetto della Servlet utile per inviare l'esisto dell'operazione al client
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProdotto=Integer.parseInt(request.getParameter("prodotto"));
@@ -62,7 +70,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
      * @param idProdotto del prodotto da aggiungere al carrello
      * @param session
      * @throws IOException
-     * @post getNumProdotti = @pre getNumProdotti + 1
+     * <p><b>post</b></p> Carrello.getNumProdotti = @pre Carrello.getNumProdotti + 1
      */
     public void aggiuntaAlCarrello(int idProdotto,HttpSession session) throws IOException{
         if(utente!=null){

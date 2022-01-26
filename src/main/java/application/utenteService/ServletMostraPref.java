@@ -41,13 +41,16 @@ public class ServletMostraPref extends HttpServlet {
 
     @Generated
     @Override
+    /**
+     * richiama il metodo doGeet
+     */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
     /**
      * Questo metodo serve per visualizzare la lista dei prodotti che sono stati aggiunti ai preferiti.
-     * @param request
+     * @param request oggetto della Servlet  da cui si ricava la session attuale e il relativo utente in sessione
      * @throws ServletException
      * @throws IOException
      */

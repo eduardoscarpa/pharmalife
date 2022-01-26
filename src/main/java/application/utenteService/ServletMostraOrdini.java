@@ -25,6 +25,9 @@ public class ServletMostraOrdini extends HttpServlet {
 
     @Generated
     @Override
+    /**
+     * richiama il metodo doPost
+     */
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         doPost(request,response);
@@ -32,7 +35,6 @@ public class ServletMostraOrdini extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         HttpSession session=request.getSession();
         Utente utente=(Utente) session.getAttribute("utente");
         ArrayList<Ordine> ordini= ordineDAO.doRetraiveByAllById(utente);

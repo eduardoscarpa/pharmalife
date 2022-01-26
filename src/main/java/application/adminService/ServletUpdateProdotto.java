@@ -26,6 +26,13 @@ public class ServletUpdateProdotto extends HttpServlet {
         this.prodottoDAO=prodottoDAO;
     }
 
+    /**
+     *
+     * @param request oggetto della Servlet contenente l'identificativo del prodotto da aggiornare e il nuovo nome e prezzo
+     * @param response oggetto della Servlet utile ad effettuare il forward
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -39,6 +46,9 @@ public class ServletUpdateProdotto extends HttpServlet {
 
     @Generated
     @Override
+    /**
+     * richiama il doGet
+     */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }

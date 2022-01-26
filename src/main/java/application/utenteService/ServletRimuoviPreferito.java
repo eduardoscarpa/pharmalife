@@ -45,7 +45,7 @@ public class ServletRimuoviPreferito extends HttpServlet {
      * @param response
      * @throws ServletException
      * @throws IOException
-     * @post service.doRetrieveByAllPreferitiOfUtente.size=@pre.service.doRetrieveByAllPreferitiOfUtente.size-1
+     * <p><b>post</b></p>service.doRetrieveByAllPreferitiOfUtente.size=@pre.service.doRetrieveByAllPreferitiOfUtente.size-1
      */
     public void rimuoviProdottoDaiPreferiti(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
