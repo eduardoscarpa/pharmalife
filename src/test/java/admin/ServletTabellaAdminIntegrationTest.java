@@ -1,6 +1,6 @@
 package admin;
 
-import application.admin.ServletTabellaAdmin;
+import application.adminService.ServletTabellaAdmin;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

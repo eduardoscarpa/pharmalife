@@ -1,6 +1,6 @@
 package utente;
 
-import application.utente.ServletUpdateIndirizzo;
+import application.utenteService.ServletUpdateIndirizzo;
 import storage.utente.Utente;
 import storage.utente.UtenteDAO;
 import org.junit.Before;

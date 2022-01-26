@@ -1,6 +1,6 @@
 package catalogo;
 
-import application.catalogo.ServletListaProdotti;
+import application.catalogoService.ServletListaProdotti;
 import storage.prodotto.Prodotto;
 import storage.prodotto.ProdottoDAO;
 import org.junit.Before;

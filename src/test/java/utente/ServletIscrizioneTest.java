@@ -2,7 +2,7 @@ package utente;
 
 
 
-import application.utente.ServletIscrizione;
+import application.utenteService.ServletIscrizione;
 import storage.utente.UtenteDAO;
 import org.junit.Before;
 import org.junit.Test;

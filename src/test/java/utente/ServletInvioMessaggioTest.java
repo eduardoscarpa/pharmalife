@@ -1,6 +1,6 @@
 package utente;
 
-import application.utente.ServletInvioMessaggio;
+import application.utenteService.ServletInvioMessaggio;
 import storage.messaggio.Messaggio;
 import storage.messaggio.MessaggioDAO;
 import storage.utente.Utente;

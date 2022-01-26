@@ -1,6 +1,6 @@
 package utente;
 
-import application.utente.ServletRimuoviPreferito;
+import application.utenteService.ServletRimuoviPreferito;
 import storage.prodotto.Prodotto;
 import storage.utente.Utente;
 import storage.utente.UtenteDAO;

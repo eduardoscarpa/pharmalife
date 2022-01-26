@@ -1,5 +1,5 @@
 package admin;
-import application.admin.ServletAdmin;
+import application.adminService.ServletAdmin;
 import storage.messaggio.Messaggio;
 import storage.messaggio.MessaggioDAO;
 import storage.ordine.Ordine;

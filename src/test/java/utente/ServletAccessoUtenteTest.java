@@ -1,6 +1,6 @@
 package utente;
 
-import application.utente.ServletAccessoUtente;
+import application.utenteService.ServletAccessoUtente;
 import storage.carrello.Carrello;
 import storage.utente.Utente;
 import storage.utente.UtenteDAO;

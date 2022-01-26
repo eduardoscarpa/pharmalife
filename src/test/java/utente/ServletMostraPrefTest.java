@@ -1,6 +1,6 @@
 package utente;
 
-import application.utente.ServletMostraPref;
+import application.utenteService.ServletMostraPref;
 import storage.prodotto.Prodotto;
 import storage.utente.Utente;
 import storage.utente.UtenteDAO;

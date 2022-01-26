@@ -1,7 +1,7 @@
 package utente;
 
-import application.utente.ServletIscrizione;
-import application.utente.ServletUpdateUtente;
+import application.utenteService.ServletIscrizione;
+import application.utenteService.ServletUpdateUtente;
 import storage.utente.Utente;
 import storage.utente.UtenteDAO;
 import org.junit.Before;

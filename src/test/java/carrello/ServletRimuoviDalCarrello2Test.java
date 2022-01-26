@@ -1,6 +1,6 @@
 package carrello;
 
-import application.carrello.ServletRimuoviDalCarrello;
+import application.carrelloService.ServletRimuoviDalCarrello;
 
 import storage.carrello.Carrello;
 import storage.prodotto.Prodotto;

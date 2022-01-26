@@ -1,6 +1,6 @@
 package utente;
 
-import application.utente.ServletOrdini;
+import application.utenteService.ServletOrdini;
 import storage.carrello.Carrello;
 import storage.ordine.Ordine;
 import storage.ordine.OrdineDAO;

@@ -1,6 +1,6 @@
 package utente;
 
-import application.utente.ServletAssistenza;
+import application.utenteService.ServletAssistenza;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

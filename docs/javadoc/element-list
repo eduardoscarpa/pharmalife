@@ -1,9 +1,9 @@
 admin
-application.admin
-application.carrello
-application.catalogo
+application.adminService
+application.carrelloService
+application.catalogoService
 application.global
-application.utente
+application.utenteService
 assistenza
 carrello
 catalogo

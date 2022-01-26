@@ -1,6 +1,6 @@
 package admin;
 
-import application.admin.ServletDeleteProdottoAdmin;
+import application.adminService.ServletDeleteProdottoAdmin;
 import storage.prodotto.ProdottoDAO;
 import org.junit.Before;
 import org.junit.Test;

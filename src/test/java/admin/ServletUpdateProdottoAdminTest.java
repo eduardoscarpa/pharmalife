@@ -1,6 +1,6 @@
 package admin;
 
-import application.admin.ServletUpdateProdottoAdmin;
+import application.adminService.ServletUpdateProdottoAdmin;
 import storage.prodotto.Prodotto;
 import storage.prodotto.ProdottoDAO;
 import org.junit.Before;

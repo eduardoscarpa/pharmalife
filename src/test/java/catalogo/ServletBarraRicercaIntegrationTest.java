@@ -1,6 +1,6 @@
 package catalogo;
 
-import application.catalogo.ServletBarraRicerca;
+import application.catalogoService.ServletBarraRicerca;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

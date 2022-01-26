@@ -1,6 +1,6 @@
 package admin;
 
-import application.admin.ServletInsertProdotto;
+import application.adminService.ServletInsertProdotto;
 import storage.categoria.Categoria;
 import storage.categoria.CategoriaDAO;
 import storage.marchio.Marchio;
