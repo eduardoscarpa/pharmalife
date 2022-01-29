@@ -1,0 +1,279 @@
+{
+  "id": "090e2082-8dd8-4603-9df2-4bc6a581c655",
+  "version": "2.0",
+  "name": "TC_2",
+  "url": "http://localhost:8080/ProgettoIS_war_exploded/ServletLink?scelta=login",
+  "tests": [{
+    "id": "3c105d4a-aed7-45b0-900a-84d450745491",
+    "name": "TC_2.1",
+    "commands": [{
+      "id": "ae2f0f6a-eec7-48ad-894b-c339704caf8c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/ProgettoIS_war_exploded/ServletLink?scelta=login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fa4d5a28-cdc8-4309-b99f-b15efb63c541",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x744",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "553f7573-86f9-4f27-a85b-54d35fbbc0ea",
+      "comment": "",
+      "command": "click",
+      "target": "name=emailUser",
+      "targets": [
+        ["name=emailUser", "name"],
+        ["xpath=//input[@id='nomeUtente']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "17815649-826c-48cf-96b6-08a1db787c3f",
+      "comment": "",
+      "command": "type",
+      "target": "name=emailUser",
+      "targets": [
+        ["name=emailUser", "name"],
+        ["xpath=//input[@id='nomeUtente']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "a.rossi12@outlook.com"
+    }, {
+      "id": "9e3b4e44-c61f-4aab-849e-7a76a19296bb",
+      "comment": "",
+      "command": "click",
+      "target": "id=passw",
+      "targets": [
+        ["id=passw", "id"],
+        ["name=password", "name"],
+        ["css=#passw", "css:finder"],
+        ["xpath=//input[@id='passw']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "db9d7151-23c2-40a9-a534-e9b32040bad7",
+      "comment": "",
+      "command": "type",
+      "target": "id=passw",
+      "targets": [
+        ["id=passw", "id"],
+        ["name=password", "name"],
+        ["css=#passw", "css:finder"],
+        ["xpath=//input[@id='passw']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "AlfredoRossi99"
+    }, {
+      "id": "a686031f-f8d5-4428-9abf-2afe249ebbb0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit",
+      "targets": [
+        ["css=.submit", "css:finder"],
+        ["xpath=//input[@value='Accedi']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5285ce32-0c23-411e-be71-a07378075a68",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.title",
+      "targets": [
+        ["css=.title", "css:finder"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": "UTENTE NON TROVATO!"
+    }]
+  }, {
+    "id": "b242383b-26eb-4f85-b141-0af1f402f936",
+    "name": "TC_2.2",
+    "commands": [{
+      "id": "8604156f-e9c6-49c2-91b5-e143e99df793",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/ProgettoIS_war_exploded/ServletLink?scelta=login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3ada3a75-447d-4090-8581-214118d05252",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x744",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e30d0d8a-20aa-48aa-805c-3ed6babf2d98",
+      "comment": "",
+      "command": "click",
+      "target": "name=emailUser",
+      "targets": [
+        ["name=emailUser", "name"],
+        ["xpath=//input[@id='nomeUtente']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "adb9674b-9806-45b9-b304-e8a802b74ef8",
+      "comment": "",
+      "command": "type",
+      "target": "name=emailUser",
+      "targets": [
+        ["name=emailUser", "name"],
+        ["xpath=//input[@id='nomeUtente']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "a.rossi12@outlook.com"
+    }, {
+      "id": "25e67806-23cc-430c-b37a-4ab9384fcac5",
+      "comment": "",
+      "command": "type",
+      "target": "name=emailUser",
+      "targets": [
+        ["name=emailUser", "name"],
+        ["xpath=//input[@id='nomeUtente']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "a.rossi12@outlook.it"
+    }, {
+      "id": "1046dc74-dc3c-4cda-8a0c-20ed27d98048",
+      "comment": "",
+      "command": "click",
+      "target": "id=passw",
+      "targets": [
+        ["id=passw", "id"],
+        ["name=password", "name"],
+        ["css=#passw", "css:finder"],
+        ["xpath=//input[@id='passw']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "500a2e89-ea33-4813-be56-b03eea276ff9",
+      "comment": "",
+      "command": "type",
+      "target": "id=passw",
+      "targets": [
+        ["id=passw", "id"],
+        ["name=password", "name"],
+        ["css=#passw", "css:finder"],
+        ["xpath=//input[@id='passw']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "AlfredoRossi97"
+    }, {
+      "id": "c8c9f2bf-a5da-4bfb-8707-bdbe9f9e811b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit",
+      "targets": [
+        ["css=.submit", "css:finder"],
+        ["xpath=//input[@value='Accedi']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e7a5ecd7-482c-4a14-aae3-21dcfc6935c6",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.title",
+      "targets": [
+        ["css=.title", "css:finder"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": "UTENTE NON TROVATO!"
+    }]
+  }, {
+    "id": "74ee0e5d-de09-44fc-a9a8-fc3e1453ddd8",
+    "name": "TC_2.3",
+    "commands": [{
+      "id": "6c9d195c-b3d2-4384-bb27-d7ffc9bb9d15",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/ProgettoIS_war_exploded/ServletLink?scelta=login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "283ac83e-de95-4a4b-98c5-c83ce876f39f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x744",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dad335d2-119a-40e3-b184-8cad4f8c40cc",
+      "comment": "",
+      "command": "click",
+      "target": "name=emailUser",
+      "targets": [
+        ["name=emailUser", "name"],
+        ["xpath=//input[@id='nomeUtente']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d91749b0-68a3-4495-a01c-b2c6fa82335f",
+      "comment": "",
+      "command": "type",
+      "target": "name=emailUser",
+      "targets": [
+        ["name=emailUser", "name"],
+        ["xpath=//input[@id='nomeUtente']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "a.rossi12@outlook.it"
+    }, {
+      "id": "777e2b2c-beb4-4404-ac79-5dd3640459d7",
+      "comment": "",
+      "command": "click",
+      "target": "id=passw",
+      "targets": [
+        ["id=passw", "id"],
+        ["name=password", "name"],
+        ["css=#passw", "css:finder"],
+        ["xpath=//input[@id='passw']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a78fa9e8-ce57-4d68-829d-0d382d1deed3",
+      "comment": "",
+      "command": "type",
+      "target": "id=passw",
+      "targets": [
+        ["id=passw", "id"],
+        ["name=password", "name"],
+        ["css=#passw", "css:finder"],
+        ["xpath=//input[@id='passw']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "AlfredoRossi99"
+    }, {
+      "id": "6a4f4df9-ce92-4408-ba68-a85adf02a3f5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit",
+      "targets": [
+        ["css=.submit", "css:finder"],
+        ["xpath=//input[@value='Accedi']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": "Accedi"
+    }]
+  }],
+  "suites": [{
+    "id": "dfd2919e-8c1b-4151-aa29-f7476ff9333e",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:8080/ProgettoIS_war_exploded/", "http://localhost:8080/ProgettoIS_war_exploded/ServletLink?scelta=login"],
+  "plugins": []
+}

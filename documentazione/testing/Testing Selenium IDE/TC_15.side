@@ -1,0 +1,235 @@
+{
+  "id": "6353b655-cb52-43d7-ab20-2fc95db1952f",
+  "version": "2.0",
+  "name": "TC_15",
+  "url": "http://localhost:8080/ProgettoIS_war_exploded/ServletUpdateProdottoAdmin?id=1",
+  "tests": [{
+    "id": "d9d3df54-ae27-463b-b004-c7d22358fd3f",
+    "name": "TC_15.1",
+    "commands": [{
+      "id": "be251b89-2677-4c1e-8567-08fa6ef7c714",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/ProgettoIS_war_exploded/ServletUpdateProdottoAdmin?id=1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "02cd1bf2-a9c9-43b5-ab49-5597022b2423",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x744",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e4a26d6e-85f4-4941-9658-8b6f44c872a2",
+      "comment": "",
+      "command": "click",
+      "target": "id=prezzo",
+      "targets": [
+        ["id=prezzo", "id"],
+        ["name=prezzo", "name"],
+        ["css=#prezzo", "css:finder"],
+        ["xpath=//input[@id='prezzo']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "beeae542-f86e-4975-ab18-1bd9e279153c",
+      "comment": "",
+      "command": "type",
+      "target": "id=prezzo",
+      "targets": [
+        ["id=prezzo", "id"],
+        ["name=prezzo", "name"],
+        ["css=#prezzo", "css:finder"],
+        ["xpath=//input[@id='prezzo']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "15.30"
+    }, {
+      "id": "1f017d56-62d0-45ed-810e-de94aa9fe113",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(4)",
+      "targets": [
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@value='MODIFICA']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "191053ad-be78-42c7-a14e-1ec8ed3db57d",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Il nome del prodotto NON deve essere vuoto",
+      "targets": [],
+      "value": "Il nome del prodotto NON deve essere vuoto"
+    }]
+  }, {
+    "id": "3dae9085-cf27-4603-9682-9c4ffa71f6bf",
+    "name": "TC_15.2",
+    "commands": [{
+      "id": "bb74cbde-7369-4e10-9c75-24f5fb04fe1c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/ProgettoIS_war_exploded/ServletUpdateProdottoAdmin?id=1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3c5826e8-4fea-4972-98c2-66c5c9eb2d79",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x744",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6c3455d4-6f0d-43e4-af3f-4fb2cf3a51c1",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f22810f8-09a2-4b14-8368-e6dbbaa79958",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "DIKSONATURA SHAMPOO SECCHI"
+    }, {
+      "id": "d9069470-c93c-45b0-b80f-98b9376d072f",
+      "comment": "",
+      "command": "click",
+      "target": "id=prezzo",
+      "targets": [
+        ["id=prezzo", "id"],
+        ["name=prezzo", "name"],
+        ["css=#prezzo", "css:finder"],
+        ["xpath=//input[@id='prezzo']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ef3f4b32-1175-482f-8eb0-ff6b8479e5ff",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(4)",
+      "targets": [
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@value='MODIFICA']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "15fa7d0d-b8c0-45cc-b244-209fdb39cbed",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Il prezzo del prodotto NON deve essere vuoto",
+      "targets": [],
+      "value": "Il prezzo del prodotto NON deve essere vuoto"
+    }]
+  }, {
+    "id": "0dfe234b-906a-444d-b145-d1a31ec8867f",
+    "name": "TC_15.3",
+    "commands": [{
+      "id": "cc7ef7a8-6696-478b-b200-4a395e442709",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/ProgettoIS_war_exploded/ServletUpdateProdottoAdmin?id=1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa837580-cacb-400e-8693-9098a4884fe9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x744",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "68970b59-c3a0-4a20-a78d-a4f1d8035cfe",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "391a7682-9ae4-40ac-98e7-820d55b4fc44",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "DIKSONATURA SHAMPOO SECCHI"
+    }, {
+      "id": "67c4035d-de64-46a3-ab5b-bb1c92afd8e2",
+      "comment": "",
+      "command": "click",
+      "target": "id=prezzo",
+      "targets": [
+        ["id=prezzo", "id"],
+        ["name=prezzo", "name"],
+        ["css=#prezzo", "css:finder"],
+        ["xpath=//input[@id='prezzo']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0dd3e1f4-b894-4ff5-9cb0-47e33698db43",
+      "comment": "",
+      "command": "type",
+      "target": "id=prezzo",
+      "targets": [
+        ["id=prezzo", "id"],
+        ["name=prezzo", "name"],
+        ["css=#prezzo", "css:finder"],
+        ["xpath=//input[@id='prezzo']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "15.30"
+    }, {
+      "id": "3e86791e-f981-49d2-aaa1-707b0b90d312",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(4)",
+      "targets": [
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@value='MODIFICA']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "MODIFICA"
+    }]
+  }],
+  "suites": [{
+    "id": "47f9899d-fa16-4a8d-b213-4ce9515869e5",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:8080/ProgettoIS_war_exploded/ServletUpdateProdottoAdmin?id=1"],
+  "plugins": []
+}
